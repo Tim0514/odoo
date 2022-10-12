@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="shop_sale_data_tree" model="ir.ui.view">
+        <field name="name">web.sale.shop.sale.data.tree</field>
+        <field name="model">web.sale.shop.sale.data</field>
+        <field name="arch" type="xml">
+
+            <tree
+                string="Web Shop Sale Data"
+                import="true"
+                create="true"
+                edit="false"
+                multi_edit="false"
+                duplicate="false"
+                editable="bottom"
+                decoration-info="state in ('new')"
+                decoration-success="state in ('ok')"
+                decoration-danger="state in ('error')"
+                decoration-muted="state in ('no_data')"
+            >
+                <field name="shop_product_id" />
+                <field name="order_date" />
+                <field name="imported_shop_name" />
+                <field name="imported_product_default_code" />
+                <field name="imported_product_sku" />
+                <field name="imported_product_name" />
+                <field name="sale_qty" />
+                <field name="return_qty" />
+                <field name="scrap_qty" />
+                <field name="create_date" />
+                <field
+                    name="state"
+                    widget="badge"
+                    decoration-info="state in ('new')"
+                    decoration-success="state in ('ok')"
+                    decoration-danger="state in ('error')"
+                    decoration-muted="state in ('no_data')"
+                    optional="show"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record id="shop_sale_data_search" model="ir.ui.view">
+        <field name="name">web.sale.shop.sale.data.search</field>
+        <field name="model">web.sale.shop.sale.data</field>
+        <field name="arch" type="xml">
+            <search string="Search Web Sale Data">
+                <field name="shop_id" />
+                <field name="product_id" />
+                <field name="order_date" />
+                <field name="state" />
+                <filter
+                    name="state_new"
+                    string="New Data"
+                    domain="[('state','=', 'new')]"
+                />
+                <filter
+                    name="state_error"
+                    string="Error Data"
+                    domain="[('state','=', 'error')]"
+                />
+                <filter
+                    name="state_ok"
+                    string="OK Data"
+                    domain="[('state','=', 'ok')]"
+                />
+                <filter
+                    name="state_no_data"
+                    string="No Sale Data"
+                    domain="[('state','=', 'no_data')]"
+                />
+
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="order_date"
+                        string="Order Date"
+                        domain="[]"
+                        context="{'group_by' : 'order_date'}"
+                    />
+                    <filter
+                        name="shop"
+                        string="Web Shop"
+                        domain="[]"
+                        context="{'group_by' : 'shop_id'}"
+                    />
+                    <filter
+                        name="product"
+                        string="Product"
+                        domain="[]"
+                        context="{'group_by' : 'product_id'}"
+                    />
+                    <filter
+                        name="state"
+                        string="Status"
+                        domain="[]"
+                        context="{'group_by':'state'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="shop_sale_data_form_action" model="ir.actions.act_window">
+        <field name="name">Shop Sale Data</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">web.sale.shop.sale.data</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="shop_sale_data_search" />
+    </record>
+
+    <menuitem
+        id="menu_shop_sale_data"
+        name="Shop Sale Data Import"
+        action="shop_sale_data_form_action"
+        sequence="5"
+        parent="menu_web_sale_management"
+        groups="group_web_sale_user,group_web_sale_manager"
+    />
+
+</odoo>

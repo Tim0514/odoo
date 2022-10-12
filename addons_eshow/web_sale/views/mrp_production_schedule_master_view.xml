@@ -1,0 +1,177 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+
+    <record id="mrp_production_schedule_master_tree" model="ir.ui.view">
+        <field name="name">mrp.production.schedule.master.tree</field>
+        <field name="model">mrp.production.schedule.master</field>
+        <field name="arch" type="xml">
+            <tree string="Sale Schedule"
+                create="false" delete="true" edit="false" duplicate="false">
+                <field name="id" invisible="True"/>
+                <field name="warehouse_id"/>
+                <field name="salesperson_id"/>
+                <field name="schedule_year"/>
+                <field name="schedule_week"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="mrp_production_schedule_master_form" model="ir.ui.view">
+        <field name="name">mrp.production.schedule.master.form</field>
+        <field name="model">mrp.production.schedule.master</field>
+        <field name="arch" type="xml">
+            <form string="Sale Schedule"
+                create="false" delete="false" duplicate="false">
+                <header>
+                    <button
+                        name="button_draft"
+                        states="draft,sales_confirmed,logistics_confirmed"
+                        string="Reset"
+                        type="object"
+                    />
+                    <button
+                        name="button_sales_confirm"
+                        states="draft"
+                        string="Sales Confirm"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button
+                        name="button_logistics_confirm"
+                        states="sales_confirmed"
+                        string="Logistics Confirm"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button
+                        name="mrp_mps.action_mrp_mps"
+                        string="Open MPS Form"
+                        type="action"
+                        context="{'search_default_schedule_master_id':active_id}"
+                        class="oe_highlight"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,sales_confirmed,logistics_confirmed"
+                        statusbar_colors='{"logistics_confirmed":"blue"}'
+                    />
+                </header>
+                <sheet string="Master Data of Mrp Production Schedule">
+                    <group name="group_top">
+                      <group name="group_top_left">
+                        <field name="warehouse_id" readonly="True"/>
+                        <field name="salesperson_id" readonly="True"/>
+                      </group>
+                      <group name="group_top_right">
+                        <field name="schedule_year" readonly="True"/>
+                        <field name="schedule_week" readonly="True"/>
+                        <field name="start_date" readonly="True"/>
+                        <field name="end_date" readonly="True"/>
+                      </group>
+                    </group>
+                    <notebook>
+                        <page string="Products" name="mrp_production_schedule_ids">
+                            <field string="Products" name="mrp_production_schedule_ids" mode="tree"
+                                options="{'no_open': True, 'no_create': True}">
+                                <tree string="Products" name="mrp_production_schedule_ids"
+                                    create="false" delete="false" duplicate="false" editable="bottom">
+                                    <field name="id" invisible="True"/>
+                                    <field name="product_id" readonly="True" options="{'no_open': True, 'no_create': True}"/>
+                                    <field name="sale_qty_7" readonly="True"/>
+                                    <field name="sale_qty_14" readonly="True"/>
+                                    <field name="sale_qty_28" readonly="True"/>
+                                    <field name="avg_week_sale_1" readonly="True"/>
+                                    <field name="avg_week_sale_2" readonly="True"/>
+                                    <field name="week_sale_same_period_last_year" readonly="True"/>
+                                    <field name="avg_week_sale_adv" decoration-danger="True" class="oe_inline"/>
+                                </tree>
+                                <form/>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="mrp_production_schedule_master_search" model="ir.ui.view">
+        <field name="name">mrp.production.schedule.master.search</field>
+        <field name="model">mrp.production.schedule.master</field>
+        <field name="arch" type="xml">
+            <search string="Search Sale Schedule">
+                <field name="warehouse_id"/>
+                <field name="salesperson_id"/>
+                <separator />
+                <filter name="filter_salesperson_id" string="My Schedule" domain="[['salesperson_id','=',uid]]"/>
+                <separator />
+                <filter
+                    name="state_draft"
+                    string="Draft"
+                    domain="[('state','=','draft')]"
+                    help="Schedule Need to be confirmed"
+                />
+                <filter
+                    name="state_sales_confirmed"
+                    string="Sales Confirmed"
+                    domain="[('state','=','sales_confirmed')]"
+                    help="Schedules Confirmed by Salesperson"
+                />
+                <filter
+                    name="state_logistics_confirmed"
+                    string="Logistics Confirmed"
+                    domain="[('state','=','logistics_confirmed')]"
+                    help="Schedules Confirmed by Logistics"
+                />
+                <group name="group_by">
+                  <filter name="group_by_warehouse" string="Warehouse" context="{'group_by': 'warehouse_id'}"/>
+                  <filter name="group_by_salesperson" string="Salesperson" context="{'group_by': 'salesperson_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mrp_production_schedule_master_form_action">
+        <field name="name">Sale Schedule</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.production.schedule.master</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_salesperson_id': 1}</field>
+        <field name="search_view_id" ref="mrp_production_schedule_master_search" />
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                No data found.
+            </p>
+            <p>
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_mrp_production_schedule_master"
+        name="Sale Schedule"
+        sequence="10"
+        parent="menu_web_sale_management"
+        action="mrp_production_schedule_master_form_action"
+        groups="group_web_sale_user,group_web_sale_manager"
+    />
+
+    <record id="mrp_mps_search_view_ext" model="ir.ui.view" >
+        <field name="name">mrp.production.schedule.search.view.ext</field>
+        <field name="model">mrp.production.schedule</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="mrp_mps.mrp_mps_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search//field[@name='warehouse_id']" position="after">
+                  <field name="schedule_master_id"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

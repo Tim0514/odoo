@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="eshow_address_layout" inherit_id="web.address_layout">
+        <xpath expr="//t[@t-if='address']" position="before">
+            <t t-if="document_title_block">
+                <div name="document_title_block">
+                    <t t-esc="document_title_block"/>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="eshow_external_layout_boxed" inherit_id="web.external_layout_boxed">
+        <xpath expr="//div[@class='pt-5']" position="replace">
+            <div class="pt-1">
+                <!-- This div ensures that the address is not cropped by the header. -->
+                <t t-call="web.address_layout"/>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

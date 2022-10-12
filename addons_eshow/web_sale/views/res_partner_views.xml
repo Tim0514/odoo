@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_web_sale_form" model="ir.ui.view">
+            <field name="name">res.partner.web.sale.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="mode">extension</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="priority">50</field>
+            <field name="arch" type="xml">
+                <page name="sales_purchases" position="after">
+                    <page name="web_sale" string="Web Sale">
+                        <group name="web_sale_group_1">
+                            <field name="is_web_shop" />
+                            <field name="default_warehouse_id"/>
+                            <field name="marketplace_id"/>
+                            <field name="merchant_code"/>
+                            <field name="auth_token"/>
+                            <field name="access_key"/>
+                            <field name="secret_key"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+    </record>
+
+    <record id="partner_web_sale_search" model="ir.ui.view">
+        <field name="name">partner.web.sale.search</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search string="Search Web Shop SKU">
+                <field name="name" />
+                <field name="is_web_shop" />
+                <field name="marketplace_id" />
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="marketplace"
+                        string="Marketplace"
+                        domain="[]"
+                        context="{'group_by' : 'marketplace_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="res_partner_web_sale_action" model="ir.actions.act_window">
+        <field name="name">Web Shop</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_is_web_shop': True, 'default_is_company': True, 'default_is_web_shop': True}</field>
+        <field name="search_view_id" ref="partner_web_sale_search" />
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a new web shop in your address book
+          </p><p>
+            Odoo helps you easily track all activities related to a web shop.
+          </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_web_sale_partner" name="Web Shop"
+        sequence="5"
+        parent="menu_basic_data"
+        action="res_partner_web_sale_action"/>
+
+</odoo>

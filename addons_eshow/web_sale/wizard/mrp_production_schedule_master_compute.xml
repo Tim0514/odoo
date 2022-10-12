@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrp_production_schedule_master_compute_wizard" model="ir.ui.view">
+        <field name="name">Synchronize Products for Schedule</field>
+        <field name="model">mrp.production.schedule.master.compute</field>
+        <field name="arch" type="xml">
+            <form string="Parameters">
+                <p>
+                    Synchronize Products for Sale/MPS Schedule.
+                </p>
+                <footer>
+                    <button name="regenerate_mrp_production_schedule_master" string="Regenerate" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mrp_production_schedule_master_compute" model="ir.actions.act_window">
+        <field name="name">Synchronize Products for Schedule</field>
+        <field name="res_model">mrp.production.schedule.master.compute</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+            id="menu_mrp_production_schedule_master_compute"
+            name="Synchronize Products for Schedule"
+            action="action_mrp_production_schedule_master_compute"
+            parent="menu_web_sale_management"
+            sequence="20"/>
+
+</odoo>

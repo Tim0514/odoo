@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record model="ir.rule" id="purchase_plan_comp_rule">
+        <field name="name">Purchase Plan multi-company</field>
+        <field name="model_id" ref="model_purchase_plan" />
+        <field name="global" eval="True" />
+        <field name="domain_force">
+            ['|',('company_id','=',False),('company_id', 'in', company_ids)]
+        </field>
+    </record>
+    <record id="purchase_plan_followers_rule" model="ir.rule">
+        <field name="name">Follow Purchase Plan</field>
+        <field name="model_id" ref="model_purchase_plan" />
+        <field name="groups" eval="[(6,0, [ref('purchase.group_purchase_user')])]" />
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+        <field name="domain_force">
+            ['|',('requested_by','=',user.id),('message_partner_ids', 'in', [user.partner_id.id])]
+        </field>
+    </record>
+
+    <record id="purchase_plan_rule" model="ir.rule">
+        <field name="name">Purchase Plan User</field>
+        <field name="model_id" ref="model_purchase_plan" />
+        <field name="groups" eval="[(6,0, [ref('purchase.group_purchase_user')])]" />
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field name="domain_force">[('requested_by','=',user.id)]</field>
+    </record>
+
+    <record id="purchase_plan_manager_rule" model="ir.rule">
+        <field name="name">Purchase Plan Manager</field>
+        <field name="model_id" ref="model_purchase_plan" />
+        <field name="groups" eval="[(6,0, [ref('purchase.group_purchase_manager')])]" />
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_unlink" eval="True" />
+    </record>
+
+    <record id="purchase_plan_followers_rule" model="ir.rule">
+        <field name="name">Follow Purchase Plan</field>
+        <field name="model_id" ref="model_purchase_plan" />
+        <field name="groups" eval="[(6,0, [ref('purchase.group_purchase_user')])]" />
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+        <field name="domain_force">
+            ['|',('request_id.requested_by','=',user.id),('request_id.message_partner_ids', 'in', [user.partner_id.id])]
+        </field>
+    </record>
+</odoo>

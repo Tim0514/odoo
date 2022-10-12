@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="amazon_us" model="web.sale.marketplace">
+            <field name="name">亚马逊-美国</field>
+            <field name="country_id" search="[('code','=','US')]"/>
+            <field name="type">amazon</field>
+            <field name="code">ATVPDKIKX0DER</field>
+            <field name="endpoint">https://mws.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_ca" model="web.sale.marketplace">
+            <field name="name">亚马逊-加拿大</field>
+            <field name="country_id" search="[('code','=','CA')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A2EUQ1WTGCTBG2</field>
+            <field name="endpoint">https://mws.amazonservices.ca</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_mx" model="web.sale.marketplace">
+            <field name="name">亚马逊-墨西哥</field>
+            <field name="country_id" search="[('code','=','MX')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A1AM78C64UM0Y8</field>
+            <field name="endpoint">https://mws.amazonservices.com.mx</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_br" model="web.sale.marketplace">
+            <field name="name">亚马逊-巴西</field>
+            <field name="country_id" search="[('code','=','BR')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A2Q3Y263D00KWC</field>
+            <field name="endpoint">https://mws.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+
+        <record id="amazon_jp" model="web.sale.marketplace">
+            <field name="name">亚马逊-日本</field>
+            <field name="country_id" search="[('code','=','JP')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A1VC38T7YXB528</field>
+            <field name="endpoint">https://mws.amazonservices.jp</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_sg" model="web.sale.marketplace">
+            <field name="name">亚马逊-新加坡</field>
+            <field name="country_id" search="[('code','=','SG')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A19VAU5U5O7RUS</field>
+            <field name="endpoint">https://mws-fe.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_au" model="web.sale.marketplace">
+            <field name="name">亚马逊-澳大利亚</field>
+            <field name="country_id" search="[('code','=','AU')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A39IBJ37TRP1C6</field>
+            <field name="endpoint">https://mws.amazonservices.com.au</field>
+            <field name="description"/>
+        </record>
+
+        <record id="amazon_ae" model="web.sale.marketplace">
+            <field name="name">亚马逊-阿联酋</field>
+            <field name="country_id" search="[('code','=','AE')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A2VIGQ35RCS4UG</field>
+            <field name="endpoint">https://mws.amazonservices.ae</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_eg" model="web.sale.marketplace">
+            <field name="name">亚马逊-埃及</field>
+            <field name="country_id" search="[('code','=','EG')]"/>
+            <field name="type">amazon</field>
+            <field name="code">ARBP9OOSHTCHU</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_in" model="web.sale.marketplace">
+            <field name="name">亚马逊-印度</field>
+            <field name="country_id" search="[('code','=','IN')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A21TJRUUN4KGV</field>
+            <field name="endpoint">https://mws.amazonservices.in</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_pl" model="web.sale.marketplace">
+            <field name="name">亚马逊-波兰</field>
+            <field name="country_id" search="[('code','=','PL')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A1C3SOZRARQ6R3</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_sa" model="web.sale.marketplace">
+            <field name="name">亚马逊-沙特</field>
+            <field name="country_id" search="[('code','=','SA')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A17E79C6D8DWNP</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_se" model="web.sale.marketplace">
+            <field name="name">亚马逊-瑞士</field>
+            <field name="country_id" search="[('code','=','SE')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A2NODRKZP88ZB9</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_gb" model="web.sale.marketplace">
+            <field name="name">亚马逊-英国</field>
+            <field name="country_id" search="[('code','=','GB')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A1F83G8C2ARO7P</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_de" model="web.sale.marketplace">
+            <field name="name">亚马逊-德国</field>
+            <field name="country_id" search="[('code','=','DE')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A1PA6795UKMFR9</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_fr" model="web.sale.marketplace">
+            <field name="name">亚马逊-法国</field>
+            <field name="country_id" search="[('code','=','FR')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A13V1IB3VIYZZH</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_it" model="web.sale.marketplace">
+            <field name="name">亚马逊-意大利</field>
+            <field name="country_id" search="[('code','=','IT')]"/>
+            <field name="type">amazon</field>
+            <field name="code">APJ6JRA9NG5V4</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_es" model="web.sale.marketplace">
+            <field name="name">亚马逊-西班牙</field>
+            <field name="country_id" search="[('code','=','ES')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A1RKKUPIHCS9HS</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_nl" model="web.sale.marketplace">
+            <field name="name">亚马逊-荷兰</field>
+            <field name="country_id" search="[('code','=','NL')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A1805IZSGTT6HS</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_tr" model="web.sale.marketplace">
+            <field name="name">亚马逊-土耳其</field>
+            <field name="country_id" search="[('code','=','TR')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A33AVAJ2PDY3EV</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="ebay_us" model="web.sale.marketplace">
+            <field name="name">Ebay-美国</field>
+            <field name="country_id" search="[('code','=','US')]"/>
+            <field name="type">ebay</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="aliexpress_cn" model="web.sale.marketplace">
+            <field name="name">AliExpress</field>
+            <field name="country_id" search="[('code','=','CN')]"/>
+            <field name="type">aliexpress</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="coupang_kr" model="web.sale.marketplace">
+            <field name="name">Coupang</field>
+            <field name="country_id" search="[('code','=','KR')]"/>
+            <field name="type">coupang</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="newegg_us" model="web.sale.marketplace">
+            <field name="name">New Egg-美国</field>
+            <field name="country_id" search="[('code','=','US')]"/>
+            <field name="type">newegg</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="newegg_ca" model="web.sale.marketplace">
+            <field name="name">New Egg-加拿大</field>
+            <field name="country_id" search="[('code','=','CA')]"/>
+            <field name="type">newegg</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="walmart_us" model="web.sale.marketplace">
+            <field name="name">Walmart-美国</field>
+            <field name="country_id" search="[('code','=','US')]"/>
+            <field name="type">walmart</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="walmart_ca" model="web.sale.marketplace">
+            <field name="name">Walmart-加拿大</field>
+            <field name="country_id" search="[('code','=','CA')]"/>
+            <field name="type">walmart</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="shopee_my" model="web.sale.marketplace">
+            <field name="name">Shopee-马来</field>
+            <field name="country_id" search="[('code','=','MY')]"/>
+            <field name="type">shopee</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="shopee_tw" model="web.sale.marketplace">
+            <field name="name">Shopee-台湾</field>
+            <field name="country_id" search="[('code','=','TW')]"/>
+            <field name="type">shopee</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="shopee_id" model="web.sale.marketplace">
+            <field name="name">Shopee-印尼</field>
+            <field name="country_id" search="[('code','=','ID')]"/>
+            <field name="type">shopee</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="shopee_sg" model="web.sale.marketplace">
+            <field name="name">Shopee-新加坡</field>
+            <field name="country_id" search="[('code','=','SG')]"/>
+            <field name="type">shopee</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="shopee_ph" model="web.sale.marketplace">
+            <field name="name">Shopee-菲律宾</field>
+            <field name="country_id" search="[('code','=','PH')]"/>
+            <field name="type">shopee</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="shopee_vn" model="web.sale.marketplace">
+            <field name="name">Shopee-越南</field>
+            <field name="country_id" search="[('code','=','VN')]"/>
+            <field name="type">shopee</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="shopee_th" model="web.sale.marketplace">
+            <field name="name">Shopee-泰国</field>
+            <field name="country_id" search="[('code','=','TH')]"/>
+            <field name="type">shopee</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="shopee_br" model="web.sale.marketplace">
+            <field name="name">Shopee-巴西</field>
+            <field name="country_id" search="[('code','=','BR')]"/>
+            <field name="type">shopee</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="wayfair_us" model="web.sale.marketplace">
+            <field name="name">Wayfair-美国</field>
+            <field name="country_id" search="[('code','=','US')]"/>
+            <field name="type">wayfair</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="shopify_us" model="web.sale.marketplace">
+            <field name="name">Shopify</field>
+            <field name="country_id" search="[('code','=','US')]"/>
+            <field name="type">shopify</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+        <record id="other" model="web.sale.marketplace">
+            <field name="name">Other</field>
+            <field name="country_id" search="[('code','=','US')]"/>
+            <field name="type">other</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="description"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="view_purchase_plan_make_purchase_order" model="ir.ui.view">
+        <field name="name">Purchase Plan Make Purchase Order</field>
+        <field name="model">purchase.plan.make.purchase.order</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Create RFQ">
+                <separator string="Settings:" />
+                <group>
+                    <field name="merge_to_po" />
+                </group>
+                <separator string="Supplier or PO: (Caution: Select a supplier or an order will apply to all selected purchase plans.)" />
+                <group>
+                    <field name="supplier_id" />
+                </group>
+                <group>
+                    <field name="purchase_order_id" domain="[('partner_id', '=', supplier_id)]"/>
+                </group>
+                <newline />
+                <group>
+                    <field name="item_ids" nolabel="1" colspan="2">
+                        <tree string="Details" create="false" editable="bottom">
+                            <field name="purchase_plan_id" invisible="True" />
+                            <field name="purchase_plan_name" attrs="{'readonly': True}" />
+                            <field name="product_id" attrs="{'readonly': True,'no_open': True}" />
+                            <field name="name" optional="hide" />
+                            <field name="supplier_id"/>
+                            <field name="product_qty" />
+                            <field name="product_uom_id" groups="uom.group_uom" attrs="{'readonly': True,'no_open': True}" />
+                            <field name="keep_description" optional="hide" widget="boolean_toggle" />
+                        </tree>
+                    </field>
+                </group>
+                <newline />
+                <footer>
+                    <button
+                        name="make_purchase_order"
+                        string="Create RFQ"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button special="cancel" string="Cancel" class="oe_link" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record
+        id="action_purchase_plan_make_purchase_order"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Create RFQ</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.plan.make.purchase.order</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_purchase_plan_make_purchase_order" />
+        <field name="target">new</field>
+        <field
+            name="binding_model_id"
+            ref="purchase_plan.model_purchase_plan"
+        />
+    </record>
+</odoo>

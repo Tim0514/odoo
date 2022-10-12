@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="_assets_secondary_variables" inherit_id="web._assets_secondary_variables">
+        <xpath expr="//link" position="before">
+            <link rel="stylesheet" type="text/scss" href="/fix_no_o_chatter_min_width/static/src/scss/secondary_variables.scss"/>
+        </xpath>
+    </template>
+
+</odoo>

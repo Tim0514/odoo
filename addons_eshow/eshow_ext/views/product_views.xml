@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="eshow_product_template_form_view" model="ir.ui.view">
+        <field name="name">eshow.product.template.common.form</field>
+        <field name="model">product.template</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//label[@for='weight']" position="attributes">
+                <attribute name="invisible">True</attribute>
+                <attribute name="attrs"/>
+            </xpath>
+
+            <xpath expr="//sheet//div[@name='weight']" position="attributes">
+                <attribute name="invisible">True</attribute>
+                <attribute name="attrs"/>
+            </xpath>
+
+            <xpath expr="//sheet//field[@name='weight']" position="attributes">
+                <attribute name="invisible">True</attribute>
+                <attribute name="attrs"/>
+            </xpath>
+
+            <xpath expr="//sheet//field[@name='weight_uom_name'] " position="attributes">
+                <attribute name="invisible">True</attribute>
+                <attribute name="attrs"/>
+            </xpath>
+
+            <xpath expr="//sheet//label[@for='volume']" position="attributes">
+                <attribute name="invisible">True</attribute>
+                <attribute name="attrs"/>
+            </xpath>
+
+            <xpath expr="//sheet//div[@name='volume']" position="attributes">
+                <attribute name="invisible">True</attribute>
+                <attribute name="attrs"/>
+            </xpath>
+
+            <xpath expr="//sheet//field[@name='volume']" position="attributes">
+                <attribute name="invisible">True</attribute>
+                <attribute name="attrs"/>
+            </xpath>
+
+            <xpath expr="//sheet//field[@name='volume_uom_name'] " position="attributes">
+                <attribute name="invisible">True</attribute>
+                <attribute name="attrs"/>
+            </xpath>
+
+	        <xpath expr="//label[@for='sale_delay']" position="before">
+                <label for="manuf_procure_delay" attrs="{'invisible':[('type','=','service')]}"/>
+                <div attrs="{'invisible':[('type','=','service')]}">
+                    <field name="manuf_procure_delay" class="oe_inline"/> 天数
+                </div>
+            </xpath>
+
+	        <xpath expr="//field[@name='sale_delay']/.." position="after">
+                <label for="minimum_package_qty" attrs="{'invisible':[('type','=','service')]}"/>
+                <div attrs="{'invisible':[('type','=','service')]}">
+                    <field name="minimum_package_qty"/>
+                    <span> <field name="uom_id" attrs="{'readonly':True}"/></span>
+                </div>
+            </xpath>
+
+            <xpath expr="//page[@name='inventory']" position="after">
+                <page string="Shipping" name="shipping" >
+                    <group name="shipping">
+                        <group name="dimensions" string="Dimensions" attrs="{'invisible': [('type', 'not in', ['product', 'consu'])]}">
+                            <label for="length" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="length" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="length"/>
+                                <span><field name="length_uom_name"/></span>
+                            </div>
+                            <label for="width" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="width" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="width"/>
+                                <span><field name="width_uom_name"/></span>
+                            </div>
+                            <label for="height" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="height" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="height"/>
+                                <span><field name="height_uom_name"/></span>
+                            </div>
+                            <label for="volume" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="volume" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="volume" string="Volume"/>
+                                <span><field name="volume_uom_name"/></span>
+                            </div>
+                        </group>
+                        <group name="weight" string="Weight" attrs="{'invisible': [('type', 'not in', ['product', 'consu'])]}">
+                            <label for="actual_weight" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="actual_weight" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="actual_weight"/>
+                                <span><field name="weight_uom_name"/></span>
+                            </div>
+                            <label for="volume_weight_5000" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="volume_weight_5000" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="volume_weight_5000"/>
+                                <span><field name="weight_uom_name"/></span>
+                            </div>
+                            <label for="volume_weight_6000" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="volume_weight_6000" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="volume_weight_6000"/>
+                                <span><field name="weight_uom_name"/></span>
+                            </div>
+                            <label for="weight" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="weight" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="weight"/>
+                                <span><field name="weight_uom_name"/></span>
+                            </div>
+                        </group>
+                        <group name="price_references" string="Price References" attrs="{'invisible': [('sale_ok', '=', False)]}">
+                            <field name="customs_declare_currency_id" attrs="{'invisible': True}"/>
+                            <label for="maxshare_price"
+                                   attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="maxshare_price" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="maxshare_price" widget="monetary"
+                                options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                            </div>
+                            <label for="export_declare_price"
+                                   attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="export_declare_price" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="export_declare_price" widget="monetary"
+                                options="{'currency_field': 'customs_declare_currency_id', 'field_digits': True}"/>
+                            </div>
+                            <label for="destination_declare_price"
+                                   attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}"/>
+                            <div class="o_row" name="destination_declare_price" attrs="{'invisible':[('product_variant_count', '>', 1), ('is_product_variant', '=', False)]}">
+                                <field name="destination_declare_price" widget="monetary"
+                                options="{'currency_field': 'customs_declare_currency_id', 'field_digits': True}"/>
+                            </div>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="eshow_product_template_only_form_view" model="ir.ui.view">
+        <field name="name">eshow.product.template.product.form</field>
+        <field name="model">product.template</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//field[@name='name'][1]/.." position="replace"/>
+            <xpath expr="//sheet//field[@name='default_code']" position="replace"/>
+            <xpath expr="//sheet//label[@for='name']" position="replace">
+                <h5>
+                <group>
+                    <!--<label class="oe_edit_only" for="name" string="Product Name"/>-->
+                    <field name="default_code" placeholder="Internal Reference" string="物料编码"/>
+                    <field name="name" placeholder="Product Name"/>
+                    <field name="project_no" placeholder="项目编号" string="项目编号"/>
+                </group>
+                </h5>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="eshow_product_normal_form_view" model="ir.ui.view">
+        <field name="name">eshow.product.product.form</field>
+        <field name="model">product.product</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//field[@name='name'][1]/.." position="replace"/>
+            <xpath expr="//sheet//field[@name='default_code']" position="replace"/>
+            <xpath expr="//sheet//label[@for='name']" position="replace">
+                <h5>
+                <group>
+                    <!--<label class="oe_edit_only" for="name" string="Product Name"/>-->
+                    <field name="default_code" placeholder="Internal Reference" string="物料编码"/>
+                    <field name="name" placeholder="Product Name"/>
+                    <field name="project_no" placeholder="项目编号" string="项目编号"/>
+                    <field name="product_tmpl_id" class="oe_inline" readonly="1" invisible="1" attrs="{'required': [('id', '!=', False)]}"/>
+                </group>
+                </h5>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="eshow_product_template_tree_view" model="ir.ui.view">
+        <field name="name">eshow.product.template.product.tree</field>
+        <field name="model">product.template</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="default_order">default_code asc</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="default_code" position="move"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

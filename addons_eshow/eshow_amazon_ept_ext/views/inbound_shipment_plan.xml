@@ -1,0 +1,23 @@
+<odoo>
+
+     <record id="eshow_ext_inbound_shipment_plan_form_view" model="ir.ui.view">
+        <field name="name">eshow_ext.inbound.shipment.plan.form.view</field>
+        <field name="model">inbound.shipment.plan.ept</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="amazon_ept.inbound_shipment_plan_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//field[@name='label_preference']" position="after">
+                <field name="estimated_date_of_arrival" attrs="{'readonly': [('state','not in',('draft'))]}"/>
+            </xpath>
+            <xpath expr="//sheet//field[@name='ship_from_address_id']" position="replace">
+                <field name="ship_from_address_id" required="1" domain="[('category_id', 'child_of', '发货地址')]"/>
+
+            </xpath>
+
+            <xpath expr="//page//field[@name='seller_sku']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

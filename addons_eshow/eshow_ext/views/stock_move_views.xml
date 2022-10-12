@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="eshow_view_purchase_stock_move_tree" model="ir.ui.view">
+            <field name="name">purchase.stock.move.tree</field>
+            <field name="model">stock.move</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Moves" create="0" edit="0" delete="0" import="0" limit="200" default_order="picking_partner_id,date">
+                    <header>
+                        <button name="action_create_invoice" type="object" string="Create Bills"/>
+                    </header>
+
+                    <field name="picking_partner_id" string="Vendor" optional="hide" />
+                    <field name="date" string="Move Date"  widget="date" options='{"showType": "date"}' decoration-danger="(state not in ('cancel','done')) and date > current_date" />
+                    <field name="reference" string="Picking Ref"/>
+                    <field name="origin" optional="show" />
+                    <field name="picking_type_id" invisible="1"/>
+                    <field name="product_default_code"/>
+                    <field name="product_name"/>
+                    <field name="location_id" optional="hide" options="{'no_create': True}" string="From"/>
+                    <field name="location_dest_id" optional="hide" options="{'no_create': True}" string="To"/>
+                    <field name="product_uom_qty" string="Quantities"/>
+                    <field name="product_uom" optional="hide"  options="{'no_open': True, 'no_create': True}" string="Unit of Measure" groups="uom.group_uom"/>
+                    <field name="company_id" optional="hide" groups="base.group_multi_company"/>
+                    <field name="state" widget='badge' decoration-success="state == 'done'" decoration-info="state not in ('done', 'cancel')"/>
+                    <field name="invoice_status" widget='badge' decoration-success="invoice_status == 'invoiced'"
+                           decoration-warning="invoice_status == 'to invoice'"
+                           decoration-info="invoice_status == 'no'"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="eshow_view_purchase_stock_move_search" model="ir.ui.view">
+            <field name="name">purchase.stock.move.search</field>
+            <field name="model">stock.move</field>
+            <field eval="3" name="priority"/>
+            <field name="arch" type="xml">
+                <search string="Purchase Stock Moves">
+                    <field name="origin" filter_domain="['|', '|', ('origin', 'ilike', self), ('name', 'ilike', self), ('picking_id', 'ilike', self)]" string="Reference"/>
+                    <field name="product_id"/>
+                    <field name="name" string="Location" filter_domain="['|',('location_id', 'ilike', self),('location_dest_id', 'ilike', self)]"/>
+                    <field name="partner_id" string="Partner" filter_domain="[('picking_id.partner_id', 'child_of', self)]"/>
+                    <filter string="Move Not Done" name="not done" domain="[('state','!=','done')]" help="Stock moves that have not been processed"/>
+                    <filter string="Move Done" name="done" domain="[('state','=','done')]" help="Stock moves that have been processed"/>
+                    <separator/>
+                    <filter string="Nothing to Bill" name="no_invoice" domain="[('invoice_status','=','no')]" />
+                    <filter string="Waiting Bills" name="to_invoice" domain="[('invoice_status','=','to invoice')]" />
+                    <filter string="Fully Billed" name="invoiced" domain="[('invoice_status','=','invoiced')]" />
+                    <separator/>
+                    <filter string="Date" name="today" date="date" help="Scheduled or processing date"/>
+                    <separator/>
+                    <filter string="Purchase Stock Move" name="purchase_stock_move" domain="['|', ('location_id.usage', '=', 'supplier'), ('location_dest_id.usage', '=', 'supplier')]"/>
+                    <filter string="Subcontracting Stock Move" name="subcontracting_stock_move" domain="[('is_subcontract', '=', 'True')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Vendor" name="groupby_picking_partner_id" domain="[]"  context="{'group_by': 'picking_partner_id'}"/>
+                        <filter string="Product" name="by_product" domain="[]"  context="{'group_by': 'product_id'}"/>
+                        <filter string="Picking" name="groupby_picking_id" domain="[]"  context="{'group_by': 'picking_id'}"/>
+                        <filter string="Picking Type" name="groupby_picking_type_id" domain="[]"  context="{'group_by': 'picking_type_id'}"/>
+                        <filter string="Source Location" name="groupby_location_id" domain="[]" context="{'group_by': 'location_id'}" groups="stock.group_stock_multi_locations"/>
+                        <filter string="Destination Location" name="groupby_dest_location_id" domain="[]" context="{'group_by': 'location_dest_id'}" groups="stock.group_stock_multi_locations"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="eshow_purchase_stock_move_action" model="ir.actions.act_window">
+            <field name="name">Purchase Stock Moves</field>
+            <field name="res_model">stock.move</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="domain">[('picking_id.partner_id.supplier_rank', '&gt;', '0')]</field>
+            <field name="view_id" ref="eshow_view_purchase_stock_move_tree"/>
+            <field name="search_view_id" ref="eshow_view_purchase_stock_move_search"/>
+            <field name="context">{'search_default_done': 1,
+                'search_default_to_invoice': 1,
+                'search_default_purchase_stock_move': 1,
+                'search_default_subcontracting_stock_move': 1,
+                'search_default_groupby_picking_partner_id': 1,
+                'search_default_groupby_picking_type_id': 1}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No stock move found
+              </p><p>
+                This menu gives you the list of purchase stock moves.
+                You can choose stock moves to generate vendor bills.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_purchase_billing" name="Purchase Billing" parent="purchase.menu_purchase_root" sequence="3"/>
+
+        <menuitem id="eshow_purchase_stock_move_menu" action="eshow_purchase_stock_move_action" parent="menu_purchase_billing" sequence="10"/>
+
+
+</odoo>

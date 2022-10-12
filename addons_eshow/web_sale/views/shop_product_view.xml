@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="shop_product_tree" model="ir.ui.view">
+        <field name="name">web.sale.shop.product.tree</field>
+        <field name="model">web.sale.shop.product</field>
+        <field name="arch" type="xml">
+            <tree
+                string="Web Shop Product"
+                create="true"
+                editable="bottom"
+                multi_edit="true"
+                decoration-info="state in ('new')"
+                decoration-success="state in ('normal')"
+                decoration-danger="state == 'clearance'"
+                decoration-muted="state == 'stop'"
+            >
+                <field name="shop_id" />
+                <field name="product_id" />
+                <field name="product_sku" />
+                <field name="product_asin" />
+                <field name="parent_asin" />
+                <field name="salesperson_id" />
+                <field
+                    name="state"
+                    optional="show"
+                />
+                <!--
+                <field
+                    name="state"
+                    widget="badge"
+                    decoration-info="state in ('new')"
+                    decoration-success="state in ('normal')"
+                    decoration-danger="state == 'clearance'"
+                    decoration-muted="state == 'stop'"
+                    optional="show"
+                />
+                -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="shop_product_search" model="ir.ui.view">
+        <field name="name">web.sale.shop.product.search</field>
+        <field name="model">web.sale.shop.product</field>
+        <field name="arch" type="xml">
+            <search string="Search Web Shop Product">
+                <field name="shop_id" />
+                <field name="product_id" />
+                <field name="product_sku" />
+                <field name="salesperson_id" />
+                <field name="state" />
+                <filter
+                    name="state_normal"
+                    string="Normal Sale"
+                    domain="[('state','=', 'normal')]"
+                />
+                <filter
+                    name="state_new"
+                    string="New Sale"
+                    domain="[('state','=', 'new')]"
+                />
+                <filter
+                    name="state_clearance"
+                    string="Clearance Sale"
+                    domain="[('state','=', 'clearance')]"
+                />
+                <filter
+                    name="state_stop"
+                    string="Stop Sale"
+                    domain="[('state','=', 'stop')]"
+                />
+
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="shop"
+                        string="Web Shop"
+                        domain="[]"
+                        context="{'group_by' : 'shop_id'}"
+                    />
+                    <filter
+                        name="product"
+                        string="Product"
+                        domain="[]"
+                        context="{'group_by' : 'product_id'}"
+                    />
+                    <filter
+                        name="salesperson"
+                        string="Salesperson"
+                        domain="[]"
+                        context="{'group_by':'salesperson_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_shop_product_product_tree" model="ir.actions.act_window">
+        <field name="context">
+            {'search_default_product_id': [active_id], 'default_product_id': active_id}
+        </field>
+        <field name="name">Shop Product</field>
+        <field name="res_model">web.sale.shop.product</field>
+        <field name="binding_model_id" ref="product.model_product_product" />
+        <field name="binding_view_types">tree</field>
+    </record>
+
+    <record id="shop_product_form_action" model="ir.actions.act_window">
+        <field name="name">Shop Product</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">web.sale.shop.product</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="shop_product_search" />
+    </record>
+
+    <record id="shop_product_form_action_tree" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence" />
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="shop_product_tree" />
+        <field name="act_window_id" ref="shop_product_form_action" />
+    </record>
+
+    <menuitem
+        id="menu_shop_product"
+        name="Shop Product"
+        sequence="10"
+        parent="menu_basic_data"
+        action="shop_product_form_action"
+    />
+
+</odoo>

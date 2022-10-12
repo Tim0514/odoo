@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <!-- Request-related subtypes for messaging / Chatter -->
+    <record id="mt_purchase_plan_done" model="mail.message.subtype">
+        <field name="name">Purchase Plan done</field>
+        <field name="res_model">purchase.plan</field>
+        <field name="default" eval="True" />
+        <field name="description">Purchase Plan is done</field>
+    </record>
+</odoo>

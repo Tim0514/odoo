@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="report_paperformat_a5" model="report.paperformat">
+        <field name="name">A4一半</field>
+        <field name="format" >A5</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top" eval="20.0"/>
+        <field name="margin_left" eval="7.00"/>
+        <field name="margin_bottom" eval="10.0"/>
+        <field name="margin_right" eval="7.0"/>
+        <field name="header_spacing" eval="10"/>
+        <field name="dpi" eval="90"/>
+    </record>
+
+    <record id="action_report_account_move_print" model="ir.actions.report">
+        <field name="name">凭证打印</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_file">l10n_cn_reports.report_account_move_print</field>
+        <field name="report_name">l10n_cn_reports.report_account_move_print</field>
+    </record>
+
+    <record id="action_report_account_move_print" model="ir.actions.report">
+        <field name="paperformat_id" ref="report_paperformat_a5"/>
+    </record>
+    
+</odoo>

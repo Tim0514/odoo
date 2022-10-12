@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <record id="eshow_ext_amazon_inbound_shipment_search_view" model="ir.ui.view">
+        <field name="name">EShow Ext Amazon inbound shipment Search</field>
+        <field name="model">amazon.inbound.shipment.ept</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="amazon_ept.amazon_inbound_shipment_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search//field[@name='name']" position="before">
+                <field name="amazon_product_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="eshow_ext_amazon_inbound_shipment_tree_view" model="ir.ui.view">
+        <field name="name">eshow_ext.amazon.inbound.shipment.tree.view</field>
+        <field name="model">amazon.inbound.shipment.ept</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="amazon_ept.amazon_inbound_shipment_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='address_id']" position="replace">
+            </xpath>
+            <xpath expr="//tree//field[@name='label_prep_type']" position="replace">
+            </xpath>
+            <xpath expr="//tree//field[@name='state']" position="before">
+                <field name="amazon_product_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="eshow_ext_amazon_inbound_shipment_form_view" model="ir.ui.view">
+        <field name="name">eshow_ext.amazon.inbound.shipment.form.view</field>
+        <field name="model">amazon.inbound.shipment.ept</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="amazon_ept.amazon_inbound_shipment_form_view"/>
+
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='get_package_labels']" position="attributes">
+                <attribute name="attrs">{'invisible':['|',('shipping_type','=','ltl'),
+                                         '|',('is_partnered','=',True),
+                                         '|',('is_carton_content_updated', '=', False),
+                                         '|',('is_manually_created', '=', True),
+                                         ('state','in',['CLOSED','CANCELLED','DELETED'])]}</attribute>
+            </xpath>
+            <xpath expr="//page//form//field[@name='seller_sku']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//page//tree//field[@name='seller_sku']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

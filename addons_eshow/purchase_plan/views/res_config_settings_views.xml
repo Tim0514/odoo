@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_purchase_plan" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.purchase.plan</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="25"/>
+        <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='purchase_setting_container']" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box" id="use_purchase_plan">
+                            <div class="o_setting_left_pane">
+                                <field name="use_purchase_plan"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="use_purchase_plan"/>
+                                <div class="text-muted">
+                                    Use Purchase Plan instead of Purchase Order while running procurement.
+                                </div>
+                            </div>
+                        </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

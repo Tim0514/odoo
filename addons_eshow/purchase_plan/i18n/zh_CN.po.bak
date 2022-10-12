@@ -1,0 +1,815 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_plan
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-25 18:08+0000\n"
+"PO-Revision-Date: 2022-03-26 02:12+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/models/purchase_order.py:0
+#, python-format
+msgid "<li><b>%s</b>: Ordered quantity %s %s, Planned date %s</li>"
+msgstr "<li><b>%s</b>: 订单数量 %s %s, 到货日期 %s</li>"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/models/stock_move.py:0
+#, python-format
+msgid ""
+"A sale/manufacturing order that generated this purchase plan has been "
+"cancelled/deleted. Check if an action is needed."
+msgstr ""
+"生成该采购计划的销售/制造订单已经被取消或删除，请检查是否需要进行其他操作。"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_needaction
+msgid "Action Needed"
+msgstr "需要操作"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__assigned_to
+msgid "Approver"
+msgstr "审核人"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Assigned to"
+msgstr "分配至"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_attachment_count
+msgid "Attachment Count"
+msgstr "附件数量"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_make_purchase_order
+msgid "Cancel"
+msgstr "取消"
+
+#. module: purchase_plan
+#: model:ir.model.fields.selection,name:purchase_plan.selection__purchase_plan__state__cancelled
+msgid "Cancelled"
+msgstr "已取消"
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_product_product__use_purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_product_template__use_purchase_plan
+msgid ""
+"Check this box to generate Purchase Plan instead of generating Requests For "
+"Quotation from procurement."
+msgstr "补货时，使用采购计划代替直接生成采购订单。"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__company_id
+msgid "Company"
+msgstr "公司"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__keep_description
+msgid "Copy descriptions to new PO"
+msgstr "复制描述到新订单"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__date_create
+msgid "Creat Date"
+msgstr "创建日期"
+
+#. module: purchase_plan
+#: model:ir.actions.act_window,name:purchase_plan.action_purchase_plan_make_purchase_order
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_make_purchase_order
+msgid "Create RFQ"
+msgstr "创建采购订单"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_stock_move__created_purchase_plan_id
+msgid "Created Purchase Plan"
+msgstr "已生成的采购计划"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__create_uid
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order__create_uid
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__create_date
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order__create_date
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__date_required
+msgid "Date when the material need to be arrived."
+msgstr "需要到货的日期。"
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__date_create
+msgid "Date when the user initiated the plan."
+msgstr "用户创建计划的日期。"
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__date_start
+msgid "Date when the user need to place the order."
+msgstr "需要下单的最迟日期。"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__description
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__name
+msgid "Description"
+msgstr "描述"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_make_purchase_order
+msgid "Details"
+msgstr "明细"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__display_name
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order__display_name
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__display_name
+msgid "Display Name"
+msgstr "名称"
+
+#. module: purchase_plan
+#: model:ir.model.fields.selection,name:purchase_plan.selection__purchase_plan__state__done
+msgid "Done"
+msgstr "已完成"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__move_dest_ids
+msgid "Downstream Moves"
+msgstr "下一步库存操作"
+
+#. module: purchase_plan
+#: model:ir.model.fields.selection,name:purchase_plan.selection__purchase_plan__state__draft
+msgid "Draft"
+msgstr "草稿"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/wizard/purchase_plan_make_purchase_order.py:0
+#, python-format
+msgid "Enter a positive quantity."
+msgstr "数量必须大于0。"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_search_sub
+msgid "Group By"
+msgstr "分组"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Group By..."
+msgstr "分组..."
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/wizard/purchase_plan_make_purchase_order.py:0
+#, python-format
+msgid "Group Ids are different between selected PO and purchase plans."
+msgstr "指定的采购订单和采购计划的补货组不同。"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_search_sub
+msgid "Hide cancelled lines"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__id
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order__id
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__id
+msgid "ID"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__message_needaction
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan_make_purchase_order__merge_to_po
+msgid ""
+"If checked, odoo will merge data to PO lines with same product_id and "
+"date_planned."
+msgstr ""
+"如果选中，系统会自动查找符合条件的订单，并将新计划增加到该订单中，同时如果交"
+"货期相同，会合并成一条订单明细."
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__message_has_error
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan_make_purchase_order__purchase_order_id
+msgid ""
+"If fill this field, odoo will add data to this PO and merge data to PO "
+"lines with same product_id and date_planned."
+msgstr ""
+"如果填写了订单号，系统会在该订单中添加数据，同时如果交货期相同，会合并成一条"
+"订单明细。"
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan_make_purchase_order__supplier_id
+msgid ""
+"If fill this field, odoo will create RFQ for all plans using this supplier."
+msgstr ""
+"如果填写了供应商，系统会使用该供应商生成订单，适用于对采购计划批量更改供应"
+"商。"
+
+#. module: purchase_plan
+#: model:ir.model.fields.selection,name:purchase_plan.selection__purchase_plan__state__in_process
+msgid "In Process"
+msgstr "处理中"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__is_editable
+msgid "Is Editable"
+msgstr "可编辑"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order__item_ids
+msgid "Items"
+msgstr "明细"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan____last_update
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order____last_update
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__write_uid
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order__write_uid
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__write_date
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order__write_date
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_form2_sub
+msgid "Manual Invoices"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order__merge_to_po
+msgid "Merge to PO"
+msgstr "合并到已有采购订单"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model,name:purchase_plan.model_stock_warehouse_orderpoint
+msgid "Minimum Inventory Rule"
+msgstr "最小库存规则"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/models/purchase_plan.py:0
+#, python-format
+msgid "New"
+msgstr "新建"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "No RFQ or Purchase has been created"
+msgstr "没有生成任何采购订单"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Not Done"
+msgstr "未完成"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Not Finished Purchase Plans"
+msgstr "未完成的采购订单"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_search_sub
+msgid "Order Reference"
+msgstr "订单号"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/models/purchase_order.py:0
+#, python-format
+msgid "Order confirmation %s for your Plan %s"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__orderpoint_id
+msgid "Orderpoint"
+msgstr "订货点"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Partly Quantities has been created to RFQ/PO"
+msgstr "部分产品已生成采购订单"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__picking_type_id
+msgid "Picking Type"
+msgstr ""
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Plan has been cancelled"
+msgstr "计划已取消"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Plan status"
+msgstr "状态"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/wizard/purchase_plan_make_purchase_order.py:0
+#, python-format
+msgid "Please select a product for all lines"
+msgstr "产品列必须要填写"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__supplier_id
+msgid "Preferred supplier"
+msgstr "建议供应商"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__group_id
+msgid "Procurement Group"
+msgstr "补货组"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__product_id
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__product_id
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Product"
+msgstr "产品"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__product_default_code
+msgid "Product Default Code"
+msgstr "物料编码"
+
+#. module: purchase_plan
+#: model:ir.model,name:purchase_plan.model_product_template
+msgid "Product Template"
+msgstr "产品模板"
+
+#. module: purchase_plan
+#: model:ir.model,name:purchase_plan.model_purchase_order
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order__purchase_order_id
+msgid "Purchase Order"
+msgstr "采购订单"
+
+#. module: purchase_plan
+#: model:ir.model,name:purchase_plan.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "采购订单明细"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__purchase_lines
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_form2_sub
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_tree_sub
+msgid "Purchase Order Lines"
+msgstr "采购订单明细"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/models/purchase_order.py:0
+#: model:ir.model,name:purchase_plan.model_purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_order_line__purchase_plan_ids
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__purchase_plan_id
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_tree
+#, python-format
+msgid "Purchase Plan"
+msgstr "采购计划"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/models/purchase_order.py:0
+#, python-format
+msgid "Purchase Plan %s has already been completed"
+msgstr "采购计划 %s 已完成"
+
+#. module: purchase_plan
+#: model:ir.model,name:purchase_plan.model_purchase_plan_make_purchase_order
+msgid "Purchase Plan Make Purchase Order"
+msgstr "采购计划转采购订单"
+
+#. module: purchase_plan
+#: model:ir.model,name:purchase_plan.model_purchase_plan_make_purchase_order_item
+msgid "Purchase Plan Make Purchase Order Item"
+msgstr "采购计划转采购订单"
+
+#. module: purchase_plan
+#: model:mail.message.subtype,name:purchase_plan.mt_purchase_plan_done
+msgid "Purchase Plan done"
+msgstr "采购计划完成"
+
+#. module: purchase_plan
+#: model:mail.message.subtype,description:purchase_plan.mt_purchase_plan_done
+msgid "Purchase Plan is done"
+msgstr "采购计划已完成"
+
+#. module: purchase_plan
+#: model:ir.actions.act_window,name:purchase_plan.action_purchase_plan_product_tree
+#: model:ir.actions.act_window,name:purchase_plan.purchase_plan_form_action
+#: model:ir.ui.menu,name:purchase_plan.menu_purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_form2
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_form2_sub
+msgid "Purchase Plans"
+msgstr "采购计划"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__product_qty
+msgid "Quantity to purchase"
+msgstr "采购数量"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/wizard/purchase_plan_make_purchase_order.py:0
+#, python-format
+msgid "RFQ"
+msgstr "采购订单"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__purchased_qty
+msgid "RFQ/PO Qty"
+msgstr "已采购数量"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__purchase_state
+msgid "RFQ/PO Status"
+msgstr "采购订单状态"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "RFQ/PO has been created"
+msgstr "采购订单已创建"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__name
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__purchase_plan_name
+msgid "Reference"
+msgstr "单号"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__requested_by
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Requested by"
+msgstr "申请人"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__date_required
+msgid "Require Date"
+msgstr "到货时间"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__product_qty
+msgid "Require Qty"
+msgstr "数量"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__activity_user_id
+msgid "Responsible User"
+msgstr "负责人"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_search_sub
+msgid "Search Purchase Order Line"
+msgstr "查询采购订单明细"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Search Purchase Plan"
+msgstr "查询采购计划"
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan_make_purchase_order_item__keep_description
+msgid ""
+"Set true if you want to keep the descriptions provided in the wizard in the "
+"new PO."
+msgstr "在订单中保留描述信息。"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_make_purchase_order
+msgid "Settings:"
+msgstr "设置项："
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__origin
+msgid "Source Document"
+msgstr "来源"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__date_start
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Start Date"
+msgstr "最迟下单日期"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "State Cancelled"
+msgstr "取消"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "State Done"
+msgstr "完成"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "State Draft"
+msgstr "草稿"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "State In Process"
+msgstr "处理中"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__state
+msgid "Status"
+msgstr "状态"
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model,name:purchase_plan.model_stock_move
+msgid "Stock Move"
+msgstr "库存移动"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_form2_sub
+msgid "Stock Moves"
+msgstr "库存移动"
+
+#. module: purchase_plan
+#: model:ir.model,name:purchase_plan.model_stock_rule
+msgid "Stock Rule"
+msgstr "库存规则"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order__supplier_id
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__supplier_id
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_search
+msgid "Supplier"
+msgstr "供应商"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__supplier_name
+msgid "Supplier Name"
+msgstr "供应商名称"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.view_purchase_plan_make_purchase_order
+msgid ""
+"Supplier or PO: (Caution: Select a supplier or an order will apply to all "
+"selected purchase plans.)"
+msgstr ""
+"指定供应商或订单(注意：选择供应商或订单，会对下面所有的采购计划生效)："
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/models/purchase_order.py:0
+#, python-format
+msgid ""
+"The following items from Purchase Plan %s have now been confirmed in "
+"Purchase Order %s:"
+msgstr "采购计划 %s 中的下列产品已经在采购订单 %s 中确认："
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/wizard/purchase_plan_make_purchase_order.py:0
+#, python-format
+msgid "The purchase has already been completed."
+msgstr "采购已完成。"
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__product_uom_id
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__product_uom_id
+msgid "UoM"
+msgstr "单位"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_product_product__use_purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_product_template__use_purchase_plan
+msgid "Use Purchase Plan"
+msgstr "使用采购计划代替订单"
+
+#. module: purchase_plan
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_search_sub
+#: model_terms:ir.ui.view,arch_db:purchase_plan.purchase_order_line_tree_sub
+msgid "Vendor"
+msgstr "供应商"
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,help:purchase_plan.field_purchase_plan__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: purchase_plan
+#: model:ir.model.fields,field_description:purchase_plan.field_purchase_plan_make_purchase_order_item__wiz_id
+msgid "Wizard"
+msgstr "向导"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/wizard/purchase_plan_make_purchase_order.py:0
+#, python-format
+msgid ""
+"You cannot create a single purchase order from purchase plans that have "
+"different procurement group."
+msgstr "无法为不同补货组的采购计划创建一个采购订单。"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/models/purchase_plan.py:0
+#, python-format
+msgid "You cannot delete a purchase plan which is not draft or cancelled."
+msgstr "无法删除非草稿或非取消状态的采购计划。"
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/wizard/purchase_plan_make_purchase_order.py:0
+#, python-format
+msgid "You have to enter a Picking Type."
+msgstr ""
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/wizard/purchase_plan_make_purchase_order.py:0
+#, python-format
+msgid "You have to select lines from the same Picking Type."
+msgstr ""
+
+#. module: purchase_plan
+#: code:addons/purchase_plan/wizard/purchase_plan_make_purchase_order.py:0
+#, python-format
+msgid "You have to select lines from the same company."
+msgstr ""
+
+#. module: purchase_plan
+#: model_terms:ir.actions.act_window,help:purchase_plan.purchase_plan_form_action
+msgid "一般不需要自己创建，由其他模块生成后，根据需要转成采购订单."
+msgstr ""
+
+#. module: purchase_plan
+#: model_terms:ir.actions.act_window,help:purchase_plan.purchase_plan_form_action
+msgid "采购计划是由库存补货操作或者MPS运算生成的采购需求."
+msgstr ""
+

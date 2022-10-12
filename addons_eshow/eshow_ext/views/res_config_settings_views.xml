@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_eshowext" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.eshowext</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="160"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="EShow Ext" string="EShow Ext" data-key="eshow_ext">
+                    <div id="eshow_extension_settings">
+                        <h2>EShow Extension Module Settings</h2>
+                        <div class="row mt16 o_settings_container" name="eshow_extension_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="maxshare_price_rate">
+                                <div class="o_setting_right_pane">
+                                    <label for="maxshare_price_rate"/>
+                                    <span><field name="maxshare_price_rate"/></span>
+                                    <div class="text-muted">
+                                        Invoice Price of EShow to Max Share = Product Cost * Max Share Price Rate.
+                                    </div>
+                                    <div >
+                                        <button name="update_product_prices" type="object" string="Update All Product Prices" class="btn btn-primary" icon="fa-globe"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box" id="export_declare_price_rate">
+                                <div class="o_setting_right_pane">
+                                    <label for="export_declare_price_rate"/>
+                                    <span><field name="export_declare_price_rate"/></span>
+                                    <div class="text-muted">
+                                        Export Invoice Price = Invoice Price of EShow to Max Share * Export Declare Price Rate * Currency Exchange Rate.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box" id="destination_declare_price_rate">
+                                <div class="o_setting_right_pane">
+                                    <label for="destination_declare_price_rate"/>
+                                    <span><field name="destination_declare_price_rate"/></span>
+                                    <div class="text-muted">
+                                        Destination country custom clearance price = Product Cost * Destination Declare Price Rate * Currency Exchange Rate..
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

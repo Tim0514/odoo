@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<template id="report_account_move_print">
+    <t t-call="web.html_container" >
+     <t t-foreach="docs" t-as="o"> 
+      <t t-call="web.basic_layout">
+	     <div class="page">
+		    <h1 class="mt0 text-center">会计凭证</h1>      
+            <div width="100%">公司：<t t-esc="o.company_id.name"/></div>
+            <table style="width:100%">
+                <tr>
+                    <td>凭证类型:</td>
+                    <td />
+                    <td>凭证编号:</td>
+                    <td class="text-left" t-esc="o.name"/>
+                    <td>凭证日期:</td>
+                    <td class="text-left" t-esc="o.date"/>
+                </tr>
+            </table>
+            <br/>
+            <table border="1px solid" width="100%">
+                <thead>
+                    <tr border="1px solid">
+                        <th class="text-center" style="border:1px solid;">摘要</th>
+                        <th class="text-center" style="border:1px solid;">科目编码</th>
+                        <th class="text-center" style="border:1px solid;">科目名称</th>
+                        <th class="text-center" style="border:1px solid;">借方</th>
+                        <th class="text-center" style="border:1px solid;">贷方</th>
+                        <th class="text-center" style="border:1px solid;">合作伙伴</th>
+                    </tr>
+                </thead>
+                <tbody border="1px solid">
+                    <t t-foreach="o.line_ids.sorted(key=lambda x: x.id)" t-as="line">
+                        <tr border="1px solid">
+                            <td class="text-center" style="border:1px solid;" t-esc="line.name or '/' " />
+                            <td class="text-center" style="border:1px solid;" t-esc="line.account_id.code"/>
+                            <td class="text-center" style="border:1px solid;" t-esc="line.account_id.name"/>
+                            <td class="text-center" style="border:1px solid;" t-esc="'%.2f' % line.debit"/>
+                            <td class="text-center" style="border:1px solid;" t-esc="'%.2f' % line.credit"/>
+                            <td class="text-center" style="border:1px solid;" t-esc="line.partner_id.name or '/' "/>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <br/>
+            <table style="width:100%">
+                <tr>
+                    <td>填写人:</td>
+                    <td t-esc="user.name"/>
+                    <td>填写日期:</td>
+                    <td/>
+                    <td>审批人:</td>
+                    <td/>
+                </tr>
+            </table>
+        </div>
+    </t>
+  </t>
+</t>
+</template>
+</odoo>

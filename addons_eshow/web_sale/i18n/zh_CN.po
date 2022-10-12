@@ -1,0 +1,745 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* web_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20210903\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-11 14:05+0000\n"
+"PO-Revision-Date: 2021-10-12 22:07+0800\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: \n"
+"Language: zh_CN\n"
+
+#. module: web_sale
+#: code:addons/web_sale/models/shop_sale_data.py:0
+#, python-format
+msgid "%s / Reverse"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__sale_qty_14
+msgid "14 days sale"
+msgstr "14天销量"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__sale_qty_28
+msgid "28 days sale"
+msgstr "28天销量"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__sale_qty_7
+msgid "7 days sale"
+msgstr "7天销量"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_res_partner__access_key
+#: model:ir.model.fields,field_description:web_sale.field_res_users__access_key
+msgid "Access Key"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__avg_week_sale_adv
+msgid "Advised Average Week Sale"
+msgstr "周销量(建议)"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__aliexpress
+msgid "Ali Express"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__amazon
+msgid "Amazon"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_res_partner__auth_token
+#: model:ir.model.fields,field_description:web_sale.field_res_users__auth_token
+msgid "Authorization Token"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__avg_week_sale_1
+msgid "Average Week Sale 1"
+msgstr "周销量(加权平均)"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__avg_week_sale_2
+msgid "Average Week Sale 2"
+msgstr "周销量(趋势)"
+
+#. module: web_sale
+#: model:ir.ui.menu,name:web_sale.menu_basic_data
+msgid "Basic Data"
+msgstr "基础数据"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_mrp_production_schedule_master_compute_wizard
+msgid "Cancel"
+msgstr "取消"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_product__state__clearance
+msgid "Clearance"
+msgstr "清仓"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+msgid "Clearance Sale"
+msgstr "清仓销售"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__company_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__company_id
+msgid "Company"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__country_id
+msgid "Country"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__coupang
+msgid "Coupang"
+msgstr ""
+
+#. module: web_sale
+#: model_terms:ir.actions.act_window,help:web_sale.res_partner_web_sale_action
+msgid "Create a new web shop in your address book"
+msgstr "新建店铺"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__create_uid
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__create_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__create_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__create_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__create_uid
+msgid "Created by"
+msgstr "创建人"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__create_date
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__create_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__create_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__create_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__create_date
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__product_default_code
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__product_default_code
+msgid "Default Code"
+msgstr "物料编码"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__description
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__description
+msgid "Description"
+msgstr "描述"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__display_name
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__display_name
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__display_name
+#: model:ir.model.fields,field_description:web_sale.field_res_partner__display_name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__display_name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__display_name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__display_name
+msgid "Display Name"
+msgstr "名称"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__mrp_production_schedule_master__state__draft
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+msgid "Draft"
+msgstr "草稿"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__ebay
+msgid "Ebay"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__end_date
+msgid "End Date"
+msgstr "结束日期"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_sale_data__state__error
+msgid "Error"
+msgstr "错误"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_search
+msgid "Error Data"
+msgstr "错误数据"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.partner_web_sale_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_search
+msgid "Group By..."
+msgstr "分组"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__id
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__id
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__id
+#: model:ir.model.fields,field_description:web_sale.field_res_partner__id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__id
+msgid "ID"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__imported_product_default_code
+msgid "Imported Product Default Code"
+msgstr "导入的物料编码"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__imported_product_name
+msgid "Imported Product Name"
+msgstr "导入的产品名称"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__imported_product_sku
+msgid "Imported Product SKU"
+msgstr "导入的店铺SKU"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__imported_shop_name
+msgid "Imported Shop Name"
+msgstr "导入的店铺名称"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_res_partner__is_web_shop
+#: model:ir.model.fields,field_description:web_sale.field_res_users__is_web_shop
+msgid "Is Web Shop"
+msgstr "是否为网络店铺"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule____last_update
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master____last_update
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute____last_update
+#: model:ir.model.fields,field_description:web_sale.field_res_partner____last_update
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace____last_update
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product____last_update
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__write_uid
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__write_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__write_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__write_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__write_date
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__write_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__write_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__write_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__lazada
+msgid "Lazada"
+msgstr ""
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
+msgid "Logistics Confirm"
+msgstr "物流确认"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__mrp_production_schedule_master__state__logistics_confirmed
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+msgid "Logistics Confirmed"
+msgstr "物流已确认"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_web_sale_marketplace
+#: model:ir.model.fields,field_description:web_sale.field_res_partner__marketplace_id
+#: model:ir.model.fields,field_description:web_sale.field_res_users__marketplace_id
+#: model_terms:ir.ui.view,arch_db:web_sale.partner_web_sale_search
+msgid "Marketplace"
+msgstr "电商平台"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__code
+msgid "Marketplace Code"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__name
+msgid "Marketplace Name"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__type
+msgid "Marketplace Type"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_mrp_production_schedule_master
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
+msgid "Master Data of Mrp Production Schedule"
+msgstr "MPS主表"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_res_partner__merchant_code
+#: model:ir.model.fields,field_description:web_sale.field_res_users__merchant_code
+msgid "Merchant Code"
+msgstr ""
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+msgid "My Schedule"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_product__state__new
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_sale_data__state__new
+msgid "New"
+msgstr "新品"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_search
+msgid "New Data"
+msgstr "新品数据"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__newegg
+msgid "New Egg"
+msgstr ""
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+msgid "New Sale"
+msgstr "新品"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_sale_data__state__no_data
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_search
+msgid "No Sale Data"
+msgstr "无销售"
+
+#. module: web_sale
+#: model_terms:ir.actions.act_window,help:web_sale.mrp_production_schedule_master_form_action
+msgid "No data found."
+msgstr "数据未找到"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_product__state__normal
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+msgid "Normal Sale"
+msgstr "正常销售"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_sale_data__state__ok
+msgid "OK"
+msgstr "正确"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_search
+msgid "OK Data"
+msgstr "正确数据"
+
+#. module: web_sale
+#: model_terms:ir.actions.act_window,help:web_sale.res_partner_web_sale_action
+msgid "Odoo helps you easily track all activities related to a web shop."
+msgstr ""
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
+msgid "Open MPS Form"
+msgstr "打开MPS"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__order_date
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_search
+msgid "Order Date"
+msgstr "订单日期"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__other
+msgid "Other"
+msgstr "其它"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_mrp_production_schedule_master_compute_wizard
+msgid "Parameters"
+msgstr "参数"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__parent_asin
+msgid "Parent ASIN"
+msgstr "父ASIN"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__product_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__product_id
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_search
+msgid "Product"
+msgstr "产品"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__product_asin
+msgid "Product ASIN"
+msgstr "ASIN"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__product_name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__product_name
+msgid "Product Name"
+msgstr "产品名称"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__product_sku
+msgid "Product SKU"
+msgstr "店铺SKU"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__mrp_production_schedule_id
+msgid "Production Schedule"
+msgstr "销售计划"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__mrp_production_schedule_ids
+msgid "Production Schedule Lines"
+msgstr "销售计划明细"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
+msgid "Products"
+msgstr "产品"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_mrp_production_schedule_master_compute_wizard
+msgid "Regenerate"
+msgstr "重新生成"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_mrp_production_schedule_master_compute
+msgid "Regenerate Mrp Production Schedule Master Manually"
+msgstr "手动重新生成MPS数据"
+
+#. module: web_sale
+#: model:ir.actions.server,name:web_sale.ir_cron_regenerate_mrp_production_schedule_master_action_ir_actions_server
+#: model:ir.cron,cron_name:web_sale.ir_cron_regenerate_mrp_production_schedule_master_action
+#: model:ir.cron,name:web_sale.ir_cron_regenerate_mrp_production_schedule_master_action
+msgid "Regenerate Mrp Production Schedule Master: run scheduler"
+msgstr "自动重新生成MPS数据"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
+msgid "Reset"
+msgstr "重置"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__return_qty
+msgid "Return Qty"
+msgstr "退货数量"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__return_stock_move_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__scrap_stock_move_id
+msgid "Return Stock Move"
+msgstr "销售退货"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__sale_qty
+msgid "Sale Qty"
+msgstr "销售数量"
+
+#. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.mrp_production_schedule_master_form_action
+#: model:ir.ui.menu,name:web_sale.menu_mrp_production_schedule_master
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_tree
+msgid "Sale Schedule"
+msgstr "销售计划"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__sale_stock_move_id
+msgid "Sale Stock Move"
+msgstr "销售出库"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
+msgid "Sales Confirm"
+msgstr "运营确认"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__mrp_production_schedule_master__state__sales_confirmed
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+msgid "Sales Confirmed"
+msgstr "运营已确认"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__salesperson_id
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__salesperson_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__salesperson_id
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+msgid "Salesperson"
+msgstr "运营人员"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__schedule_master_id
+msgid "Schedule Master"
+msgstr "计划主表"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+msgid "Schedule Need to be confirmed"
+msgstr "计划需要被确认"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__schedule_week
+msgid "Schedule Week"
+msgstr "计划周"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__schedule_year
+msgid "Schedule Year"
+msgstr "计划年"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_mrp_production_schedule
+msgid "Schedule the production of Product in a warehouse"
+msgstr ""
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+msgid "Schedules Confirmed by Logistics"
+msgstr "计划已被物流确认"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+msgid "Schedules Confirmed by Salesperson"
+msgstr "计划已被运营确认"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__scrap_qty
+msgid "Scrap Qty"
+msgstr "报废数量"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+msgid "Search Sale Schedule"
+msgstr "查找销售计划"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_search
+msgid "Search Web Sale Data"
+msgstr "查找网上销售数据"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+msgid "Search Web Shop Product"
+msgstr "查找店铺产品"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.partner_web_sale_search
+msgid "Search Web Shop SKU"
+msgstr "查找店铺SKU"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_res_partner__secret_key
+#: model:ir.model.fields,field_description:web_sale.field_res_users__secret_key
+msgid "Secret Key"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__shop_id
+msgid "Shop"
+msgstr "店铺"
+
+#. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.action_shop_product_product_tree
+#: model:ir.actions.act_window,name:web_sale.shop_product_form_action
+#: model:ir.model,name:web_sale.model_web_sale_shop_product
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__shop_product_id
+#: model:ir.ui.menu,name:web_sale.menu_shop_product
+msgid "Shop Product"
+msgstr "店铺产品"
+
+#. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.shop_sale_data_form_action
+msgid "Shop Sale Data"
+msgstr "店铺销售数据"
+
+#. module: web_sale
+#: model:ir.ui.menu,name:web_sale.menu_shop_sale_data
+msgid "Shop Sale Data Import"
+msgstr "店铺销售数据导入"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_web_sale_shop_sale_data
+msgid "Shop Week Sale Data"
+msgstr "店铺周销售数据"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__shopee
+msgid "Shopee"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__shopify
+msgid "Shopify"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__start_date
+msgid "Start Date"
+msgstr "开始日期"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__state
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__state
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__state
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_search
+msgid "Status"
+msgstr "状态"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_product__state__stop
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+msgid "Stop Sale"
+msgstr "店铺销售"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_mrp_production_schedule_master_compute_wizard
+msgid "Synchronize Products for Sale/MPS Schedule."
+msgstr "同步店铺产品到销售计划表"
+
+#. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.action_mrp_production_schedule_master_compute
+#: model:ir.ui.menu,name:web_sale.menu_mrp_production_schedule_master_compute
+msgid "Synchronize Products for Schedule"
+msgstr "同步店铺产品到销售计划表"
+
+#. module: web_sale
+#: model:ir.model.fields,help:web_sale.field_web_sale_shop_sale_data__order_date
+msgid "Transaction Date"
+msgstr "交易日期"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__walmart
+msgid "Walmart"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__warehouse_id
+#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+msgid "Warehouse"
+msgstr "仓库"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__wayfair
+msgid "Wayfair"
+msgstr ""
+
+#. module: web_sale
+#: code:addons/web_sale/models/shop_sale_data.py:0
+#, python-format
+msgid "Web Return: %s"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.module.category,name:web_sale.module_category_web_sale
+#: model:ir.ui.menu,name:web_sale.parent_menu_web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_partner_web_sale_form
+msgid "Web Sale"
+msgstr "网上销售"
+
+#. module: web_sale
+#: model:ir.ui.menu,name:web_sale.menu_web_sale_management
+msgid "Web Sale Management"
+msgstr "网上销售管理"
+
+#. module: web_sale
+#: model:res.groups,name:web_sale.group_web_sale_manager
+msgid "Web Sale Manager"
+msgstr ""
+
+#. module: web_sale
+#: model:res.groups,name:web_sale.group_web_sale_user
+msgid "Web Sale User"
+msgstr ""
+
+#. module: web_sale
+#: code:addons/web_sale/models/shop_sale_data.py:0
+#, python-format
+msgid "Web Sale: %s"
+msgstr "网上销售"
+
+#. module: web_sale
+#: code:addons/web_sale/models/shop_sale_data.py:0
+#, python-format
+msgid "Web Scrap: %s"
+msgstr "网上报废"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__endpoint
+msgid "Web Service Endpoint"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.res_partner_web_sale_action
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__shop_id
+#: model:ir.ui.menu,name:web_sale.menu_web_sale_partner
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_search
+msgid "Web Shop"
+msgstr "网店"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_res_partner__default_warehouse_id
+#: model:ir.model.fields,field_description:web_sale.field_res_users__default_warehouse_id
+msgid "Web Shop Default Warehouse"
+msgstr "店铺默认仓库"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_tree
+msgid "Web Shop Product"
+msgstr "店铺产品"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_sale_data_tree
+msgid "Web Shop Sale Data"
+msgstr "店铺销售数据"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__week_sale_same_period_last_year
+msgid "Week Sale Last Year"
+msgstr "同比销售"
+
+#. module: web_sale
+#: code:addons/web_sale/models/mrp_mps.py:0
+#, python-format
+msgid "计划已被审核，请先取消审核后再重新生成！"
+msgstr "计划已被审核，请先取消审核后再重新生成！"

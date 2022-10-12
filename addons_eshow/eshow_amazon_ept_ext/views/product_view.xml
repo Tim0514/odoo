@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Amazon Product Tree View-->
+    <record id="eshow_ext_amazon_product_tree_view_ept" model="ir.ui.view">
+        <field name="name">EShow Ext Amazon Product Tree View</field>
+        <field name="model">amazon.product.ept</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="amazon_ept.amazon_product_tree_view_ept"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='seller_sku']" position="replace">
+            </xpath>
+            <xpath expr="//tree//field[@name='name']" position="before">
+                <field name="product_id" />
+                <field name="seller_sku"/>
+                <field name="product_asin"/>
+            </xpath>
+        </field>
+    </record>
+    <!--Amazon Product Tree View End-->
+
+    <!--Amazon Product Search View-->
+    <record model="ir.ui.view" id="eshow_ext_amazon_product_search_view_ept">
+        <field name="name">eshow_ext.amazon.product.ept</field>
+        <field name="model">amazon.product.ept</field>
+        <field name="type">search</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="amazon_ept.amazon_product_search_view_ept"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search//field[@name='product_id']" position="replace">
+            </xpath>
+            <xpath expr="//search//field[@name='seller_sku']" position="replace">
+            </xpath>
+            <xpath expr="//search//field[@name='name']" position="before">
+                <field name="product_id" />
+                <field name="seller_sku"/>
+            </xpath>
+            <xpath expr="//search//field[@name='product_asin']" position="after">
+                <field name="instance_id" />
+            </xpath>
+            <xpath expr="//search//group" position="before">
+                <separator/>
+                    <filter string="FBA" name="fulfillment_by_amazon" domain="[('fulfillment_by','=','FBA')]"/>
+                    <filter string="FBM" name="fulfillment_by_merchant" domain="[('fulfillment_by','=','FBM')]"/>
+            </xpath>
+        </field>
+    </record>
+    <!--Amazon Product Search View End-->
+
+    <!--Amazon Product Action-->
+    <record id="action_amazon_product_ept" model="ir.actions.act_window">
+        <field name="name">Amazon Product</field>
+        <field name="res_model">amazon.product.ept</field>
+        <field name="context">{'search_default_instance':True,'do_not_allow_update_amazon_operations':True}</field>
+        <field name="view_id" ref="amazon_ept.amazon_product_tree_view_ept"/>
+        <field name="help" type="html">
+            <div class="oe_empty_amazon_products">
+                <br/>
+                <br/>
+                <br/>
+                <p>
+                    <b>There is no any Amazon Product Created yet</b>
+                </p>
+                <p>
+                    You can't create Amazon products directly from here. In order to
+                    create products for Amazon,
+                    You need to go to menu
+                    <b>Sales >> Products >> Products</b>
+                    and in list view of Product, select one or more products which you
+                    want to export to Amazon.
+                    At the top side, under the "More" section, you will find an option
+                    <b>"Prepare Product for Export"</b>
+                    .
+                    Clicking on that option, you will be asked to select Amazon Instance.After
+                    those products successfully prepared for Amazon, you can see all
+                    of them over here in this menu.
+                    However here you can open those products and add more Amazon specific
+                    attribute values to products. Once all products are well
+                    configured with proper values, you can export
+                    them to Amazon.
+                </p>
+            </div>
+        </field>
+    </record>
+    <!--Amazon Product Action End-->
+
+
+</odoo>

@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_shop_product_user,web.sale.shop.product.user,model_web_sale_shop_product,group_web_sale_user,1,1,1,1
+access_shop_product_manager,web.sale.shop.product.manager,model_web_sale_shop_product,group_web_sale_manager,1,1,1,1
+access_marketplace_user,web.sale.marketplace.user,model_web_sale_marketplace,group_web_sale_user,1,1,1,1
+access_marketplace_manager,web.sale.marketplace.manager,model_web_sale_marketplace,group_web_sale_manager,1,1,1,1
+access_mrp_production_schedule_master_user,mrp.production.schedule.master.user,model_mrp_production_schedule_master,group_web_sale_user,1,1,1,1
+access_mrp_production_schedule_master_manager,mrp.production.schedule.master.manager,model_mrp_production_schedule_master,group_web_sale_manager,1,1,1,1
+access_mrp_production_schedule_master_compute_user,mrp.production.schedule.master.compute.user,model_mrp_production_schedule_master_compute,group_web_sale_user,1,1,1,1
+access_mrp_production_schedule_master_compute_manager,mrp.production.schedule.master.compute.manager,model_mrp_production_schedule_master_compute,group_web_sale_manager,1,1,1,1
+access_shop_sale_data_user,web.sale.shop.sale.data.user,model_web_sale_shop_sale_data,group_web_sale_user,1,1,1,1
+access_shop_sale_data_manager,web.sale.shop.sale.data.manager,model_web_sale_shop_sale_data,group_web_sale_manager,1,1,1,1

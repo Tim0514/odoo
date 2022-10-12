@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <menuitem
+        id="parent_menu_web_sale"
+        name="Web Sale"
+        web_icon="web_sale,static/description/icon.png"
+        groups="group_web_sale_user,group_web_sale_manager"
+    />
+
+    <menuitem
+        id="menu_web_sale_management"
+        name="Web Sale Management"
+        sequence="5"
+        groups="group_web_sale_user,group_web_sale_manager"
+        parent="parent_menu_web_sale"
+    />
+
+    <menuitem
+        id="menu_basic_data"
+        name="Basic Data"
+        sequence="10"
+        parent="parent_menu_web_sale"
+        groups="group_web_sale_user,group_web_sale_manager"
+    />
+
+
+</odoo>

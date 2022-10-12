@@ -1,0 +1,964 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* eshow_ext
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0-20220416\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-11 16:05+0000\n"
+"PO-Revision-Date: 2022-10-11 16:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Amount</span>\n"
+"                                    <span groups=\"account.group_show_line_subtotals_tax_included\">Total Price</span>"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<span>Description</span>"
+msgstr "<span>说明</span>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<span>Disc.%</span>"
+msgstr "<span>折扣%</span>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+msgid "<span>Products Or Services</span>"
+msgstr "<span>产品或服务</span>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<span>Quantity</span>"
+msgstr "<span>数量</span>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<span>Taxes</span>"
+msgstr "<span>税</span>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+msgid "<span>Total Price</span>"
+msgstr "<span>小计</span>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<span>Unit Price</span>"
+msgstr "<span>单价</span>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr "<strong class=\"mr16\">小计</strong>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid ""
+"<strong class=\"text-center\">Scan me with your banking "
+"app.</strong><br/><br/>"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<strong>Amount Due</strong>"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Amount</strong>"
+msgstr "<strong>金额</strong>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<strong>Customer Code:</strong>"
+msgstr "<strong>客户编码：</strong>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Date Req.</strong>"
+msgstr "到货日期"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Description</strong>"
+msgstr "描述"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<strong>Due Date:</strong>"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<strong>Incoterm: </strong>"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<strong>Invoice Date:</strong>"
+msgstr "<strong>日期：</strong>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Notes: </strong>"
+msgstr "<strong>订单说明：</strong>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Order Date:</strong>"
+msgstr "订单日期："
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Order No.:</strong>"
+msgstr "订单号："
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Phone No.:</strong>"
+msgstr "联系电话："
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Purchase Representative:</strong>"
+msgstr "采购代表："
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Qty</strong>"
+msgstr "数量"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<strong>Reference:</strong>"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Shipping address:</strong>"
+msgstr "送货地址："
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "<strong>Source:</strong>"
+msgstr "<strong>源文档：</strong>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Supplier:</strong>"
+msgstr "供应商："
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Taxes</strong>"
+msgstr "<strong>税</strong>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.document_tax_totals
+msgid "<strong>Total</strong>"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Unit Price</strong>"
+msgstr "<strong>单价</strong>"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "<strong>Your Order Reference:</strong>"
+msgstr "供应商单号："
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__actual_weight
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__actual_weight
+msgid "Actual Weight"
+msgstr "实际重量"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_product_attribute_value
+msgid "Attribute Value"
+msgstr "属性值"
+
+#. module: eshow_ext
+#: model:ir.actions.act_window,name:eshow_ext.mrp_bom_line_action
+#: model:ir.ui.menu,name:eshow_ext.menu_mrp_bom_line_action
+#: model_terms:ir.ui.view,arch_db:eshow_ext.mrp_bom_line_tree_view
+msgid "BOM Lines"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_picking__invoice_count
+msgid "Bill Count"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_move__invoice_lines
+msgid "Bill Lines"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_mrp_bom_line
+msgid "Bill of Material Line"
+msgstr "物料清单明细行"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_move__qty_invoiced
+msgid "Billed Qty"
+msgstr "已对账数量"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_move__invoice_status
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_picking__invoice_status
+msgid "Billing Status"
+msgstr "对账状态"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_picking__invoice_ids
+msgid "Bills"
+msgstr "账单"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "Cancelled Invoice"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.view_mrp_bom_line_filter
+msgid "Child Product"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_res_config_settings
+msgid "Config Settings"
+msgstr "配置设置"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_res_partner
+msgid "Contact"
+msgstr "联系人"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__standard_price
+msgid "Cost"
+msgstr "成本"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_tree
+msgid "Create Bills"
+msgstr "创建对账单"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "Credit Note"
+msgstr "收款通知"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__customs_declare_currency_id
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__customs_declare_currency_id
+msgid "Customs Declaration Currency"
+msgstr "报关币种"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Date"
+msgstr "入出库日期"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_res_config_settings__destination_declare_price_rate
+msgid "Destination Declare Price Rate"
+msgstr "目的国报关价格比例"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__destination_declare_price
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__destination_declare_price
+msgid "Destination Declare Price(USD)"
+msgstr "目的国报关价(USD)"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Destination Location"
+msgstr "目的位置"
+
+#. module: eshow_ext
+#: model:ir.model.fields,help:eshow_ext.field_res_config_settings__destination_declare_price_rate
+msgid ""
+"Destination country custom clearance price = Product Cost * Destination "
+"Declare Price Rate * Currency Exchange Rate."
+msgstr "目的国报关价 = 产品成本 * 目的国报关价格比例 * 美元汇率。"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.res_config_settings_view_form_eshowext
+msgid ""
+"Destination country custom clearance price = Product Cost * Destination "
+"Declare Price Rate * Currency Exchange Rate.."
+msgstr "目的国报关价 = 产品成本 * 目的国报关价格比例 * 美元汇率。"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_template_form_view
+msgid "Dimensions"
+msgstr "尺寸"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "Draft Invoice"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.res_config_settings_view_form_eshowext
+msgid "EShow Ext"
+msgstr "EShow 扩展"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.res_config_settings_view_form_eshowext
+msgid "EShow Extension Module Settings"
+msgstr "EShow 扩展模块设置"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_res_config_settings__export_declare_price_rate
+msgid "Export Declare Price Rate"
+msgstr "出口报关价格比例"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__export_declare_price
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__export_declare_price
+msgid "Export Declare Price(USD)"
+msgstr "出口报关价(USD)"
+
+#. module: eshow_ext
+#: model:ir.model.fields,help:eshow_ext.field_res_config_settings__export_declare_price_rate
+#: model_terms:ir.ui.view,arch_db:eshow_ext.res_config_settings_view_form_eshowext
+msgid ""
+"Export Invoice Price = Invoice Price of EShow to Max Share * Export Declare "
+"Price Rate * Currency Exchange Rate."
+msgstr "出口报关价 = 伊秀开给茂翔的发票价格(不含税) * 出口报关价格比例 * 美元汇率。"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_tree
+msgid "From"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_picking_type__complete_name
+msgid "Full Picking Type Name"
+msgstr "入出库类型"
+
+#. module: eshow_ext
+#: model:ir.model.fields.selection,name:eshow_ext.selection__stock_picking__invoice_status__invoiced
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Fully Billed"
+msgstr "已对账"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Group By"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.view_mrp_bom_line_filter
+msgid "Group By..."
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__height
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__height
+msgid "Height"
+msgstr "高"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__height_uom_name
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__height_uom_name
+msgid "Height unit of measure label"
+msgstr "高度单位"
+
+#. module: eshow_ext
+#: model:ir.model.fields,help:eshow_ext.field_product_template__standard_price
+msgid ""
+"In Standard Price & AVCO: value of the product (automatically computed in AVCO).\n"
+"        In FIFO: value of the next unit that will leave the stock (automatically computed).\n"
+"        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).\n"
+"        Used to compute margins on sale orders."
+msgstr ""
+"在标准价格和 AVCO 中：产品的价值（在 AVCO 中自动计算）。\n"
+"在 FIFO 中：将离开库存的下一个单位的值（自动计算）。\n"
+"用于在购买成本未知时对产品进行估价（例如库存调整）。\n"
+"用于计算销售订单的利润。"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__default_code
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__default_code
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_template_only_form_view
+msgid "Internal Reference"
+msgstr "物料编码"
+
+#. module: eshow_ext
+#: model:ir.model.constraint,message:eshow_ext.constraint_product_product_default_code_uniq1
+#: model:ir.model.constraint,message:eshow_ext.constraint_product_template_default_code_uniq
+msgid "Internal Reference must be unique"
+msgstr "物料编码有重复"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "Invoice"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,help:eshow_ext.field_res_config_settings__maxshare_price_rate
+#: model_terms:ir.ui.view,arch_db:eshow_ext.res_config_settings_view_form_eshowext
+msgid ""
+"Invoice Price of EShow to Max Share = Product Cost * Max Share Price Rate."
+msgstr "伊秀开给茂翔发票价格(不含税) =  产品成本 * 茂翔发票价格比例。"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_account_move
+msgid "Journal Entry"
+msgstr "日记账分录"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_account_move_line
+msgid "Journal Item"
+msgstr "会计分录"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__length
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__length
+msgid "Length"
+msgstr "长"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__length_uom_name
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__length_uom_name
+msgid "Length unit of measure label"
+msgstr "长度单位"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Location"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_res_config_settings__maxshare_price_rate
+msgid "Max Share Price Rate"
+msgstr "茂翔发票价格比例"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__maxshare_price
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__maxshare_price
+msgid "MaxShare Price"
+msgstr "茂翔发票价格(不含税)"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_stock_warehouse_orderpoint
+msgid "Minimum Inventory Rule"
+msgstr "最小库存规则"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_tree
+msgid "Move Date"
+msgstr "入出库日期"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Move Done"
+msgstr "完成"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Move Not Done"
+msgstr "未完成"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_tree
+msgid "Moves"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.actions.act_window,help:eshow_ext.mrp_bom_line_action
+msgid "No bill of materials line found."
+msgstr "未找到BOM明细行"
+
+#. module: eshow_ext
+#: model_terms:ir.actions.act_window,help:eshow_ext.eshow_purchase_stock_move_action
+msgid "No stock move found"
+msgstr "未找到采购入库单"
+
+#. module: eshow_ext
+#: model:ir.model.fields.selection,name:eshow_ext.selection__stock_picking__invoice_status__no
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Nothing to Bill"
+msgstr "不需要对账"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "Paid on"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.view_mrp_bom_line_filter
+msgid "Parent Product"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Partner"
+msgstr "供应商"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Picking"
+msgstr "入出库单号"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_move__picking_partner_id
+msgid "Picking Partner"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_tree
+msgid "Picking Ref"
+msgstr "入出库单号"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_stock_picking_type
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Picking Type"
+msgstr "入出库类型"
+
+#. module: eshow_ext
+#: code:addons/eshow_ext/models/stock_picking.py:0
+#: code:addons/eshow_ext/models/stock_picking.py:0
+#, python-format
+msgid "Please define an accounting purchase journal for the company %s (%s)."
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "Please use the following communication for your payment :"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,help:eshow_ext.field_product_product__destination_declare_price
+#: model:ir.model.fields,help:eshow_ext.field_product_template__destination_declare_price
+msgid ""
+"Price For Destination Custom Declaration (Cost * Destination Declare Price "
+"Rate * USD Exchange Rate"
+msgstr "目的国报关价(USD) (成本 * 目的国报关价格比例 * 美元汇率)"
+
+#. module: eshow_ext
+#: model:ir.model.fields,help:eshow_ext.field_product_product__export_declare_price
+#: model:ir.model.fields,help:eshow_ext.field_product_template__export_declare_price
+msgid ""
+"Price For Export Custom Declaration (Cost * Max Share Price Rate * Export "
+"Declare Price Rate * USD Exchange Rate)"
+msgstr "出口报关价(USD) (成本 * 茂翔价格比例 * 出口报关价比例 * 美元汇率)"
+
+#. module: eshow_ext
+#: model:ir.model.fields,help:eshow_ext.field_product_product__maxshare_price
+#: model:ir.model.fields,help:eshow_ext.field_product_template__maxshare_price
+msgid "Price For Max Share (Cost * Max Share Price Rate)"
+msgstr "开给茂翔的发票价格 (成本 * 茂翔价格比例)"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_template_form_view
+msgid "Price References"
+msgstr "价格参考"
+
+#. module: eshow_ext
+#: model:ir.model.fields,help:eshow_ext.field_product_product__list_price
+#: model:ir.model.fields,help:eshow_ext.field_product_template__list_price
+msgid "Price at which the product is sold to customers."
+msgstr "产品销售给客户的价格。"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_product_product
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Product"
+msgstr "产品"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_move__product_default_code
+msgid "Product Default Code"
+msgstr "物料编码"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_move__product_name
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_template_only_form_view
+msgid "Product Name"
+msgstr "产品名称"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_product_template
+msgid "Product Template"
+msgstr "产品模板"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_product_template_attribute_value
+msgid "Product Template Attribute Value"
+msgstr "产品模板属性值"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__project_no
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__project_no
+msgid "Project No"
+msgstr "项目编号"
+
+#. module: eshow_ext
+#: model:ir.ui.menu,name:eshow_ext.menu_purchase_billing
+msgid "Purchase Billing"
+msgstr "供应商对账"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_purchase_order
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_purchaseorder_document
+msgid "Purchase Order"
+msgstr "采购订单"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "采购订单明细"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Purchase Stock Move"
+msgstr "采购入库"
+
+#. module: eshow_ext
+#: model:ir.actions.act_window,name:eshow_ext.eshow_purchase_stock_move_action
+#: model:ir.ui.menu,name:eshow_ext.eshow_purchase_stock_move_menu
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Purchase Stock Moves"
+msgstr "供应商对账"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_tree
+msgid "Quantities"
+msgstr "数量"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Reference"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__list_price
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__list_price
+msgid "Sales Price"
+msgstr "销售价格"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Scheduled or processing date"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.view_mrp_bom_line_filter
+msgid "Search Bill Of Material"
+msgstr "查询BOM"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_template_form_view
+msgid "Shipping"
+msgstr "发运"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__weight
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__weight
+msgid "Shipping Weight"
+msgstr "发运重量"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_warehouse__code
+msgid "Short Name"
+msgstr "缩写"
+
+#. module: eshow_ext
+#: model:ir.model.fields,help:eshow_ext.field_stock_warehouse__code
+msgid "Short name used to identify your warehouse"
+msgstr "利用简称来标识你的仓库"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Source Location"
+msgstr "源位置"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_stock_move
+#: model:ir.model.fields,field_description:eshow_ext.field_account_move_line__stock_move_id
+msgid "Stock Move"
+msgstr "库存移动"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_account_move_line__stock_picking_id
+msgid "Stock Picking"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_stock_rule
+msgid "Stock Rule"
+msgstr "库存规则"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Stock moves that have been processed"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Stock moves that have not been processed"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Subcontracting Stock Move"
+msgstr "外包入库"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "Tax ID"
+msgstr ""
+
+#. module: eshow_ext
+#: code:addons/eshow_ext/models/purchase.py:0
+#: code:addons/eshow_ext/models/stock_picking.py:0
+#, python-format
+msgid ""
+"There is no invoiceable line. If a product has a control policy based on "
+"received quantity, please make sure that a quantity has been received."
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.actions.act_window,help:eshow_ext.eshow_purchase_stock_move_action
+msgid ""
+"This menu gives you the list of purchase stock moves.\n"
+"                You can choose stock moves to generate vendor bills."
+msgstr ""
+
+#. module: eshow_ext
+#: code:addons/eshow_ext/models/account_move.py:0
+#, python-format
+msgid "This vendor bill has been created from: %s"
+msgstr ""
+
+#. module: eshow_ext
+#: code:addons/eshow_ext/models/account_move.py:0
+#, python-format
+msgid "This vendor bill has been modified from: %s"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_tree
+msgid "To"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_move__qty_to_invoice
+msgid "To Invoice Quantity"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_stock_picking
+msgid "Transfer"
+msgstr "调拨"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_tree
+msgid "Unit of Measure"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.res_config_settings_view_form_eshowext
+msgid "Update All Product Prices"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_tree
+msgid "Vendor"
+msgstr "供应商"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "Vendor Bill"
+msgstr "供应商"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_report_invoice_document
+#: model_terms:ir.ui.view,arch_db:eshow_ext.report_invoice_document
+msgid "Vendor Credit Note"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__volume
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__volume
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_template_form_view
+msgid "Volume"
+msgstr "体积"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__volume_weight_5000
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__volume_weight_5000
+msgid "Volume Weight 5000"
+msgstr "体积重/5000"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__volume_weight_6000
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__volume_weight_6000
+msgid "Volume Weight 6000"
+msgstr "体积重/6000"
+
+#. module: eshow_ext
+#: model:ir.model.fields.selection,name:eshow_ext.selection__stock_picking__invoice_status__to_invoice
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_purchase_stock_move_search
+msgid "Waiting Bills"
+msgstr "等待对账"
+
+#. module: eshow_ext
+#: model:ir.model,name:eshow_ext.model_stock_warehouse
+msgid "Warehouse"
+msgstr "仓库"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_template_form_view
+msgid "Weight"
+msgstr "重量"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__width
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__width
+msgid "Width"
+msgstr "宽"
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__width_uom_name
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__width_uom_name
+msgid "Width unit of measure label"
+msgstr "宽度单位"
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.tax_groups_totals
+msgid "on"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,help:eshow_ext.field_product_product__minimum_package_qty
+#: model:ir.model.fields,help:eshow_ext.field_product_template__minimum_package_qty
+msgid "产品每箱的最小数量，用于采购或发货。"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__manuf_procure_delay
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_warehouse_orderpoint__manuf_procure_delay
+msgid "产成品补货提前期"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__manuf_procure_delay
+msgid "制造产品补货提前期"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_template_form_view
+msgid "天数"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_mrp_bom_line__is_main_material
+msgid "是否为主原料"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_product__minimum_package_qty
+#: model:ir.model.fields,field_description:eshow_ext.field_product_template__minimum_package_qty
+msgid "最小包装数(MPQ)"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_template_only_form_view
+msgid "物料编码"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_res_partner__short_name
+#: model:ir.model.fields,field_description:eshow_ext.field_res_users__short_name
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_partner_form
+msgid "简称"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_partner_form
+msgid "编码"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_product_attribute_value__code
+msgid "缩写码"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_view_partner_form
+msgid "联系人"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_stock_warehouse_orderpoint__lead_days_date
+msgid "计划完成日期"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_res_partner__purchase_order_notes
+#: model:ir.model.fields,field_description:eshow_ext.field_res_users__purchase_order_notes
+msgid "采购订单备注"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_res_partner__sale_order_notes
+#: model:ir.model.fields,field_description:eshow_ext.field_res_users__sale_order_notes
+msgid "销售订单备注"
+msgstr ""
+
+#. module: eshow_ext
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:eshow_ext.eshow_product_template_only_form_view
+msgid "项目编号"
+msgstr ""
+
+#. module: eshow_ext
+#: model:ir.model.fields,field_description:eshow_ext.field_res_partner__default_contact_person
+#: model:ir.model.fields,field_description:eshow_ext.field_res_users__default_contact_person
+msgid "默认联系人"
+msgstr ""
