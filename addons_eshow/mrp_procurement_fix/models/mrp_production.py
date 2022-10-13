@@ -68,6 +68,7 @@ class MrpProduction(models.Model):
     """
         Added by timwang on 2012/8/19
         根据输入条件查询是否已经存在相关的生产订单。
+        TODO:暂未使用
     """
     def get_existing_production_1(self, new_production_values):
         domain = (
@@ -86,6 +87,7 @@ class MrpProduction(models.Model):
     """
         Added by timwang on 2012/8/19
         根据输入的数量，生成一个新的原材料领料数据
+        TODO:暂未使用
     """
     def _get_moves_raw_values_new_1(self, new_product_qty):
         moves = []
@@ -110,6 +112,7 @@ class MrpProduction(models.Model):
     """
         Added by timwang on 2012/8/19
         根据输入的数量，生成一个新的完工入库数据
+        TODO:暂未使用
     """
     def _get_moves_finished_values_new_1(self, new_product_qty):
         moves = []

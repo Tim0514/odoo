@@ -13,7 +13,9 @@ _logger = logging.getLogger(__name__)
 class StockRule(models.Model):
     _inherit = 'stock.rule'
 
-    # 增加传播组的设置
+    """
+    增加传播组的设置
+    """
     def _prepare_mo_vals(self, product_id, product_qty, product_uom, location_id, name, origin, company_id, values, bom):
         mo_vals = super(StockRule, self)._prepare_mo_vals(product_id, product_qty, product_uom, location_id, name, origin, company_id, values, bom)
 
@@ -31,6 +33,7 @@ class StockRule(models.Model):
         Override mrp/stock_rule中运行MRP的方法
 
         运行MPS时，如果仅仅是新增了产品，其他都一样，则不创建新的生产单，而是直接在原生产单据中增加相关数量。
+        TODO:暂未使用
     """
     @api.model
     def _run_manufacture_1(self, procurements):

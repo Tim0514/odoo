@@ -8,8 +8,13 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     def _prepare_subcontract_mo_vals(self, subcontract_move, bom):
+        """
+            修正，mrp_subcontracting中的方法，如果补货组已存在，则直接使用已有的补货组,而不是直接新建
+        """
         subcontract_move.ensure_one()
-        group = self.env['procurement.group'].search([('name', '=' , self.name), ('partner_id','=', self.partner_id.id)])
+
+        # 新代码
+        group = self.env['procurement.group'].search([('name', '=', self.name), ('partner_id', '=', self.partner_id.id)])
         if group:
             group = group[0]
         else:
@@ -17,6 +22,14 @@ class StockPicking(models.Model):
                 'name': self.name,
                 'partner_id': self.partner_id.id,
             })
+
+        # 原代码
+        # group = self.env['procurement.group'].create({
+        #     'name': self.name,
+        #     'partner_id': self.partner_id.id,
+        # })
+
+
         product = subcontract_move.product_id
         warehouse = self._get_warehouse(subcontract_move)
         vals = {
