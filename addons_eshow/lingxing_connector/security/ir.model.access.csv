@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_connector_lingxing_user,connector.lingxing.user,model_connector_lingxing,eshow_common_connector_lib.group_connector_user,1,0,0,0
+access_connector_lingxing_manager,connector.lingxing.manager,model_connector_lingxing,eshow_common_connector_lib.group_connector_manager,1,0,0,1
+access_connector_lingxing_wizard_user,connector.lingxing.wizard.user,model_connector_lingxing_wizard,eshow_common_connector_lib.group_connector_user,1,1,1,1
+access_connector_lingxing_wizard_manager,connector.lingxing.wizard.manager,model_connector_lingxing_wizard,eshow_common_connector_lib.group_connector_manager,1,1,1,1

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="shipping_schedule_main">
+        <div class="o_shipping_schedule_main">
+            <t t-set="manufacturingPeriods" t-value="widget.manufacturingPeriods"/>
+            <t t-set="state" t-value="widget.state"/>
+            <t t-set="formatFloat" t-value="widget.formatFloat"/>
+            <t t-set="total_sale_qty_30" t-value="0"/>
+            <t t-set="total_estimate_sale_qty_30" t-value="0"/>
+            <div class="text-nowrap mr0 ml0">
+                <table class="table table-bordered o_shipping_schedule_main_table">
+                    <thead >
+                        <tr>
+                            <th/>
+                            <th/>
+                            <th class="text-center"><div>7/14/28</div></th>
+                            <th/>
+                            <th class="text-right pr-4" scope="col" t-foreach="manufacturingPeriods" t-as="period">
+                                <div><t t-esc="period"/></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <t t-call="shipping_schedule"/>
+                    <!--<t t-call="shipping_schedule_page_total"/>-->
+                </table>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="shipping_schedule_main_nocontent_helper">
+        <div class="o_view_nocontent">
+            <div class="o_nocontent_help">
+                <p class="o_view_nocontent_smiling_face">
+                    No product yet. Add one to start scheduling.
+                </p><p>
+                    The master schedule translates your sales and demand forecasts into a production and purchase planning for each component.
+                    It ensures everything gets scheduled on time, based on constraints such as: safety stock, production capacity, lead times.
+                    It's the perfect tool to support your S&amp;OP meetings.
+                </p>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="shipping_schedule">
+        <t t-foreach="state" t-as="shippingSchedule">
+            <tbody class="o_shipping_schedule_main_content" t-att-data-id="shippingSchedule.id" t-att-data-shop_id="'shop_id' in shippingSchedule and shippingSchedule.shop_id[0]">
+                <tr>
+                    <th scope="col" rowspan="4">
+                        <div class="row">
+                            <div class="col-12">
+                                <span>Shop Product Id: </span>
+                                <a href="#" class="o_shipping_schedule_record_url"
+                                   t-att-data-res-id="shippingSchedule.shop_product_id[0]"
+                                   t-att-data-model="'web.sale.shop.product'"
+                                   t-att-title="shippingSchedule.shop_product_id[1]">
+                                    <t t-esc="shippingSchedule.seller_sku"/>
+                                </a>
+                            </div>
+                            <div class="col-12">
+                                <span>Default Product Code: </span>
+                                <a href="#" class="o_shipping_schedule_record_url"
+                                   t-att-data-res-id="shippingSchedule.product_id[0]"
+                                   t-att-data-model="'product.product'"
+                                   t-att-title="shippingSchedule.product_id[1]">
+                                    <t t-esc="shippingSchedule.product_default_code"/>
+                                </a>
+                            </div>
+                            <div class="o_product_name col-12">
+                                <span class="text-wrap" data-toggle="tooltip" data-placement="bottom" t-att-title="shippingSchedule.product_name">
+                                <t t-esc="shippingSchedule.product_name"/>
+                                </span>
+                            </div>
+                            <div class="col-12">
+                                <t t-esc="shippingSchedule.shop_id[1]"/>
+                            </div>
+                            <div class="col-1">
+                                <button type="button" title="Sales Confirm"
+                                        t-if="shippingSchedule.state == 'draft'"
+                                        t-attf-class="{{'btn btn-secondary o_no_padding o_shipping_schedule_sales_confirm'}}">
+                                    Sales Confirm
+                                </button>
+                                <button type="button" title="Logistics Confirm"
+                                        t-if="shippingSchedule.state == 'sales_confirmed' and shippingSchedule.is_web_sale_manager"
+                                        t-attf-class="{{'btn btn-secondary o_no_padding o_shipping_schedule_logistics_confirm'}}">
+                                    Logistics Confirm
+                                </button>
+                                <button type="button" title="Replenish"
+                                        t-if="shippingSchedule.state == 'logistics_confirmed' and shippingSchedule.is_web_sale_manager"
+                                        t-attf-class="{{'btn btn-secondary o_no_padding o_shipping_schedule_procurement'}}">
+                                    Replenish
+                                </button>
+                                <button type="button" title="Cancel"
+                                        t-if="['sales_confirmed','logistics_confirmed','done'].includes(shippingSchedule.state)"
+                                        t-attf-class="{{'btn btn-secondary o_no_padding o_shipping_schedule_cancel_confirm'}}">
+                                    Cancel Confirm
+                                </button>
+
+                                <a href="#" class="fa fa-eye-slash text-black o_shipping_schedule_hide" role="img" aria-label="Hide" title="Hide"/>
+                            </div>
+                            <!--
+                            <span t-if="'shop_id' in shippingSchedule"> - <t t-esc="shippingSchedule.shop_id[1]"/></span>
+                            -->
+                        </div>
+                    </th>
+                    <th scope="col">
+                        Inventory :
+                        <span data-toggle="tooltip" data-placement="bottom" title="The forecasted quantity in stock at the beginning of the period.">Starting</span>
+                        / <span data-toggle="tooltip" data-placement="bottom" title="The forecasted quantity in stock at the end of the period.">Ending</span>
+                    </th>
+                    <th/>
+                    <th/>
+                    <t t-foreach="shippingSchedule.forecast_ids" t-as="forecast">
+                        <th class="text-right pr-4">
+                            <t t-esc="forecast.starting_inventory_qty"/>
+                            <span>/</span>
+                            <t t-esc="forecast.ending_inventory_qty"/>
+                        </th>
+                    </t>
+                </tr>
+                <tr name="sale_forecast">
+                    <th scope="row">
+                        <span data-toggle="tooltip" data-placement="bottom" title="Sale forecast of each period.">Sale Forecast</span>
+                        / <span data-toggle="tooltip" data-placement="bottom" title="Safety inventory according to available sale days setting.">Safety</span>
+                    </th>
+                    <th class="text-center"><span><t t-esc="shippingSchedule.sale_qty_7"/></span> / <span><t t-esc="shippingSchedule.sale_qty_14"/></span> / <span><t t-esc="shippingSchedule.sale_qty_28"/></span></th>
+                    <th class="text-right"><span>Reference Monthly Sale Qty: </span><span><t t-esc="shippingSchedule.advised_monthly_sale_qty"/></span></th>
+                    <t t-foreach="shippingSchedule.forecast_ids" t-as="forecast">
+                        <th class="text-right pr-4">
+                            <span name="sale_forecast">
+                                <t t-if="shippingSchedule.state != 'draft'">
+                                    <input type="text"
+                                    t-att-data-date_index="forecast_index"
+                                    t-attf-class="form-control text-right
+                                        o_shipping_schedule_main_input_forcast_qty o_shipping_schedule_inline
+                                        {{forecast.forecast_sale_qty_changed and 'alert-info' or ''}}"
+                                    t-att-value="forecast.forecast_sale_qty" readonly="true"/>
+                                </t>
+                                <t t-else="">
+                                    <button type="button"
+                                        t-if="forecast.forecast_sale_qty_changed"
+                                        t-att-data-date_index="forecast_index"
+                                        class="btn btn-link input-group-addon
+                                        o_shipping_schedule_forecast_sale_qty_auto_mode fa fa-times
+                                        o_no_padding"/>
+                                    <input type="text"
+                                    t-att-data-date_index="forecast_index"
+                                    t-attf-class="form-control text-right
+                                        o_shipping_schedule_main_input_forcast_qty o_shipping_schedule_inline
+                                        {{forecast.forecast_sale_qty_changed and 'alert-info' or ''}}"
+                                    t-att-value="forecast.forecast_sale_qty"/>
+                                </t>
+                            </span>
+                            <span>/</span>
+                            <span name="safety_inventory">
+                                <t t-if="shippingSchedule.state != 'draft'">
+                                    <input type="text"
+                                    t-att-data-date_index="forecast_index"
+                                    t-attf-class="form-control text-right
+                                        o_shipping_schedule_main_input_safety_inventory o_shipping_schedule_inline
+                                        {{forecast.safety_inventory_qty_changed and 'alert-info' or ''}}"
+                                    t-att-value="forecast.safety_inventory_qty" readonly="true"/>
+                                </t>
+                                <t t-else="">
+                                    <button type="button"
+                                        t-if="forecast.safety_inventory_qty_changed"
+                                        t-att-data-date_index="forecast_index"
+                                        class="btn btn-link input-group-addon
+                                        o_shipping_schedule_safety_inventory_auto_mode fa fa-times
+                                        o_no_padding"/>
+                                    <input type="text"
+                                    t-att-data-date_index="forecast_index"
+                                    t-attf-class="form-control text-right
+                                        o_shipping_schedule_main_input_safety_inventory o_shipping_schedule_inline
+                                        {{forecast.safety_inventory_qty_changed and 'alert-info' or ''}}"
+                                    t-att-value="forecast.safety_inventory_qty"/>
+                                </t>
+                            </span>
+
+                        </th>
+                    </t>
+                </tr>
+                <tr name="arriving_qty">
+                    <th scope="row">
+                        Arriving Qty:
+                        <span data-toggle="tooltip" data-placement="bottom" title="Applied quantities by salesperson.">Salesperson</span>
+                        / <span data-toggle="tooltip" data-placement="bottom" title="Verified quantities by logistics.">Logistics</span>
+                        / <span data-toggle="tooltip" data-placement="bottom" title="Increase arriving quantities.">Increase</span>
+                        <br/>
+                        <span data-toggle="tooltip" data-placement="bottom" title="Confirmed arriving quantities.">Confirmed</span>
+                        / <span data-toggle="tooltip" data-placement="bottom" title="Shipped quantities.">Shipped</span>
+                    </th>
+                    <th/>
+                    <th/>
+                    <t t-foreach="shippingSchedule.forecast_ids" t-as="forecast">
+                        <th class="text-right pr-4">
+                            <span name="arriving_qty_apply">
+                                <t t-if="shippingSchedule.state != 'draft'">
+                                    <input type="text"
+                                        t-att-data-date_index="forecast_index"
+                                        t-attf-class="form-control text-right
+                                            o_shipping_schedule_main_input_arriving_qty_apply o_shipping_schedule_inline
+                                            {{forecast.arriving_qty_apply_changed and 'alert-info' or ''}}"
+                                        t-att-value="forecast.arriving_qty_apply" readonly="true"/>
+                                </t>
+                                <t t-else="">
+                                    <button type="button"
+                                        t-if="forecast.arriving_qty_apply_changed"
+                                        t-att-data-date_index="forecast_index"
+                                        class="btn btn-link input-group-addon
+                                        o_shipping_schedule_arriving_qty_apply_auto_mode fa fa-times
+                                        o_no_padding"/>
+                                    <input type="text"
+                                        t-att-data-date_index="forecast_index"
+                                        t-attf-class="form-control text-right
+                                            o_shipping_schedule_main_input_arriving_qty_apply o_shipping_schedule_inline
+                                            {{forecast.arriving_qty_apply_changed and 'alert-info' or ''}}"
+                                        t-att-value="forecast.arriving_qty_apply"/>
+                                </t>
+                            </span>
+                            <span>/</span>
+                            <span name="arriving_qty_verify">
+                                <t t-if="['logistics_confirmed','done'].includes(shippingSchedule.state) or shippingSchedule.is_web_sale_manager == false">
+                                    <input type="text"
+                                    t-att-data-date_index="forecast_index"
+                                    t-attf-class="form-control text-right
+                                        o_shipping_schedule_main_input_arriving_qty_verify o_shipping_schedule_inline
+                                        {{forecast.arriving_qty_verify_changed and 'alert-info' or ''}}"
+                                    t-att-value="forecast.arriving_qty_verify" readonly="true"/>
+                                </t>
+                                <t t-else="">
+                                    <button type="button"
+                                        t-if="forecast.arriving_qty_verify_changed"
+                                        t-att-data-date_index="forecast_index"
+                                        class="btn btn-link input-group-addon
+                                        o_shipping_schedule_arriving_qty_verify_auto_mode fa fa-times
+                                        o_no_padding"/>
+                                    <input type="text"
+                                    t-att-data-date_index="forecast_index"
+                                    t-attf-class="form-control text-right
+                                        o_shipping_schedule_main_input_arriving_qty_verify o_shipping_schedule_inline
+                                        {{forecast.arriving_qty_verify_changed and 'alert-info' or ''}}"
+                                    t-att-value="forecast.arriving_qty_verify"/>
+                                </t>
+                            </span>
+                            <span>/</span>
+                            <span name="arriving_qty_confirmed">
+                                <t t-esc="forecast.arriving_qty_increase"/>
+                            </span>
+                            <br/>
+                            <span name="arriving_qty_confirmed">
+                                <t t-esc="forecast.arriving_qty_confirmed"/>
+                            </span>
+                            <span>/</span>
+                            <span name="arriving_qty_existing">
+                                <t t-esc="forecast.arriving_qty_existing"/>
+                            </span>
+                        </th>
+                    </t>
+                </tr>
+                <tr name="procurement">
+                    <th scope="col">
+                        <span data-toggle="tooltip" data-placement="bottom" title="The quantity which need to be transfer to PO or MO.">New Replenishing Qty</span>
+                        <span> / </span>
+                        <span data-toggle="tooltip" data-placement="bottom" title="The quantity which has already been transfer to PO or MO.">Replenished Qty</span>
+                    </th>
+                    <th/>
+                    <th class="text-right"><span>Available Qty: </span><span><t t-esc="shippingSchedule.factory_available_qty"/></span></th>
+                    <t t-foreach="shippingSchedule.forecast_ids" t-as="forecast">
+                        <th t-attf-class="o_procurement text-right pr-4 {{
+                                                    forecast.to_replenish and 'o_shipping_schedule_to_replenish' or ''
+                                                  }} {{
+                                                    forecast.forced_replenish and 'o_shipping_schedule_forced_replenish' or ''
+                                                  }}">
+                            <span ><t t-esc="forecast.replenish_qty_required"/></span>
+                            <span> / </span>
+                            <span ><t t-esc="forecast.replenished_qty"/></span>
+                        </th>
+                    </t>
+                </tr>
+            </tbody>
+        </t>
+    </t>
+
+    <t t-name="shipping_schedule_page_total">
+        <tfoot>
+            <tr name="total_inventory">
+                <th><span>Total Inventory ( Starting / Ending )</span></th>
+                <th/>
+                <th/>
+                <th class="text-right pr-4" scope="col" t-foreach="manufacturingPeriods" t-as="period">
+                    <div>0 / 0</div>
+                </th>
+            </tr>
+            <tr name="total_sale_forecast">
+                <th><span>Total Sale Forecast</span></th>
+                <th><span data-toggle="tooltip" data-placement="bottom" title="Total Actual Sale of last month"><t t-esc="0"/></span></th>
+                <th><span data-toggle="tooltip" data-placement="bottom" title="Total Forecast Sale of last month"><t t-esc="0"/></span></th>
+                <th class="text-right pr-4" scope="col" t-foreach="manufacturingPeriods" t-as="period">
+                    <span data-toggle="tooltip" data-placement="bottom" title="Total Existing Arriving Qty"><t t-esc="0"/></span>
+                    <span> / </span>
+                    <span data-toggle="tooltip" data-placement="bottom" title="Total Applied Qty"><t t-esc="0"/></span>
+                    <span> / </span>
+                    <span data-toggle="tooltip" data-placement="bottom" title="Total Confirmed Qty"><t t-esc="0"/></span>
+                </th>
+            </tr>
+            <tr name="total_incoming_qty">
+                <th><span>Total Incoming Qty ( Current / New )</span></th>
+                <th class="text-right pr-4" scope="col" t-foreach="manufacturingPeriods" t-as="period">
+                    <span data-toggle="tooltip" data-placement="bottom" title="Total Replenished Qty"><t t-esc="0"/></span>
+                    <span> / </span>
+                    <span data-toggle="tooltip" data-placement="bottom" title="New Replenishing Qty"><t t-esc="0"/></span>
+                </th>
+            </tr>
+        </tfoot>
+    </t>
+
+    <t t-name="shipping_schedule_main_control_panel_buttons">
+        <div>
+            <button type="button" title="Sales Confirm"
+                    t-attf-class="{{'btn btn-primary o_shipping_schedule_main_sales_confirm'}}">
+                Sales Confirm
+            </button>
+            <button type="button" title="Logistics Confirm"
+                    t-attf-class="{{'btn btn-primary o_shipping_schedule_main_logistics_confirm'}}">
+                Logistics Confirm
+            </button>
+            <button type="button" title="Replenish"
+                    t-attf-class="{{'btn btn-primary o_shipping_schedule_main_replenish'}}">
+                Replenish
+            </button>
+            <button type="button" title="Cancel"
+                    t-attf-class="{{'btn btn-primary o_shipping_schedule_main_cancel_confirm'}}">
+                Cancel Confirm
+            </button>
+        </div>
+    </t>
+
+</templates>

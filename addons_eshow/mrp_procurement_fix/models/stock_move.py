@@ -30,12 +30,18 @@ class StockMove(models.Model):
         'Unit Price', help="Technical field used to record the product cost set by the user during a picking confirmation (when costing "
                            "method used is 'average price' or 'real'). Value given in company currency and in product uom.", copy=True)  # as it's a technical field, we intentionally don't provide the digits attribute
 
+    """
+        timwang add at 2022/10/13
+        修改stock/stock_move.py中的同名方法
+
+        free_qty是产品的当前真实可用库存
+        virtual_available 是考虑了未完成的入出库后计算的可用库存
+        由于我们在实际使用中，在作业类型中的出库类作业（交货单，制造单，内部调拨，外包）设置了预约方式为”人工“。
+        因此，不会自动锁定库存，这会造成产品的free_qty不变。
+        原_adjust_procure_method方法中，读取可用库存使用的是product.free_qty字段。如果相同原材料需要多次被领用，则无法产生相关的采购。
+        这样就不对了。因此此将之改为product.virtual_available。
+    """
     def _adjust_procure_method(self):
-        """
-            timwang add at 2022/10/13
-            修改stock/stock_move.py中的同名方法
-            原方法中，读取可用库存使用的是product.free_qty字段，但是该字段没有考虑已有采购订单未到货的情况，因此将之改为product.virtual_available
-        """
         """ This method will try to apply the procure method MTO on some moves if
         a compatible MTO route is found. Else the procure method will be set to MTS
         """
@@ -99,6 +105,7 @@ class StockMove(models.Model):
         timwang add at 2019/8/19
         重载mrp/stock_move中方法，原方法中，如果是生产订单，就强制不允许设置picking
         但是这样会造成生产领料和完工单，中可以合并的数据无法合并。
+        todo: 暂未使用
     """
     def _should_be_assigned_1(self):
         self.ensure_one()
@@ -107,6 +114,7 @@ class StockMove(models.Model):
     """
         重载mrp/stock_move中的方法
         考虑mrp合并领料单和完工入库单的需要，允许对应生产订单状态为confirmed，以及自身状态为waiting的move删除
+        todo: 暂未使用
     """
     def unlink_1(self):
         # Avoid deleting move related to active MO
@@ -130,3 +138,50 @@ class StockMove(models.Model):
         self.with_context(prefetch_fields=False).mapped('move_line_ids').unlink()
 
         return super(models.Model, self).unlink()
+
+    def _do_unreverse_completely(self):
+        """
+        通过路线补货的stock_move, 如果设置为MTO或者是MTSO, 则procure_method有可能为make_to_order，并且会保存上游的入库单ID。
+        odoo系统中原有的取消保留功能（_do_unreverse），对于此种情况，并不能真正释放库存，而仅仅是将库存释放给上游入库单ID相同的其他出库类单据
+
+        因此增加本方法，对状态为confirmed, waiting, partially_available, assigned这几种类型的stock_move做如下操作：
+        1. procure_method 改为make_to_order，
+        2. 删除与上游单据的关联。
+        3. 删除对应的stock_move_line数据(同时会更新stock_quant中的相关库存数据)
+        :return: Boolean
+        """
+        moves_to_unreserve = OrderedSet()
+        for move in self:
+            if move.state == 'cancel' or (move.state == 'done' and move.scrapped):
+                # We may have cancelled move in an open picking in a "propagate_cancel" scenario.
+                # We may have done move in an open picking in a scrap scenario.
+                continue
+            elif move.state == 'done':
+                raise UserError(_("You cannot unreserve a stock move that has been set to 'Done'."))
+            moves_to_unreserve.add(move.id)
+        moves_to_unreserve = self.env['stock.move'].browse(moves_to_unreserve)
+
+        ml_to_update, ml_to_unlink = OrderedSet(), OrderedSet()
+        moves_not_to_recompute = OrderedSet()
+        for ml in moves_to_unreserve.move_line_ids:
+            if ml.qty_done:
+                ml_to_update.add(ml.id)
+            else:
+                ml_to_unlink.add(ml.id)
+                moves_not_to_recompute.add(ml.move_id.id)
+        ml_to_update, ml_to_unlink = self.env['stock.move.line'].browse(ml_to_update), self.env['stock.move.line'].browse(ml_to_unlink)
+        moves_not_to_recompute = self.env['stock.move'].browse(moves_not_to_recompute)
+
+        ml_to_update.write({'product_uom_qty': 0})
+        ml_to_unlink.unlink()
+
+        # for move in moves_to_unreserve:
+        #     if move.move_orig_ids:
+        #         move.move_orig_ids
+
+        moves_to_unreserve.write({'procure_method': 'make_to_stock', "move_orig_ids": [(5, 0, 0)]})
+
+        # `write` on `stock.move.line` doesn't call `_recompute_state` (unlike to `unlink`),
+        # so it must be called for each move where no move line has been deleted.
+        (moves_to_unreserve - moves_not_to_recompute)._recompute_state()
+        return True

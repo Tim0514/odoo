@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!-- License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <menuitem
+        id="parent_menu_connector"
+        name="Connector"
+        web_icon="eshow_common_connector,static/description/icon.png"
+        groups="group_connector_user,group_connector_manager"
+        sequence="300"
+    />
+
+    <menuitem
+        id="menu_connector_logs"
+        name="Logs"
+        sequence="10"
+        parent="parent_menu_connector"
+        groups="group_connector_user,group_connector_manager"
+    />
+
+</odoo>

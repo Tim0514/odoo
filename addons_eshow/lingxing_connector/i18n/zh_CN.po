@@ -1,0 +1,270 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* lingxing_connector
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-06 06:15+0000\n"
+"PO-Revision-Date: 2022-12-06 14:36+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__action_handler_name
+msgid "Action Handler Class Name"
+msgstr "操作处理类的名称"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__action_type
+msgid "Action Type"
+msgstr "操作类型"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Cancel"
+msgstr "取消"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__create_uid
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard__create_uid
+msgid "Created by"
+msgstr "创建人"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__create_date
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard__create_date
+msgid "Created on"
+msgstr "创建于"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__action_description
+msgid "Description"
+msgstr "说明"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__display_name
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard__display_name
+msgid "Display Name"
+msgstr "名称"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__end_time
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard__end_time
+msgid "End Time"
+msgstr "结束日期"
+
+#. module: lingxing_connector
+#: model:ir.model.fields.selection,name:lingxing_connector.selection__connector_lingxing__action_type__export
+msgid "Export"
+msgstr "导出"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Export Operations"
+msgstr "导出操作"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Export Products"
+msgstr "导出本地产品"
+
+#. module: lingxing_connector
+#: model:ir.model.fields.selection,name:lingxing_connector.selection__connector_lingxing__last_sync_result__fail
+msgid "Fail"
+msgstr "失败"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__id
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: lingxing_connector
+#: model:ir.model.fields.selection,name:lingxing_connector.selection__connector_lingxing__action_type__import
+msgid "Import"
+msgstr "导入"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Import Operations:"
+msgstr "导入操作:"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Import Product Monthly Statics"
+msgstr "导入产品月统计数据"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Import Shop Product Pair States"
+msgstr "导入店铺产品配对情况"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Import Shop Products"
+msgstr "导入店铺产品"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Import Shops"
+msgstr "导入店铺"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing____last_update
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard____last_update
+msgid "Last Modified on"
+msgstr "最近修改时间"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__last_success_sync_time
+msgid "Last Success Sync Time"
+msgstr "最近成功同步时间"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__last_sync_result
+msgid "Last Sync Result"
+msgstr "最近同步结果"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__last_sync_time
+msgid "Last Sync Time"
+msgstr "最近同步时间"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__write_uid
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard__write_uid
+msgid "Last Updated by"
+msgstr "最后更新者"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__write_date
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard__write_date
+msgid "Last Updated on"
+msgstr "最后更新时间"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_web_sale_marketplace__lingxing_marketplace_id
+msgid "Ling Xing Marketplace ID"
+msgstr "领星电商平台ID"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_web_sale_marketplace__lingxing_marketplace_name
+msgid "Ling Xing Marketplace Name"
+msgstr "领星电商平台名称"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_web_sale_shop__lingxing_shop_id
+#: model:ir.model.fields,field_description:lingxing_connector.field_web_sale_shop_product__lingxing_shop_id
+msgid "Ling Xing Shop ID"
+msgstr "领星店铺ID"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_web_sale_shop__lingxing_shop_name
+#: model:ir.model.fields,field_description:lingxing_connector.field_web_sale_shop_product__lingxing_shop_name
+msgid "Ling Xing Shop Name"
+msgstr "领星店铺名称"
+
+#. module: lingxing_connector
+#: model:ir.model,name:lingxing_connector.model_connector_lingxing
+#: model:ir.ui.menu,name:lingxing_connector.menu_lingxing_connector
+msgid "Lingxing Connector"
+msgstr "领星连接器"
+
+#. module: lingxing_connector
+#: model:ir.actions.act_window,name:lingxing_connector.action_connector_lingxing_wizard
+#: model:ir.ui.menu,name:lingxing_connector.menu_lingxing_connector_wizard
+#: model:ir.model,name:lingxing_connector.model_connector_lingxing_wizard
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Lingxing Connector Actions"
+msgstr "领星连接器动作"
+
+#. module: lingxing_connector
+#: model:ir.model,name:lingxing_connector.model_web_sale_marketplace
+msgid "Marketplace"
+msgstr "电商平台"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__max_concurrency
+msgid "Max Concurrency"
+msgstr "最大并发数量"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__method
+msgid "Method"
+msgstr "方法"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__name
+msgid "Name"
+msgstr "名称"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__related_model_id
+msgid "Related Model"
+msgstr "相关模型"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__route
+msgid "Route"
+msgstr ""
+
+#. module: lingxing_connector
+#: model:ir.model,name:lingxing_connector.model_web_sale_shop
+msgid "Shop"
+msgstr "店铺"
+
+#. module: lingxing_connector
+#: model:ir.model,name:lingxing_connector.model_web_sale_shop_product
+msgid "Shop Product"
+msgstr "店铺产品"
+
+#. module: lingxing_connector
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__start_time
+#: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard__start_time
+msgid "Start Time"
+msgstr "开始时间"
+
+#. module: lingxing_connector
+#: model:ir.model.fields.selection,name:lingxing_connector.selection__connector_lingxing__last_sync_result__success
+msgid "Success"
+msgstr "成功"
+
+#. module: lingxing_connector
+#. openerp-web
+#: code:addons/lingxing_connector/static/src/xml/web_shop.xml:0
+#, python-format
+msgid "Sync Shops"
+msgstr "同步店铺"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "This will export product data to Lingxing Server."
+msgstr "将导出本地产品信息到领星服务器。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "This will import product monthly statics data from Lingxing Server."
+msgstr "将从领星服务器导入产品月统计数据。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "This will import shop product data from Lingxing Server."
+msgstr "将从领星服务器导入店铺产品。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "This will import shop product pair data from Lingxing Server."
+msgstr "将从领星服务器导入店铺产品配对情况。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "This will import web shop data from Lingxing Server."
+msgstr "将从领星服务器导入店铺数据。"

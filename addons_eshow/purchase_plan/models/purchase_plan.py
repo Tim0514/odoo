@@ -200,6 +200,9 @@ class PurchasePlan(models.Model):
         copy=False,
     )
 
+    propagate_cancel = fields.Boolean('Propagate cancellation', default=False)
+
+
     @api.model
     def _get_default_name(self):
         return self.env["ir.sequence"].next_by_code("purchase.plan")

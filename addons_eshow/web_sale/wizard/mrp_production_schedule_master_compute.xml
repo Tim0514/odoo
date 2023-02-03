@@ -28,6 +28,6 @@
             name="Synchronize Products for Schedule"
             action="action_mrp_production_schedule_master_compute"
             parent="menu_web_sale_management"
-            sequence="20"/>
+            sequence="30"/>
 
 </odoo>

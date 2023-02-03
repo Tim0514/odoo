@@ -1,0 +1,171 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="shipping_schedule_group_tree" model="ir.ui.view">
+        <field name="name">web.sale.shipping.schedule.group.tree</field>
+        <field name="model">web.sale.shipping.schedule.group</field>
+        <field name="arch" type="xml">
+            <tree
+                string="Shipping Schedule Group"
+            >
+                <field name="name"/>
+                <field name="shop_id"/>
+                <field name="schedule_year" optional="show"/>
+                <field name="schedule_month" optional="show"/>
+                <field name="sale_qty_7" sum="1" optional="show"/>
+                <field name="sale_qty_14" sum="1" optional="show"/>
+                <field name="sale_qty_28" sum="1" optional="show"/>
+                <field name="qty_available" sum="1" optional="show"/>
+                <field name="estimate_monthly_sale_qty_1" sum="1" optional="show"/>
+                <field name="estimate_monthly_sale_qty_2" sum="1" optional="show"/>
+                <field name="advised_monthly_sale_qty" sum="1" optional="show"/>
+                <field name="monthly_sale_qty" sum="1" optional="show"/>
+                <field name="state"/>
+                <field name="need_focus"/>
+                <field name="salesperson_id" optional="show"/>
+                <field name="safety_available_days" optional="show"/>
+                <field name="sale_qty_compute_method" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="shipping_schedule_group_form" model="ir.ui.view">
+        <field name="name">web.sale.shipping.schedule.group.form</field>
+        <field name="model">web.sale.shipping.schedule.group</field>
+        <field name="arch" type="xml">
+            <form string="Shipping Schedule Group">
+                <header>
+                    <button name="web_sale.action_shipping_schedule" type="action" string="Open Shipping Schedule"
+                        context="{'shipping_schedule_group_id': active_id}" class="oe_highlight" />
+                    <button name="action_set_schedule_monthly_sale_qty" type="object" string="Set Schedule Monthly Sale Qty"
+                        context="{}" attrs="{}"
+                        class="" />
+                    <button name="action_reset_monthly_sale_qty" type="object" string="Reset Monthly Sale Qty"
+                            context="{}" attrs="{'invisible': [('monthly_sale_qty_changed', '=', False)]}"
+                            class="" />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sales_confirmed,logistics_confirmed,done" readonly="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h4>
+                            <group name="main_title">
+                                <group name="main_title1">
+                                    <field name="name" string="Reference"/>
+                                </group>
+                            </group>
+                        </h4>
+                    </div>
+                    <group name="main_header">
+                        <group name="main_header_1">
+                            <field name="shop_id"/>
+                            <field name="salesperson_id"/>
+                            <field name="need_focus"/>
+                            <field name="schedule_year" attrs="{'readonly': True, }"/>
+                            <field name="schedule_month" attrs="{'readonly': True, }"/>
+                            <field name="safety_available_days"/>
+                            <field name="sale_qty_compute_method"/>
+                        </group>
+                        <group name="main_header_2">
+                            <field name="sale_qty_7" attrs="{'readonly': True, }"/>
+                            <field name="sale_qty_14" attrs="{'readonly': True, }"/>
+                            <field name="sale_qty_28" attrs="{'readonly': True, }"/>
+                            <field name="qty_available" attrs="{'readonly': True, }"/>
+                            <field name="estimate_monthly_sale_qty_1" attrs="{'readonly': True, }"/>
+                            <field name="estimate_monthly_sale_qty_2" attrs="{'readonly': True, }"/>
+                            <field name="advised_monthly_sale_qty" attrs="{'readonly': True, }"/>
+                            <field name="monthly_sale_qty" attrs="{'invisible': [('sale_qty_compute_method', '=', 'by_product')]}"/>
+                            <field name="monthly_sale_qty_changed" attrs="{'invisible': True}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Related Shipping Schedules" name="related_shipping_schedules">
+                            <group>
+                                <button name="%(shipping_schedule_action_for_schedule_group)d" type="action" string="Select Shipping Schedules"
+                                    context="{}" attrs="{'invisible': [('state', 'in', ('sales_confirmed', 'logistics_confirmed', 'done'))]}"
+                                    class="oe_highlight" />
+                            </group>
+                            <field
+                                name="shipping_schedule_ids"
+                                attrs="{'readonly': [('state', 'in', ('sales_confirmed', 'logistics_confirmed', 'done'))]}"
+                            >
+                                <tree
+                                    string="Related Shipping Schedules"
+                                    create="false" edit="true" delete="false" import="false" export_xlsx="false"
+                                    multiedit="true" editable="bottom"
+                                >
+                                    <field name="shop_id" optional="show"/>
+                                    <field name="shop_product_id" optional="hide"/>
+                                    <field name="seller_sku" optional="show"/>
+                                    <field name="product_default_code" optional="show"/>
+                                    <field name="product_name" optional="show"/>
+                                    <field name="schedule_year" optional="show"/>
+                                    <field name="schedule_month" optional="show"/>
+                                    <field name="qty_available" sum="1" optional="show"/>
+                                    <field name="qty_shipped" sum="1" optional="show"/>
+                                    <field name="is_out_of_stock_occurred" optional="show"/>
+                                    <field name="sale_weight_factor" optional="show"/>
+                                    <field name="advised_monthly_sale_qty" sum="1" optional="show"/>
+                                    <field name="sale_qty_7" sum="1" optional="show"/>
+                                    <field name="sale_qty_14" sum="1" optional="show"/>
+                                    <field name="sale_qty_28" sum="1" optional="show"/>
+                                    <field name="estimate_monthly_sale_qty_1" sum="1" optional="show"/>
+                                    <field name="estimate_monthly_sale_qty_2" sum="1" optional="show"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="shipping_schedule_group_search" model="ir.ui.view">
+        <field name="name">web.sale.shipping.schedule.group.search</field>
+        <field name="model">web.sale.shipping.schedule.group</field>
+        <field name="arch" type="xml">
+            <search string="Search Shipping Schedule">
+                <field name="name"/>
+                <field name="shop_id"/>
+                <field name="salesperson_id"/>
+                <filter name="state_draft" string="Draft" domain="[('state','=','draft')]"/>
+                <filter name="state_sales_confirmed" string="Sales Confirmed" domain="[('state','=','sales_confirmed')]"/>
+                <filter name="state_logistics_confirmed" string="Logistics Confirmed" domain="[('state','=','logistics_confirmed')]"/>
+                <filter name="state_done" string="Done" domain="[('state','=','done')]"/>
+                <separator/>
+                <filter name="need_focus" string="Need Focus" domain="[('need_focus','=',True)]"/>
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="shop_id"
+                        string="Shop"
+                        domain="[]"
+                        context="{'group_by' : 'shop_id'}"
+                    />
+                    <filter
+                        name="salesperson_id"
+                        string="Sales Person"
+                        domain="[]"
+                        context="{'group_by' : 'salesperson_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="shipping_schedule_group_action" model="ir.actions.act_window">
+        <field name="name">Shipping Schedule Group</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">web.sale.shipping.schedule.group</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="shipping_schedule_group_search" />
+    </record>
+
+    <menuitem
+        id="menu_shipping_schedule_group"
+        name="Shipping Schedule Group"
+        action="shipping_schedule_group_action"
+        sequence="12"
+        parent="menu_web_sale_management"
+        groups="group_web_sale_user,group_web_sale_manager"
+    />
+</odoo>

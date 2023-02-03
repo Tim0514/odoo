@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="shop_product_weekly_stat_tree" model="ir.ui.view">
+        <field name="name">web.sale.shop.product.weekly.stat.tree</field>
+        <field name="model">web.sale.shop.product.weekly.stat</field>
+        <field name="arch" type="xml">
+            <tree
+                string="Web Shop Product Weekly Stat"
+                import="false"
+                create="false"
+                edit="false"
+                multi_edit="false"
+                duplicate="false"
+                editable="bottom"
+                default_order="shop_name, seller_skus, start_date desc"
+            >
+                <field name="shop_id" optional="show"/>
+                <field name="product_asin_id" optional="show"/>
+                <field name="shop_product_ids" optional="hide"/>
+                <field name="seller_skus" optional="show"/>
+                <field name="start_date" optional="show"/>
+                <field name="end_date" optional="show"/>
+                <field name="stat_year" optional="show"/>
+                <field name="stat_week" optional="show"/>
+                <field name="product_volume" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="shop_product_weekly_stat_search" model="ir.ui.view">
+        <field name="name">web.sale.shop.product.weekly.stat.search</field>
+        <field name="model">web.sale.shop.product.weekly.stat</field>
+        <field name="arch" type="xml">
+            <search string="Search shop Product Weekly Stat">
+                <field name="shop_id" />
+                <field name="product_asin_id" />
+                <field name="shop_product_ids" />
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="shop_id"
+                        string="Shop"
+                        domain="[]"
+                        context="{'group_by' : 'shop_id'}"
+                    />
+                    <filter
+                        name="product_asin_id"
+                        string="Product ASIN"
+                        domain="[]"
+                        context="{'group_by' : 'product_asin_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="shop_product_weekly_stat_action" model="ir.actions.act_window">
+        <field name="name">Shop Product Weekly Stat</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">web.sale.shop.product.weekly.stat</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="shop_product_weekly_stat_search" />
+    </record>
+
+    <menuitem
+        id="menu_shop_product_weekly_stat"
+        name="Shop Product Weekly Stat"
+        action="shop_product_weekly_stat_action"
+        sequence="10"
+        parent="menu_web_sale_management"
+        groups="group_web_sale_user,group_web_sale_manager"
+    />
+</odoo>

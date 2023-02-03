@@ -486,8 +486,8 @@ class ShippingReportRequestHistory(models.Model):
     #     """
     #     model_id = self.env[IR_MODEL]._get(AMZ_SHIPPING_REPORT_REQUEST_HISTORY).id
     #     for dict_val in dict_vals:
-    #         shipment_id, fc_warehouse_id, shipped_qty, product_sku, ship_item_id = self.get_shipment_details(dict_val)
-    #         amz_product = self.get_amazon_product(amz_order.amz_instance_id, product_sku, log_rec)
+    #         shipment_id, fc_warehouse_id, shipped_qty, seller_sku, ship_item_id = self.get_shipment_details(dict_val)
+    #         amz_product = self.get_amazon_product(amz_order.amz_instance_id, seller_sku, log_rec)
     #         if not amz_product:
     #             continue
     #         product = amz_product.product_id
@@ -1366,12 +1366,12 @@ class ShippingReportRequestHistory(models.Model):
     #         for line in lines:
     #             fulfillment_warehouse_id = line.get("warehouse", False)
     #             shipped_qty = float(line.get("quantity-shipped", 0.0))
-    #             product_sku = line.get("sku", False)
+    #             seller_sku = line.get("sku", False)
     #             amazon_product = amazon_product_obj.search_amazon_product(amazon_order.amz_instance_id.id,
-    #                                                                       product_sku, "FBA")
+    #                                                                       seller_sku, "FBA")
     #             if not amazon_product:
     #                 message = "Amazon Product[%s] not found for Instance[%s] in ERP." % (
-    #                     product_sku, amazon_order.amz_instance_id.name)
+    #                     seller_sku, amazon_order.amz_instance_id.name)
     #                 common_log_line_obj.amazon_create_order_log_line(message, model_id, self.id,
     #                                                                  order_ref, False, 'FBA', job, mismatch=True)
     #                 continue

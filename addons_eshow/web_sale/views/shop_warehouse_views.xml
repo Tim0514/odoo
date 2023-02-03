@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_web_sale_warehouse_tree" model="ir.ui.view">
+        <field name="name">web.sale.warehouse.tree</field>
+        <field name="model">web.sale.warehouse</field>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+            <tree name="web_warehouse_list"
+                string="Web Shop Warehouse"
+                create="false"
+                editable="bottom"
+                multi_edit="true"
+            >
+                <field name="company_id" optional="hide" groups="web_sale.group_web_sale_manager"/>
+                <field name="name" />
+                <field name="shop_ids" optional="hide"/>
+                <field name="shop_names" />
+                <field name="default_shop_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="search_web_sale_warehouse" model="ir.ui.view">
+        <field name="name">web.sale.warehouse.search</field>
+        <field name="model">web.sale.warehouse</field>
+        <field name="arch" type="xml">
+            <search string="Search Web Shop Warehouse">
+                <field name="name" />
+                <field name="shop_ids" />
+                <field name="default_shop_id" />
+                <group expand="0" string="Group By...">
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_web_sale_warehouse" model="ir.actions.act_window">
+        <field name="name">Web Shop Warehouse</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">web.sale.warehouse</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="search_web_sale_warehouse" />
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Shop Warehouse
+          </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_web_sale_warehouse" name="Web Shop Warehouse"
+        sequence="25"
+        parent="menu_basic_data"
+        action="action_web_sale_warehouse"/>
+
+</odoo>

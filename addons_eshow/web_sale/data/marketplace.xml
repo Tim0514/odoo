@@ -8,6 +8,8 @@
             <field name="code">ATVPDKIKX0DER</field>
             <field name="endpoint">https://mws.amazonservices.com</field>
             <field name="description"/>
+            <field name="description"/>
+            <field name="description"/>
         </record>
         <record id="amazon_ca" model="web.sale.marketplace">
             <field name="name">亚马逊-加拿大</field>
@@ -100,7 +102,7 @@
             <field name="description"/>
         </record>
         <record id="amazon_se" model="web.sale.marketplace">
-            <field name="name">亚马逊-瑞士</field>
+            <field name="name">亚马逊-瑞典</field>
             <field name="country_id" search="[('code','=','SE')]"/>
             <field name="type">amazon</field>
             <field name="code">A2NODRKZP88ZB9</field>
@@ -147,6 +149,14 @@
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
             <field name="description"/>
         </record>
+        <record id="amazon_be" model="web.sale.marketplace">
+            <field name="name">亚马逊-比利时</field>
+            <field name="country_id" search="[('code','=','BE')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A1RKKUPIHCS9HS</field>
+            <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
         <record id="amazon_nl" model="web.sale.marketplace">
             <field name="name">亚马逊-荷兰</field>
             <field name="country_id" search="[('code','=','NL')]"/>
@@ -161,6 +171,14 @@
             <field name="type">amazon</field>
             <field name="code">A33AVAJ2PDY3EV</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="description"/>
+        </record>
+        <record id="amazon_cn" model="web.sale.marketplace">
+            <field name="name">亚马逊-中国</field>
+            <field name="country_id" search="[('code','=','CN')]"/>
+            <field name="type">amazon</field>
+            <field name="code">A1VC38T7YXB528</field>
+            <field name="endpoint">https://mws.amazonservices.jp</field>
             <field name="description"/>
         </record>
         <record id="ebay_us" model="web.sale.marketplace">

@@ -16,26 +16,28 @@ _STATES = [
 class ShopProduct(models.Model):
     _name = "web.sale.shop.product"
     _description = "Shop Product"
-    _order = "shop_id, product_id"
+    _order = "shop_name, product_default_code"
+    _rec_name = "product_name"
 
-    @api.model
-    def _company_get(self):
-        return self.env["res.company"].browse(self.env.company.id)
-
+    shop_id = fields.Many2one(
+        comodel_name="web.sale.shop",
+        string="Web Shop",
+        store=True,
+        readonly=True,
+        domain="[]",
+        index=True,
+    )
 
     company_id = fields.Many2one(
         comodel_name="res.company",
-        string="Company",
-        required=True,
-        default=_company_get,
-    )
+        related="shop_id.company_id",
+        string='Company', store=True, readonly=True)
 
-    shop_id = fields.Many2one(
-        comodel_name="res.partner",
-        string="Web Shop",
+    shop_name = fields.Char(
+        related="shop_id.name",
+        string="Web Shop Name",
         store=True,
-        readonly=False,
-        domain="[('is_web_shop', '=', True)]",
+        index=True,
     )
 
     product_id = fields.Many2one(
@@ -50,6 +52,7 @@ class ShopProduct(models.Model):
         string="Default Code",
         readonly=True,
         store=True,
+        index=True,
     )
 
     product_name = fields.Char(
@@ -58,22 +61,62 @@ class ShopProduct(models.Model):
         readonly=True,
     )
 
-    product_sku = fields.Char(
-        string="Product SKU",
+    seller_sku = fields.Char(
+        string="MSKU",
         required=True,
         index=True,
+        readonly=True,
     )
 
-    product_asin = fields.Char(
-        string="Product ASIN",
+    product_asin_id = fields.Many2one(
+        "web.sale.shop.product.asin",
+        string="ASIN",
         index=True,
+        readonly=True,
+    )
+
+    product_listing_id = fields.Char(
+        string="Listing Id",
+        index=True,
+        readonly=True,
+    )
+
+    product_fnsku = fields.Char(
+        string="FNSKU",
+        index=True,
+        readonly=True,
     )
 
     parent_asin = fields.Char(
         string="Parent ASIN",
+        index=True,
+        readonly=True,
     )
 
+    shop_product_name = fields.Char(
+        string="Product Name In Shop",
+        readonly=True,
+    )
 
+    is_deleted = fields.Boolean(string="Is Deleted", readonly=True)
+
+    currency_id = fields.Many2one("res.currency", string="Currency", readonly=True)
+
+    listing_update_time = fields.Datetime("Listing Update Time")
+
+    pair_update_time = fields.Datetime("Pair Update Time")
+
+    seller_rank = fields.Integer("Seller Rank")
+
+    seller_rank_category = fields.Char("Category")
+
+    review_num = fields.Integer("Number of reviews")
+
+    review_star = fields.Float("Stars")
+
+    fulfillment_channel_type = fields.Char("Fulfillment Channel")
+
+    # 人工设置的产品状态(new, clearance, normal, stop)
     state = fields.Selection(
         selection=_STATES,
         string="Status",
@@ -83,16 +126,56 @@ class ShopProduct(models.Model):
         default="normal",
     )
 
+    # 同步下来的产品状态(normal, stop)
+    shop_product_state = fields.Selection(
+        selection=_STATES,
+        string="Shop Product Status",
+        index=True,
+        required=True,
+        copy=True,
+        default="normal",
+        readonly=True,
+    )
+
     salesperson_id = fields.Many2one(
         comodel_name='res.users', string='Salesperson', index=True, default=lambda self: self.env.user,
-        )
+    )
+
+    is_web_sale_manager = fields.Boolean("Is Manager", store=False, compute='_compute_is_web_sale_manager')
+
+    is_paired = fields.Boolean("Paired", store=True, compute='_compute_is_paired')
 
     description = fields.Text(string="Description")
 
-    mrp_production_schedule_id = fields.Many2one(
-        comodel_name="mrp.production.schedule",
-        string="Production Schedule",
-    )
+    # 可售
+    afn_fulfillable_quantity = fields.Float("Available Qty")
+
+    # 待调仓
+    reserved_fc_transfers = fields.Float("Waiting Transfer Qty")
+
+    # 调仓中
+    reserved_fc_processing = fields.Float("Transfer Processing Qty")
+
+    # 待发货
+    reserved_customerorders = fields.Float("Waiting Delivery Qty")
+
+    # 入库
+    afn_inbound_shipped_quantity = fields.Float("Inbound Shipped Qty")
+
+    # 不可售
+    afn_unsellable_quantity = fields.Float("Unsellable Qty")
+
+    # 计划入库
+    afn_inbound_working_quantity = fields.Float("Inbound Working Qty")
+
+    # 入库中
+    afn_inbound_receiving_quantity = fields.Float("Inbound Receiving Qty")
+
+    active = fields.Boolean(default=True)
+
+    _sql_constraints = [
+        ('seller_sku_uniq1', 'unique(shop_id, seller_sku)', 'Seller SKU in one shop must be unique'),
+    ]
 
     def name_get(self):
         # Prefetch the fields used by the `name_get`, so `browse` doesn't fetch other fields
@@ -111,14 +194,14 @@ class ShopProduct(models.Model):
     '''
     @api.model
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
-        # 导入变体数据是，可以根据"父物料编码: 属性名称: 属性值"的格式找到相应的属性值行
         args = args or []
-        if operator == 'ilike' and not (name or '').strip():
-            domain = [("shop_id.name", "ilike", name),
-                      "|", ("shop_id.name", "ilike", name),
+        if operator == 'ilike' and (name or '').strip():
+            domain = ["|", ("shop_id.name", "ilike", name),
                       "|", ("product_id.name", "ilike", name),
                       "|", ("product_id.default_code", "ilike", name),
-                      "|", ("product_sku", "ilike", name),
+                      "|", ("seller_sku", "ilike", name),
+                      "|", ("product_asin_id.product_asin", "ilike", name),
+                      ("parent_asin", "ilike", name),
                       ]
         else:
             strlist = str.split(name, ": ")
@@ -129,10 +212,67 @@ class ShopProduct(models.Model):
                               ]
                 elif not strlist[2].strip() == '':
                     domain = [("shop_id.name", "=", strlist[0]),
-                              ("product_sku", "=", strlist[2]),
+                              ("seller_sku", "=", strlist[2]),
                               ]
                 else:
                     return False
             else:
                 return False
         return self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
+
+    def _prepare_product_asin_vals(self, shop_product_vals):
+        product_asin_vals = {
+            "shop_id": shop_product_vals.get("shop_id"),
+            "product_asin": shop_product_vals.get("product_asin"),
+            "shop_product_name": shop_product_vals.get("shop_product_name"),
+            "parent_asin": shop_product_vals.get("parent_asin"),
+            "currency_id": shop_product_vals.get("currency_id"),
+            "listing_update_time": shop_product_vals.get("listing_update_time"),
+            "seller_rank": shop_product_vals.get("seller_rank"),
+            "seller_rank_category": shop_product_vals.get("seller_rank_category"),
+            "review_num": shop_product_vals.get("review_num"),
+        }
+        return product_asin_vals
+
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     product_asin_obj = self.env["web.sale.shop.product.asin"]
+    #     for vals in vals_list:
+    #         product_asin_vals = self._prepare_product_asin_vals(vals)
+    #         product_asin = product_asin_obj.create_or_update(product_asin_vals)
+    #         vals["product_asin_id"] = product_asin.id
+    #         vals.pop("product_asin")
+    #     templates = super(ShopProduct, self).create(vals_list)
+    #
+    #     return templates
+
+    # def write(self, vals):
+    #     # 更新
+    #     product_asin_obj = self.env["web.sale.shop.product.asin"]
+    #     product_asin_vals = self._prepare_product_asin_vals(vals)
+    #     product_asin = product_asin_obj.create_or_update(product_asin_vals)
+    #     vals["product_asin_id"] = product_asin.id
+    #     vals.pop("product_asin")
+    #     res = super(ShopProduct, self).write(vals)
+    #     return res
+
+    def unlink(self):
+        product_asin_id = self.product_asin_id
+        super(ShopProduct, self).unlink()
+        if len(product_asin_id.shop_product_ids) == 0:
+            product_asin_id.unlink()
+
+    @api.depends('salesperson_id')
+    def _compute_is_web_sale_manager(self):
+        if self.env.user.has_group("web_sale.group_web_sale_manager"):
+            self.is_web_sale_manager = True
+        else:
+            self.is_web_sale_manager = False
+
+    @api.depends('product_id')
+    def _compute_is_paired(self):
+        for record in self:
+            if record.product_id:
+                record.is_paired = True
+            else:
+                record.is_paired = False

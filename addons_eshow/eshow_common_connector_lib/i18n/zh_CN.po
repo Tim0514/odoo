@@ -1,0 +1,470 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* eshow_common_connector_lib
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-06 05:59+0000\n"
+"PO-Revision-Date: 2022-12-06 14:12+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__action_state
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__action_state
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.search_eshow_log_book
+msgid "Action State"
+msgstr "状态"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__attachment_id
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__attachment_id
+msgid "Attachment"
+msgstr "附件"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_attachment_count
+msgid "Attachment Count"
+msgstr "附件数量"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__complete_date
+msgid "Complete Time"
+msgstr "完成时间"
+
+#. module: eshow_common_connector_lib
+#: model:ir.module.category,name:eshow_common_connector_lib.module_category_connector
+#: model:ir.ui.menu,name:eshow_common_connector_lib.parent_menu_connector
+msgid "Connector"
+msgstr "连接器"
+
+#. module: eshow_common_connector_lib
+#: model_terms:ir.actions.act_window,help:eshow_common_connector_lib.action_eshow_log_book
+msgid "Connector Log Books."
+msgstr "日志"
+
+#. module: eshow_common_connector_lib
+#: model:res.groups,name:eshow_common_connector_lib.group_connector_manager
+msgid "Connector Manager"
+msgstr "连接器管理员"
+
+#. module: eshow_common_connector_lib
+#: model:res.groups,name:eshow_common_connector_lib.group_connector_user
+msgid "Connector User"
+msgstr "连接器用户"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__create_uid
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__create_uid
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__create_uid
+msgid "Created by"
+msgstr "创建人"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__create_date
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__create_date
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__create_date
+msgid "Created on"
+msgstr "创建于"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model,name:eshow_common_connector_lib.model_connector_data_sync_info
+msgid "Data Import/Export Information"
+msgstr "数据导入/导出记录信息"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__display_name
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__display_name
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__display_name
+msgid "Display Name"
+msgstr "名称"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__error_message
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__error_message
+msgid "Error Message"
+msgstr "错误信息"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__ext_message
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__ext_message
+msgid "Extend Message"
+msgstr "附加信息"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__action_state__fail
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__fail
+msgid "Fail"
+msgstr "失败"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__fail_record_count
+msgid "Failed Record Count"
+msgstr "失败数"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__file_name
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__file_name
+msgid "File Name"
+msgstr "文件名称"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,help:eshow_common_connector_lib.field_eshow_log_book__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.search_eshow_log_book
+msgid "Group By..."
+msgstr "分组"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__id
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__id
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__id
+msgid "ID"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,help:eshow_common_connector_lib.field_eshow_log_book__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,help:eshow_common_connector_lib.field_eshow_log_book__message_needaction
+#: model:ir.model.fields,help:eshow_common_connector_lib.field_eshow_log_book__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,help:eshow_common_connector_lib.field_eshow_log_book__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__ignore_record_count
+msgid "Ignore Record Count"
+msgstr "忽略数"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__action_state__in-progress
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__in-progress
+msgid "In Progress"
+msgstr "进行中"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.constraint,message:eshow_common_connector_lib.constraint_connector_data_sync_info_data_sync_info_uniq1
+msgid "Internal Reference must be unique"
+msgstr "内部参考号必须唯一"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info____last_update
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book____last_update
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line____last_update
+msgid "Last Modified on"
+msgstr "最后修改时间"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__last_export_time
+msgid "Last Successfully Export Time"
+msgstr "最近成功导出时间"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__last_import_time
+msgid "Last Successfully Import Time"
+msgstr "最近成功导入时间"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__write_uid
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__write_uid
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__write_uid
+msgid "Last Updated by"
+msgstr "最后更新者"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__write_date
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__write_date
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__write_date
+msgid "Last Updated on"
+msgstr "最后更新时间"
+
+#. module: eshow_common_connector_lib
+#: code:addons/eshow_common_connector_lib/models/log_book.py:0
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__log_module__lingxing_connector
+#, python-format
+msgid "Lingxing Connector"
+msgstr "领星连接器"
+
+#. module: eshow_common_connector_lib
+#: model:ir.actions.act_window,name:eshow_common_connector_lib.action_eshow_log_book
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__log_book_id
+#: model:ir.ui.menu,name:eshow_common_connector_lib.menu_connector_log_book
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.view_eshow_log_book_tree
+msgid "Log Book"
+msgstr "日志"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model,name:eshow_common_connector_lib.model_eshow_log_book_line
+msgid "Log Book Line"
+msgstr "日志行"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__log_book_lines
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.view_eshow_log_book_form
+msgid "Log Book Lines"
+msgstr "日志行"
+
+#. module: eshow_common_connector_lib
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.view_eshow_log_book_form
+msgid "Log Books"
+msgstr "日志"
+
+#. module: eshow_common_connector_lib
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.view_eshow_log_book_form
+msgid "Log Lines"
+msgstr "日志行"
+
+#. module: eshow_common_connector_lib
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.search_eshow_log_book
+msgid "Log Module"
+msgstr "模块"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model,name:eshow_common_connector_lib.model_eshow_log_book
+msgid "Log book for Connectors"
+msgstr "连接器日志"
+
+#. module: eshow_common_connector_lib
+#: model:ir.ui.menu,name:eshow_common_connector_lib.menu_connector_logs
+msgid "Logs"
+msgstr "日志"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_ids
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.view_eshow_log_book_form
+msgid "Messages"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__model_id
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__model_id
+msgid "Model"
+msgstr "模型"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__log_module
+msgid "Module which create the log."
+msgstr "建立日志的模块"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__name_ref
+msgid "Name"
+msgstr "名称"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_needaction_counter
+msgid "Number of Actions"
+msgstr "动作数量"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_has_error_counter
+msgid "Number of errors"
+msgstr "错误数"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,help:eshow_common_connector_lib.field_eshow_log_book__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,help:eshow_common_connector_lib.field_eshow_log_book__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,help:eshow_common_connector_lib.field_eshow_log_book__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__operation_name
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__operation_name
+msgid "Operation"
+msgstr "操作"
+
+#. module: eshow_common_connector_lib
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.search_eshow_log_book
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.view_eshow_log_book_form
+msgid "Operation Name"
+msgstr "操作名称"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__res_id
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__res_id
+msgid "Record ID"
+msgstr "记录ID值"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__name
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__code_ref
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.view_eshow_log_book_form
+msgid "Reference"
+msgstr "参考"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__activity_user_id
+msgid "Responsible User"
+msgstr "负责人"
+
+#. module: eshow_common_connector_lib
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.search_eshow_log_book
+msgid "Search Log Book"
+msgstr "查找日志"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__start_date
+msgid "Start Time"
+msgstr "开始时间"
+
+#. module: eshow_common_connector_lib
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.search_eshow_log_book
+msgid "State Fail"
+msgstr "失败"
+
+#. module: eshow_common_connector_lib
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.search_eshow_log_book
+msgid "State In Progress"
+msgstr "进行中"
+
+#. module: eshow_common_connector_lib
+#: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.search_eshow_log_book
+msgid "State Success"
+msgstr "成功"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,help:eshow_common_connector_lib.field_eshow_log_book__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__action_state__success
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__success
+msgid "Success"
+msgstr "成功"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__success_record_count
+msgid "Successful Record Count"
+msgstr "成功数"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__total_record_count
+msgid "Total Record Count"
+msgstr "总数"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,help:eshow_common_connector_lib.field_eshow_log_book__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""

@@ -155,7 +155,7 @@
     <menuitem
         id="menu_mrp_production_schedule_master"
         name="Sale Schedule"
-        sequence="10"
+        sequence="20"
         parent="menu_web_sale_management"
         action="mrp_production_schedule_master_form_action"
         groups="group_web_sale_user,group_web_sale_manager"

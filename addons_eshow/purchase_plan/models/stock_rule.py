@@ -35,7 +35,7 @@ class StockRule(models.Model):
             ],
             "orderpoint_id": procurement.values.get("orderpoint_id", False)
                              and procurement.values.get("orderpoint_id").id,
-
+            'propagate_cancel': procurement.values.get("propagate_cancel", False)
         }
 
     @api.model

@@ -39,7 +39,6 @@ class ProductProduct(models.Model):
     weight = fields.Float('Shipping Weight', digits='Stock Weight', readonly=True,
                                    compute='_compute_weight', store=True)
 
-
     customs_declare_currency_id = fields.Many2one(
         'res.currency', 'Customs Declaration Currency',
         compute='_compute_customs_declare_currency_id',)

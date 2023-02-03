@@ -22,6 +22,10 @@ from odoo.tools.misc import formatLang, get_lang, format_amount
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
+    _sql_constraints = [
+        ('name_uniq1', 'unique(name)', 'Purchase Order No. must be unique'),
+    ]
+
     def _prepare_notes(self, partner_id):
 
         partner_id = self.env['res.partner'].browse(partner_id)

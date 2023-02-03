@@ -1,0 +1,185 @@
+<?xml version="1.0" ?>
+<!-- License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="view_eshow_log_book_tree" model="ir.ui.view">
+        <field name="name">eshow.log.book.tree</field>
+        <field name="model">eshow.log.book</field>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+            <tree name="eshow_log_book"
+                string="Log Book"
+                create="false"
+                editable="bottom"
+                multi_edit="false"
+                decoration-info="action_state in ['in-progress']"
+                decoration-success="action_state in ['success']"
+                decoration-danger="action_state in ['fail']"
+                decoration-warning="action_state in ['warning']"
+            >
+                <field name="name" />
+                <field name="log_module" optional="hide" />
+                <field name="operation_name" />
+                <field name="start_date" optional="show"/>
+                <field name="complete_date" optional="hide"/>
+                <field name="action_state" widget="badge"
+                    decoration-info="action_state in ['in-progress']"
+                    decoration-success="action_state in ['success']"
+                    decoration-danger="action_state in ['fail']"
+                    decoration-warning="action_state in ['warning']"
+                />
+                <field name="total_record_count" optional="hide"/>
+                <field name="success_record_count" optional="hide"/>
+                <field name="warning_record_count" optional="hide"/>
+                <field name="fail_record_count" optional="hide"/>
+                <field name="ignore_record_count" optional="hide"/>
+                <field name="error_message" optional="hide"/>
+                <field name="ext_message" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eshow_log_book_form" model="ir.ui.view">
+        <field name="name">eshow.log.book.form</field>
+        <field name="model">eshow.log.book</field>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+            <form string="Log Books">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h4>
+                            <group name="main_title">
+                                <group name="main_title1">
+                                    <field name="name" string="Reference" attrs="{'readonly': True, }"/>
+                                </group>
+                                <group name="main_title2">
+                                    <field name="operation_name" string="Operation Name" attrs="{'readonly': True, }"/>
+                                </group>
+                            </group>
+                        </h4>
+                    </div>
+                    <group name="main_header">
+                        <group name="declaration_details">
+                            <field name="start_date" attrs="{'readonly': True, }"/>
+                            <field name="complete_date" attrs="{'readonly': True, }"/>
+                            <field name="action_state" attrs="{'readonly': True, }" widget="badge"
+                                decoration-info="action_state in ['in-progress']"
+                                decoration-success="action_state in ['success']"
+                                decoration-danger="action_state in ['fail']"
+                                decoration-warning="action_state in ['warning']"
+                            />
+                        </group>
+                        <group name="declaration_details_1">
+                            <field name="total_record_count" attrs="{'readonly': True, }"/>
+                            <field name="success_record_count" attrs="{'readonly': True, }"/>
+                            <field name="warning_record_count" attrs="{'readonly': True, }"/>
+                            <field name="fail_record_count" attrs="{'readonly': True, }"/>
+                            <field name="ignore_record_count" attrs="{'readonly': True, }"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Log Lines" name="log_lines">
+                            <field
+                                name="log_book_lines"
+                                widget="section_and_note_one2many"
+                                mode="tree"
+                                attrs="{'readonly': True, }"
+                            >
+                                <tree name="log_book_lines"
+                                    string="Log Book Lines"
+                                    create="false"
+                                    editable="false"
+                                    multi_edit="false"
+                                    import="false"
+                                    decoration-info="action_state in ['in-progress']"
+                                    decoration-success="action_state in ['success']"
+                                    decoration-danger="action_state in ['fail']"
+                                    decoration-warning="action_state in ['warning']"
+                                >
+                                    <field name="code_ref" optional="show"/>
+                                    <field name="model_id" optional="show"/>
+                                    <field name="res_id" optional="show"/>
+                                    <field name="name_ref" optional="show"/>
+                                    <field name="action_state" widget="badge"
+                                        decoration-info="action_state in ['in-progress']"
+                                        decoration-success="action_state in ['success']"
+                                        decoration-danger="action_state in ['fail']"
+                                        decoration-warning="action_state in ['warning']"
+                                    />
+                                    <field name="error_message" optional="hide"/>
+                                    <field name="ext_message" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Messages" name="messages">
+                            <group>
+                                <field name="error_message" attrs="{'readonly': True, }"/>
+                                <field name="ext_message" attrs="{'readonly': True, }"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="search_eshow_log_book" model="ir.ui.view">
+        <field name="name">eshow.log.book.search</field>
+        <field name="model">eshow.log.book</field>
+        <field name="arch" type="xml">
+            <search string="Search Log Book">
+                <field name="name" />
+                <field name="log_module" />
+                <field name="operation_name" />
+                <filter name="state_in_progress" string="State In Progress" domain="[('action_state','=','in-progress')]"/>
+                <filter name="state_in_success" string="State Success" domain="[('action_state','=','success')]"/>
+                <filter name="state_in_fail" string="State Fail" domain="[('action_state','=','fail')]"/>
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="group_by_log_module"
+                        string="Log Module"
+                        domain="[]"
+                        context="{'group_by' : 'log_module'}"
+                    />
+                    <filter
+                        name="group_by_operation_name"
+                        string="Operation Name"
+                        domain="[]"
+                        context="{'group_by' : 'operation_name'}"
+                    />
+                    <filter
+                        name="group_by_action_state"
+                        string="Action State"
+                        domain="[]"
+                        context="{'group_by' : 'action_state'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_eshow_log_book" model="ir.actions.act_window">
+        <field name="name">Log Book</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">eshow.log.book</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="search_eshow_log_book" />
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Connector Log Books.
+          </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_connector_log_book"
+        name="Log Book"
+        sequence="10"
+        parent="menu_connector_logs"
+        groups="group_connector_user,group_connector_manager"
+        action="action_eshow_log_book"
+    />
+
+</odoo>

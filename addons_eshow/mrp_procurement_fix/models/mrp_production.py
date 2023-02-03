@@ -22,7 +22,7 @@ SIZE_BACK_ORDER_NUMERING = 3
 
 
 class MrpProduction(models.Model):
-    _inherit = ['mrp.production']
+    _inherit = 'mrp.production'
 
     @api.model
     def create(self, values):
@@ -31,6 +31,7 @@ class MrpProduction(models.Model):
             阻止原方法中强制生成Groupid, 改为按规则设置GroupId, 相关代码在stock_rule中。
 
             原方法中，是强制生成一个group_id, 并且每次都生成新的生产订单
+
             如果Rule设置了GroupId留空，则不创建GroupId, 同时有相同生产日期的生产订单，则合并交货期相同，产品相同的行。
         """
         # Remove from `move_finished_ids` the by-product moves and then move `move_byproduct_ids`
@@ -49,6 +50,11 @@ class MrpProduction(models.Model):
             else:
                 values['name'] = self.env['ir.sequence'].next_by_code('mrp.production') or _('New')
 
+        # 注释掉原代码中强制生成补货组的代码
+        # if not values.get('procurement_group_id'):
+        #     procurement_group_vals = self._prepare_procurement_group_vals(values)
+        #     values['procurement_group_id'] = self.env["procurement.group"].create(procurement_group_vals).id
+
         production = super(models.Model, self).create(values)
         (production.move_raw_ids | production.move_finished_ids).write({
             'group_id': production.procurement_group_id.id,
@@ -63,7 +69,25 @@ class MrpProduction(models.Model):
         if 'import_file' in self.env.context:
             production._onchange_move_raw()
             production._onchange_move_finished()
+            production._onchange_workorder_ids()
         return production
+
+    unreserve_visible_completely = fields.Boolean(
+        'Allowed to Unreserve Production Completely', compute='_compute_unreserve_visible_completely',
+        help='Technical field to check when we can unreserve completely')
+
+    @api.depends('move_raw_ids', 'state', 'move_raw_ids.product_uom_qty', 'move_raw_ids.move_orig_ids')
+    def _compute_unreserve_visible_completely(self):
+        for order in self:
+            already_reserved = order.state not in ('done', 'cancel') and order.mapped('move_raw_ids.move_line_ids')
+            make_to_order = order.state not in ('done', 'cancel') and order.move_raw_ids.filtered(lambda r: r.procure_method == "make_to_order")
+            move_orig_ids = order.state not in ('done', 'cancel') and order.mapped('move_raw_ids.move_orig_ids')
+            any_quantity_done = any(m.quantity_done > 0 for m in order.move_raw_ids)
+
+            order.unreserve_visible_completely = not any_quantity_done and (already_reserved or make_to_order or move_orig_ids)
+
+    def do_unreserve_completely(self):
+        self.move_raw_ids.filtered(lambda x: x.state not in ('done', 'cancel'))._do_unreverse_completely()
 
     """
         Added by timwang on 2012/8/19

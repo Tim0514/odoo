@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Manufacturing Order -->
+        <record id="eshow_mrp_fix_mrp_production_tree_view" model="ir.ui.view">
+            <field name="name">eshow.mrp.fix.mrp.production.tree</field>
+            <field name="model">mrp.production</field>
+            <field name="mode">extension</field>
+            <field name="priority" eval="2001"/>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/header/button[@name='do_unreserve']" position="after">
+                    <button name="do_unreserve_completely" class="btn-danger" type="object"
+                            string="Unreserve Completely"
+                            confirm="Are you still sure you want to do complete unreserve action?"
+                    />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="eshow_mrp_fix_mrp_production_form_view" model="ir.ui.view">
+            <field name="name">eshow.mrp.fix.mrp.production.form</field>
+            <field name="model">mrp.production</field>
+            <field name="mode">extension</field>
+            <field name="priority" eval="2001"/>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[@name='do_unreserve']" position="after">
+                    <button name="do_unreserve_completely" class="btn-danger" type="object"
+                            string="Unreserve Completely"
+                            confirm="Are you still sure you want to do complete unreserve action?"
+                            attrs="{'invisible': [('unreserve_visible_completely', '=', False)]}" data-hotkey="w"/>
+                </xpath>
+                <xpath expr="//sheet/field[@name='unreserve_visible']" position="after">
+                    <field name="unreserve_visible_completely" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

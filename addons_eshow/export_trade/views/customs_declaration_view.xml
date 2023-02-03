@@ -1,0 +1,191 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2021-2023 Tim Wang
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+
+    <menuitem
+        id="menu_export_trade"
+        name="Export Trade"
+        sequence="3"
+        groups="sales_team.group_sale_salesman"
+        parent="sale.sale_menu_root"
+    />
+
+    <record id="view_customs_declaration_search" model="ir.ui.view">
+        <field name="name">customs.declaration.search</field>
+        <field name="model">sale.customs.declaration</field>
+        <field name="priority" eval="15"/>
+        <field name="arch" type="xml">
+            <search string="Search Customs Declaration">
+                <field name="name" string="Reference" filter_domain="['|', '|', ('name', 'ilike', self), ('customs_declaration_number', 'ilike', self), ('partner_id', 'child_of', self)]"/>
+                <field name="partner_id" operator="child_of"/>
+                <field name="product_id"/>
+                <filter string="Draft" domain="[('state', '=', 'draft')]" name="draft_declarations"/>
+                <filter string="Confirmed" domain="[('state', '=', 'confirmed')]" name="confirmed_declarations"/>
+                <filter string="Done" domain="[('state', '=', 'done')]" name="done_declarations"/>
+                <filter string="Cancelled" domain="[('state', '=', 'cancel')]" name="cancelled_declarations"/>
+                <group expand="0" string="Group By">
+                    <filter string="Partner" name="partner_id" domain="[]" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Company" name="company_id" domain="[]" context="{'group_by': 'company_id'}"/>
+                </group>
+           </search>
+        </field>
+    </record>
+
+    <record id="view_customs_declaration_tree" model="ir.ui.view">
+        <field name="name">customs.declaration.tree</field>
+        <field name="model">sale.customs.declaration</field>
+        <field name="priority">4</field>
+        <field name="arch" type="xml">
+            <tree string="Customs Declaration" decoration-success="state in ['done']"
+                  decoration-info="state in ['draft', 'confirmed']" decoration-muted="state == 'cancel'">
+                <field name="name" string="Reference" readonly="1" decoration-bf="1"/>
+                <field name="customs_declaration_number" string="Customs Declaration Number" readonly="1"/>
+                <field name="partner_id" optional="hide" readonly="1"/>
+                <field name="create_date" string="Creation Date" widget="date" optional="show"/>
+                <field name="declare_date" string="Declare Date" widget="date" optional="hide"/>
+                <field name="amount_total" sum="Total" widget="monetary" decoration-bf="1" optional="show"/>
+                <field name="currency_id" optional="hide"/>
+                <field name="note" optional="hide"/>
+                <field name="customs_declaration_file" optional="hide"/>
+                <field name="state" decoration-success="state in ['done']"
+                       decoration-info="state in ['draft', 'confirmed']" decoration-muted="state == 'cancel'"
+                       widget="badge" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_customs_declaration_form" model="ir.ui.view">
+        <field name="name">customs.declaration.form</field>
+        <field name="model">sale.customs.declaration</field>
+        <field name="priority">4</field>
+        <field name="arch" type="xml">
+            <form string="Customs Declaration">
+                <header>
+                    <button name="action_confirm" data-hotkey="v"
+                        string="Confirm" type="object"
+                        attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+                    <button name="action_done" data-hotkey="d"
+                        string="Complete" type="object"
+                        attrs="{'invisible': [('state', 'not in', ['confirmed'])]}"/>
+                    <button name="action_cancel" type="object"
+                            string="Cancel"
+                            attrs="{'invisible': ['|', ('state', 'not in', ['draft', 'confirm', 'done']), ('id', '=', False)]}"
+                            data-hotkey="z"/>
+                    <button name="action_draft" states="cancel" type="object" string="Set to Draft" data-hotkey="w"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done,cancel"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h4>
+                            <group name="main_title">
+                                <group name="main_title1">
+                                    <field name="name" string="Reference"/>
+                                </group>
+                                <group name="main_title2">
+                                    <field name="customs_declaration_number" string="Declaration No."/>
+                                </group>
+                            </group>
+                        </h4>
+                    </div>
+                    <group name="main_header">
+                        <group name="declaration_details">
+                            <field name="create_date" widget="date" attrs="{'readonly': [('state', 'in', ['confirmed', 'done', 'cancel'])], }"/>
+                            <field name="declare_date" widget="date" attrs="{'readonly': [('state', 'in', ['done', 'cancel'])], }"/>
+                            <field name="currency_id" attrs="{'invisible': True, }"/>
+                            <field name="amount_total" attrs="{'readonly': True, }"/>
+                        </group>
+                        <group name="declaration_details_1">
+                            <field name="customs_declaration_file" filename="customs_declaration_file_name" widget="report_pdf_preview.report"/>
+                            <field name="customs_declaration_file_name" attrs="{'invisible': True, }"/>
+                            <field name="note" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Declaration Products" name="declaration_products">
+                            <field
+                                name="customs_declaration_line_ids"
+                                widget="section_and_note_one2many"
+                                mode="tree"
+                                attrs="{'readonly': [('state', 'in', ('done','cancel'))]}"
+                            >
+                                <tree
+                                    string="Customs Declaration Lines"
+                                    create="false" edit="false" delete="false" import="false" export_xlsx="false"
+                                >
+                                    <field name="product_id" string="Products" readonly="1" decoration-bf="1"/>
+                                    <field name="unit_cost" string="Unit Cost" readonly="1"/>
+                                    <field name="unit_declare_price" string="Declare Price" readonly="1"/>
+                                    <field name="product_qty" string="Quantities" readonly="1"/>
+                                    <field name="product_uom" string="Unit Of Measure" readonly="1"/>
+                                    <field name="total_cost" widget="monetary" string="Total Cost" readonly="1"/>
+                                    <field name="total_declare_price" widget="monetary" string="Total Declare Price" readonly="1"/>
+                                    <field name="weight_total" string="Total Weight" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Declaration Stock Moves" name="declaration_stock_moves">
+                            <group>
+                                <button name="%(stock_move_action_for_declaration)d" type="action" string="Select Stock Moves"
+                                    context="{}" attrs="{'invisible': [('state', '!=', 'draft')]}"
+                                    class="oe_highlight" />
+                            </group>
+                            <field
+                                name="customs_declaration_stock_move_ids"
+                                widget="section_and_note_one2many"
+                                mode="tree"
+                                attrs="{'readonly': [('state', 'in', ('done','cancel'))]}"
+                            >
+                                <tree
+                                    string="Customs Declaration Stock Moves"
+                                    create="false" delete="true" import="false" export_xlsx="false"
+                                    editable="bottom"
+                                >
+                                    <field name="product_id" string="Products" readonly="1" decoration-bf="1"/>
+                                    <field name="stock_picking_id" string="Stock Picking" readonly="1" decoration-bf="1"/>
+                                    <field name="product_qty" string="Quantity" />
+                                    <field name="stock_move_qty" string="Stock Move Qty" readonly="1"/>
+                                    <field name="undeclared_qty" string="Undeclared Qty" readonly="1"/>
+                                    <field name="product_uom" string="Unit Of Measure" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_customs_declaration" model="ir.actions.act_window">
+        <field name="name">Customs Declaration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.customs.declaration</field>
+        <field name="view_mode">tree,form,activity</field>
+        <field name="view_id" ref="view_customs_declaration_tree"/>
+        <field name="search_view_id" ref="view_customs_declaration_search"/>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new customs declaration.
+            </p><p>
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_export_trade"
+        name="Export Trade"
+        sequence="3"
+        parent="sale.sale_menu_root"
+    />
+
+    <menuitem
+        id="menu_customs_declaration"
+        name="Customs Declaration"
+        sequence="10"
+        parent="menu_export_trade"
+        action="action_customs_declaration"
+    />
+
+</odoo>

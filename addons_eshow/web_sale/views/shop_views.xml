@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_web_sale_shop_tree" model="ir.ui.view">
+        <field name="name">web.sale.shop.tree</field>
+        <field name="model">web.sale.shop</field>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+            <tree name="web_shop_list"
+                string="Web Shop"
+                create="true"
+                editable="bottom"
+                multi_edit="true"
+            >
+                <field name="company_id" optional="hide" groups="web_sale.group_web_sale_manager"/>
+                <field name="shop_code" />
+                <field name="name" />
+                <field name="partner_id"  optional="show"/>
+                <field name="marketplace_id"  optional="show"/>
+                <field name="merchant_id" optional="hide"/>
+                <field name="auth_token" optional="hide"/>
+                <field name="access_key" optional="hide"/>
+                <field name="secret_key" optional="hide"/>
+                <field name="enable_shipping_schedule" groups="web_sale.group_web_sale_manager" optional="show"/>
+                <field name="enable_exchange_data" groups="web_sale.group_web_sale_manager" optional="show"/>
+                <field name="default_shipping_method_id" optional="show"/>
+                <field name="default_shipping_schedule_group_id" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="search_web_sale_shop" model="ir.ui.view">
+        <field name="name">web.sale.shop.search</field>
+        <field name="model">web.sale.shop</field>
+        <field name="arch" type="xml">
+            <search string="Search Web Shop">
+                <field name="name" />
+                <field name="shop_code" />
+                <field name="marketplace_id" />
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="marketplace"
+                        string="Marketplace"
+                        domain="[]"
+                        context="{'group_by' : 'marketplace_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_web_sale_shop" model="ir.actions.act_window">
+        <field name="name">Web Shop</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">web.sale.shop</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="search_web_sale_shop" />
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a new web shop.
+          </p><p>
+            Odoo helps you easily track all activities related to a web shop.
+          </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_web_sale_shop" name="Web Shop"
+        sequence="20"
+        parent="menu_basic_data"
+        action="action_web_sale_shop"/>
+
+</odoo>

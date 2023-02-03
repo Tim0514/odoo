@@ -195,6 +195,18 @@
             <xpath expr="//field[@name='name']" position="before">
                 <field name="default_code" position="move"/>
             </xpath>
+            <xpath expr="//field[@name='list_price']" position="replace">
+                <field name="list_price" string="Sales Price" widget='monetary'
+                       options="{'currency_field': 'currency_id', 'field_digits': True}"
+                       optional="show" decoration-muted="not sale_ok"/>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position="replace">
+                <field name="standard_price" widget='monetary'
+                       options="{'currency_field': 'cost_currency_id', 'field_digits': True}"
+                       optional="show" readonly="1"/>
+            </xpath>
+
+
         </field>
     </record>
 

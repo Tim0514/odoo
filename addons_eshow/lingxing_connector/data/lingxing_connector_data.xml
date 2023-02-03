@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="get_access_token" model="connector.lingxing">
+            <field name="name">get_access_token</field>
+            <field name="action_description">Get Access Token</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/api/auth-server/oauth/access-token</field>
+            <field name="method">GET</field>
+            <field name="max_concurrency">1</field>
+
+        </record>
+        <record id="import_web_shops" model="connector.lingxing">
+            <field name="name">import_web_shops</field>
+            <field name="action_description">Import Web Shops</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/data/seller/lists</field>
+            <field name="method">GET</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.shop')]"/>
+            <field name="action_handler_name">import_web_shops.ImportWebShops</field>
+        </record>
+        <record id="export_local_products" model="connector.lingxing">
+            <field name="name">export_local_products</field>
+            <field name="action_description">Export Local Products</field>
+            <field name="action_type">export</field>
+            <field name="route">/erp/sc/routing/storage/product/set</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">10</field>
+            <field name="related_model_id" search="[('model','=','product.product')]"/>
+            <field name="action_handler_name">export_local_products.ExportLocalProducts</field>
+        </record>
+        <record id="import_shop_products" model="connector.lingxing">
+            <field name="name">import_shop_products</field>
+            <field name="action_description">Import Shop Products</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/data/mws/listing</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.shop.product')]"/>
+            <field name="action_handler_name">import_shop_products.ImportShopProducts</field>
+        </record>
+        <record id="import_shop_product_pair_states" model="connector.lingxing">
+            <field name="name">import_shop_product_pair_states</field>
+            <field name="action_description">Import Shop Product Pair States</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/data/mws/listing</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.shop.product')]"/>
+            <field name="action_handler_name">import_shop_products.ImportShopProducts</field>
+        </record>
+        <record id="import_product_monthly_stat" model="connector.lingxing">
+            <field name="name">import_product_monthly_stat</field>
+            <field name="action_description">Import Product Monthly Statistics</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/data/sales_report/asinList</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.shop.product.monthly.stat')]"/>
+            <field name="action_handler_name">import_product_monthly_stat.ImportProductMonthlyStat</field>
+        </record>
+        <record id="import_product_weekly_stat" model="connector.lingxing">
+            <field name="name">import_product_weekly_stat</field>
+            <field name="action_description">Import Product Weekly Statistics</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/data/sales_report/asinList</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.shop.product.weekly.stat')]"/>
+            <field name="action_handler_name">import_product_weekly_stat.ImportProductWeeklyStat</field>
+        </record>
+        <record id="import_shop_inventory" model="connector.lingxing">
+            <field name="name">import_shop_inventory</field>
+            <field name="action_description">Import Shop Inventory</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/routing/fba/fbaStock/fbaList</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.shop.inventory')]"/>
+            <field name="action_handler_name">import_shop_inventory.ImportShopInventory</field>
+        </record>
+        <record id="import_shop_warehouse" model="connector.lingxing">
+            <field name="name">import_shop_warehouse</field>
+            <field name="action_description">Import Shop Warehouse</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/data/local_inventory/warehouse</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.warehouse')]"/>
+            <field name="action_handler_name">import_warehouse.ImportWarehouse</field>
+        </record>
+    </data>
+</odoo>

@@ -10,6 +10,7 @@ from . import stock_rule
 from . import stock_orderpoint
 from . import res_config_settings
 from . import purchase
+from . import sale_order
 from . import account_move
 
 

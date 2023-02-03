@@ -10,6 +10,7 @@
         <field name="name">Web Sale User</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
         <field name="category_id" ref="module_category_web_sale" />
+        <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
     </record>
     <record id="group_web_sale_manager" model="res.groups">
         <field name="name">Web Sale Manager</field>
@@ -18,8 +19,8 @@
             eval="[(4, ref('web_sale.group_web_sale_user'))]"
         />
         <field name="category_id" ref="module_category_web_sale" />
+        <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
     </record>
-
 
     <record id="shop_product_comp_rule" model="ir.rule">
         <field name="name">Shop Product multi-company</field>

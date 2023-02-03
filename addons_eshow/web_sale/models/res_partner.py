@@ -10,16 +10,6 @@ class ResPartner(models.Model):
     # Partner是否为网上商店
     is_web_shop = fields.Boolean(string='Is Web Shop', default=False)
 
-    # 网店平台
-    marketplace_id = fields.Many2one(comodel_name="web.sale.marketplace", string='Marketplace')
-
-    merchant_code = fields.Char(string='Merchant Code')
-
-    default_warehouse_id = fields.Many2one(comodel_name="stock.warehouse", string='Web Shop Default Warehouse')
-
-    auth_token = fields.Char(string='Authorization Token')
-
-    access_key = fields.Char(string='Access Key')
-
-    secret_key = fields.Char(string="Secret Key")
+    # 默认的运输方式
+    default_shipping_method_id = fields.Many2one("web.sale.shipping.method", string="Default Shipping Method")
 

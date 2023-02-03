@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="eshow_view_move_form" model="ir.ui.view">
+            <field name="name">eshow.account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="mode">extension</field>
+            <field name="priority" eval="2000"/>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='quantity']" position="attributes">
+                    <attribute name="sum">1</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

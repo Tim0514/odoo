@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2021-2023 Tim Wang
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="view_move_search_for_declaration" model="ir.ui.view">
+        <field name="name">stock.move.search.for.declaration</field>
+        <field name="model">stock.move</field>
+        <field eval="200" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Stock Moves">
+                <field name="origin" filter_domain="['|', '|', ('origin', 'ilike', self), ('name', 'ilike', self), ('picking_id', 'ilike', self)]" string="Reference"/>
+                <field name="product_id"/>
+                <field name="name" string="Location" filter_domain="['|',('location_id', 'ilike', self),('location_dest_id', 'ilike', self)]"/>
+                <field name="partner_id" string="Partner" filter_domain="[('picking_id.partner_id', 'child_of', self)]"/>
+                <filter string="Outgoing" name="outgoing" domain="[('location_dest_id.usage', '=', ('customer'))]"/>
+                <separator/>
+                <filter string="Not Declared" name="not_declared" domain="[('undeclared_qty','&gt;','0')]"/>
+                <separator/>
+                <filter string="Ready" name="ready" domain="[('state','=','assigned')]" help="Stock moves that are Available (Ready to process)"/>
+                <filter string="To Do" name="future" domain="[('state','in',('assigned','confirmed','waiting'))]" help="Stock moves that are Confirmed, Available or Waiting"/>
+                <filter string="Done" name="done" domain="[('state','=','done')]" help="Stock moves that have been processed"/>
+                <separator/>
+                <filter string="Date" name="today" date="date" help="Scheduled or processing date"/>
+                <group expand="0" string="Group By">
+                    <filter string="Product" name="by_product" domain="[]"  context="{'group_by': 'product_id'}"/>
+                    <filter string="Picking" name="groupby_picking_id" domain="[]"  context="{'group_by': 'picking_id'}"/>
+                    <filter string="Source Location" name="groupby_location_id" domain="[]" context="{'group_by': 'location_id'}" groups="stock.group_stock_multi_locations"/>
+                    <filter string="Destination Location" name="groupby_dest_location_id" domain="[]" context="{'group_by': 'location_dest_id'}" groups="stock.group_stock_multi_locations"/>
+                    <filter string="Status" name="status" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter string="Creation Date" name="groupby_create_date" domain="[]" context="{'group_by': 'create_date'}" groups="base.group_no_one"/>
+                    <filter string="Scheduled Date" name="groupby_date" domain="[]" context="{'group_by': 'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_move_tree_for_declaration" model="ir.ui.view">
+        <field name="name">stock.move.tree.for.declaration</field>
+        <field name="model">stock.move</field>
+        <field eval="200" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Moves"
+                create="false" edit="false" delete="false" import="false" export_xlsx="false">
+                <header>
+                    <button name="do_import_stock_moves_to_declaration" type="object" string="Import Stock Moves"/>
+                    <button name="do_recompute_undeclared_qty" type="object" string="Recompute Stock Moves" attrs="{'invisible': True, }"/>
+                </header>
+                <field name="reference" width="150px"/>
+                <field name="picking_type_id" invisible="1"/>
+                <field name="product_id"/>
+                <field name="date" widget="date" decoration-danger="(state not in ('cancel','done')) and date > current_date" />
+                <field name="product_uom_qty" optional="hide"/>
+                <field name="undeclared_qty" optional="show"/>
+                <field name="partner_id"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="state" widget='badge' decoration-success="state == 'done'" decoration-info="state not in ('done', 'cancel')"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_move_action_for_declaration" model="ir.actions.act_window">
+        <field name="name">Select Stock Moves</field>
+        <field name="res_model">stock.move</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="view_move_tree_for_declaration"/>
+        <field name="search_view_id" ref="view_move_search_for_declaration"/>
+        <field name="context">{'search_default_outgoing': 1, 'search_default_not_declared': 1,'customs_declaration_id': active_id}</field>
+        <field name="target">new</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            No stock move found
+          </p><p>
+            This menu gives you the full traceability of inventory
+            operations on a specific product. You can filter on the product
+            to see all the past or future movements for the product.
+          </p>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,168 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="shipping_schedule_tree" model="ir.ui.view">
+        <field name="name">web.sale.shipping.schedule.tree</field>
+        <field name="model">web.sale.shipping.schedule</field>
+        <field name="arch" type="xml">
+
+            <tree
+                string="Shipping Schedule"
+                import="false"
+                create="false"
+                edit="false"
+                multi_edit="true"
+                duplicate="false"
+                editable="bottom"
+                default_order="shop_id, seller_sku"
+            >
+                <field name="shop_id" optional="show"/>
+                <field name="shop_product_id" optional="hide"/>
+                <field name="seller_sku" optional="show"/>
+                <field name="product_default_code" optional="show"/>
+                <field name="product_name" optional="show"/>
+                <field name="schedule_year" optional="show"/>
+                <field name="schedule_month" optional="show"/>
+                <field name="sale_qty_7" sum="1" optional="show"/>
+                <field name="sale_qty_14" sum="1" optional="show"/>
+                <field name="sale_qty_28" sum="1" optional="show"/>
+                <field name="qty_available" sum="1" optional="show"/>
+                <field name="qty_shipped" sum="1" optional="show"/>
+                <field name="estimate_monthly_sale_qty_1" sum="1" optional="show"/>
+                <field name="estimate_monthly_sale_qty_2" sum="1" optional="show"/>
+                <field name="advised_monthly_sale_qty" sum="1" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="shipping_schedule_search" model="ir.ui.view">
+        <field name="name">web.sale.shipping.schedule.search</field>
+        <field name="model">web.sale.shipping.schedule</field>
+        <field name="arch" type="xml">
+            <search string="Search Shipping Schedule">
+                <field name="shop_id" />
+                <field name="seller_sku" />
+                <field name="product_default_code" />
+                <field name="salesperson_id"/>
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="shop_id"
+                        string="Shop"
+                        domain="[]"
+                        context="{'group_by' : 'shop_id'}"
+                    />
+                    <filter
+                        name="product_default_code"
+                        string="Product Default Code"
+                        domain="[]"
+                        context="{'group_by' : 'product_default_code'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="shipping_schedule_action" model="ir.actions.act_window">
+        <field name="name">Shipping Schedule</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">web.sale.shipping.schedule</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="shipping_schedule_search" />
+        <field name="domain">[('shop_product_id.is_paired','=',True), ('shop_product_id.state', 'in', ['new', 'normal'])]</field>
+    </record>
+
+    <record id="action_shipping_schedule" model="ir.actions.client">
+        <field name="name">Shipping Schedule</field>
+        <field name="res_model">web.sale.shipping.schedule</field>
+        <field name="tag">shipping_schedule_client_action</field>
+        <field name="params" eval="{'domain': [('product_id','!=',None), ('shop_product_id.is_paired','=',True), ('shop_product_id.state', 'in', ['new', 'normal'])]}"/>
+    </record>
+
+    <menuitem
+        id="menu_shipping_schedule_adv"
+        name="Shipping Schedule Adv"
+        action="action_shipping_schedule"
+        sequence="14"
+        parent="menu_web_sale_management"
+        groups="group_web_sale_user,group_web_sale_manager"
+    />
+
+    <menuitem
+        id="menu_shipping_schedule"
+        name="Shipping Schedule"
+        action="shipping_schedule_action"
+        sequence="15"
+        parent="menu_web_sale_management"
+        groups="group_web_sale_user,group_web_sale_manager"
+    />
+
+    <record id="shipping_schedule_tree_for_schedule_group" model="ir.ui.view">
+        <field name="name">shipping.schedule.tree.for.schedule.group</field>
+        <field name="model">web.sale.shipping.schedule</field>
+        <field eval="200" name="priority"/>
+        <field name="arch" type="xml">
+            <tree
+                string="Shipping Schedule"
+                create="false" edit="false" delete="false" import="false" export_xlsx="false"
+                default_order="shop_id, seller_sku"
+            >
+                <header>
+                    <button name="do_add_shipping_schedule_to_schedule_group" type="object" string="Add Schedules to Group"/>
+                </header>
+                <field name="shop_id" optional="show"/>
+                <field name="shop_product_id" optional="hide"/>
+                <field name="seller_sku" optional="show"/>
+                <field name="product_default_code" optional="show"/>
+                <field name="product_name" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="shipping_schedule_search_for_schedule_group" model="ir.ui.view">
+        <field name="name">shipping.schedule.search.for.schedule.group</field>
+        <field name="model">web.sale.shipping.schedule</field>
+        <field eval="200" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Search Shipping Schedule">
+                <field name="shop_id" />
+                <field name="seller_sku" />
+                <field name="product_default_code" />
+                <field name="salesperson_id"/>
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="shop_id"
+                        string="Shop"
+                        domain="[]"
+                        context="{'group_by' : 'shop_id'}"
+                    />
+                    <filter
+                        name="product_default_code"
+                        string="Product Default Code"
+                        domain="[]"
+                        context="{'group_by' : 'product_default_code'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="shipping_schedule_action_for_schedule_group" model="ir.actions.act_window">
+        <field name="name">Select Shipping Schedules</field>
+        <field name="res_model">web.sale.shipping.schedule</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="shipping_schedule_tree_for_schedule_group"/>
+        <field name="search_view_id" ref="shipping_schedule_search_for_schedule_group"/>
+        <field name="context">{'search_default_exclude_current_schedule_group': 0, 'shipping_schedule_group_id': active_id}</field>
+        <field name="domain">[('product_id','!=',None), ('shop_product_id.is_paired','=',True),
+            ('shop_product_id.state', 'in', ['new', 'normal']), ('shipping_schedule_group_id', '!=', active_id)]</field>
+
+
+        <field name="target">new</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            No Shipping Schedule Found.
+          </p>
+        </field>
+    </record>
+</odoo>

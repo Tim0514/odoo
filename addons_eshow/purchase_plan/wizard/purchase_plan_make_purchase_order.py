@@ -47,6 +47,7 @@ class PurchasePlanMakePurchaseOrder(models.TransientModel):
             "product_qty": purchase_plan.product_qty - purchase_plan.purchased_qty,
             # "product_uom_id": purchase_plan.product_uom_id.id,
             "supplier_id": purchase_plan.supplier_id.id,
+            "propagate_cancel": purchase_plan.propagate_cancel,
         }
 
     @api.model
@@ -184,6 +185,8 @@ class PurchasePlanMakePurchaseOrder(models.TransientModel):
                 date_required.year, date_required.month, date_required.day
             ),
             "move_dest_ids": [(4, x.id) for x in item.purchase_plan_id.move_dest_ids],
+            "propagate_cancel": item.purchase_plan_id.propagate_cancel,
+
         }
 
         self._execute_purchase_line_onchange(vals)
@@ -375,6 +378,9 @@ class PurchasePlanMakePurchaseOrderItem(models.TransientModel):
              "wizard in the new PO.",
         store=True,
     )
+
+    propagate_cancel = fields.Boolean('Propagate cancellation', default=True)
+
 
     # @api.onchange("product_id")
     # def onchange_product_id(self):

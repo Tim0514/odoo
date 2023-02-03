@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_customs_declaration_user,sale.customs.declaration.user,model_sale_customs_declaration,sales_team.group_sale_salesman,1,1,1,1
+access_sale_customs_declaration_line_user,sale.customs.declaration.line.user,model_sale_customs_declaration_line,sales_team.group_sale_salesman,1,1,1,1
+access_sale_customs_declaration_stock_move_user,sale.customs.declaration.stock.move.user,model_sale_customs_declaration_stock_move,sales_team.group_sale_salesman,1,1,1,1

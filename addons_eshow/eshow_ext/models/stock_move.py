@@ -33,12 +33,15 @@ class StockMove(models.Model):
     product_default_code = fields.Char(
         related='product_id.default_code', string='Product Default Code', readonly=True)
 
-    invoice_status = fields.Selection([
-        ('no', 'Nothing to Bill'),
-        ('to invoice', 'Waiting Bills'),
-        ('invoiced', 'Fully Billed'),
-        ],
+    invoice_status = fields.Selection(
         related='picking_id.invoice_status', string='Billing Status', readonly=True)
+
+    # invoice_status = fields.Selection([
+    #     ('no', 'Nothing to Bill'),
+    #     ('to invoice', 'Waiting Bills'),
+    #     ('invoiced', 'Fully Billed'),
+    #     ],
+    #     related='picking_id.invoice_status', string='Billing Status', readonly=True)
 
     def _get_invoice_lines(self):
         self.ensure_one()

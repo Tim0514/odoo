@@ -26,5 +26,7 @@
         'mrp_subcontracting',
     ],
     'data': [
+        'views/mrp_production_views.xml',
     ],
+
 }

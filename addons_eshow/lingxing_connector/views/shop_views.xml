@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_web_sale_shop_tree_lingxing" model="ir.ui.view">
+        <field name="name">web.sale.shop.tree.lingxing</field>
+        <field name="model">web.sale.shop</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="200"/>
+        <field name="inherit_id" ref="web_sale.view_web_sale_shop_tree"/>
+        <field name="arch" type="xml">
+	        <xpath expr="//tree[@name='web_shop_list']" position="attributes">
+                <attribute name="js_class">web_sale.web_shop_list</attribute>
+            </xpath>
+	        <xpath expr="//tree/field[@name='merchant_id']" position="after">
+                <field name="lingxing_shop_id" />
+                <field name="lingxing_shop_name" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

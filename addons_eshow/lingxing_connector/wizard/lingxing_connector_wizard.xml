@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="view_connector_lingxing_wizard" model="ir.ui.view">
+        <field name="name">Lingxing Connector Wizard</field>
+        <field name="model">connector.lingxing.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Lingxing Connector Actions">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="start_time" />
+                        </group>
+                        <group>
+                            <field name="end_time" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <separator string="Import Operations:" />
+                            <newline />
+                            <button
+                                name="action_import_web_shops"
+                                string="Import Shops"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import web shop data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_shop_products"
+                                string="Import Shop Products"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import shop product data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_shop_product_pair_states"
+                                string="Import Shop Product Pair States"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import shop product pair data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_product_weekly_stat"
+                                string="Import Product Weekly Statics"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import product weekly statics data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_product_monthly_stat"
+                                string="Import Product Monthly Statics"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import product monthly statics data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_shop_inventory"
+                                string="Import Shop Product Inventory"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import shop product inventory from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_shop_warehouse"
+                                string="Import Shop Warehouse"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import shop warehouse from Lingxing Server."
+                            />
+                        </group>
+                        <group>
+                            <separator string="Export Operations" />
+                            <newline />
+                            <button
+                                name="action_export_products"
+                                string="Export Products"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will export product data to Lingxing Server."
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button special="cancel" string="Cancel" class="oe_link" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record
+        id="action_connector_lingxing_wizard"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Lingxing Connector Actions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">connector.lingxing.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_connector_lingxing_wizard" />
+        <field name="target">new</field>
+        <!--<field
+            name="binding_model_id"
+            ref="purchase_plan.model_purchase_plan"
+        />-->
+    </record>
+
+    <menuitem
+        id="menu_lingxing_connector_wizard"
+        name="Lingxing Connector Actions"
+        sequence="10"
+        parent="menu_lingxing_connector"
+        groups="eshow_common_connector_lib.group_connector_user,eshow_common_connector_lib.group_connector_manager"
+        action="action_connector_lingxing_wizard"
+    />
+
+</odoo>

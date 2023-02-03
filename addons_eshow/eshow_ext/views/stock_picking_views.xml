@@ -3,6 +3,7 @@
         <field name="name">stock.picking.form</field>
         <field name="model">stock.picking</field>
         <field name="mode">extension</field>
+        <field name="priority" eval="2000"/>
         <field name="inherit_id" ref="stock.view_picking_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='location_id']" position="replace" >
@@ -10,6 +11,12 @@
             </xpath>
             <xpath expr="//field[@name='location_dest_id']" position="replace" >
                 <field name="location_dest_id" options="{'no_create': True}" groups="stock.group_stock_multi_locations" />
+            </xpath>
+            <xpath expr="//notebook//page[@name='operations']//tree//field[@name='product_uom_qty']" position="attributes">
+                <attribute name="sum">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='operations']//tree//field[@name='quantity_done']" position="attributes">
+                <attribute name="sum">1</attribute>
             </xpath>
         </field>
     </record>

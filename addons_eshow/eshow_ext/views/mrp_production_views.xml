@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="eshow_mrp_production_form_view" model="ir.ui.view">
+            <field name="name">eshow_mrp.production.form</field>
+            <field name="model">mrp.production</field>
+            <field name="mode">extension</field>
+            <field name="priority" eval="2000"/>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook//page[@name='components']/field[@name='move_raw_ids']/tree/field[@name='product_uom_qty']" position="attributes">
+                    <attribute name="sum">1</attribute>
+                </xpath>
+                <xpath expr="//notebook//page[@name='components']/field[@name='move_raw_ids']/tree/field[@name='quantity_done']" position="attributes">
+                    <attribute name="sum">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

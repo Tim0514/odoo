@@ -4,4 +4,24 @@
         <field name="view_mode">tree,kanban,form,activity</field>
         <field name="view_id" ref="product.product_template_tree_view"/>
     </record>
+
+    <record id="eshow_view_order_form" model="ir.ui.view">
+        <field name="name">eshow.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="sale.eshow_view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_uom_qty']" position="attributes">
+                <attribute name="sum">1</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='qty_delivered']" position="attributes">
+                <attribute name="sum">1</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='qty_invoiced']" position="attributes">
+                <attribute name="sum">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

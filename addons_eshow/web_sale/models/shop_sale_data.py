@@ -17,18 +17,6 @@ class ShopSaleData(models.Model):
     _description = "Shop Week Sale Data"
     _order = "order_date, shop_id, product_id "
 
-    @api.model
-    def _company_get(self):
-        return self.env["res.company"].browse(self.env.company.id)
-
-
-    company_id = fields.Many2one(
-        comodel_name="res.company",
-        string="Company",
-        required=True,
-        default=_company_get,
-    )
-
     shop_product_id = fields.Many2one(
         comodel_name="web.sale.shop.product",
         string="Shop Product",
@@ -41,6 +29,11 @@ class ShopSaleData(models.Model):
         store=True,
         readonly=True,
     )
+
+    company_id = fields.Many2one(
+        comodel_name="res.company",
+        related="shop_id.company_id",
+        string='Company', store=True, readonly=True)
 
     warehouse_id = fields.Many2one(
         related="shop_id.default_warehouse_id",

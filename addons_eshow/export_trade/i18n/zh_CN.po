@@ -1,0 +1,860 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* export_trade
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-14 13:23+0000\n"
+"PO-Revision-Date: 2022-11-14 21:44+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__access_warning
+msgid "Access warning"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__campaign_id
+msgid "Campaign"
+msgstr ""
+
+#. module: export_trade
+#: code:addons/export_trade/models/customs_declaration.py:0
+#, python-format
+msgid ""
+"Can not get customs declaration info from the document, you must input the "
+"data yourself."
+msgstr "无法从上传的文件中获取报关单信息，需要自行输入。"
+
+#. module: export_trade
+#: code:addons/export_trade/models/customs_declaration.py:0
+#, python-format
+msgid ""
+"Can not get customs declaration number from the document, you must input "
+"the data yourself."
+msgstr "无法从上传的文件中获取报关单号，需要自行输入。"
+
+#. module: export_trade
+#: code:addons/export_trade/models/customs_declaration.py:0
+#, python-format
+msgid ""
+"Can not get declare date from the document, you must input the data "
+"yourself."
+msgstr "无法从上传的文件中获取报关日期，需要自行输入。"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Cancel"
+msgstr "取消"
+
+#. module: export_trade
+#: model:ir.model.fields.selection,name:export_trade.selection__sale_customs_declaration__state__cancel
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_search
+msgid "Cancelled"
+msgstr "已取消"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__company_id
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__company_id
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__company_id
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_search
+msgid "Company"
+msgstr "公司"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Complete"
+msgstr "完成"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Confirm"
+msgstr "确认"
+
+#. module: export_trade
+#: model:ir.model.fields.selection,name:export_trade.selection__sale_customs_declaration__state__confirmed
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_search
+msgid "Confirmed"
+msgstr "已确认"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__cost_currency_id
+msgid "Cost Currency"
+msgstr "成本货币"
+
+#. module: export_trade
+#: model_terms:ir.actions.act_window,help:export_trade.action_customs_declaration
+msgid "Create a new customs declaration."
+msgstr "创建新的报关单"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__create_uid
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__create_uid
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__create_uid
+msgid "Created by"
+msgstr "创建由"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__create_date
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__create_date
+msgid "Created on"
+msgstr "创建于"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__create_date
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_tree
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Creation Date"
+msgstr "创建日期"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__currency_id
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__currency_id
+msgid "Currency"
+msgstr "货币"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__partner_id
+msgid "Customer"
+msgstr "客户"
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__access_url
+msgid "Customer Portal URL"
+msgstr "客户门户网址"
+
+#. module: export_trade
+#: model:ir.actions.act_window,name:export_trade.action_customs_declaration
+#: model:ir.model,name:export_trade.model_sale_customs_declaration
+#: model:ir.ui.menu,name:export_trade.menu_customs_declaration
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_tree
+msgid "Customs Declaration"
+msgstr "报关单"
+
+#. module: export_trade
+#: model:ir.model,name:export_trade.model_sale_customs_declaration_line
+msgid "Customs Declaration Line"
+msgstr "报关单明细"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__customs_declaration_line_id
+msgid "Customs Declaration Line Reference"
+msgstr "报关单明细参考"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__customs_declaration_line_ids
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Customs Declaration Lines"
+msgstr "报关单明细"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__customs_declaration_number
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_tree
+msgid "Customs Declaration Number"
+msgstr "报关单号"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__customs_declaration_id
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__customs_declaration_id
+msgid "Customs Declaration Reference"
+msgstr "参考号"
+
+#. module: export_trade
+#: model:ir.model,name:export_trade.model_sale_customs_declaration_stock_move
+msgid "Customs Declaration Stock Move"
+msgstr "出库单"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__customs_declaration_stock_move_ids
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Customs Declaration Stock Moves"
+msgstr "出库单"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Date"
+msgstr "日期"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__stock_move_date
+msgid "Date Scheduled"
+msgstr "计划日期"
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__create_date
+msgid "Date on which document is created."
+msgstr "文档创建日期"
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__declare_date
+msgid "Date when products are declared to customs."
+msgstr "报关日期"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Declaration No."
+msgstr "报关单号"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Declaration Products"
+msgstr "报关产品"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Declaration Stock Moves"
+msgstr "出库单"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__declare_date
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_tree
+msgid "Declare Date"
+msgstr "报关日期"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Declare Price"
+msgstr "报关价(USD)"
+
+#. module: export_trade
+#: code:addons/export_trade/models/customs_declaration.py:0
+#, python-format
+msgid "Declare date can not be empty in customs declaration: %s"
+msgstr "报关单(%s)报关日期不可为空"
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration_line__product_uom
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration_stock_move__product_uom
+msgid "Default unit of measure used for all stock operations."
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__name
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__name
+msgid "Description"
+msgstr "说明"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Destination Location"
+msgstr "目的位置"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__display_name
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__display_name
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__display_name
+msgid "Display Name"
+msgstr "名称"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__customs_declaration_file
+msgid "Document"
+msgstr "文档"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__customs_declaration_file_name
+msgid "Document File Name"
+msgstr "文档名称"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_search
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Done"
+msgstr "完成"
+
+#. module: export_trade
+#: model:ir.model.fields.selection,name:export_trade.selection__sale_customs_declaration__state__draft
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_search
+msgid "Draft"
+msgstr "草稿"
+
+#. module: export_trade
+#: model:ir.ui.menu,name:export_trade.menu_export_trade
+msgid "Export Trade"
+msgstr "出口贸易"
+
+#. module: export_trade
+#: code:addons/export_trade/models/customs_declaration.py:0
+#, python-format
+msgid "File can not be empty in customs declaration: %s"
+msgstr "报关单(%s)必须上传报关单文件"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_search
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Group By"
+msgstr "分组"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__id
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__id
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__id
+msgid "ID"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__message_needaction
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__message_has_error
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_tree_for_declaration
+msgid "Import Stock Moves"
+msgstr "导入出库单"
+
+#. module: export_trade
+#: code:addons/export_trade/models/customs_declaration.py:0
+#, python-format
+msgid "In order to delete a customs declaration, you must cancel it first."
+msgstr "删除前必须先取消报关单。"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration____last_update
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line____last_update
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__write_uid
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__write_uid
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__write_date
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__write_date
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__line_note
+msgid "Line Notes"
+msgstr "明细行备注"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Location"
+msgstr "位置"
+
+#. module: export_trade
+#: model:ir.model.fields.selection,name:export_trade.selection__sale_customs_declaration__state__done
+msgid "Locked"
+msgstr "锁定"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__medium_id
+msgid "Medium"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_tree_for_declaration
+msgid "Moves"
+msgstr "出库单"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: export_trade
+#: code:addons/export_trade/models/customs_declaration.py:0
+#, python-format
+msgid "New"
+msgstr "新建"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.actions.act_window,help:export_trade.stock_move_action_for_declaration
+msgid "No stock move found"
+msgstr "未找到出库单"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Not Declared"
+msgstr "未报关"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__note
+msgid "Notes"
+msgstr "备注"
+
+#. module: export_trade
+#: code:addons/export_trade/models/customs_declaration.py:0
+#, python-format
+msgid "Number can not be empty in customs declaration: %s"
+msgstr "报关单(%s)必须输入报关单号。"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Outgoing"
+msgstr "出库"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__partner_id
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__partner_id
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_search
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Partner"
+msgstr "客户"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Picking"
+msgstr "出库单"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__product_id
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__product_id
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__product_id
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Product"
+msgstr "产品"
+
+#. module: export_trade
+#: code:addons/export_trade/models/customs_declaration.py:0
+#, python-format
+msgid "Product quantity must less or equal to undeclared quantity."
+msgstr "产品数量必须小于等于待报关数量。"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Products"
+msgstr "产品"
+
+#. module: export_trade
+#: code:addons/export_trade/models/customs_declaration.py:0
+#, python-format
+msgid "Products not found in customs declaration: %s"
+msgstr "报关单(%s)中未找到产品。"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Quantities"
+msgstr "数量"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__product_qty
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__product_qty
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Quantity"
+msgstr "数量"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_stock_move__undeclared_qty
+msgid "Quantity Undeclared To Customs"
+msgstr "待报关数量"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Ready"
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_tree_for_declaration
+msgid "Recompute Stock Moves"
+msgstr "重新计算待报关数量"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__name
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_search
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_tree
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Reference"
+msgstr "参考号"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__activity_user_id
+msgid "Responsible User"
+msgstr "负责人"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Scheduled Date"
+msgstr "计划日期"
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration_stock_move__stock_move_date
+msgid "Scheduled date until move is done, then date of actual move processing"
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Scheduled or processing date"
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_search
+msgid "Search Customs Declaration"
+msgstr "搜索报关单"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.actions.act_window,name:export_trade.stock_move_action_for_declaration
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Select Stock Moves"
+msgstr "选择出库单"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__sequence
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__sequence
+msgid "Sequence"
+msgstr "序号"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Set to Draft"
+msgstr "置为草稿"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__source_id
+msgid "Source"
+msgstr "源"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Source Location"
+msgstr "原位置"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__state
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__state
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Status"
+msgstr "状态"
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model,name:export_trade.model_stock_move
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__customs_delaration_stock_move_ids
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__stock_move_id
+msgid "Stock Move"
+msgstr "库存移动"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_stock_move__customs_declaration_stock_move_ids
+msgid "Stock Move Declared"
+msgstr "已报关数量"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__stock_move_qty
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Stock Move Qty"
+msgstr "出库数量"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__stock_move_name
+msgid "Stock Move Reference"
+msgstr "出库单号"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Stock Moves"
+msgstr "出库单"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Stock Picking"
+msgstr "出库单"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Stock moves that are Available (Ready to process)"
+msgstr "出库已就绪"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Stock moves that are Confirmed, Available or Waiting"
+msgstr "出库已确认、就绪或等待"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "Stock moves that have been processed"
+msgstr "出库已完成"
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__campaign_id
+msgid ""
+"This is a name that helps you keep track of your different campaign "
+"efforts, e.g. Fall_Drive, Christmas_Special"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__medium_id
+msgid "This is the method of delivery, e.g. Postcard, Email, or Banner Ad"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration_stock_move__stock_move_qty
+msgid ""
+"This is the quantity of products from an inventory point of view. For moves "
+"in the state 'done', this is the quantity of products that were actually "
+"moved. For other moves, this is the quantity of product that is planned to "
+"be moved. Lowering this quantity does not generate a backorder. Changing "
+"this quantity on assigned moves affects the product reservation, and should "
+"be done with care."
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__source_id
+msgid ""
+"This is the source of the link, e.g. Search Engine, another domain, or name "
+"of email list"
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.actions.act_window,help:export_trade.stock_move_action_for_declaration
+msgid ""
+"This menu gives you the full traceability of inventory\n"
+"            operations on a specific product. You can filter on the "
+"product\n"
+"            to see all the past or future movements for the product."
+msgstr ""
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_move_search_for_declaration
+msgid "To Do"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__amount_total
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_tree
+msgid "Total"
+msgstr "总计"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__total_cost
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Total Cost"
+msgstr "成本小计(RMB)"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__total_declare_price
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Total Declare Price"
+msgstr "报关价小计(USD)"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__weight_total
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Total Weight"
+msgstr "总重量"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__stock_picking_id
+msgid "Transfer"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__undeclared_qty
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Undeclared Qty"
+msgstr "待报关数量"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__unit_cost
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Unit Cost"
+msgstr "成本(RMB)"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__unit_declare_price
+msgid "Unit Declare Price"
+msgstr "报关价(USD)"
+
+#. module: export_trade
+#: model_terms:ir.ui.view,arch_db:export_trade.view_customs_declaration_form
+msgid "Unit Of Measure"
+msgstr "单位"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_line__product_uom
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration_stock_move__product_uom
+msgid "Unit of Measure"
+msgstr "单位"
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,field_description:export_trade.field_sale_customs_declaration__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: export_trade
+#: model:ir.model.fields,help:export_trade.field_sale_customs_declaration__website_message_ids
+msgid "Website communication history"
+msgstr ""

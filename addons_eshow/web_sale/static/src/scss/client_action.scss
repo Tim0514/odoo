@@ -1,0 +1,99 @@
+.o_shipping_schedule_main {
+    background-color: white;
+
+    button {
+        &.o_shipping_schedule_procurement {
+            //background-color: $gray-200;
+            //border: none;
+        }
+        &.o_no_padding {
+            //padding: 0 0 0 0;
+        }
+    }
+
+    input {
+        border-style: groove;
+        height: 100%;
+        padding-top: 0;
+    }
+
+    table {
+        thead tr {
+            &:first-child {
+                border-top: none;
+            }
+        }
+        thead th {
+            @include o-position-sticky($top: 0px, $left: 0px);
+            z-index: 10;
+            border-top: none;
+            background-color: $gray-500;
+            &:first-child {
+                z-index: 11;
+                max-width: 30em;
+            }
+        }
+        tbody tr {
+            &:first-child {
+                background-color: $gray-300;
+            }
+        }
+        tbody th {
+            @include o-position-sticky($left: 0px);
+            &:first-child {
+                z-index: 1;
+                background-color: $gray-300;
+                max-width: 30em;
+            }
+        }
+        th {
+            vertical-align: middle;
+            min-width: 60px;
+        }
+        .o_shipping_schedule_inline {
+            display: inline-flex;
+            max-width: 30%;
+        }
+    }
+
+    tr {
+        line-height: 2em;
+        min-height: 1em;
+        height: 1em;
+    }
+
+    .btn {
+        line-height: 1em;
+    }
+
+    .form-control {
+        padding: 0em 0em;
+        color: $black;
+    }
+
+    .o_input {
+        line-height: 1em;
+    }
+
+    .o_shipping_schedule_hover {
+        background-color: #d6d8d9;
+
+        &.alert-success {
+            background-color: darken(#dff0d8, 10%);
+        }
+
+        &.alert-warning {
+            background-color: darken(#fcf8e3, 10%);
+        }
+    }
+
+    .o_product_name {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        line-height: 1em;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+
+}

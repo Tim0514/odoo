@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_web_sale_marketplace_tree_lingxing" model="ir.ui.view">
+        <field name="name">web.sale.marketplace.tree.lingxing</field>
+        <field name="model">web.sale.marketplace</field>
+        <field name="mode">extension</field>
+        <field name="priority" eval="200"/>
+        <field name="inherit_id" ref="web_sale.view_web_sale_marketplace_tree"/>
+        <field name="arch" type="xml">
+	        <xpath expr="//tree/field[@name='country_id']" position="after">
+                <field name="lingxing_marketplace_id" />
+                <field name="lingxing_marketplace_name" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

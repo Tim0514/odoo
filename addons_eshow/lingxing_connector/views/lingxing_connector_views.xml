@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="menu_lingxing_connector"
+        name="Lingxing Connector"
+        sequence="20"
+        parent="eshow_common_connector_lib.parent_menu_connector"
+        groups="eshow_common_connector_lib.group_connector_user,eshow_common_connector_lib.group_connector_manager"
+    />
+</odoo>

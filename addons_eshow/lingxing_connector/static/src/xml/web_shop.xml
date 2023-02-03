@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+
+<t t-extend="ListView.buttons" t-name="web_sale.web_shop.buttons">
+    <t t-jquery="button.o_list_export_xlsx" t-operation="before">
+        <button class="btn btn-info o_button_sync_shops mx-2" type="button">
+            Sync Shops
+        </button>
+    </t>
+</t>
+
+</templates>

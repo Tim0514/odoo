@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_log_book_user,eshow.log.book.user,model_eshow_log_book,group_connector_user,1,0,0,0
+access_log_book_manager,eshow.log.book.manager,model_eshow_log_book,group_connector_manager,1,0,0,1
+access_log_book_line_user,eshow.log.book.line.user,model_eshow_log_book_line,group_connector_user,1,0,0,0
+access_log_book_line_manager,eshow.log.book.line.manager,model_eshow_log_book_line,group_connector_manager,1,0,0,1
+access_connector_data_sync_info_user,connector.data.sync.info.user,model_connector_data_sync_info,group_connector_user,1,0,0,0
+access_connector_data_sync_info_manager,connector.data.sync.info.manager,model_connector_data_sync_info,group_connector_manager,1,0,0,1

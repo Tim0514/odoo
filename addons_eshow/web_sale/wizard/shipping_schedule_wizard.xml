@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_shipping_schedule_wizard" model="ir.ui.view">
+        <field name="name">Regenerate Shipping Schedule Manually</field>
+        <field name="model">web.sale.shipping.schedule.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Parameters">
+                <p>
+                    Regenerate Shipping Schedule Manually
+                </p>
+                <footer>
+                    <button name="regenerate_shipping_schedule" string="Regenerate" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_shipping_schedule_wizard" model="ir.actions.act_window">
+        <field name="name">Regenerate Shipping Schedule Manually</field>
+        <field name="res_model">web.sale.shipping.schedule.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+            id="menu_shipping_schedule_wizard"
+            name="Regenerate Shipping Schedule Manually"
+            action="action_shipping_schedule_wizard"
+            parent="menu_web_sale_management"
+            sequence="24"/>
+
+</odoo>

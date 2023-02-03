@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="shop_inventory_tree" model="ir.ui.view">
+        <field name="name">web.sale.shop.inventory.tree</field>
+        <field name="model">web.sale.shop.inventory</field>
+        <field name="arch" type="xml">
+
+            <tree
+                string="Web Shop Inventory"
+                import="true"
+                create="false"
+                edit="false"
+                multi_edit="false"
+                duplicate="false"
+                editable="bottom"
+            >
+                <field name="shop_warehouse_id" optional="show"/>
+                <field name="shop_product_id" optional="show"/>
+                <field name="seller_sku" optional="show"/>
+                <field name="product_default_code" optional="show"/>
+                <field name="product_name" optional="show"/>
+                <field name="afn_fulfillable_quantity" optional="show"/>
+                <field name="reserved_fc_transfers" optional="show"/>
+                <field name="reserved_fc_processing" optional="show"/>
+                <field name="afn_inbound_shipped_quantity" optional="show"/>
+                <field name="afn_unsellable_quantity" optional="show"/>
+                <field name="afn_inbound_working_quantity" optional="show"/>
+                <field name="afn_inbound_receiving_quantity" optional="show"/>
+                <field name="afn_erp_real_shipped_quantity" optional="show"/>
+                <field name="afn_researching_quantity" optional="show"/>
+                <field name="afn_fulfillable_quantity_multi" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="shop_inventory_search" model="ir.ui.view">
+        <field name="name">web.sale.shop.inventory.search</field>
+        <field name="model">web.sale.shop.inventory</field>
+        <field name="arch" type="xml">
+            <search string="Search shop inventory">
+                <field name="shop_warehouse_id" />
+                <field name="seller_sku" />
+                <field name="product_default_code" />
+                <group expand="0" string="Group By...">
+                    <filter
+                        name="shop_warehouse_id"
+                        string="Shop Warehouse"
+                        domain="[]"
+                        context="{'group_by' : 'shop_warehouse_id'}"
+                    />
+                    <filter
+                        name="product_default_code"
+                        string="Product Default Code"
+                        domain="[]"
+                        context="{'group_by' : 'product_default_code'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="shop_inventory_action" model="ir.actions.act_window">
+        <field name="name">Shop Inventory</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">web.sale.shop.inventory</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="shop_inventory_search" />
+    </record>
+
+    <menuitem
+        id="menu_shop_inventory"
+        name="Shop Inventory"
+        action="shop_inventory_action"
+        sequence="5"
+        parent="menu_web_sale_management"
+        groups="group_web_sale_user,group_web_sale_manager"
+    />
+
+</odoo>
