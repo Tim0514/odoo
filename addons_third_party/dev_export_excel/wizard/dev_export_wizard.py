@@ -21,6 +21,8 @@ import itertools
 from operator import itemgetter
 import operator
 
+base64.encodestring = base64.encodebytes
+
 class dev_export_wizard(models.TransientModel):
     _name ='dev.export.wizard'
     _description = 'Export Excel'

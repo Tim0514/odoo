@@ -29,10 +29,10 @@
                     <button name="do_unreserve_completely" class="btn-danger" type="object"
                             string="Unreserve Completely"
                             confirm="Are you still sure you want to do complete unreserve action?"
-                            attrs="{'invisible': [('unreserve_visible_completely', '=', False)]}" data-hotkey="w"/>
+                            attrs="{'invisible': [('unreserve_completely_visible', '=', False)]}" data-hotkey="w"/>
                 </xpath>
                 <xpath expr="//sheet/field[@name='unreserve_visible']" position="after">
-                    <field name="unreserve_visible_completely" invisible="1"/>
+                    <field name="unreserve_completely_visible" invisible="1"/>
                 </xpath>
             </field>
         </record>

@@ -105,7 +105,7 @@ class ProductTemplate(models.Model):
         Used to compute margins on sale orders.""")
 
     _sql_constraints = [
-        ('default_code_uniq', 'unique(default_code)', 'Internal Reference must be unique'),
+        ('default_code_uniq', 'unique(company_id, default_code)', 'Internal Reference must be unique'),
         # ('barcode_uniq', 'unique(barcode)', "A barcode can only be assigned to one product !"),
     ]
 

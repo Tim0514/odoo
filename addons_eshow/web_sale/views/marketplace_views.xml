@@ -14,6 +14,7 @@
             >
                 <field name="name" />
                 <field name="country_id" />
+                <field name="timezone" />
                 <field name="type" />
                 <field name="code" />
                 <field name="endpoint" />

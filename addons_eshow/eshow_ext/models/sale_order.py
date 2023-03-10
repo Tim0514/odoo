@@ -11,3 +11,4 @@ class SaleOrder(models.Model):
     _sql_constraints = [
         ('name_uniq2', 'unique(name)', 'Sale Order No. must be unique'),
     ]
+

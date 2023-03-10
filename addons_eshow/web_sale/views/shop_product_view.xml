@@ -17,16 +17,17 @@
                 decoration-muted="state == 'stop'"
                 default_order="shop_id, seller_sku"
             >
-                <field name="shop_id" />
-                <field name="seller_sku" />
-                <field name="product_id" optional="hide" groups="web_sale.group_web_sale_manager"/>
-                <field name="product_default_code" />
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="hide"/>
+                <field name="shop_id" readonly="1"/>
+                <field name="seller_sku" readonly="1"/>
+                <field name="product_id" optional="hide"  readonly="1" groups="web_sale.group_web_sale_manager"/>
+                <field name="product_default_code"  readonly="1"/>
                 <field name="product_name" />
-                <field name="parent_asin" optional="hide"/>
-                <field name="product_asin_id" optional="hide"/>
-                <field name="product_fnsku" optional="hide"/>
-                <field name="is_deleted" optional="hide"/>
-                <field name="is_web_sale_manager" invisible="1"/>
+                <field name="parent_asin" optional="hide" readonly="1"/>
+                <field name="product_asin_id" optional="hide" readonly="1"/>
+                <field name="product_fnsku" optional="hide" readonly="1"/>
+                <field name="is_deleted" optional="hide" readonly="1"/>
+                <field name="is_web_sale_manager" invisible="1" readonly="1"/>
                 <field name="salesperson_id" optional="show" attrs="{'readonly': [('is_web_sale_manager', '=', False)]}"/>
                 <field
                     name="state"
@@ -43,6 +44,7 @@
                     decoration-danger="state == 'clearance'"
                     decoration-muted="state == 'stop'"
                     optional="hide"
+                    readonly="1"
                 />
             </tree>
         </field>
@@ -164,8 +166,16 @@
         id="menu_shop_product"
         name="Shop Product"
         sequence="10"
-        parent="menu_basic_data"
+        parent="menu_product_management"
         action="shop_product_form_action"
+    />
+
+    <menuitem
+        id="menu_product_template"
+        name="Products"
+        sequence="20"
+        parent="menu_product_management"
+        action="sale.product_template_action"
     />
 
 </odoo>

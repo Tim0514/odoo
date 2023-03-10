@@ -14,7 +14,11 @@ class ImportProductMonthlyStat(ActionHandler):
     def __init__(self, connector, log_book, start_time=None, end_time=None, **kwargs):
         super(ImportProductMonthlyStat, self).__init__(connector, log_book, start_time, end_time, **kwargs)
         self._search_param_list = None
-        self._request_page_limit = 1
+        self._request_records_limit = 1
+        self._request_offset = 0
+        # 请求参数数据的总数量，初始为负数
+        self._request_total = -1
+
 
     def _get_search_params(self):
         if self._request_total < 0:
@@ -28,7 +32,6 @@ class ImportProductMonthlyStat(ActionHandler):
 
             web_shop_obj = self._connector.env["web.sale.shop"]
             domain = [
-                ("company_id", "=", self._connector.env.company.id),
                 ("enable_exchange_data", "=", True)]
 
             shop_list = web_shop_obj.search(domain, order="lingxing_shop_id")
@@ -47,12 +50,11 @@ class ImportProductMonthlyStat(ActionHandler):
             self._request_total = len(search_params_list)
             self._search_param_list = search_params_list
             self._request_offset = 0
-
         elif not self._has_more_result_data:
             # 如果当前参数没有有数据需要继续下载，则取得下一页参数
-            self._request_offset += self._request_page_limit
+            self._request_offset += self._request_records_limit
 
-        if self._request_offset + self._request_page_limit >= self._request_total:
+        if self._request_offset + self._request_records_limit >= self._request_total:
             self._has_more_request_data = False
         else:
             self._has_more_request_data = True
@@ -69,7 +71,7 @@ class ImportProductMonthlyStat(ActionHandler):
             "start_date": search_params["start_date"],
             "end_date": search_params["end_date"],
             "offset": self._result_offset,
-            "length": self._result_page_limit,
+            "length": self._result_records_limit,
         }
 
         return req_body
@@ -87,7 +89,6 @@ class ImportProductMonthlyStat(ActionHandler):
 
         shop = shop_obj.search(
             [
-                ("company_id", "=", self._connector.env.company.id),
                 ("lingxing_shop_id", "=", self._search_param_list[self._request_offset]["sid"])
             ],
             limit=1)
@@ -113,7 +114,6 @@ class ImportProductMonthlyStat(ActionHandler):
 
                 # 在shop_product_asin表中查找对应的产品。
                 domain = [
-                    ("company_id", "=", self._connector.env.company.id),
                     ("shop_id.lingxing_shop_id", "=", result["sid"]),
                     ("product_asin", "=", result["asin"])
                 ]
@@ -176,7 +176,6 @@ class ImportProductMonthlyStat(ActionHandler):
                 model_vals["remark"] = str(result["remark"])
 
                 domain = [
-                    ("company_id", "=", self._connector.env.company.id),
                     ("shop_id", "=", model_vals["shop_id"]),
                     ("product_asin", "=", model_vals["product_asin"]),
                     ("stat_month", "=", model_vals["stat_month"])

@@ -54,7 +54,7 @@ class ProductProduct(models.Model):
                                         help='Price For Destination Custom Declaration (Cost * Destination Declare Price Rate * USD Exchange Rate')
 
     _sql_constraints = [
-        ('default_code_uniq1', 'unique(default_code)', 'Internal Reference must be unique'),
+        ('default_code_uniq1', 'unique(company_id, default_code)', 'Internal Reference must be unique'),
     ]
 
     @api.depends('length', 'width', 'height')

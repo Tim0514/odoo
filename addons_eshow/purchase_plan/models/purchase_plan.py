@@ -126,6 +126,7 @@ class PurchasePlan(models.Model):
         string="Company",
         required=True,
         default=_get_company,
+        index=True,
     )
 
     product_uom_id = fields.Many2one(

@@ -12,7 +12,11 @@
                 editable="bottom"
                 multi_edit="true"
             >
-                <field name="company_id" optional="hide" groups="web_sale.group_web_sale_manager"/>
+                <header>
+                    <button name="do_create_default_shipping_schedule_group_id"
+                            type="object" string="Create Default Shipping Schedule Group" groups="base.group_no_one"/>
+                </header>
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="hide"/>
                 <field name="shop_code" />
                 <field name="name" />
                 <field name="partner_id"  optional="show"/>
@@ -24,7 +28,7 @@
                 <field name="enable_shipping_schedule" groups="web_sale.group_web_sale_manager" optional="show"/>
                 <field name="enable_exchange_data" groups="web_sale.group_web_sale_manager" optional="show"/>
                 <field name="default_shipping_method_id" optional="show"/>
-                <field name="default_shipping_schedule_group_id" optional="show"/>
+                <field name="default_shipping_schedule_group_id" optional="show" readonly="1"/>
             </tree>
         </field>
     </record>
@@ -37,6 +41,12 @@
                 <field name="name" />
                 <field name="shop_code" />
                 <field name="marketplace_id" />
+                <separator/>
+                <filter name="enable_shipping_schedule" string="Shipping Schedule Enabled" domain="[('enable_shipping_schedule','=',True)]"/>
+                <filter name="disable_shipping_schedule" string="Shipping Schedule Disabled" domain="[('enable_shipping_schedule','!=',True)]"/>
+                <separator/>
+                <filter name="enable_exchange_data" string="Exchange Data Enabled" domain="[('enable_exchange_data','=',True)]"/>
+                <filter name="disable_exchange_data" string="Exchange Data Disabled" domain="[('enable_exchange_data','!=',True)]"/>
                 <group expand="0" string="Group By...">
                     <filter
                         name="marketplace"

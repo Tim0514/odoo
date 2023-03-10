@@ -12,7 +12,7 @@
     <menuitem
         id="menu_connector_logs"
         name="Logs"
-        sequence="10"
+        sequence="100"
         parent="parent_menu_connector"
         groups="group_connector_user,group_connector_manager"
     />

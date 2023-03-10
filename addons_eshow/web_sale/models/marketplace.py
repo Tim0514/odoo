@@ -17,7 +17,6 @@ _MarketplaceType = [
     ('other', 'Other'),
 ]
 
-
 class Marketplace(models.Model):
     _name = "web.sale.marketplace"
     _description = "Marketplace"
@@ -39,3 +38,5 @@ class Marketplace(models.Model):
     endpoint = fields.Char(string="Web Service Endpoint",)
 
     description = fields.Text(string="Description")
+
+    timezone = fields.Char(string="Time Zone")

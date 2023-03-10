@@ -3,13 +3,14 @@
 
 from time import gmtime, strftime, time, sleep
 from datetime import datetime
-from odoo import _, fields
+from odoo import _, fields, api, registry, SUPERUSER_ID
 
 import threading
 from typing import Any, Optional
 
 import asyncio
 
+from odoo.exceptions import UserError
 from . import action_handler
 
 from odoo import _, exceptions, models
@@ -107,8 +108,7 @@ class LingxingConnector(models.Model):
     _refresh_token = None
     _expires_in = None
     _last_refresh_token_time = None
-
-
+    _force_refresh_token = False
 
     name = fields.Char("Name", index=True)
     action_description = fields.Char("Description")
@@ -124,6 +124,9 @@ class LingxingConnector(models.Model):
     last_success_sync_time = fields.Datetime("Last Success Sync Time")
 
     action_handler_name = fields.Char("Action Handler Class Name")
+
+    def __init__(self, *args, **kwargs):
+        super(LingxingConnector, self).__init__(*args, **kwargs)
 
     def _raise_connector_error(self, message, response_result: ResponseResult = None, error=None):
         """ Build an error log from an error response, if any, and raise it. """
@@ -142,11 +145,17 @@ class LingxingConnector(models.Model):
 
         raise error
 
+    def _set_force_refresh_token(self, force_refresh_token):
+        LingxingConnector._force_refresh_token = force_refresh_token
+
+    def _get_force_refresh_token(self):
+        return LingxingConnector._force_refresh_token
+
     async def _refresh_access_token(self):
         try:
             current_time = time()
 
-            if (not LingxingConnector._access_token) \
+            if self._get_force_refresh_token() or (not LingxingConnector._access_token) \
                     or (not LingxingConnector._last_refresh_token_time) \
                     or current_time - LingxingConnector._last_refresh_token_time > 6000:
                 op_api = OpenApiBase(ACCESS_DOMAIN, APP_ID, APP_SECRET)
@@ -155,6 +164,7 @@ class LingxingConnector(models.Model):
                 LingxingConnector._refresh_token = response_data.refresh_token
                 LingxingConnector._expires_in = response_data.expires_in
                 LingxingConnector._last_refresh_token_time = current_time
+                self._set_force_refresh_token(False)
 
             return LingxingConnector._access_token
 
@@ -410,9 +420,7 @@ class LingxingConnector(models.Model):
         return last_action_time
 
     def _init_log_book(self):
-        # 初始化log_book
-        log_book = self.env["eshow.log.book"]
-        log_book = log_book.init_log_book('lingxing_connector', self.name)
+        log_book = self.env["eshow.log.book"].init_log_book('lingxing_connector', self.name)
         return log_book
 
     def _compute_date_range(self, current_time=False, start_time=False, end_time=False):
@@ -426,10 +434,10 @@ class LingxingConnector(models.Model):
         if not current_time:
             current_time = fields.Datetime.now()
 
-        # 如果没有传入start_time, 则取上次结束的时间
+        # 如果没有传入start_time, 则取上次执行成功的时间
         if not start_time:
-            if self.end_time:
-                start_time = self.end_time
+            if self.last_success_sync_time:
+                start_time = self.last_success_sync_time
             else:
                 start_time = datetime.strptime("2000-01-01 00:00:00", '%Y-%m-%d %H:%M:%S')
 
@@ -463,8 +471,13 @@ class LingxingConnector(models.Model):
         :param end_time: 导入的数据的更新时间到end_time结束，如果为False则使用当前时间
         :return: log_book
         """
+        self = self.with_user(SUPERUSER_ID)
+
         # 初始化log_book
-        log_book = self._init_log_book()
+
+        log_book_cr = registry(self._cr.dbname).cursor()
+        env = api.Environment(log_book_cr, SUPERUSER_ID, {})
+        log_book = env["eshow.log.book"].init_log_book('lingxing_connector', self.name)
 
         # action_state 默认为“success”, 如果中间发生错误则改为“error”
         action_state = "success"
@@ -472,7 +485,9 @@ class LingxingConnector(models.Model):
         ext_message = False
 
         total_record_count = 0
-        success_record_count = 0
+        create_record_count = 0
+        update_record_count = 0
+        delete_record_count = 0
         fail_record_count = 0
         ignore_record_count = 0
         warning_record_count = 0
@@ -512,7 +527,10 @@ class LingxingConnector(models.Model):
 
                     # print("Process Complete.")
 
-                    log_book.add_log_lines(action_handler_obj.pop_log_line_vals())
+                    # 只记录有问题的日志行
+                    log_lines = action_handler_obj.pop_log_line_vals()
+                    # log_lines = list(filter(lambda v: v["action_state"] != "success", log_lines))
+                    log_book.add_log_lines(log_lines)
 
                     if not process_success:
                         action_state = "fail"
@@ -529,7 +547,9 @@ class LingxingConnector(models.Model):
 
                 # 计算成功和失败的数量
                 total_record_count = action_handler_obj.get_total_count()
-                success_record_count = action_handler_obj.get_success_count()
+                create_record_count = action_handler_obj.get_create_count()
+                update_record_count = action_handler_obj.get_update_count()
+                delete_record_count = action_handler_obj.get_delete_count()
                 ignore_record_count = action_handler_obj.get_ignore_count()
                 fail_record_count = action_handler_obj.get_fail_count()
                 warning_record_count = action_handler_obj.get_warning_count()
@@ -544,6 +564,10 @@ class LingxingConnector(models.Model):
 
         except ConnectorError as error:
             _logger.exception(error)
+
+            if error.response_result and error.response_result.code == 2001005:
+                self._set_force_refresh_token(True)
+
             action_state = "fail"
             error_message = str(error)
             ext_message = str(req_body)
@@ -557,12 +581,54 @@ class LingxingConnector(models.Model):
             log_book.update_log_book_result(
                 action_state,
                 total_record_count=total_record_count,
-                success_record_count=success_record_count,
+                create_record_count=create_record_count,
+                update_record_count=update_record_count,
+                delete_record_count=delete_record_count,
                 fail_record_count=fail_record_count,
                 ignore_record_count=ignore_record_count,
                 warning_record_count=warning_record_count,
                 error_message=error_message,
                 ext_message=ext_message
             )
+
+            try:
+                log_book_cr.commit()
+                log_book_cr.close()
+            except Exception as error:
+                pass
+
             return log_book
+
+    @api.model
+    def run_scheduler(self, action_names=False, use_new_cursor=False, company_id=False, **kwargs):
+        """ Call the scheduler. This function is intended to be run for all the companies at the same time, so
+        we run functions as SUPERUSER to avoid intercompanies and access rights issues. """
+        try:
+            if use_new_cursor:
+                cr = registry(self._cr.dbname).cursor()
+                self = self.with_env(self.env(cr=cr))  # TDE FIXME
+
+            if not action_names and not isinstance(action_names, str) and not isinstance(action_names, list):
+                raise UserError(_("Action name is required to run the connector scheduler."))
+            elif isinstance(action_names, str):
+                action_names = [action_names]
+
+            for action_name in action_names:
+                connector = self.search([("name", "=", action_name)])
+                if not connector:
+                    raise UserError(_("Action, %s, is not found to run the connector scheduler." % action_name))
+
+                connector.do_sync_action(start_time=False, end_time=False,
+                                         use_new_cursor=use_new_cursor, company_id=company_id, **kwargs)
+
+            if use_new_cursor:
+                self._cr.commit()
+                self._cr.close()
+        finally:
+            if use_new_cursor:
+                try:
+                    self._cr.close()
+                except Exception:
+                    pass
+        return {}
 

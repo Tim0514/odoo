@@ -22,12 +22,12 @@
         1) 增加属性缩写码, code字段
         2）调整界面显示
     """,
-    'version': '14.0.1.0.0',
+    'version': '15.0.1.0.0',
     'category': 'EShow/EShow',
     'website': 'http://www.max-share.com/',
     'author': 'Tim Wang',
     'license': 'AGPL-3',
-    'application': False,
+    'application': True,
     'installable': True,
     'depends': [
         'base', 'product', 'mrp', 'purchase_stock', 'eshow_emark',
@@ -47,9 +47,19 @@
         'views/purchase_views.xml',
         'views/mrp_production_views.xml',
         'views/account_move_views.xml',
+        'views/res_company_views.xml',
         'report/report_templates.xml',
         'report/report_invoice.xml',
         'report/purchase_report_templates.xml',
         'data/product_data.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'eshow_ext/static/src/js/widgets.js',
+        ],
+        'web.assets_qweb': [
+            'eshow_ext/static/src/xml/widgets.xml',
+        ],
+    },
+
 }

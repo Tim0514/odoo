@@ -9,20 +9,17 @@ class ShopProductMonthlyStat(models.Model):
     _name = "web.sale.shop.product.monthly.stat"
     _description = "Shop Product Monthly Statics"
     _order = "shop_name, product_asin"
+    _check_company_auto = True
 
-    @api.model
-    def _company_get(self):
-        return self.env["res.company"].browse(self.env.company.id)
+    shop_id = fields.Many2one(comodel_name="web.sale.shop", string="Shop", store=True, index=True, check_company=True)
 
     company_id = fields.Many2one(
-        comodel_name="res.company", string="Company", required=True, default=_company_get, index=True,
+        comodel_name="res.company", string="Company", related="shop_id.company_id", store=True, index=True,
     )
-
-    shop_id = fields.Many2one(comodel_name="web.sale.shop", string="Shop", store=True, index=True,)
 
     shop_name = fields.Char(related="shop_id.name", string="Web Shop Name", store=True, index=True,)
 
-    product_asin_id = fields.Many2one("web.sale.shop.product.asin", string="ASIN", store=True, index=True,)
+    product_asin_id = fields.Many2one("web.sale.shop.product.asin", string="ASIN", store=True, index=True, check_company=True)
 
     product_asin = fields.Char(related="product_asin_id.product_asin", string="ASIN", store=True, index=True,)
 

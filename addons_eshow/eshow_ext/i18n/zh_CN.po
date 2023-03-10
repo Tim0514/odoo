@@ -971,3 +971,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:eshow_ext.field_res_users__default_contact_person
 msgid "默认联系人"
 msgstr ""
+
+#. module: stock
+#: model_terms:ir.ui.view,arch_db:stock.report_product_product_replenishment
+msgid "Free Stock"
+msgstr "未锁定库存"

@@ -8,7 +8,11 @@ class ImportShopProducts(ActionHandler):
 
     def __init__(self, connector, log_book, start_time=None, end_time=None, **kwargs):
         super(ImportShopProducts, self).__init__(connector, log_book, start_time, end_time, **kwargs)
-        self._request_page_limit = 1000
+        self._request_records_limit = 1000
+        self._request_offset = 0
+        # 请求参数数据的总数量，默认为负数
+        self._request_total = -1
+
         self._shop_ids_cache = False
 
     def _get_shop_ids(self):
@@ -19,7 +23,6 @@ class ImportShopProducts(ActionHandler):
         """
         web_shop_obj = self._connector.env["web.sale.shop"]
         domain = [
-            ("company_id", "=", self._connector.env.company.id),
             ("enable_exchange_data", "=", True)
         ]
 
@@ -32,12 +35,12 @@ class ImportShopProducts(ActionHandler):
             return self._shop_ids_cache
         else:
             # 否则，要取得下一页参数
-            self._request_offset += self._request_page_limit
+            self._request_offset += self._request_records_limit
 
         web_shops = web_shop_obj.search(
             domain,
             offset=self._request_offset,
-            limit=self._request_page_limit,
+            limit=self._request_records_limit,
             order="lingxing_shop_id")
 
         if self._request_offset + len(web_shops) >= self._request_total:
@@ -62,7 +65,7 @@ class ImportShopProducts(ActionHandler):
             req_body = {
                 "sid": web_shop_ids,
                 "offset": self._result_offset,
-                "length": self._result_page_limit,
+                "length": self._result_records_limit,
                 # "is_pair": 1,
                 # "pair_update_start_time": self._data_start_time.strftime('%Y-%m-%d %H:%M:%S'),
                 # "pair_update_end_time": self._data_end_time.strftime('%Y-%m-%d %H:%M:%S'),
@@ -73,7 +76,7 @@ class ImportShopProducts(ActionHandler):
             req_body = {
                 "sid": web_shop_ids,
                 "offset": self._result_offset,
-                "length": self._result_page_limit,
+                "length": self._result_records_limit,
                 "is_pair": 1,
                 "pair_update_start_time": self._data_start_time.strftime('%Y-%m-%d %H:%M:%S'),
                 "pair_update_end_time": self._data_end_time.strftime('%Y-%m-%d %H:%M:%S'),
@@ -160,7 +163,6 @@ class ImportShopProducts(ActionHandler):
                 else:
                     lingxing_shop_id = result["sid"]
                     domain = [
-                        ("company_id", "=", self._connector.env.company.id),
                         ("lingxing_shop_id", "=", lingxing_shop_id)
                     ]
 
@@ -206,7 +208,6 @@ class ImportShopProducts(ActionHandler):
                 product_vals.pop("product_asin")
 
                 domain = [
-                    ("company_id", "=", self._connector.env.company.id),
                     ("shop_id", "=", product_vals["shop_id"]),
                     ("seller_sku", "=", product_vals["seller_sku"])]
                 shop_product = shop_product_obj.search(domain, limit=1)

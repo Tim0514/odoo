@@ -14,13 +14,10 @@ class Shop(models.Model):
     _name = "web.sale.warehouse"
     _description = "Shop Warehouse"
     _order = "name"
-
-    @api.model
-    def _company_get(self):
-        return self.env["res.company"].browse(self.env.company.id)
+    _check_company_auto = True
 
     company_id = fields.Many2one(
-        comodel_name="res.company", string="Company", required=True, default=_company_get, index=True,
+        comodel_name="res.company", string="Company", related="default_shop_id.company_id", store=True, index=True,
     )
 
     name = fields.Char(
@@ -28,7 +25,7 @@ class Shop(models.Model):
         index=True,
     )
 
-    shop_ids = fields.Many2many("web.sale.shop", string="Shops")
+    shop_ids = fields.Many2many("web.sale.shop", string="Shops", check_company=True)
     shop_names = fields.Char(string="Shops Supported", compute="_compute_shop_names")
 
     share_type = fields.Selection(
@@ -37,7 +34,7 @@ class Shop(models.Model):
         copy=True,
     )
 
-    default_shop_id = fields.Many2one("web.sale.shop", string="Default Shop")
+    default_shop_id = fields.Many2one("web.sale.shop", string="Default Shop", check_company=True)
 
     # default_shop_id = fields.Many2one("web.sale.shop", string="Default Shop",
     #                                   compute="_compute_default_shop", inverse="_set_default_shop", save=True)

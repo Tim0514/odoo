@@ -16,6 +16,7 @@
                 duplicate="false"
                 editable="bottom"
             >
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="hide"/>
                 <field name="shop_warehouse_id" optional="show"/>
                 <field name="shop_product_id" optional="show"/>
                 <field name="seller_sku" optional="show"/>

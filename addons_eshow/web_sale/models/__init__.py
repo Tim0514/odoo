@@ -14,4 +14,10 @@ from . import stock_picking
 from . import stock_move
 from . import shop_sale_data
 from . import mrp_mps
+from . import lx_stock_move
+from . import lx_stock_picking
+from . import web_sale_order
+
+
+
 

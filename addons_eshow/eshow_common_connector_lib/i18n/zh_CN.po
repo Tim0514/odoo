@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-06 05:59+0000\n"
-"PO-Revision-Date: 2022-12-06 14:12+0800\n"
+"POT-Creation-Date: 2023-03-03 11:53+0000\n"
+"PO-Revision-Date: 2023-03-03 19:56+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -50,6 +50,11 @@ msgid "Activity Type Icon"
 msgstr ""
 
 #. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__line_filter__all
+msgid "All"
+msgstr "全部"
+
+#. module: eshow_common_connector_lib
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__attachment_id
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__attachment_id
 msgid "Attachment"
@@ -59,6 +64,12 @@ msgstr "附件"
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_attachment_count
 msgid "Attachment Count"
 msgstr "附件数量"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__company_id
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__company_id
+msgid "Company"
+msgstr "公司"
 
 #. module: eshow_common_connector_lib
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__complete_date
@@ -87,6 +98,17 @@ msgid "Connector User"
 msgstr "连接器用户"
 
 #. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__line_filter__created
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__created
+msgid "Created"
+msgstr "已新建"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__create_record_count
+msgid "Created Record Count"
+msgstr "新建数"
+
+#. module: eshow_common_connector_lib
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__create_uid
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__create_uid
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book_line__create_uid
@@ -104,6 +126,17 @@ msgstr "创建于"
 #: model:ir.model,name:eshow_common_connector_lib.model_connector_data_sync_info
 msgid "Data Import/Export Information"
 msgstr "数据导入/导出记录信息"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__line_filter__deleted
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__deleted
+msgid "Deleted"
+msgstr "已删除"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__delete_record_count
+msgid "Deleted Record Count"
+msgstr "删除数"
 
 #. module: eshow_common_connector_lib
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__display_name
@@ -125,9 +158,14 @@ msgid "Extend Message"
 msgstr "附加信息"
 
 #. module: eshow_common_connector_lib
-#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__action_state__fail
-#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__fail
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__action_state__failed
 msgid "Fail"
+msgstr "失败"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__line_filter__failed
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__failed
+msgid "Failed"
 msgstr "失败"
 
 #. module: eshow_common_connector_lib
@@ -200,8 +238,13 @@ msgid "Ignore Record Count"
 msgstr "忽略数"
 
 #. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__line_filter__ignored
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__ignored
+msgid "Ignored"
+msgstr "已忽略"
+
+#. module: eshow_common_connector_lib
 #: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__action_state__in-progress
-#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__in-progress
 msgid "In Progress"
 msgstr "进行中"
 
@@ -248,7 +291,6 @@ msgstr "最后更新时间"
 
 #. module: eshow_common_connector_lib
 #: code:addons/eshow_common_connector_lib/models/log_book.py:0
-#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__log_module__lingxing_connector
 #, python-format
 msgid "Lingxing Connector"
 msgstr "领星连接器"
@@ -311,7 +353,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_ids
 #: model_terms:ir.ui.view,arch_db:eshow_common_connector_lib.view_eshow_log_book_form
 msgid "Messages"
-msgstr ""
+msgstr "信息"
 
 #. module: eshow_common_connector_lib
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_connector_data_sync_info__model_id
@@ -440,14 +482,10 @@ msgstr ""
 
 #. module: eshow_common_connector_lib
 #: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__action_state__success
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__line_filter__success
 #: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__success
 msgid "Success"
 msgstr "成功"
-
-#. module: eshow_common_connector_lib
-#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__success_record_count
-msgid "Successful Record Count"
-msgstr "成功数"
 
 #. module: eshow_common_connector_lib
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__total_record_count
@@ -467,4 +505,37 @@ msgstr ""
 #. module: eshow_common_connector_lib
 #: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__message_unread_counter
 msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__line_filter__updated
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__updated
+msgid "Updated"
+msgstr "已更新"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__update_record_count
+msgid "Updated Record Count"
+msgstr "更新数"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__line_filter
+msgid "View Log Lines"
+msgstr "日志明细显示"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__action_state__warning
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__line_filter__warning
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book_line__action_state__warning
+msgid "Warning"
+msgstr "警告"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields,field_description:eshow_common_connector_lib.field_eshow_log_book__warning_record_count
+msgid "Warning Record Count"
+msgstr "警告数"
+
+#. module: eshow_common_connector_lib
+#: model:ir.model.fields.selection,name:eshow_common_connector_lib.selection__eshow_log_book__log_module__lingxing_connector
+msgid "领星连接器"
 msgstr ""

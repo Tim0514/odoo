@@ -14,6 +14,7 @@
         "data/shipping_schedule.xml",
         "security/web_sale.xml",
         "security/ir.model.access.csv",
+        "views/web_sale_view.xml",
         "views/marketplace_views.xml",
         "views/shipping_method_views.xml",
         "views/shop_views.xml",
@@ -23,7 +24,9 @@
         "views/shop_product_weekly_stat_view.xml",
         "views/shipping_schedule_view.xml",
         "views/shipping_schedule_group_view.xml",
-        "views/web_sale_view.xml",
+        "views/stock_move_view.xml",
+        "views/stock_picking_views.xml",
+        "report/shipping_schedule_xlsx.xml",
         "wizard/shipping_schedule_wizard.xml",
     ],
     'assets': {

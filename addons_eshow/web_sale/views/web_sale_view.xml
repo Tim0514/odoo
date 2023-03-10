@@ -10,6 +10,14 @@
     />
 
     <menuitem
+        id="menu_schedule_management"
+        name="Schedule Management"
+        sequence="3"
+        groups="group_web_sale_user,group_web_sale_manager"
+        parent="parent_menu_web_sale"
+    />
+
+    <menuitem
         id="menu_web_sale_management"
         name="Web Sale Management"
         sequence="5"
@@ -18,9 +26,25 @@
     />
 
     <menuitem
+        id="menu_web_logistics_management"
+        name="Logistics Management"
+        sequence="10"
+        groups="group_web_sale_user,group_web_sale_manager"
+        parent="parent_menu_web_sale"
+    />
+
+    <menuitem
+        id="menu_product_management"
+        name="Products"
+        sequence="15"
+        groups="group_web_sale_user,group_web_sale_manager"
+        parent="parent_menu_web_sale"
+    />
+
+    <menuitem
         id="menu_basic_data"
         name="Basic Data"
-        sequence="10"
+        sequence="50"
         parent="parent_menu_web_sale"
         groups="group_web_sale_user,group_web_sale_manager"
     />

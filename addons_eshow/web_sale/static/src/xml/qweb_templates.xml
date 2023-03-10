@@ -14,7 +14,7 @@
                         <tr>
                             <th/>
                             <th/>
-                            <th class="text-center"><div>7/14/28</div></th>
+                            <th class="text-center"><div>7/14/30</div></th>
                             <th/>
                             <th class="text-right pr-4" scope="col" t-foreach="manufacturingPeriods" t-as="period">
                                 <div><t t-esc="period"/></div>
@@ -22,7 +22,7 @@
                         </tr>
                     </thead>
                     <t t-call="shipping_schedule"/>
-                    <!--<t t-call="shipping_schedule_page_total"/>-->
+                    <t t-call="shipping_schedule_page_total"/>
                 </table>
             </div>
         </div>
@@ -108,8 +108,13 @@
                         <span data-toggle="tooltip" data-placement="bottom" title="The forecasted quantity in stock at the beginning of the period.">Starting</span>
                         / <span data-toggle="tooltip" data-placement="bottom" title="The forecasted quantity in stock at the end of the period.">Ending</span>
                     </th>
-                    <th/>
-                    <th/>
+                    <th>
+                        <t t-if="shippingSchedule.is_out_of_stock_occurred"><div class="text-danger">Out of stock occurred</div></t>
+                    </th>
+                    <th>
+                        <t t-if="shippingSchedule.is_too_much_inventory"><div class="text-warning">Too much inventory</div></t>
+                        <t t-if="shippingSchedule.is_too_little_inventory"><div class="text-warning">Too little inventory</div></t>
+                    </th>
                     <t t-foreach="shippingSchedule.forecast_ids" t-as="forecast">
                         <th class="text-right pr-4">
                             <t t-esc="forecast.starting_inventory_qty"/>
@@ -123,7 +128,7 @@
                         <span data-toggle="tooltip" data-placement="bottom" title="Sale forecast of each period.">Sale Forecast</span>
                         / <span data-toggle="tooltip" data-placement="bottom" title="Safety inventory according to available sale days setting.">Safety</span>
                     </th>
-                    <th class="text-center"><span><t t-esc="shippingSchedule.sale_qty_7"/></span> / <span><t t-esc="shippingSchedule.sale_qty_14"/></span> / <span><t t-esc="shippingSchedule.sale_qty_28"/></span></th>
+                    <th class="text-center"><span><t t-esc="shippingSchedule.sale_qty_7"/></span> / <span><t t-esc="shippingSchedule.sale_qty_14"/></span> / <span><t t-esc="shippingSchedule.sale_qty_30"/></span></th>
                     <th class="text-right"><span>Reference Monthly Sale Qty: </span><span><t t-esc="shippingSchedule.advised_monthly_sale_qty"/></span></th>
                     <t t-foreach="shippingSchedule.forecast_ids" t-as="forecast">
                         <th class="text-right pr-4">
@@ -153,7 +158,7 @@
                             </span>
                             <span>/</span>
                             <span name="safety_inventory">
-                                <t t-if="shippingSchedule.state != 'draft'">
+                                <t t-if="shippingSchedule.state != 'draft' or forecast.is_first_period">
                                     <input type="text"
                                     t-att-data-date_index="forecast_index"
                                     t-attf-class="form-control text-right
@@ -185,17 +190,51 @@
                         Arriving Qty:
                         <span data-toggle="tooltip" data-placement="bottom" title="Applied quantities by salesperson.">Salesperson</span>
                         / <span data-toggle="tooltip" data-placement="bottom" title="Verified quantities by logistics.">Logistics</span>
-                        / <span data-toggle="tooltip" data-placement="bottom" title="Increase arriving quantities.">Increase</span>
                         <br/>
-                        <span data-toggle="tooltip" data-placement="bottom" title="Confirmed arriving quantities.">Confirmed</span>
+                        <span data-toggle="tooltip" data-placement="bottom" title="Increase arriving quantities.">Increase</span>
+                        / <span data-toggle="tooltip" data-placement="bottom" title="Confirmed arriving quantities.">Confirmed</span>
                         / <span data-toggle="tooltip" data-placement="bottom" title="Shipped quantities.">Shipped</span>
                     </th>
-                    <th/>
-                    <th/>
+                    <th class="text-center"><span>30 Days Sale Last Year: </span><span><t t-esc="shippingSchedule.sale_qty_30_y_1"/></span></th>
+                    <th>
+                        <t t-if="shippingSchedule.existing_qty_delayed > 0">
+                            <span class="text-danger" data-toggle="tooltip" data-placement="bottom"
+                                  title="Existing arriving qty which is delayed.">Delayed Qty:</span>
+                            <span class="text-danger">
+                                <a href="#"
+                                    name="existing_qty_delayed"
+                                    data-action="action_open_existing_arriving_qty_details"
+                                    t-att-data-date_index="'delayed'"
+                                    t-att-data-date_start="shippingSchedule.forecast_ids[0].date_start"
+                                    t-att-data-date_stop="shippingSchedule.forecast_ids[0].date_stop"
+                                    t-attf-class="o_open_existing_arriving_qty_details"
+                                >
+                                <t t-esc="shippingSchedule.existing_qty_delayed"/>
+                                </a>
+                            </span>
+                            <br></br>
+                        </t>
+                        <t t-if="shippingSchedule.existing_qty_unallocated > 0">
+                            <span class="text-danger" data-toggle="tooltip" data-placement="bottom"
+                                  title="Existing arriving qty which is not allocated to forecast.">Unallocated Qty:</span>
+                            <span class="text-danger">
+                                <a href="#"
+                                    name="existing_qty_unallocated"
+                                    data-action="action_open_existing_arriving_qty_details"
+                                    t-att-data-date_index="'unallocated'"
+                                    t-att-data-date_start="shippingSchedule.forecast_ids[0].date_start"
+                                    t-att-data-date_stop="shippingSchedule.forecast_ids[0].date_stop"
+                                    t-attf-class="o_open_existing_arriving_qty_details"
+                                >
+                                <t t-esc="shippingSchedule.existing_qty_unallocated"/>
+                                </a>
+                            </span>
+                        </t>
+                    </th>
                     <t t-foreach="shippingSchedule.forecast_ids" t-as="forecast">
                         <th class="text-right pr-4">
                             <span name="arriving_qty_apply">
-                                <t t-if="shippingSchedule.state != 'draft'">
+                                <t t-if="shippingSchedule.state != 'draft' or forecast.is_first_period">
                                     <input type="text"
                                         t-att-data-date_index="forecast_index"
                                         t-attf-class="form-control text-right
@@ -220,7 +259,7 @@
                             </span>
                             <span>/</span>
                             <span name="arriving_qty_verify">
-                                <t t-if="['logistics_confirmed','done'].includes(shippingSchedule.state) or shippingSchedule.is_web_sale_manager == false">
+                                <t t-if="['logistics_confirmed','done'].includes(shippingSchedule.state) or shippingSchedule.is_web_sale_manager == false or forecast.is_first_period">
                                     <input type="text"
                                     t-att-data-date_index="forecast_index"
                                     t-attf-class="form-control text-right
@@ -243,17 +282,37 @@
                                     t-att-value="forecast.arriving_qty_verify"/>
                                 </t>
                             </span>
-                            <span>/</span>
-                            <span name="arriving_qty_confirmed">
-                                <t t-esc="forecast.arriving_qty_increase"/>
-                            </span>
                             <br/>
+                            <span name="arriving_qty_increase">
+                                <t t-if="forecast.arriving_qty_increase > 0 and forecast.to_replenish">
+                                    <span class="text-danger"><t t-esc="forecast.arriving_qty_increase"/></span>
+                                </t>
+                                <t t-elif="forecast.arriving_qty_increase > 0 and forecast.to_replenish == false ">
+                                    <span class="text-warning"><t t-esc="forecast.arriving_qty_increase"/></span>
+                                </t>
+                                <t t-elif="forecast.arriving_qty_increase &lt; 0">
+                                    <span class="text-success"><t t-esc="forecast.arriving_qty_increase"/></span>
+                                </t>
+                                <t t-else="">
+                                    <t t-esc="forecast.arriving_qty_increase"/>
+                                </t>
+                            </span>
+                            <span>/</span>
                             <span name="arriving_qty_confirmed">
                                 <t t-esc="forecast.arriving_qty_confirmed"/>
                             </span>
                             <span>/</span>
-                            <span name="arriving_qty_existing">
-                                <t t-esc="forecast.arriving_qty_existing"/>
+                            <span name="arriving_qty_shipped">
+                                <a href="#"
+                                   name="existing_qty_details"
+                                    data-action="action_open_existing_arriving_qty_details"
+                                    t-att-data-date_index="forecast_index"
+                                    t-att-data-date_start="forecast.date_start"
+                                    t-att-data-date_stop="forecast.date_stop"
+                                    t-attf-class="o_open_existing_arriving_qty_details"
+                                >
+                                    <t t-esc="forecast.arriving_qty_shipped"/>
+                                </a>
                             </span>
                         </th>
                     </t>
@@ -267,11 +326,9 @@
                     <th/>
                     <th class="text-right"><span>Available Qty: </span><span><t t-esc="shippingSchedule.factory_available_qty"/></span></th>
                     <t t-foreach="shippingSchedule.forecast_ids" t-as="forecast">
-                        <th t-attf-class="o_procurement text-right pr-4 {{
-                                                    forecast.to_replenish and 'o_shipping_schedule_to_replenish' or ''
-                                                  }} {{
-                                                    forecast.forced_replenish and 'o_shipping_schedule_forced_replenish' or ''
-                                                  }}">
+                        <th t-attf-class="o_procurement text-right pr-4
+                                {{forecast.to_replenish and 'o_shipping_schedule_to_replenish' or ''}}
+                                ">
                             <span ><t t-esc="forecast.replenish_qty_required"/></span>
                             <span> / </span>
                             <span ><t t-esc="forecast.replenished_qty"/></span>
@@ -282,34 +339,69 @@
         </t>
     </t>
 
+    <!--暂时没用-->
     <t t-name="shipping_schedule_page_total">
-        <tfoot>
+        <t t-set="index" t-value="0"/>
+        <t t-set="total_sale_qty_30" t-value="0"/>
+        <t t-set="total_sale_qty_30_y_1" t-value="0"/>
+        <t t-set="total_advised_monthly_sale_qty" t-value="0"/>
+        <t t-set="total_starting_inventory_qty" t-value="new Array(manufacturingPeriods.length)"/>
+        <t t-set="total_ending_inventory_qty" t-value="new Array(manufacturingPeriods.length)"/>
+        <t t-set="total_forecast_sale_qty" t-value="new Array(manufacturingPeriods.length)"/>
+        <t t-set="total_arriving_qty_apply" t-value="new Array(manufacturingPeriods.length)"/>
+        <t t-set="total_arriving_qty_verify" t-value="new Array(manufacturingPeriods.length)"/>
+        <t t-set="total_arriving_qty_confirmed" t-value="new Array(manufacturingPeriods.length)"/>
+        <t t-foreach="manufacturingPeriods" t-as="period">
+            <t t-set="total_starting_inventory_qty[period_index]" t-value="0"/>
+            <t t-set="total_ending_inventory_qty[period_index]" t-value="0"/>
+            <t t-set="total_forecast_sale_qty[period_index]" t-value="0"/>
+            <t t-set="total_arriving_qty_apply[period_index]" t-value="0"/>
+            <t t-set="total_arriving_qty_verify[period_index]" t-value="0"/>
+            <t t-set="total_arriving_qty_confirmed[period_index]" t-value="0"/>
+        </t>
+        <t t-foreach="state" t-as="shippingSchedule">
+            <t t-foreach="shippingSchedule.forecast_ids" t-as="forecast">
+                <t t-set="total_sale_qty_30" t-value="total_sale_qty_30 + shippingSchedule.sale_qty_30"/>
+                <t t-set="total_sale_qty_30_y_1" t-value="total_sale_qty_30_y_1 + shippingSchedule.sale_qty_30_y_1"/>
+                <t t-set="total_advised_monthly_sale_qty" t-value="total_advised_monthly_sale_qty + shippingSchedule.advised_monthly_sale_qty"/>
+                <t t-set="total_starting_inventory_qty[forecast_index]" t-value="total_starting_inventory_qty[forecast_index] + forecast.forecast_sale_qty"/>
+                <t t-set="total_ending_inventory_qty[forecast_index]" t-value="total_ending_inventory_qty[forecast_index] + forecast.ending_inventory_qty"/>
+                <t t-set="total_forecast_sale_qty[forecast_index]" t-value="total_forecast_sale_qty[forecast_index] + forecast.forecast_sale_qty"/>
+                <t t-set="total_arriving_qty_apply[forecast_index]" t-value="total_arriving_qty_apply[forecast_index] + forecast.arriving_qty_apply"/>
+                <t t-set="total_arriving_qty_verify[forecast_index]" t-value="total_arriving_qty_verify[forecast_index] + forecast.arriving_qty_verify"/>
+                <t t-set="total_arriving_qty_confirmed[forecast_index]" t-value="total_arriving_qty_confirmed[forecast_index] + forecast.arriving_qty_confirmed"/>
+            </t>
+        </t>
+        <tfoot class="bg-info o_page_total" >
             <tr name="total_inventory">
                 <th><span>Total Inventory ( Starting / Ending )</span></th>
                 <th/>
                 <th/>
+                <th/>
                 <th class="text-right pr-4" scope="col" t-foreach="manufacturingPeriods" t-as="period">
-                    <div>0 / 0</div>
+                    <div><t t-esc="total_starting_inventory_qty[period_index]"/> / <t t-esc="total_ending_inventory_qty[period_index]"/></div>
                 </th>
             </tr>
             <tr name="total_sale_forecast">
                 <th><span>Total Sale Forecast</span></th>
-                <th><span data-toggle="tooltip" data-placement="bottom" title="Total Actual Sale of last month"><t t-esc="0"/></span></th>
-                <th><span data-toggle="tooltip" data-placement="bottom" title="Total Forecast Sale of last month"><t t-esc="0"/></span></th>
+                <th><span>30 Days Sale Last Year: </span><span><t t-esc="total_sale_qty_30_y_1"/></span></th>
+                <th><span>30 Days Sale: </span><span><t t-esc="total_sale_qty_30"/></span></th>
+                <th><span>Reference Monthly Sale Qty: </span><span><t t-esc="total_advised_monthly_sale_qty"/></span></th>
                 <th class="text-right pr-4" scope="col" t-foreach="manufacturingPeriods" t-as="period">
-                    <span data-toggle="tooltip" data-placement="bottom" title="Total Existing Arriving Qty"><t t-esc="0"/></span>
-                    <span> / </span>
-                    <span data-toggle="tooltip" data-placement="bottom" title="Total Applied Qty"><t t-esc="0"/></span>
-                    <span> / </span>
-                    <span data-toggle="tooltip" data-placement="bottom" title="Total Confirmed Qty"><t t-esc="0"/></span>
+                    <div><t t-esc="total_forecast_sale_qty[period_index]"/></div>
                 </th>
             </tr>
-            <tr name="total_incoming_qty">
-                <th><span>Total Incoming Qty ( Current / New )</span></th>
+            <tr name="total_sale_forecast">
+                <th><span>Arriving Qty (Salesperson / Logistics / Confirmed)</span></th>
+                <th/>
+                <th/>
+                <th/>
                 <th class="text-right pr-4" scope="col" t-foreach="manufacturingPeriods" t-as="period">
-                    <span data-toggle="tooltip" data-placement="bottom" title="Total Replenished Qty"><t t-esc="0"/></span>
+                    <span data-toggle="tooltip" data-placement="bottom" title="Total Arriving Qty Apply"><t t-esc="total_arriving_qty_apply[period_index]"/></span>
                     <span> / </span>
-                    <span data-toggle="tooltip" data-placement="bottom" title="New Replenishing Qty"><t t-esc="0"/></span>
+                    <span data-toggle="tooltip" data-placement="bottom" title="Total Arriving Qty Verify"><t t-esc="total_arriving_qty_verify[period_index]"/></span>
+                    <span> / </span>
+                    <span data-toggle="tooltip" data-placement="bottom" title="Total Arriving Qty Confirmed"><t t-esc="total_arriving_qty_confirmed[period_index]"/></span>
                 </th>
             </tr>
         </tfoot>

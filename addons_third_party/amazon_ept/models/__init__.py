@@ -66,3 +66,5 @@ from . import vat_config_ept
 from . import vat_config_line_ept
 from . import res_partner
 from . import account_fiscal_position
+from . import amazon_developer_details_ept
+

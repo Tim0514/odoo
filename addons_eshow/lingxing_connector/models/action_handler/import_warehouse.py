@@ -16,7 +16,7 @@ class ImportWarehouse(ActionHandler):
 
         req_body = {
             "offset": self._result_offset,
-            "length": self._result_page_limit,
+            "length": self._result_records_limit,
         }
 
         return req_body
@@ -43,7 +43,6 @@ class ImportWarehouse(ActionHandler):
 
             try:
                 domain = [
-                    ("company_id", "=", self._connector.env.company.id),
                     ('lingxing_shop_id', '=', shop_dict["sid"])
                 ]
                 shop = shop_obj.search(domain, limit=1)
@@ -60,7 +59,6 @@ class ImportWarehouse(ActionHandler):
                         detail_ext_message = "No need to update."
                 else:
                     domain = [
-                        ("company_id", "=", self._connector.env.company.id),
                         ('lingxing_marketplace_id', '=', shop_dict["mid"])
                     ]
                     marketplace = marketplace_obj.search(domain, limit=1)

@@ -13,9 +13,35 @@ from odoo.tools.misc import clean_context, OrderedSet
 
 PROCUREMENT_PRIORITIES = [('0', 'Normal'), ('1', 'Urgent')]
 
+MOVE_DOCUMENT_TYPES = [
+    ("sale_out", _("Sale Out")),
+    ("sale_rtn", _("Sale Return")),
+    ("purchase_in", _("Purchase In")),
+    ("purchase_rtn", _("Purchase Return")),
+    ("scrap_out", _("Scrap Out")),
+    ("scrap_rtn", _("Scrap Return")),
+    ("adjust_in", _("Stock Adjust In")),
+    ("adjust_out", _("Scrap Adjust Out")),
+    ("subcontracting_in", _("Subcontracting In")),
+    ("internal", _("Internal Move / Subcontracting Resupply")),
+    ("internal_to_transit", _("Internal To Transit")),
+    ("transit_to_internal", _("Transit To Internal")),
+    ("production_out", _("Production Out")),
+    ("production_out_rtn", _("Production Out Return")),
+    ("production_in", _("Production In")),
+    ("production_in_rtn", _("Production In Return")),
+    ("others", _("Others")),
+    ("subcontracting_out", _("Subcontracting Out")),
+    ("subcontracting_rtn", _("Subcontracting Return")),
+
+]
 
 class StockMove(models.Model):
     _inherit = "stock.move"
+
+    move_document_type = fields.Selection(
+        MOVE_DOCUMENT_TYPES, string="Move Document Type",
+        compute="_compute_move_document_type", store=True, readonly=True, index=True)
 
     invoice_lines = fields.One2many('account.move.line', 'stock_move_id', string="Bill Lines", readonly=True, copy=False)
 
@@ -36,12 +62,50 @@ class StockMove(models.Model):
     invoice_status = fields.Selection(
         related='picking_id.invoice_status', string='Billing Status', readonly=True)
 
-    # invoice_status = fields.Selection([
-    #     ('no', 'Nothing to Bill'),
-    #     ('to invoice', 'Waiting Bills'),
-    #     ('invoiced', 'Fully Billed'),
-    #     ],
-    #     related='picking_id.invoice_status', string='Billing Status', readonly=True)
+    @api.depends('location_id', 'location_dest_id')
+    def _compute_move_document_type(self):
+        for rec in self:
+            if "is_sub_contract" in rec._fields:
+                is_subcontract = rec.is_subcontract
+            else:
+                is_subcontract = False
+            src_usage = rec.location_id.usage
+            is_scrap_location = rec.location_id.scrap_location or rec.location_dest_id.scrap_location
+            dest_usage = rec.location_dest_id.usage
+
+            move_document_type = "others"
+            if is_subcontract:
+                move_document_type = "subcontracting_in"
+            elif src_usage == 'supplier':
+                move_document_type = "purchase_in"
+            elif dest_usage == "supplier":
+                move_document_type = "purchase_rtn"
+            elif dest_usage == 'customer':
+                move_document_type = "sale_out"
+            elif src_usage == 'customer':
+                move_document_type = "sale_rtn"
+            elif dest_usage == 'inventory':
+                if is_scrap_location:
+                    move_document_type = "scrap_out"
+                else:
+                    move_document_type = "adjust_out"
+            elif src_usage == 'inventory':
+                if is_scrap_location:
+                    move_document_type = "scrap_in"
+                else:
+                    move_document_type = "adjust_in"
+            elif src_usage == 'production':
+                move_document_type = "production_in"
+            elif dest_usage == 'production':
+                move_document_type = "production_out"
+            elif src_usage == "internal" and dest_usage == "internal":
+                move_document_type = "internal"
+            elif src_usage == "internal" and dest_usage == "transit":
+                move_document_type = "internal_to_transit"
+            elif src_usage == "transit" and dest_usage == "internal":
+                move_document_type = "transit_to_internal"
+
+            rec.move_document_type = move_document_type
 
     def _get_invoice_lines(self):
         self.ensure_one()

@@ -90,5 +90,55 @@
             <field name="related_model_id" search="[('model','=','web.sale.warehouse')]"/>
             <field name="action_handler_name">import_warehouse.ImportWarehouse</field>
         </record>
+        <record id="import_fba_shipments" model="connector.lingxing">
+            <field name="name">import_fba_shipments</field>
+            <field name="action_description">Import FBA Shipments</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/storage/shipment/getInboundShipmentList</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','stock.picking')]"/>
+            <field name="action_handler_name">import_fba_shipments.ImportFbaShipments</field>
+        </record>
+        <record id="import_fba_shipment_detail" model="connector.lingxing">
+            <field name="name">import_fba_shipment_detail</field>
+            <field name="action_description">Import FBA Shipment Detail</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/routing/storage/shipment/getInboundShipmentListMwsDetail</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','stock.picking')]"/>
+            <field name="action_handler_name">import_fba_shipment_detail.ImportFbaShipmentDetail</field>
+        </record>
+        <record id="export_lingxing_stock_picking_in" model="connector.lingxing">
+            <field name="name">export_lingxing_stock_picking_in</field>
+            <field name="action_description">Export Lingxing Stock Picking In</field>
+            <field name="action_type">export</field>
+            <field name="route">/erp/sc/routing/storage/storage/orderAdd</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.lx.stock.picking')]"/>
+            <field name="action_handler_name">export_lingxing_stock_picking_in.ExportLingxingStockPickingIn</field>
+        </record>
+        <record id="export_lingxing_stock_picking_out" model="connector.lingxing">
+            <field name="name">export_lingxing_stock_picking_out</field>
+            <field name="action_description">Export Lingxing Stock Picking Out</field>
+            <field name="action_type">export</field>
+            <field name="route">/erp/sc/routing/storage/storage/orderAddOut</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.lx.stock.picking')]"/>
+            <field name="action_handler_name">export_lingxing_stock_picking_out.ExportLingxingStockPickingOut</field>
+        </record>
+        <record id="import_amazon_orders" model="connector.lingxing">
+            <field name="name">import_amazon_orders</field>
+            <field name="action_description">Import Amazon Orders</field>
+            <field name="action_type">import</field>
+            <field name="route">/erp/sc/data/mws/orders</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.order')]"/>
+            <field name="action_handler_name">import_amazon_orders.ImportAmazonOrders</field>
+        </record>
     </data>
 </odoo>

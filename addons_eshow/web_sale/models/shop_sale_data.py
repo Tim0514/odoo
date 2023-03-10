@@ -16,6 +16,7 @@ class ShopSaleData(models.Model):
     _name = "web.sale.shop.sale.data"
     _description = "Shop Week Sale Data"
     _order = "order_date, shop_id, product_id "
+    _check_company_auto = True
 
     shop_product_id = fields.Many2one(
         comodel_name="web.sale.shop.product",

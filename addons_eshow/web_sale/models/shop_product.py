@@ -18,20 +18,21 @@ class ShopProduct(models.Model):
     _description = "Shop Product"
     _order = "shop_name, product_default_code"
     _rec_name = "product_name"
+    _check_company_auto = True
 
     shop_id = fields.Many2one(
         comodel_name="web.sale.shop",
         string="Web Shop",
         store=True,
-        readonly=True,
         domain="[]",
         index=True,
+        check_company = True
     )
 
     company_id = fields.Many2one(
         comodel_name="res.company",
         related="shop_id.company_id",
-        string='Company', store=True, readonly=True)
+        string='Company', store=True, index=True)
 
     shop_name = fields.Char(
         related="shop_id.name",
@@ -45,12 +46,12 @@ class ShopProduct(models.Model):
         string="Product",
         index=True,
         domain="[('sale_ok', '=', True)]",
+        check_company = True
     )
 
     product_default_code = fields.Char(
         related="product_id.default_code",
         string="Default Code",
-        readonly=True,
         store=True,
         index=True,
     )
@@ -58,49 +59,45 @@ class ShopProduct(models.Model):
     product_name = fields.Char(
         related="product_id.name",
         string="Product Name",
-        readonly=True,
+        index=True
     )
 
     seller_sku = fields.Char(
         string="MSKU",
         required=True,
         index=True,
-        readonly=True,
     )
 
     product_asin_id = fields.Many2one(
         "web.sale.shop.product.asin",
         string="ASIN",
         index=True,
-        readonly=True,
+        check_company = True
     )
 
     product_listing_id = fields.Char(
         string="Listing Id",
         index=True,
-        readonly=True,
     )
 
     product_fnsku = fields.Char(
         string="FNSKU",
         index=True,
-        readonly=True,
     )
 
     parent_asin = fields.Char(
         string="Parent ASIN",
         index=True,
-        readonly=True,
     )
 
     shop_product_name = fields.Char(
         string="Product Name In Shop",
-        readonly=True,
+        index=True
     )
 
-    is_deleted = fields.Boolean(string="Is Deleted", readonly=True)
+    is_deleted = fields.Boolean(string="Is Deleted",)
 
-    currency_id = fields.Many2one("res.currency", string="Currency", readonly=True)
+    currency_id = fields.Many2one("res.currency", string="Currency",)
 
     listing_update_time = fields.Datetime("Listing Update Time")
 
@@ -134,7 +131,6 @@ class ShopProduct(models.Model):
         required=True,
         copy=True,
         default="normal",
-        readonly=True,
     )
 
     salesperson_id = fields.Many2one(
@@ -143,7 +139,7 @@ class ShopProduct(models.Model):
 
     is_web_sale_manager = fields.Boolean("Is Manager", store=False, compute='_compute_is_web_sale_manager')
 
-    is_paired = fields.Boolean("Paired", store=True, compute='_compute_is_paired')
+    is_paired = fields.Boolean("Paired", store=True, compute='_compute_is_paired', index=True)
 
     description = fields.Text(string="Description")
 

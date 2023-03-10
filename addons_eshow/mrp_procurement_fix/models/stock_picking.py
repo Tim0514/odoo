@@ -1,46 +1,40 @@
 # -*- coding: utf-8 -*-
 
 from collections import namedtuple, OrderedDict, defaultdict
+
+from dateutil.relativedelta import relativedelta
+
 from odoo import models, api, fields
 from odoo.tools import float_compare, float_round
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
+    unreserve_completely_visible = fields.Boolean(
+        'Allowed to Unreserve Production Completely', compute='_compute_unreserve_completely_visible',
+        help='Technical field to check when we can unreserve completely')
+
     def _prepare_subcontract_mo_vals(self, subcontract_move, bom):
         """
-            修正，mrp_subcontracting中的方法，如果补货组已存在，则直接使用已有的补货组,而不是直接新建
+            修正，mrp_subcontracting模块中stockpicking中的同名方法，改成根据父节点的group
         """
-        subcontract_move.ensure_one()
+        vals = super(StockPicking, self)._prepare_subcontract_mo_vals(subcontract_move, bom)
 
-        # 新代码
-        group = self.env['procurement.group'].search([('name', '=', self.name), ('partner_id', '=', self.partner_id.id)])
-        if group:
-            group = group[0]
+        if self.group_id:
+            vals["procurement_group_id"] = self.group_id.id
         else:
-            group = self.env['procurement.group'].create({
-                'name': self.name,
-                'partner_id': self.partner_id.id,
-            })
-
-        # 原代码
-        # group = self.env['procurement.group'].create({
-        #     'name': self.name,
-        #     'partner_id': self.partner_id.id,
-        # })
-
-
-        product = subcontract_move.product_id
-        warehouse = self._get_warehouse(subcontract_move)
-        vals = {
-            'company_id': subcontract_move.company_id.id,
-            'procurement_group_id': group.id,
-            'product_id': product.id,
-            'product_uom_id': subcontract_move.product_uom.id,
-            'bom_id': bom.id,
-            'location_src_id': subcontract_move.picking_id.partner_id.with_company(subcontract_move.company_id).property_stock_subcontractor.id,
-            'location_dest_id': subcontract_move.picking_id.partner_id.with_company(subcontract_move.company_id).property_stock_subcontractor.id,
-            'product_qty': subcontract_move.product_uom_qty,
-            'picking_type_id': warehouse.subcontracting_type_id.id
-        }
+            del vals["procurement_group_id"]
         return vals
+
+    @api.depends('move_lines', 'state', 'move_lines.product_uom_qty', 'move_lines.move_orig_ids')
+    def _compute_unreserve_completely_visible(self):
+        for picking in self:
+            already_reserved = picking.state not in ('done', 'cancel') and picking.mapped('move_lines.move_line_ids')
+            make_to_order = picking.state not in ('done', 'cancel') and picking.move_lines.filtered(lambda r: r.procure_method == "make_to_order")
+            move_orig_ids = picking.state not in ('done', 'cancel') and picking.mapped('move_lines.move_orig_ids')
+            any_quantity_done = any(m.quantity_done > 0 for m in picking.move_lines)
+            picking.unreserve_completely_visible = not any_quantity_done and (already_reserved or make_to_order or move_orig_ids)
+
+    def do_unreserve_completely(self):
+        self.move_lines.filtered(lambda x: x.state not in ('done', 'cancel'))._do_unreverse_completely()
+

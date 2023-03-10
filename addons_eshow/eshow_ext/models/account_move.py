@@ -7,6 +7,10 @@ from odoo import api, fields, models, _
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
+    company_id = fields.Many2one(comodel_name='res.company', string='Company',
+                                 store=True, readonly=True,
+                                 compute='_compute_company_id', index=True)
+
     @api.model_create_multi
     def create(self, vals_list):
         # OVERRIDE
@@ -40,6 +44,8 @@ class AccountMove(models.Model):
 
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
+
+    company_id = fields.Many2one(related='move_id.company_id', store=True, readonly=True, index=True)
 
     stock_move_id = fields.Many2one('stock.move', 'Stock Move', ondelete='set null', index=True)
 

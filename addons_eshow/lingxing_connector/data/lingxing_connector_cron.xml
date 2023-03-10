@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Scheduler -->
+
+        <record forcecreate="True" id="ir_cron_export_local_products" model="ir.cron">
+            <field name="name">EShow Synchronise Products</field>
+            <field name="model_id" ref="model_connector_lingxing"/>
+            <field name="state">code</field>
+            <field name="code">
+                model.run_scheduler(action_names=['export_local_products','import_shop_products','import_shop_product_pair_states'], use_new_cursor=True)
+            </field>
+            <field name="active" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">2</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+            <field name="nextcall" eval="(datetime.now().replace(minute=30,second=0) + timedelta(hours=2)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record forcecreate="True" id="ir_cron_import_product_weekly_stat" model="ir.cron">
+            <field name="name">EShow Import Product Weekly Statistics</field>
+            <field name="model_id" ref="model_connector_lingxing"/>
+            <field name="state">code</field>
+            <field name="code">
+                model.run_scheduler(action_names=['import_product_weekly_stat'], use_new_cursor=True)
+            </field>
+            <field name="active" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">weeks</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+            <field name="nextcall" eval="(datetime.now().replace(hour=20,minute=0,second=0) - timedelta(datetime.now().weekday()) + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record forcecreate="True" id="ir_cron_import_shop_inventory" model="ir.cron">
+            <field name="name">EShow Import Shop Inventory</field>
+            <field name="model_id" ref="model_connector_lingxing"/>
+            <field name="state">code</field>
+            <field name="code">
+                model.run_scheduler(action_names=['import_shop_inventory'], use_new_cursor=True)
+            </field>
+            <field name="active" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">weeks</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+            <field name="nextcall" eval="(datetime.now().replace(hour=19,minute=0,second=0) - timedelta(datetime.now().weekday()) + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record forcecreate="True" id="ir_cron_import_product_weekly_stat" model="ir.cron">
+            <field name="name">EShow Import Product Weekly Statistics</field>
+            <field name="model_id" ref="model_connector_lingxing"/>
+            <field name="state">code</field>
+            <field name="code">
+                model.run_scheduler(action_names=['import_product_weekly_stat'], use_new_cursor=True)
+            </field>
+            <field name="active" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">weeks</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+            <field name="nextcall" eval="(datetime.now().replace(hour=20,minute=0,second=0) - timedelta(datetime.now().weekday()) + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record forcecreate="True" id="ir_cron_import_amazon_orders" model="ir.cron">
+            <field name="name">EShow Import Amazon Orders</field>
+            <field name="model_id" ref="model_connector_lingxing"/>
+            <field name="state">code</field>
+            <field name="code">
+                model.run_scheduler(action_names=['import_amazon_orders'], use_new_cursor=True)
+            </field>
+            <field name="active" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">2</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+            <field name="nextcall" eval="(datetime.now().replace(minute=20,second=0) + timedelta(hours=2)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+
+    </data>
+</odoo>

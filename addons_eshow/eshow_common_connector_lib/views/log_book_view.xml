@@ -9,31 +9,32 @@
             <tree name="eshow_log_book"
                 string="Log Book"
                 create="false"
-                editable="bottom"
-                multi_edit="false"
                 decoration-info="action_state in ['in-progress']"
                 decoration-success="action_state in ['success']"
-                decoration-danger="action_state in ['fail']"
+                decoration-danger="action_state in ['fail', 'failed']"
                 decoration-warning="action_state in ['warning']"
             >
-                <field name="name" />
-                <field name="log_module" optional="hide" />
-                <field name="operation_name" />
-                <field name="start_date" optional="show"/>
-                <field name="complete_date" optional="hide"/>
+                <field name="name"  readonly="1"/>
+                <field name="log_module" optional="hide"  readonly="1"/>
+                <field name="operation_name"  readonly="1"/>
+                <field name="start_date" optional="show" readonly="1"/>
+                <field name="complete_date" optional="hide" readonly="1"/>
                 <field name="action_state" widget="badge"
                     decoration-info="action_state in ['in-progress']"
                     decoration-success="action_state in ['success']"
-                    decoration-danger="action_state in ['fail']"
+                    decoration-danger="action_state in ['fail', 'failed']"
                     decoration-warning="action_state in ['warning']"
+                    readonly="1"
                 />
-                <field name="total_record_count" optional="hide"/>
-                <field name="success_record_count" optional="hide"/>
-                <field name="warning_record_count" optional="hide"/>
-                <field name="fail_record_count" optional="hide"/>
-                <field name="ignore_record_count" optional="hide"/>
-                <field name="error_message" optional="hide"/>
-                <field name="ext_message" optional="hide"/>
+                <field name="total_record_count" optional="hide" readonly="1"/>
+                <field name="create_record_count" optional="hide" readonly="1"/>
+                <field name="update_record_count" optional="hide" readonly="1"/>
+                <field name="delete_record_count" optional="hide" readonly="1"/>
+                <field name="warning_record_count" optional="hide" readonly="1"/>
+                <field name="fail_record_count" optional="hide" readonly="1"/>
+                <field name="ignore_record_count" optional="hide" readonly="1"/>
+                <field name="error_message" optional="hide" readonly="1"/>
+                <field name="ext_message" optional="hide" readonly="1"/>
             </tree>
         </field>
     </record>
@@ -48,31 +49,36 @@
                 </header>
                 <sheet>
                     <div class="oe_title">
-                        <h4>
+                        <h3>
                             <group name="main_title">
                                 <group name="main_title1">
                                     <field name="name" string="Reference" attrs="{'readonly': True, }"/>
                                 </group>
                                 <group name="main_title2">
-                                    <field name="operation_name" string="Operation Name" attrs="{'readonly': True, }"/>
                                 </group>
                             </group>
-                        </h4>
+                        </h3>
                     </div>
                     <group name="main_header">
                         <group name="declaration_details">
+                            <field name="operation_name" string="Operation Name" attrs="{'readonly': True, }"/>
                             <field name="start_date" attrs="{'readonly': True, }"/>
                             <field name="complete_date" attrs="{'readonly': True, }"/>
                             <field name="action_state" attrs="{'readonly': True, }" widget="badge"
                                 decoration-info="action_state in ['in-progress']"
                                 decoration-success="action_state in ['success']"
-                                decoration-danger="action_state in ['fail']"
+                                decoration-danger="action_state in ['fail', 'failed']"
                                 decoration-warning="action_state in ['warning']"
                             />
+                            <field name="error_message" attrs="{'readonly': True, }"/>
+                            <field name="ext_message" attrs="{'readonly': True, }"/>
+                            <field name="line_filter"/>
                         </group>
                         <group name="declaration_details_1">
                             <field name="total_record_count" attrs="{'readonly': True, }"/>
-                            <field name="success_record_count" attrs="{'readonly': True, }"/>
+                            <field name="create_record_count" attrs="{'readonly': True, }"/>
+                            <field name="update_record_count" attrs="{'readonly': True, }"/>
+                            <field name="delete_record_count" attrs="{'readonly': True, }"/>
                             <field name="warning_record_count" attrs="{'readonly': True, }"/>
                             <field name="fail_record_count" attrs="{'readonly': True, }"/>
                             <field name="ignore_record_count" attrs="{'readonly': True, }"/>
@@ -82,9 +88,9 @@
                         <page string="Log Lines" name="log_lines">
                             <field
                                 name="log_book_lines"
-                                widget="section_and_note_one2many"
                                 mode="tree"
                                 attrs="{'readonly': True, }"
+                                context="{'line_filter': True}"
                             >
                                 <tree name="log_book_lines"
                                     string="Log Book Lines"
@@ -92,19 +98,20 @@
                                     editable="false"
                                     multi_edit="false"
                                     import="false"
-                                    decoration-info="action_state in ['in-progress']"
-                                    decoration-success="action_state in ['success']"
+                                    decoration-info="action_state in ['ignored']"
+                                    decoration-success="action_state in ['success', 'created', 'updated', 'deleted']"
                                     decoration-danger="action_state in ['fail']"
                                     decoration-warning="action_state in ['warning']"
+                                    context="{'line_filter': True}"
                                 >
                                     <field name="code_ref" optional="show"/>
                                     <field name="model_id" optional="show"/>
                                     <field name="res_id" optional="show"/>
                                     <field name="name_ref" optional="show"/>
                                     <field name="action_state" widget="badge"
-                                        decoration-info="action_state in ['in-progress']"
-                                        decoration-success="action_state in ['success']"
-                                        decoration-danger="action_state in ['fail']"
+                                        decoration-info="action_state in ['ignored']"
+                                        decoration-success="action_state in ['success', 'created', 'updated', 'deleted']"
+                                        decoration-danger="action_state in ['fail', 'failed']"
                                         decoration-warning="action_state in ['warning']"
                                     />
                                     <field name="error_message" optional="hide"/>
@@ -114,8 +121,6 @@
                         </page>
                         <page string="Messages" name="messages">
                             <group>
-                                <field name="error_message" attrs="{'readonly': True, }"/>
-                                <field name="ext_message" attrs="{'readonly': True, }"/>
                             </group>
                         </page>
                     </notebook>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="eshow_mrp_fix_stock_picking_tree_view" model="ir.ui.view">
+            <field name="name">eshow.mrp.fix.stock.picking.tree</field>
+            <field name="model">stock.picking</field>
+            <field name="mode">extension</field>
+            <field name="priority" eval="2001"/>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/header/button[@name='do_unreserve']" position="after">
+                    <button name="do_unreserve_completely" class="btn-danger" type="object"
+                            string="Unreserve Completely"
+                            confirm="Are you still sure you want to do complete unreserve action?"
+                    />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="eshow_mrp_fix_stock_picking_form_view" model="ir.ui.view">
+            <field name="name">eshow.mrp.fix.stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="mode">extension</field>
+            <field name="priority" eval="2001"/>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[@name='do_unreserve']" position="after">
+                    <button name="do_unreserve_completely" class="btn-danger" type="object"
+                            string="Unreserve Completely"
+                            confirm="Are you still sure you want to do complete unreserve action?"
+                            attrs="{'invisible': [('unreserve_completely_visible', '=', False)]}" data-hotkey="w"/>
+                </xpath>
+                <xpath expr="//form/field[@name='use_create_lots']" position="after">
+                    <field name="unreserve_completely_visible" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

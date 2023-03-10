@@ -11,6 +11,7 @@
     "depends": ["base", "product", "web_sale", "eshow_common_connector_lib"],
     "data": [
         "data/lingxing_connector_data.xml",
+        "data/lingxing_connector_cron.xml",
         "security/ir.model.access.csv",
         "views/marketplace_views.xml",
         "views/shop_views.xml",

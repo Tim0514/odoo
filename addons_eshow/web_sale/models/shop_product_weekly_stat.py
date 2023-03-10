@@ -10,36 +10,34 @@ class ShopProductWeeklyStat(models.Model):
     _name = "web.sale.shop.product.weekly.stat"
     _description = "Shop Product Weekly Statics"
     _order = "shop_name, product_asin"
+    _check_company_auto = True
 
-    @api.model
-    def _company_get(self):
-        return self.env["res.company"].browse(self.env.company.id)
+    shop_id = fields.Many2one(comodel_name="web.sale.shop", string="Shop", store=True, index=True, check_company=True)
 
     company_id = fields.Many2one(
-        comodel_name="res.company", string="Company", required=True, default=_company_get, index=True,
+        comodel_name="res.company", string="Company", related="shop_id.company_id", store=True, index=True,
     )
-
-    shop_id = fields.Many2one(comodel_name="web.sale.shop", string="Shop", store=True, index=True,)
 
     shop_name = fields.Char(related="shop_id.name", string="Web Shop Name", store=True, index=True,)
 
-    product_asin_id = fields.Many2one("web.sale.shop.product.asin", string="ASIN", store=True, index=True,)
+    product_asin_id = fields.Many2one("web.sale.shop.product.asin", string="ASIN", store=True, index=True, check_company=True)
 
     product_asin = fields.Char(related="product_asin_id.product_asin", string="ASIN", store=True, index=True,)
 
-    shop_product_ids = fields.One2many("web.sale.shop.product", related="product_asin_id.shop_product_ids", string="Shop Product SKUs")
+    shop_product_ids = fields.One2many("web.sale.shop.product", related="product_asin_id.shop_product_ids",
+                                       string="Shop Product SKUs", check_company=True)
 
-    seller_skus = fields.Char(related="product_asin_id.seller_skus", string="Seller SKUs", store=True)
+    seller_skus = fields.Char(related="product_asin_id.seller_skus", string="Seller SKUs", store=True, index=True)
 
     currency_id = fields.Many2one(related="product_asin_id.currency_id", string="Currency")
 
-    start_date = fields.Datetime("Statistic Start Date", readonly=True,)
+    start_date = fields.Datetime("Statistic Start Date", readonly=True, index=True)
 
-    end_date = fields.Datetime("Statistic End Date", readonly=True,)
+    end_date = fields.Datetime("Statistic End Date", readonly=True, index=True)
 
-    stat_year = fields.Integer("Statistic Year", readonly=True,)
+    stat_year = fields.Integer("Statistic Year", readonly=True, index=True)
 
-    stat_week = fields.Integer("Statistic Week", readonly=True,)
+    stat_week = fields.Integer("Statistic Week", readonly=True, index=True)
 
     date_modified_gmt = fields.Datetime("Modify Date", readonly=True,)
 
@@ -110,7 +108,7 @@ class ShopProductWeeklyStat(models.Model):
     remark = fields.Text("Remarks")
 
     _sql_constraints = [
-        ('shop_product_weekly_stat_uniq1', 'unique(shop_id, product_asin_id, stat_year, stat_month)', 'Product Asin in one shop in same week must be unique'),
+        ('shop_product_weekly_stat_uniq1', 'unique(shop_id, product_asin_id, stat_year, stat_week)', 'Product Asin in one shop in same week must be unique'),
     ]
 
     # def get_product_sale_data(self, shop_product, shop_warehouse, first_day):

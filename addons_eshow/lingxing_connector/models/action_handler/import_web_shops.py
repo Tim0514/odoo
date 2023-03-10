@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
 
 from .action_handler import ActionHandler, ActionHandlerTools
-
+from odoo import _
 
 class ImportWebShops(ActionHandler):
 
@@ -36,30 +36,60 @@ class ImportWebShops(ActionHandler):
 
             try:
                 domain = [
-                    ("company_id", "=", self._connector.env.company.id),
                     ('lingxing_shop_id', '=', shop_dict["sid"])
                 ]
                 shop = shop_obj.search(domain, limit=1)
                 if shop:
-                    if shop.name != shop_dict["name"] or shop.lingxing_shop_name != shop_dict["name"]:
-                        shop.write({
-                            "name": shop_dict["name"],
-                            "lingxing_shop_name": shop_dict["name"],
-                        })
-                        self._add_process_result("updated", shop.id)
-                        detail_ext_message = "Data updated."
+                    shop.write({
+                        "name": shop_dict["name"],
+                        "lingxing_shop_name": shop_dict["name"],
+                    })
+                    if not shop.partner_id:
+                        domain = [
+                            ("company_id", "=", shop.company_id.id),
+                            ("name", "=", shop.name),
+                        ]
+                        partner = self._connector.env["res.partner"].search(domain, limit=1)
+                        if partner:
+                            if partner.web_shop_id:
+                                detail_action_state = "warning"
+                                detail_error_message = _(
+                                    "The partner with same name has been linked to another shop, please check.\n Shop Name: %S") % shop.name
+                                detail_ext_message = False
+                            else:
+                                partner.is_web_shop = True
+                                shop.partner_id = partner
+                                partner.web_shop_id = shop
+                                detail_action_state = "updated"
+                                detail_ext_message = _("Data updated.")
+
+                        else:
+                            partner_vals = {
+                                "company_id": shop.company_id.id,
+                                "company_type": "company",
+                                "name": shop.name,
+                                "is_web_shop": True,
+                                "web_shop_id": shop.id,
+                            }
+                            partner = self._connector.env["res.partner"].create(partner_vals)
+                            shop.partner_id = partner
+                            detail_action_state = "updated"
+                            detail_ext_message = _("Related partner created.")
+                    elif not shop.partner_id.web_shop_id:
+                        shop.partner_id.web_shop_id = shop
+                        detail_action_state = "updated"
+                        detail_ext_message = _("Data updated.")
                     else:
-                        self._add_process_result("ignored", shop.id)
-                        detail_ext_message = "No need to update."
+                        detail_action_state = "updated"
+                        detail_ext_message = _("Data updated.")
                 else:
                     domain = [
-                        ("company_id", "=", self._connector.env.company.id),
                         ('lingxing_marketplace_id', '=', shop_dict["mid"])
                     ]
                     marketplace = marketplace_obj.search(domain, limit=1)
                     if not marketplace:
-                        detail_action_state = "fail"
-                        detail_error_message = "Marketplace, %s, is not found in database." % (shop_dict["mid"])
+                        detail_action_state = "failed"
+                        detail_error_message = _("Marketplace, %s, is not found in database.") % (shop_dict["mid"])
                         detail_ext_message = str(shop_dict)
                     else:
                         shop_value = shop_obj._prepare_shop_value(
@@ -69,14 +99,43 @@ class ImportWebShops(ActionHandler):
                             shop_dict["seller_id"],
                         )
                         shop = shop_obj.create(shop_value)
-                        self._add_process_result("created", shop.id)
-                        detail_ext_message = "Data created."
+
+                        domain = [
+                            ("company_id", "=", shop.company_id.id),
+                            ("name", "=", shop.name),
+                        ]
+                        partner = self._connector.env["res.partner"].search(domain, limit=1)
+                        if partner:
+                            if partner.web_shop_id:
+                                detail_action_state = "warning"
+                                detail_error_message = _("The partner with same name has been linked to another shop, please check.\n Shop Name: %S") % shop.name
+                                detail_ext_message = False
+                            else:
+                                partner.is_web_shop = True
+                                shop.partner_id = partner
+                                partner.web_shop_id = shop
+                                detail_action_state = "created"
+                                detail_error_message = False
+                                detail_ext_message = False
+                        else:
+                            partner_vals = {
+                                "company_id": shop.company_id.id,
+                                "company_type": "company",
+                                "name": shop.name,
+                                "is_web_shop": True,
+                                "web_shop_id": shop.id,
+                            }
+                            partner = self._connector.env["res.partner"].create(partner_vals)
+                            shop.partner_id = partner
+                            detail_action_state = "created"
+                            detail_error_message = False
+                            detail_ext_message = False
             except Exception as error:
-                detail_action_state = "fail"
+                detail_action_state = "failed"
                 detail_error_message = str(error)
             finally:
-                if detail_action_state == "fail":
-                    self._add_process_result("failed", shop_dict["sid"])
+                self._add_process_result(detail_action_state, shop_dict["sid"])
+                if detail_action_state == "failed":
                     process_success = False
 
                 # 添加明细行日志

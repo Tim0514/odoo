@@ -18,6 +18,7 @@ class ShopProductAsin(models.Model):
     _description = "Shop Product ASIN"
     _order = "shop_name, parent_asin, product_asin"
     _rec_name = "product_asin"
+    _check_company_auto = True
 
     shop_id = fields.Many2one(
         comodel_name="web.sale.shop",
@@ -26,12 +27,13 @@ class ShopProductAsin(models.Model):
         readonly=False,
         domain="[]",
         index=True,
+        check_company = True
     )
 
     company_id = fields.Many2one(
         comodel_name="res.company",
         related="shop_id.company_id",
-        string='Company', store=True, readonly=True)
+        string='Company', store=True, readonly=True, index=True)
 
     shop_name = fields.Char(
         related="shop_id.name",
@@ -46,7 +48,7 @@ class ShopProductAsin(models.Model):
     )
 
     shop_product_name = fields.Char(
-        string="Product Name In Shop",
+        string="Product Name In Shop", index=True
     )
 
     parent_asin = fields.Char(
@@ -70,9 +72,10 @@ class ShopProductAsin(models.Model):
 
     active = fields.Boolean(default=True)
 
-    shop_product_ids = fields.One2many("web.sale.shop.product", "product_asin_id", string="Shop Product SKUs")
+    shop_product_ids = fields.One2many("web.sale.shop.product", "product_asin_id", string="Shop Product SKUs",
+                                       index=True, check_company=True)
 
-    seller_skus = fields.Char("Seller SKUs", compute="_compute_seller_skus", store=True)
+    seller_skus = fields.Char("Seller SKUs", compute="_compute_seller_skus", store=True, index=True)
 
     _sql_constraints = [
         ('shop_product_asin_uniq1', 'unique(shop_id, product_asin)', 'Product Asin in one shop must be unique'),

@@ -25,3 +25,7 @@ access_web_sale_shipping_method_user,web.sale.shipping.method.user,model_web_sal
 access_web_sale_shipping_method_manager,web.sale.shipping.method.manager,model_web_sale_shipping_method,group_web_sale_manager,1,1,1,1
 access_web_sale_shipping_schedule_group_user,web.sale.shipping.schedule.group.user,model_web_sale_shipping_schedule_group,group_web_sale_user,1,1,1,1
 access_web_sale_shipping_schedule_group_manager,web.sale.shipping.schedule.group.manager,model_web_sale_shipping_schedule_group,group_web_sale_manager,1,1,1,1
+access_web_sale_lx_stock_move_user,web.sale.lx.stock.move.user,model_web_sale_lx_stock_move,group_web_sale_user,1,1,1,1
+access_web_sale_lx_stock_move_manager,web.sale.lx.stock.move.manager,model_web_sale_lx_stock_move,group_web_sale_manager,1,1,1,1
+access_web_sale_lx_stock_picking_user,web.sale.lx.stock.picking.user,model_web_sale_lx_stock_picking,group_web_sale_user,1,1,1,1
+access_web_sale_lx_stock_picking_manager,web.sale.lx.stock.picking.manager,model_web_sale_lx_stock_picking,group_web_sale_manager,1,1,1,1

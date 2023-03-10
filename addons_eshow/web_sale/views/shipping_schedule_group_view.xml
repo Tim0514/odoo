@@ -8,20 +8,29 @@
         <field name="arch" type="xml">
             <tree
                 string="Shipping Schedule Group"
+                decoration-warning="state in ['sales_confirmed']"
+                decoration-info="state in ['logistics_confirmed']"
+                decoration-success="state in ['done']"
             >
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="hide"/>
                 <field name="name"/>
                 <field name="shop_id"/>
                 <field name="schedule_year" optional="show"/>
                 <field name="schedule_month" optional="show"/>
                 <field name="sale_qty_7" sum="1" optional="show"/>
                 <field name="sale_qty_14" sum="1" optional="show"/>
-                <field name="sale_qty_28" sum="1" optional="show"/>
+                <field name="sale_qty_30" sum="1" optional="show"/>
+                <field name="sale_qty_30_y_1" sum="1" optional="show"/>
                 <field name="qty_available" sum="1" optional="show"/>
                 <field name="estimate_monthly_sale_qty_1" sum="1" optional="show"/>
                 <field name="estimate_monthly_sale_qty_2" sum="1" optional="show"/>
                 <field name="advised_monthly_sale_qty" sum="1" optional="show"/>
                 <field name="monthly_sale_qty" sum="1" optional="show"/>
-                <field name="state"/>
+                <field name="state"
+                    decoration-warning="state in ['sales_confirmed']"
+                    decoration-info="state in ['logistics_confirmed']"
+                    decoration-success="state in ['done']"
+                    />
                 <field name="need_focus"/>
                 <field name="salesperson_id" optional="show"/>
                 <field name="safety_available_days" optional="show"/>
@@ -58,6 +67,7 @@
                     </div>
                     <group name="main_header">
                         <group name="main_header_1">
+                            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
                             <field name="shop_id"/>
                             <field name="salesperson_id"/>
                             <field name="need_focus"/>
@@ -69,7 +79,8 @@
                         <group name="main_header_2">
                             <field name="sale_qty_7" attrs="{'readonly': True, }"/>
                             <field name="sale_qty_14" attrs="{'readonly': True, }"/>
-                            <field name="sale_qty_28" attrs="{'readonly': True, }"/>
+                            <field name="sale_qty_30" attrs="{'readonly': True, }"/>
+                            <field name="sale_qty_30_y_1" attrs="{'readonly': True, }"/>
                             <field name="qty_available" attrs="{'readonly': True, }"/>
                             <field name="estimate_monthly_sale_qty_1" attrs="{'readonly': True, }"/>
                             <field name="estimate_monthly_sale_qty_2" attrs="{'readonly': True, }"/>
@@ -93,6 +104,8 @@
                                     string="Related Shipping Schedules"
                                     create="false" edit="true" delete="false" import="false" export_xlsx="false"
                                     multiedit="true" editable="bottom"
+                                    decoration-danger="is_out_of_stock_occurred"
+                                    decoration-warning="(is_too_much_inventory or is_too_little_inventory) and not is_out_of_stock_occurred"
                                 >
                                     <field name="shop_id" optional="show"/>
                                     <field name="shop_product_id" optional="hide"/>
@@ -103,12 +116,23 @@
                                     <field name="schedule_month" optional="show"/>
                                     <field name="qty_available" sum="1" optional="show"/>
                                     <field name="qty_shipped" sum="1" optional="show"/>
-                                    <field name="is_out_of_stock_occurred" optional="show"/>
+                                    <field name="available_days" optional="show"/>
+                                    <field name="safety_available_days" optional="show"/>
+                                    <field name="is_too_much_inventory" widget="boolean_badge"
+                                           decoration-warning="is_too_much_inventory"
+                                           optional="show"/>
+                                    <field name="is_too_little_inventory" widget="boolean_badge"
+                                           decoration-warning="is_too_little_inventory"
+                                           optional="show"/>
+                                    <field name="is_out_of_stock_occurred" widget="boolean_badge"
+                                           decoration-danger="is_out_of_stock_occurred"
+                                           optional="show"/>
                                     <field name="sale_weight_factor" optional="show"/>
                                     <field name="advised_monthly_sale_qty" sum="1" optional="show"/>
                                     <field name="sale_qty_7" sum="1" optional="show"/>
                                     <field name="sale_qty_14" sum="1" optional="show"/>
-                                    <field name="sale_qty_28" sum="1" optional="show"/>
+                                    <field name="sale_qty_30" sum="1" optional="show"/>
+                                    <field name="sale_qty_30_y_1" sum="1" optional="show"/>
                                     <field name="estimate_monthly_sale_qty_1" sum="1" optional="show"/>
                                     <field name="estimate_monthly_sale_qty_2" sum="1" optional="show"/>
                                 </tree>
@@ -134,6 +158,9 @@
                 <filter name="state_done" string="Done" domain="[('state','=','done')]"/>
                 <separator/>
                 <filter name="need_focus" string="Need Focus" domain="[('need_focus','=',True)]"/>
+                <separator/>
+                <filter name="shipping_schedule_enabled_shops" string="Schedule Enabled Shops"
+                        domain="['|', ('is_default_group', '!=', True), '&amp;', ('is_default_group', '=', True), ('shop_id.enable_shipping_schedule', '=', True)]"/>
                 <group expand="0" string="Group By...">
                     <filter
                         name="shop_id"
@@ -157,6 +184,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">web.sale.shipping.schedule.group</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_shipping_schedule_enabled_shops': 1}</field>
         <field name="search_view_id" ref="shipping_schedule_group_search" />
     </record>
 
@@ -165,7 +193,7 @@
         name="Shipping Schedule Group"
         action="shipping_schedule_group_action"
         sequence="12"
-        parent="menu_web_sale_management"
+        parent="menu_schedule_management"
         groups="group_web_sale_user,group_web_sale_manager"
     />
 </odoo>

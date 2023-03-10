@@ -8,7 +8,7 @@
             <field name="code">ATVPDKIKX0DER</field>
             <field name="endpoint">https://mws.amazonservices.com</field>
             <field name="description"/>
-            <field name="description"/>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
         <record id="amazon_ca" model="web.sale.marketplace">
@@ -17,6 +17,7 @@
             <field name="type">amazon</field>
             <field name="code">A2EUQ1WTGCTBG2</field>
             <field name="endpoint">https://mws.amazonservices.ca</field>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
         <record id="amazon_mx" model="web.sale.marketplace">
@@ -25,6 +26,7 @@
             <field name="type">amazon</field>
             <field name="code">A1AM78C64UM0Y8</field>
             <field name="endpoint">https://mws.amazonservices.com.mx</field>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
         <record id="amazon_br" model="web.sale.marketplace">
@@ -33,6 +35,7 @@
             <field name="type">amazon</field>
             <field name="code">A2Q3Y263D00KWC</field>
             <field name="endpoint">https://mws.amazonservices.com</field>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
 
@@ -42,6 +45,7 @@
             <field name="type">amazon</field>
             <field name="code">A1VC38T7YXB528</field>
             <field name="endpoint">https://mws.amazonservices.jp</field>
+            <field name="timezone">Asia/Tokyo</field>
             <field name="description"/>
         </record>
         <record id="amazon_sg" model="web.sale.marketplace">
@@ -50,6 +54,7 @@
             <field name="type">amazon</field>
             <field name="code">A19VAU5U5O7RUS</field>
             <field name="endpoint">https://mws-fe.amazonservices.com</field>
+            <field name="timezone">Asia/Singapore</field>
             <field name="description"/>
         </record>
         <record id="amazon_au" model="web.sale.marketplace">
@@ -58,6 +63,7 @@
             <field name="type">amazon</field>
             <field name="code">A39IBJ37TRP1C6</field>
             <field name="endpoint">https://mws.amazonservices.com.au</field>
+            <field name="timezone">Australia/Sydney</field>
             <field name="description"/>
         </record>
 
@@ -67,6 +73,7 @@
             <field name="type">amazon</field>
             <field name="code">A2VIGQ35RCS4UG</field>
             <field name="endpoint">https://mws.amazonservices.ae</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_eg" model="web.sale.marketplace">
@@ -75,6 +82,7 @@
             <field name="type">amazon</field>
             <field name="code">ARBP9OOSHTCHU</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_in" model="web.sale.marketplace">
@@ -83,6 +91,7 @@
             <field name="type">amazon</field>
             <field name="code">A21TJRUUN4KGV</field>
             <field name="endpoint">https://mws.amazonservices.in</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_pl" model="web.sale.marketplace">
@@ -91,6 +100,7 @@
             <field name="type">amazon</field>
             <field name="code">A1C3SOZRARQ6R3</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_sa" model="web.sale.marketplace">
@@ -99,6 +109,7 @@
             <field name="type">amazon</field>
             <field name="code">A17E79C6D8DWNP</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_se" model="web.sale.marketplace">
@@ -107,6 +118,7 @@
             <field name="type">amazon</field>
             <field name="code">A2NODRKZP88ZB9</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_gb" model="web.sale.marketplace">
@@ -115,6 +127,7 @@
             <field name="type">amazon</field>
             <field name="code">A1F83G8C2ARO7P</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_de" model="web.sale.marketplace">
@@ -123,6 +136,7 @@
             <field name="type">amazon</field>
             <field name="code">A1PA6795UKMFR9</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_fr" model="web.sale.marketplace">
@@ -131,6 +145,7 @@
             <field name="type">amazon</field>
             <field name="code">A13V1IB3VIYZZH</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_it" model="web.sale.marketplace">
@@ -139,6 +154,7 @@
             <field name="type">amazon</field>
             <field name="code">APJ6JRA9NG5V4</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_es" model="web.sale.marketplace">
@@ -147,6 +163,7 @@
             <field name="type">amazon</field>
             <field name="code">A1RKKUPIHCS9HS</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_be" model="web.sale.marketplace">
@@ -155,6 +172,7 @@
             <field name="type">amazon</field>
             <field name="code">A1RKKUPIHCS9HS</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_nl" model="web.sale.marketplace">
@@ -163,6 +181,7 @@
             <field name="type">amazon</field>
             <field name="code">A1805IZSGTT6HS</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_tr" model="web.sale.marketplace">
@@ -171,6 +190,7 @@
             <field name="type">amazon</field>
             <field name="code">A33AVAJ2PDY3EV</field>
             <field name="endpoint">https://mws-eu.amazonservices.com</field>
+            <field name="timezone">MET</field>
             <field name="description"/>
         </record>
         <record id="amazon_cn" model="web.sale.marketplace">
@@ -179,6 +199,7 @@
             <field name="type">amazon</field>
             <field name="code">A1VC38T7YXB528</field>
             <field name="endpoint">https://mws.amazonservices.jp</field>
+            <field name="timezone">Asia/Shanghai</field>
             <field name="description"/>
         </record>
         <record id="ebay_us" model="web.sale.marketplace">
@@ -187,6 +208,7 @@
             <field name="type">ebay</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
         <record id="aliexpress_cn" model="web.sale.marketplace">
@@ -195,6 +217,7 @@
             <field name="type">aliexpress</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">Asia/Shanghai</field>
             <field name="description"/>
         </record>
         <record id="coupang_kr" model="web.sale.marketplace">
@@ -203,6 +226,7 @@
             <field name="type">coupang</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">Asia/Seoul</field>
             <field name="description"/>
         </record>
         <record id="newegg_us" model="web.sale.marketplace">
@@ -211,6 +235,7 @@
             <field name="type">newegg</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
         <record id="newegg_ca" model="web.sale.marketplace">
@@ -219,6 +244,7 @@
             <field name="type">newegg</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
         <record id="walmart_us" model="web.sale.marketplace">
@@ -227,6 +253,7 @@
             <field name="type">walmart</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
         <record id="walmart_ca" model="web.sale.marketplace">
@@ -235,6 +262,7 @@
             <field name="type">walmart</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
         <record id="shopee_my" model="web.sale.marketplace">
@@ -243,6 +271,7 @@
             <field name="type">shopee</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">Asia/Kuala_Lumpur</field>
             <field name="description"/>
         </record>
         <record id="shopee_tw" model="web.sale.marketplace">
@@ -251,6 +280,7 @@
             <field name="type">shopee</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">Asia/Taipei</field>
             <field name="description"/>
         </record>
         <record id="shopee_id" model="web.sale.marketplace">
@@ -259,6 +289,7 @@
             <field name="type">shopee</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">Asia/Jakarta</field>
             <field name="description"/>
         </record>
         <record id="shopee_sg" model="web.sale.marketplace">
@@ -267,6 +298,7 @@
             <field name="type">shopee</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">Asia/Singapore</field>
             <field name="description"/>
         </record>
         <record id="shopee_ph" model="web.sale.marketplace">
@@ -275,6 +307,7 @@
             <field name="type">shopee</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">Asia/Manila</field>
             <field name="description"/>
         </record>
         <record id="shopee_vn" model="web.sale.marketplace">
@@ -283,6 +316,7 @@
             <field name="type">shopee</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">Asia/Ho_Chi_Minh</field>
             <field name="description"/>
         </record>
         <record id="shopee_th" model="web.sale.marketplace">
@@ -291,6 +325,7 @@
             <field name="type">shopee</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">Asia/Bangkok</field>
             <field name="description"/>
         </record>
         <record id="shopee_br" model="web.sale.marketplace">
@@ -299,6 +334,7 @@
             <field name="type">shopee</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">America/Sao_Paulo</field>
             <field name="description"/>
         </record>
         <record id="wayfair_us" model="web.sale.marketplace">
@@ -307,6 +343,7 @@
             <field name="type">wayfair</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
         <record id="shopify_us" model="web.sale.marketplace">
@@ -315,6 +352,7 @@
             <field name="type">shopify</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">US/Pacific</field>
             <field name="description"/>
         </record>
         <record id="other" model="web.sale.marketplace">
@@ -323,6 +361,7 @@
             <field name="type">other</field>
             <field name="code"></field>
             <field name="endpoint"></field>
+            <field name="timezone">Asia/Shanghai</field>
             <field name="description"/>
         </record>
     </data>

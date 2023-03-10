@@ -27,6 +27,7 @@
     ],
     'data': [
         'views/mrp_production_views.xml',
+        'views/stock_picking_views.xml',
     ],
 
 }

@@ -44,6 +44,9 @@ var ClientAction = AbstractAction.extend({
         'click .o_shipping_schedule_record_url': '_onClickRecordLink',
         'click .o_shipping_schedule_hide': '_onClickHide',
 
+        'click .o_open_existing_arriving_qty_details': '_onClickOpenArrivingQtyShipped',
+
+
         'focus .o_shipping_schedule_main_input_forcast_qty': '_onFocusInputControl',
         'focus .o_shipping_schedule_main_input_safety_inventory': '_onFocusInputControl',
         'focus .o_shipping_schedule_main_input_arriving_qty_apply': '_onFocusInputControl',
@@ -450,6 +453,17 @@ var ClientAction = AbstractAction.extend({
                 }
             }
         }
+
+        var $table_total = $(QWeb.render('shipping_schedule_page_total', {
+            manufacturingPeriods: this.manufacturingPeriods,
+            state: this.state,
+            formatFloat: this.formatFloat,
+        }));
+        var $tbody_total = $('.o_page_total');
+        if ($tbody_total.length) {
+            $tbody_total.replaceWith($table_total);
+        }
+
         this._update_cp_buttons();
         return Promise.resolve();
     },
@@ -778,6 +792,33 @@ var ClientAction = AbstractAction.extend({
         this._actionCancelConfirm(shippingScheduleId);
     },
 
+    _actionOpenArrivingQtyShipped: function (shippingScheduleId, action, dateStr, dateStart, dateStop) {
+        var self = this;
+        this.mutex.exec(function () {
+            return self._rpc({
+                model: 'web.sale.shipping.schedule',
+                method: action,
+                args: [shippingScheduleId, dateStr, dateStart, dateStop]
+            }).then(function (action){
+                return self.do_action(action);
+            });
+        });
+    },
+
+    _onClickOpenArrivingQtyShipped: function (ev) {
+        ev.preventDefault();
+        var $target = $(ev.target);
+        var dateStart = $target.data('date_start');
+        var dateStop = $target.data('date_stop');
+        var dateStr = $target.data('date_index');
+        if (dateStr != "delayed" && dateStr != "unallocated") {
+            dateStr = this.manufacturingPeriods[$target.data('date_index')];
+        }
+        var action = $target.data('action');
+        var shippingScheduleId = $target.closest('.o_shipping_schedule_main_content').data('id');
+        this._actionOpenArrivingQtyShipped(shippingScheduleId, action, dateStr, dateStart, dateStop);
+    },
+
     _onFocusInputControl: function (ev) {
         ev.preventDefault();
         $(ev.target).select();
@@ -785,12 +826,17 @@ var ClientAction = AbstractAction.extend({
 
     _onMouseOverReplenish: function (ev) {
         ev.stopPropagation();
+        // var table = $(ev.target).closest('tbody');
+        // var replenishClass = '.o_shipping_schedule_forced_replenish';
+        // if (! table.length) {
+        //     table = $('tr');
+        //     replenishClass = '.o_shipping_schedule_to_replenish';
+        // }
         var table = $(ev.target).closest('tbody');
-        var replenishClass = '.o_shipping_schedule_forced_replenish';
         if (! table.length) {
             table = $('tr');
-            replenishClass = '.o_shipping_schedule_to_replenish';
         }
+        var replenishClass = '.o_shipping_schedule_to_replenish'
         table.find(replenishClass).addClass('o_shipping_schedule_hover');
     },
 

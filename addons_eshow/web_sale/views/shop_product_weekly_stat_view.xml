@@ -16,6 +16,7 @@
                 editable="bottom"
                 default_order="shop_name, seller_skus, start_date desc"
             >
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="hide"/>
                 <field name="shop_id" optional="show"/>
                 <field name="product_asin_id" optional="show"/>
                 <field name="shop_product_ids" optional="hide"/>

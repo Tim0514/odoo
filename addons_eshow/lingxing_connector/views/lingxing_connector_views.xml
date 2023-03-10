@@ -8,4 +8,21 @@
         parent="eshow_common_connector_lib.parent_menu_connector"
         groups="eshow_common_connector_lib.group_connector_user,eshow_common_connector_lib.group_connector_manager"
     />
+
+    <menuitem
+        id="menu_lingxing_connector_2"
+        name="Lingxing Connector"
+        sequence="20"
+        parent="web_sale.parent_menu_web_sale"
+        groups="eshow_common_connector_lib.group_connector_user,eshow_common_connector_lib.group_connector_manager"
+    />
+
+    <menuitem
+        id="menu_connector_log_book_2"
+        name="Log Book"
+        sequence="20"
+        parent="lingxing_connector.menu_lingxing_connector_2"
+        groups="eshow_common_connector_lib.group_connector_user,eshow_common_connector_lib.group_connector_manager"
+        action="eshow_common_connector_lib.action_eshow_log_book"
+    />
 </odoo>

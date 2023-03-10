@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-25 18:26+0000\n"
-"PO-Revision-Date: 2023-01-29 14:57+0800\n"
+"POT-Creation-Date: 2023-03-10 16:14+0000\n"
+"PO-Revision-Date: 2023-03-11 00:30+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -24,53 +24,80 @@ msgid "%s / Reverse"
 msgstr ""
 
 #. module: web_sale
-#. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
-#, python-format
-msgid "+ Arriving Qty:"
-msgstr "+ 到货数量："
+#: model:ir.actions.report,print_report_name:web_sale.action_shipping_schedule_xlsx
+msgid "'Shipping Schedule - %s-%s' % (object.schedule_year, object.schedule.month)"
+msgstr ""
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__sale_qty_14
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__sale_qty_14
 msgid "14 Days Sale"
 msgstr "14天"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__sale_qty_14
 msgid "14 days sale"
-msgstr "14天"
+msgstr "14天销量"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__sale_qty_28
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__sale_qty_28
 msgid "28 Days Sale"
 msgstr "28天"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__sale_qty_28
 msgid "28 days sale"
-msgstr "28天"
+msgstr "28天销量"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__sale_qty_30
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__sale_qty_30
+msgid "30 Days Sale"
+msgstr "30天"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__sale_qty_30_y_1
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__sale_qty_30_y_1
+msgid "30 Days Sale Last Year"
+msgstr "30天同比"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#, python-format
+msgid "30 Days Sale Last Year:"
+msgstr "30天同比："
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#, python-format
+msgid "30 Days Sale:"
+msgstr "30天销量："
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__sale_qty_7
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__sale_qty_7
 msgid "7 Days Sale"
 msgstr "7天"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__sale_qty_7
 msgid "7 days sale"
-msgstr "7天"
+msgstr "7天销量"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__acoas
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_weekly_stat__acoas
 msgid "ACOAS"
-msgstr ""
+msgstr "ACOAS"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__acos
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_weekly_stat__acos
 msgid "ACOS"
-msgstr ""
+msgstr "ACOS"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__product_asin_id
@@ -81,18 +108,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_weekly_stat__product_asin
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_weekly_stat__product_asin_id
 msgid "ASIN"
-msgstr ""
+msgstr "ASIN"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__asoas
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_weekly_stat__asoas
 msgid "ASOAS"
-msgstr ""
+msgstr "ASOAS"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__access_key
 msgid "Access Key"
-msgstr ""
+msgstr "Access Key"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__active
@@ -101,9 +128,19 @@ msgid "Active"
 msgstr "有效"
 
 #. module: web_sale
+#: model:ir.model.fields,help:web_sale.field_stock_picking__delivery_date
+msgid "Actual Delivery Date"
+msgstr "实际到货日期"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__afn_erp_real_shipped_quantity
 msgid "Actually Shipped Qty"
 msgstr "已发货"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_tree_for_schedule_group
+msgid "Add Schedules to Group"
+msgstr "添加计划"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__arriving_qty_increase
@@ -171,18 +208,19 @@ msgstr "周销量(建议)"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__advised_monthly_sale_qty
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__advised_monthly_sale_qty
 msgid "Advised Monthly Sale Qty"
 msgstr "月销量(建议)"
 
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__aliexpress
 msgid "Ali Express"
-msgstr ""
+msgstr "Ali Express"
 
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__amazon
 msgid "Amazon"
-msgstr ""
+msgstr "Amazon"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__amount_total
@@ -192,7 +230,7 @@ msgstr "总计"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Applied quantities by salesperson."
 msgstr "运营申请数量。"
@@ -206,6 +244,20 @@ msgstr "申请数量"
 #: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
 msgid "Archived"
 msgstr "已归档"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#, python-format
+msgid "Arriving Qty (Salesperson / Logistics / Confirmed)"
+msgstr "到货（运营/物流/累计确认）"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
+msgid "Arriving Qty:"
+msgstr "到货："
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__arriving_qty_apply_changed
@@ -223,7 +275,13 @@ msgid "Authorization Token"
 msgstr "令牌"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__available_days
+msgid "Available Days"
+msgstr "可售天数"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__qty_available
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__qty_available
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__afn_fulfillable_quantity
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__afn_fulfillable_quantity
 msgid "Available Qty"
@@ -231,7 +289,7 @@ msgstr "可用数量"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Available Qty:"
 msgstr "本地Free库存："
@@ -260,7 +318,7 @@ msgstr "基础数据"
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__billing_type
 msgid "Billing Type"
-msgstr ""
+msgstr "Billing Type"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__page_view_browser
@@ -275,16 +333,69 @@ msgid "Browser Sessions"
 msgstr "会话(浏览器)"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.view_mrp_production_schedule_master_compute_wizard
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__buyer_email
+msgid "Buyer Email"
+msgstr "买家邮件"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule_group__sale_qty_compute_method__by_group_sale_qty
+msgid "By Group (Sale Qty Last 28 days)"
+msgstr "按组（过去28天销量）"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule_group__sale_qty_compute_method__by_group_weight
+msgid "By Group (Weight Factor)"
+msgstr "按组（权重因子）"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule_group__sale_qty_compute_method__by_product
+msgid "By Single Product"
+msgstr "按单个产品"
+
+#. module: web_sale
+#: code:addons/web_sale/models/shipping_schedule.py:0
+#, python-format
+msgid "Can not confirm the schedule %s %s, as there are shipments not mapped to forecasts."
+msgstr "由于还有发货没有对应到相应的月份，无法确认发货计划：%s %s "
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__lx_state__3
 #: model_terms:ir.ui.view,arch_db:web_sale.view_shipping_schedule_wizard
+#, python-format
 msgid "Cancel"
 msgstr "取消"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
+msgid "Cancel Confirm"
+msgstr "取消确认"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule__state__canceled
+msgid "Canceled"
+msgstr "已取消"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_move__fba_shipment_state__cancelled
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__fba_shipment_state__cancelled
+msgid "Cancelled"
+msgstr "已取消"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__seller_rank_category
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_asin__seller_rank_category
 msgid "Category"
 msgstr "类目"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_move__fba_shipment_state__check_in
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__fba_shipment_state__check_in
+msgid "Check In"
+msgstr "Check In"
 
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_product__shop_product_state__clearance
@@ -295,15 +406,27 @@ msgstr "清仓"
 #. module: web_sale
 #: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
 msgid "Clearance Sale"
-msgstr "清仓"
+msgstr "清仓销售"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_move__fba_shipment_state__closed
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__fba_shipment_state__closed
+msgid "Closed"
+msgstr "已关闭"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__code
 msgid "Code"
-msgstr ""
+msgstr "代码"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__company_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__company_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__company_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__company_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__company_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__company_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__company_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__company_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__company_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__company_id
@@ -322,17 +445,17 @@ msgstr "确认到货"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Confirmed"
-msgstr "已确认"
+msgstr "累计确认"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Confirmed arriving quantities."
-msgstr "确认的到货数量。"
+msgstr "累计确认的到货数量。"
 
 #. module: web_sale
 #: model:ir.model,name:web_sale.model_res_partner
@@ -347,12 +470,22 @@ msgstr "国家"
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__coupang
 msgid "Coupang"
-msgstr ""
+msgstr "Coupang"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_web_sale_shop_tree
+msgid "Create Default Shipping Schedule Group"
+msgstr "创建默认发货计划组"
 
 #. module: web_sale
 #: model_terms:ir.actions.act_window,help:web_sale.action_web_sale_marketplace
 msgid "Create a new marketplace."
 msgstr "新建电商平台。"
+
+#. module: web_sale
+#: model_terms:ir.actions.act_window,help:web_sale.action_web_sale_shipping_method
+msgid "Create a new shipping method."
+msgstr "新建运输方式。"
 
 #. module: web_sale
 #: model_terms:ir.actions.act_window,help:web_sale.action_web_sale_shop
@@ -361,11 +494,15 @@ msgstr "新建店铺。"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__create_uid
-#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__create_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__create_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__create_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__create_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__create_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__create_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__create_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__create_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__create_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__create_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_wizard__create_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__create_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__create_uid
@@ -380,11 +517,15 @@ msgstr "创建人"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__create_date
-#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__create_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__create_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__create_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__create_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__create_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__create_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__create_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__create_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__create_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__create_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_wizard__create_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__create_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__create_date
@@ -398,6 +539,7 @@ msgid "Created on"
 msgstr "创建时间"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__currency_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__currency_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_asin__currency_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__currency_id
@@ -406,11 +548,23 @@ msgid "Currency"
 msgstr "币种"
 
 #. module: web_sale
+#: model:ir.model.fields,help:web_sale.field_web_sale_shipping_schedule__is_too_little_inventory
+msgid "Current stock quantity can be sold less then 30 days."
+msgstr "当前库存可售天数小于30天。"
+
+#. module: web_sale
+#: model:ir.model.fields,help:web_sale.field_web_sale_shipping_schedule__is_too_much_inventory
+msgid "Current stock quantity can be sold more then 90 days."
+msgstr "当前库存可售天数大于90天。"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__shipping_forecast_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__date
 msgid "Date"
 msgstr "日期"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__product_default_code
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__product_default_code
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__product_default_code
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__product_default_code
@@ -420,35 +574,68 @@ msgstr "物料编码"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Default Product Code:"
 msgstr "物料编码："
 
 #. module: web_sale
-#: model:ir.model.fields,field_description:web_sale.field_res_partner__default_shipping_method
-#: model:ir.model.fields,field_description:web_sale.field_res_users__default_shipping_method
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__default_shipping_method
+#: model:ir.model.fields,field_description:web_sale.field_res_partner__default_shipping_method_id
+#: model:ir.model.fields,field_description:web_sale.field_res_users__default_shipping_method_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__default_shipping_method_id
 msgid "Default Shipping Method"
 msgstr "默认运输方式"
 
 #. module: web_sale
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__default_shop_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__default_shipping_schedule_group_id
+msgid "Default Shipping Schedule Group"
+msgstr "默认发货计划组"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__shop_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__shop_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_warehouse__default_shop_id
 msgid "Default Shop"
 msgstr "默认店铺"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__is_default_group
+msgid "Default schedule of a shop"
+msgstr "店铺的默认计划组"
+
+#. module: web_sale
 #: model:ir.model.fields,help:web_sale.field_web_sale_shipping_schedule__product_uom_id
 msgid "Default unit of measure used for all stock operations."
-msgstr ""
+msgstr "默认计量单位。"
 
 #. module: web_sale
 #: model:ir.model.fields,help:web_sale.field_web_sale_shipping_schedule__warehouse_id
-msgid ""
-"Default value to set on Purchase(Sales) Orders that will be created based "
-"on Sale(Purchase) Orders made to this company"
+msgid "Default value to set on Purchase(Sales) Orders that will be created based on Sale(Purchase) Orders made to this company"
 msgstr ""
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#, python-format
+msgid "Delayed Qty:"
+msgstr "迟到货："
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_move__fba_shipment_state__delete
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__fba_shipment_state__delete
+msgid "Delete"
+msgstr "删除"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_move__fba_shipment_state__delivered
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__fba_shipment_state__delivered
+msgid "Delivered"
+msgstr "已到货"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__delivery_date
+msgid "Delivery Date"
+msgstr "配送日期"
 
 #. module: web_sale
 #: model:ir.model,name:web_sale.model_web_sale_shipping_method
@@ -466,11 +653,15 @@ msgstr "描述"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__display_name
-#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__display_name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__display_name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__display_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__display_name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__display_name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__display_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__display_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__display_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__display_name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__display_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_wizard__display_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__display_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__display_name
@@ -484,16 +675,36 @@ msgid "Display Name"
 msgstr "名称"
 
 #. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_order__is_return__2
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule__state__done
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule_group__state__done
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_search
+msgid "Done"
+msgstr "完成"
+
+#. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__mrp_production_schedule_master__state__draft
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule__state__draft
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule_group__state__draft
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_search
 msgid "Draft"
 msgstr "草稿"
 
 #. module: web_sale
+#: model:ir.actions.server,name:web_sale.ir_cron_regenerate_shipping_schedule_action_ir_actions_server
+#: model:ir.cron,cron_name:web_sale.ir_cron_regenerate_shipping_schedule_action model:ir.cron,name:web_sale.ir_cron_regenerate_shipping_schedule_action
+msgid "EShow Regenerate Shipping Schedule"
+msgstr "重新生成发货计划"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__earliest_ship_date
+msgid "Earliest Shipment Date"
+msgstr "最早发货日期"
+
+#. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__ebay
 msgid "Ebay"
-msgstr ""
+msgstr "Ebay"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__enable_exchange_data
@@ -512,28 +723,38 @@ msgstr "结束日期"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Ending"
 msgstr "结束"
 
 #. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_move__fba_shipment_state__error
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__fba_shipment_state__error
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_sale_data__state__error
 msgid "Error"
 msgstr "错误"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_move__estimate_arriving_date
 #: model:ir.model.fields,field_description:web_sale.field_stock_picking__estimate_arriving_date
 msgid "Estimate Arriving Date"
 msgstr "预计到货日期"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__estimate_arriving_date_manually_changed
+msgid "Estimate Arriving Date Manually Changed"
+msgstr "预计到货日期已被手工修改"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__estimate_monthly_sale_qty_1
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__estimate_monthly_sale_qty_1
 msgid "Estimate Monthly Sale Qty 1"
 msgstr "预计月销量"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__estimate_monthly_sale_qty_2
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__estimate_monthly_sale_qty_2
 msgid "Estimate Monthly Sale Qty 2"
 msgstr "预计月销量2"
 
@@ -544,20 +765,74 @@ msgid "Estimate Ship Days"
 msgstr "预计运输时间"
 
 #. module: web_sale
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__arriving_qty_existing
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_warehouse__share_type__eu
+msgid "European Union"
+msgstr "欧盟(EU)"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_shop
+msgid "Exchange Data Disabled"
+msgstr "禁止同步数据"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_shop
+msgid "Exchange Data Enabled"
+msgstr "允许同步数据"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__ending_inventory_qty
 msgid "Existing Arriving Qty"
 msgstr "已执行的到货数量"
 
 #. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#, python-format
+msgid "Existing arriving qty which is delayed."
+msgstr "迟到的已发货数量。"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
+msgid "Existing arriving qty which is not allocated to forecast."
+msgstr "还没有分配到计划月份的已发货数量。"
+
+#. module: web_sale
+#: model:ir.actions.report,name:web_sale.action_shipping_schedule_xlsx
+msgid "Export Shipping Schedule"
+msgstr "导出计划"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_lx_stock_picking__lx_picking_type__12
+msgid "FBA Out"
+msgstr "FBA发货"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_move__fba_shipment_id
+msgid "FBA Shipment ID"
+msgstr "FBA货件ID"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_move__fba_shipment_state
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__fba_shipment_state
+msgid "FBA Shipment Status"
+msgstr "FBA货件状态"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__product_fnsku
 msgid "FNSKU"
-msgstr ""
+msgstr "FNSKU"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__arriving_qty_confirmed
 msgid "Forecast Arriving Qty"
 msgstr "预测到货数量"
+
+#. module: web_sale
+#: model:ir.model.fields,help:web_sale.field_stock_picking__shipping_forecast_date
+msgid "Forecast Period which the picking belongs to."
+msgstr "发货所属的预测期间。"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__forecast_sale_qty
@@ -572,38 +847,80 @@ msgstr "预测销量已被手动更改"
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__forecast_ids
 msgid "Forecasted quantity at date"
-msgstr ""
+msgstr "Forecasted quantity at date"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__fulfillment_channel_type
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__fulfillment_channel_type
 msgid "Fulfillment Channel"
 msgstr "配送渠道"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_marketplace
-#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_shop
-#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_warehouse
-#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search
-#: model_terms:ir.ui.view,arch_db:web_sale.shop_inventory_search
-#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
-#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_weekly_stat_search
+#: model_terms:ir.ui.view,arch_db:web_sale.eshow_shipping_form_view
+msgid "Function of replenish can only be used when the picking is not in picking schedule.\\nAre you still sure you want to do replenish action?"
+msgstr ""
+"本方法只能用于不在发货计划中的发货单。\n"
+"你仍然确定要进行补货操作吗？"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_shipping_schedule_wizard
+msgid "Generate (All)"
+msgstr "生成（全部产品）"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_shipping_schedule_wizard
+msgid "Generate (New Products)"
+msgstr "生成（新产品）"
+
+#. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.action_shipping_schedule_wizard model:ir.ui.menu,name:web_sale.menu_shipping_schedule_wizard
+msgid "Generate Shipping Schedule Manually"
+msgstr "手动生成发货计划"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_shipping_schedule_wizard
+msgid ""
+"Generate Shipping Schedule Manually:\n"
+"                    <br/>\n"
+"                    Generate (New Products): Only generate schedule for appropriate products which are not in schedules, such as in new shipping "
+"schedule enabled shop, new created and paired products or products' state 'new','normal'.\n"
+"                    <br/>\n"
+"                    Generate (All): Generate schedule for all products in shipping schedule enabled shops which are paired and in state 'new','normal'."
+msgstr ""
+"手动生成发货计划：\n"
+"                    <br/>\n"
+"                    生成（新产品）：只针对不在计划中并且满足下列条件的店铺产品生成发货计划：允许进行发货计划管理的店铺，已配对，状态为新品、正常销售的"
+"店铺产品。\n"
+"                    <br/>\n"
+"                    生成（全部产品）：针对满足上述条件的所有产品生成发货计划。"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_marketplace model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_shipping_method
+#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_shop model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_warehouse
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_search model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search_for_schedule_group model_terms:ir.ui.view,arch_db:web_sale.shop_inventory_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search model_terms:ir.ui.view,arch_db:web_sale.shop_product_weekly_stat_search
 msgid "Group By..."
 msgstr "分组..."
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Hide"
-msgstr ""
+msgstr "隐藏"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__id
-#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_wizard__id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__id
@@ -614,7 +931,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_warehouse__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__imported_product_default_code
@@ -637,6 +954,12 @@ msgid "Imported Shop Name"
 msgstr "导入的店铺名称"
 
 #. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_move__fba_shipment_state__in_transit
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__fba_shipment_state__in_transit
+msgid "In Transit"
+msgstr "在途"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__afn_inbound_receiving_quantity
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__afn_inbound_receiving_quantity
 msgid "Inbound Receiving Qty"
@@ -656,10 +979,34 @@ msgstr "计划入库"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
+msgid "Increase"
+msgstr "新增"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
+msgid "Increase arriving quantities."
+msgstr "本次增加的到货数量."
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__default_code
+msgid "Internal Reference"
+msgstr "内部参考"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Inventory :"
 msgstr "库存："
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__inventory_date
+msgid "Inventory Date"
+msgstr "库存日期"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__afn_researching_quantity
@@ -667,14 +1014,40 @@ msgid "Investigating Qty"
 msgstr "调查中"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__is_assessed
+msgid "Is Assessed Order"
+msgstr "测评订单"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__is_deleted
 msgid "Is Deleted"
 msgstr "已删除"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__is_latest_inventory
+msgid "Is Latest Inventory"
+msgstr "是否最新库存数据"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__is_mcf_order
+msgid "Is MCF Order"
+msgstr "多渠道配送订单"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__is_web_sale_manager
 msgid "Is Manager"
 msgstr "是否管理员"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__is_return
+msgid "Is Return"
+msgstr "是否退款"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__is_synchronized
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__is_synchronized
+msgid "Is Synchronized"
+msgstr "是否已同步"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_res_partner__is_web_shop
@@ -683,12 +1056,89 @@ msgid "Is Web Shop"
 msgstr "是否为网络店铺"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__is_out_of_stock_occurred
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__is_out_of_stock_occurred
+msgid "Is out of stock occurred"
+msgstr "出现过断货"
+
+#. module: web_sale
+#: model:ir.model.fields,help:web_sale.field_web_sale_shipping_schedule__is_out_of_stock_occurred
+#: model:ir.model.fields,help:web_sale.field_web_sale_shop_inventory__is_out_of_stock_occurred
+msgid "Is out of stock occurred in last 30 days"
+msgstr "最近30天内出现过断货"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__lx_create_time
+msgid "LX Create Time"
+msgstr "领星建单时间"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__lx_logistics_channel_name
+msgid "LX Logistics Channel Name"
+msgstr "领星物流渠道"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__lx_remark
+msgid "LX Remark"
+msgstr "领星备注"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__lx_shipment_id
+msgid "LX Shipment ID"
+msgstr "领星发货ID"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_move__lx_shipment_line_id
+msgid "LX Shipment Line ID"
+msgstr "领星发货明细ID"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__lx_shipment_sn
+msgid "LX Shipment SN"
+msgstr "领星发货单号"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__lx_state
+msgid "LX State"
+msgstr "领星状态"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_move__lx_stock_move_ids
+msgid "LX Stock Moves"
+msgstr "领星库存移动"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__name
+msgid "LX Stock Picking SN"
+msgstr "领星单号"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__lx_supplier_id
+msgid "LX Supplier ID"
+msgstr "领星供应商ID"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__lx_update_time
+msgid "LX Update Time"
+msgstr "领星更新时间"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__lx_warehouse_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__lx_warehouse_id
+msgid "LX Warehouse ID"
+msgstr "领星仓库ID"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master____last_update
-#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute____last_update
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move____last_update
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking____last_update
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace____last_update
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order____last_update
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line____last_update
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast____last_update
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method____last_update
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule____last_update
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group____last_update
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_wizard____last_update
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop____last_update
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory____last_update
@@ -702,12 +1152,26 @@ msgid "Last Modified on"
 msgstr "最后修改时间"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__last_update_date
+msgid "Last Update Date"
+msgstr "最后更新时间"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__last_update_date_local
+msgid "Last Update Date(Local)"
+msgstr "最后更新时间（本地）"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__write_uid
-#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__write_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__write_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__write_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__write_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__write_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__write_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__write_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__write_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__write_uid
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__write_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_wizard__write_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__write_uid
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__write_uid
@@ -722,11 +1186,15 @@ msgstr "最后更新者"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__write_date
-#: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master_compute__write_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__write_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__write_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__write_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__write_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__write_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__write_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__write_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__write_date
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__write_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_wizard__write_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__write_date
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__write_date
@@ -742,12 +1210,17 @@ msgstr "最后更新时间"
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__lazada
 msgid "Lazada"
-msgstr ""
+msgstr "Lazada"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_web_sale_lx_stock_move model:ir.model,name:web_sale.model_web_sale_lx_stock_picking
+msgid "Lingxing Stock Move"
+msgstr "领星库存调拨"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__product_listing_id
 msgid "Listing Id"
-msgstr ""
+msgstr "Listing Id"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__listing_update_time
@@ -757,37 +1230,66 @@ msgstr "Listing更新时间"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Logistics"
 msgstr "物流"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
 msgid "Logistics Confirm"
 msgstr "物流确认"
 
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__mrp_production_schedule_master__state__logistics_confirmed
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule__state__logistics_confirmed
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule_group__state__logistics_confirmed
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_search
 msgid "Logistics Confirmed"
 msgstr "物流已确认"
 
 #. module: web_sale
+#: model:ir.ui.menu,name:web_sale.menu_web_logistics_management
+msgid "Logistics Management"
+msgstr "物流管理"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__lx_picking_type
+msgid "Lx Picking Type"
+msgstr "领星入出库类型"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__lx_stock_move_ids
+msgid "Lx Stock Move"
+msgstr "领星库存移动"
+
+#. module: web_sale
+#: code:addons/web_sale/report/shipping_schedule_xlsx.py:0 model:ir.model.fields,field_description:web_sale.field_stock_move__seller_sku
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__shop_product_seller_sku
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__seller_sku
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__seller_sku
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__seller_sku
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__seller_sku
+#, python-format
 msgid "MSKU"
-msgstr ""
+msgstr "MSKU"
 
 #. module: web_sale
-#: model:ir.actions.act_window,name:web_sale.action_web_sale_marketplace
-#: model:ir.model,name:web_sale.model_web_sale_marketplace
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__marketplace_id
-#: model:ir.ui.menu,name:web_sale.menu_web_sale_marketplace
-#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_marketplace
-#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_shop
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_lx_stock_picking__lx_picking_type__1
+msgid "Manual In"
+msgstr "手工入库"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_lx_stock_picking__lx_picking_type__11
+msgid "Manual Out"
+msgstr "手工出库"
+
+#. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.action_web_sale_marketplace model:ir.model,name:web_sale.model_web_sale_marketplace
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__marketplace_id model:ir.ui.menu,name:web_sale.menu_web_sale_marketplace
+#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_marketplace model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_shop
 #: model_terms:ir.ui.view,arch_db:web_sale.view_web_sale_marketplace_tree
 msgid "Marketplace"
 msgstr "电商平台"
@@ -809,7 +1311,6 @@ msgstr "平台类型"
 
 #. module: web_sale
 #: model:ir.model,name:web_sale.model_mrp_production_schedule_master
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
 msgid "Master Data of Mrp Production Schedule"
 msgstr "MPS主表"
 
@@ -826,28 +1327,46 @@ msgid "Mobile Sessions"
 msgstr "会话(手机)"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__date_modified
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__date_modified_gmt
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_weekly_stat__date_modified_gmt
 msgid "Modify Date"
 msgstr "修改日期"
 
 #. module: web_sale
+#: code:addons/web_sale/report/shipping_schedule_xlsx.py:0
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__schedule_month
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__schedule_month
+#, python-format
 msgid "Month"
 msgstr "月"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
-msgid "My Schedule"
-msgstr "我的计划"
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__monthly_sale_qty
+msgid "Monthly Sale Qty"
+msgstr "月销量"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__monthly_sale_qty_changed
+msgid "Monthly Sale Qty Manually Changed"
+msgstr "月销量被人工修改"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_move_tree_for_forecast
+msgid "Moves"
+msgstr "库存移动"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__product_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__name
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__name
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__need_focus
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__need_focus
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_search
 msgid "Need Focus"
 msgstr "关注"
 
@@ -861,14 +1380,14 @@ msgstr "新品"
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__newegg
 msgid "New Egg"
-msgstr ""
+msgstr "New Egg"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "New Replenishing Qty"
-msgstr "增加的补货"
+msgstr "补货数量：新增"
 
 #. module: web_sale
 #: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
@@ -876,21 +1395,36 @@ msgid "New Sale"
 msgstr "新品"
 
 #. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_order__is_return__0
+msgid "No Return"
+msgstr "没有退货"
+
+#. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_sale_data__state__no_data
 msgid "No Sale Data"
 msgstr "无销售"
 
 #. module: web_sale
-#: model_terms:ir.actions.act_window,help:web_sale.mrp_production_schedule_master_form_action
-msgid "No data found."
-msgstr "数据未找到."
+#: model_terms:ir.actions.act_window,help:web_sale.shipping_schedule_action_for_schedule_group
+msgid "No Shipping Schedule Found."
+msgstr "没有找到发货计划。"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "No product yet. Add one to start scheduling."
 msgstr ""
+
+#. module: web_sale
+#: model_terms:ir.actions.act_window,help:web_sale.eshow_shipping_action
+msgid "No transfer found."
+msgstr ""
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_warehouse__share_type__none
+msgid "None"
+msgstr "无"
 
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_product__shop_product_state__normal
@@ -905,9 +1439,20 @@ msgid "Normal Sale(Shop Product)"
 msgstr "正常销售(店铺产品状态)"
 
 #. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_warehouse__share_type__na
+msgid "North America"
+msgstr "北美(NA)"
+
+#. module: web_sale
 #: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
 msgid "Not Paired"
 msgstr "未配对"
+
+#. module: web_sale
+#: code:addons/web_sale/models/stock_picking.py:0 code:addons/web_sale/wizard/shipping_schedule_wizard.py:0
+#, python-format
+msgid "Notification"
+msgstr "通知"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__review_num
@@ -933,14 +1478,41 @@ msgid "Odoo helps you easily track all activities related to a web shop."
 msgstr ""
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
-msgid "Open MPS Form"
-msgstr "打开MPS"
+#: code:addons/web_sale/models/shipping_schedule.py:0
+#, python-format
+msgid "Only logistics confirmed schedule can be computed replenish quantity."
+msgstr "只有物流确认的计划才可以计算补货数量。"
 
 #. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_form
+msgid "Open Shipping Schedule"
+msgstr "打开发货计划"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__order_id
+msgid "Order"
+msgstr "订单"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__date_ordered
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__order_date
 msgid "Order Date"
 msgstr "订单日期"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__date_ordered_local
+msgid "Order Date(Local)"
+msgstr "订单日期（本地）"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__order_ref
+msgid "Order Id"
+msgstr "订单号"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__order_lines
+msgid "Order Lines"
+msgstr "订单明细"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__order_volume
@@ -954,18 +1526,23 @@ msgid "Other"
 msgstr "其它"
 
 #. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
+msgid "Out of stock occurred"
+msgstr "出现过断货"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__pair_update_time
 msgid "Pair Update Time"
 msgstr "配对更新时间"
 
 #. module: web_sale
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__is_paired
-#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__is_paired model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
 msgid "Paired"
 msgstr "已配对"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.view_mrp_production_schedule_master_compute_wizard
 #: model_terms:ir.ui.view,arch_db:web_sale.view_shipping_schedule_wizard
 msgid "Parameters"
 msgstr "参数"
@@ -978,16 +1555,48 @@ msgid "Parent ASIN"
 msgstr "父ASIN"
 
 #. module: web_sale
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__procurement_launched
-msgid "Procurement has been run for this forecast"
-msgstr ""
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__posted_date
+msgid "Payment Date"
+msgstr "付款日期"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__phone
+msgid "Phone"
+msgstr "电话"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__postal_code
+msgid "Postal Code"
+msgstr "邮编"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__procurement_launched
+msgid "Procurement Launched"
+msgstr "已补货"
+
+#. module: web_sale
+#: code:addons/web_sale/models/stock_picking.py:0
+#, python-format
+msgid "Procurement can only run once."
+msgstr "补货操作只能执行一次。"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__procurement_launched
+msgid "Procurement has been run for this forecast"
+msgstr "本计划已经运行补货"
+
+#. module: web_sale
+#: code:addons/web_sale/models/stock_picking.py:0
+#, python-format
+msgid "Procurements have been launched"
+msgstr "补货已运行"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__product_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__product_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__product_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__product_id
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__product_id
-#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__product_id model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
 msgid "Product"
 msgstr "产品"
 
@@ -997,16 +1606,29 @@ msgid "Product ASIN"
 msgstr "ASIN"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search
-#: model_terms:ir.ui.view,arch_db:web_sale.shop_inventory_search
+#: model:ir.model.constraint,message:web_sale.constraint_web_sale_shop_product_weekly_stat_shop_product_weekly_stat_uniq1
+msgid "Product Asin in one shop in same week must be unique"
+msgstr "同一周、同一店铺中的ASIN不允许重复"
+
+#. module: web_sale
+#: model:ir.model.constraint,message:web_sale.constraint_web_sale_shop_product_asin_shop_product_asin_uniq1
+msgid "Product Asin in one shop must be unique"
+msgstr "同一店铺中的ASIN不允许重复"
+
+#. module: web_sale
+#: code:addons/web_sale/report/shipping_schedule_xlsx.py:0 model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search_for_schedule_group model_terms:ir.ui.view,arch_db:web_sale.shop_inventory_search
+#, python-format
 msgid "Product Default Code"
 msgstr "物料编码"
 
 #. module: web_sale
+#: code:addons/web_sale/report/shipping_schedule_xlsx.py:0 model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__product_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__product_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__product_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__product_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__product_name
+#, python-format
 msgid "Product Name"
 msgstr "产品名称"
 
@@ -1015,6 +1637,11 @@ msgstr "产品名称"
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_asin__shop_product_name
 msgid "Product Name In Shop"
 msgstr "店铺产品名称"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__product_qty
+msgid "Product Qty"
+msgstr "产品数量"
 
 #. module: web_sale
 #: model:ir.model,name:web_sale.model_web_sale_shipping_forecast
@@ -1029,7 +1656,7 @@ msgstr "状态"
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__product_uom_id
 msgid "Product UoM"
-msgstr ""
+msgstr "单位"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__product_volume
@@ -1043,60 +1670,97 @@ msgid "Production Schedule Lines"
 msgstr "销售计划明细"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
+#: model:ir.ui.menu,name:web_sale.menu_product_management model:ir.ui.menu,name:web_sale.menu_product_template
 msgid "Products"
 msgstr "产品"
 
 #. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_lx_stock_picking__lx_picking_type__2
+msgid "Purchase In"
+msgstr "采购入库"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__quantity_ordered
+msgid "Quantity"
+msgstr "数量"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_move__quantity_received
+msgid "Quantity Received"
+msgstr "已签收"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_move__fba_shipment_state__receiving
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__fba_shipment_state__receiving
+msgid "Receiving"
+msgstr "接收中"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_form
+msgid "Reference"
+msgstr "参考"
+
+#. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Reference Monthly Sale Qty:"
 msgstr "参考月销量："
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.view_mrp_production_schedule_master_compute_wizard
 #: model_terms:ir.ui.view,arch_db:web_sale.view_shipping_schedule_wizard
-msgid "Regenerate"
-msgstr "重新生成"
+msgid "Refresh Sale Data"
+msgstr "刷新销售数据"
 
 #. module: web_sale
-#: model:ir.model,name:web_sale.model_mrp_production_schedule_master_compute
-msgid "Regenerate Mrp Production Schedule Master Manually"
-msgstr "手动重新生成MPS数据"
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__amount_refund
+msgid "Refund Amount"
+msgstr "退款金额"
 
 #. module: web_sale
-#: model:ir.actions.act_window,name:web_sale.action_shipping_schedule_wizard
 #: model:ir.model,name:web_sale.model_web_sale_shipping_schedule_wizard
-#: model:ir.ui.menu,name:web_sale.menu_shipping_schedule_wizard
-#: model_terms:ir.ui.view,arch_db:web_sale.view_shipping_schedule_wizard
 msgid "Regenerate Shipping Schedule Manually"
 msgstr "手动重新生成发货计划"
 
 #. module: web_sale
-#: model:ir.actions.server,name:web_sale.ir_cron_regenerate_shipping_schedule_action_ir_actions_server
-#: model:ir.cron,cron_name:web_sale.ir_cron_regenerate_shipping_schedule_action
-#: model:ir.cron,name:web_sale.ir_cron_regenerate_shipping_schedule_action
-msgid "Regenerate Shipping Schedule: run scheduler"
-msgstr "重新生成发货计划"
-
-#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__partner_id
 msgid "Related Partner"
-msgstr ""
+msgstr "关联客户"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__related_shipment_sn
+msgid "Related Shipment SN"
+msgstr "关联发货单号"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_form
+msgid "Related Shipping Schedules"
+msgstr "关联的发货计划"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__remark
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__remark
+msgid "Remark"
+msgstr "备注"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__remark
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_weekly_stat__remark
 msgid "Remarks"
-msgstr ""
+msgstr "备注"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#: model_terms:ir.ui.view,arch_db:web_sale.eshow_shipping_form_view
 #, python-format
 msgid "Replenish"
 msgstr "补货"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__replenish_increase_ignore_rate
+msgid "Replenish Increase Ignore Rate"
+msgstr "补货忽略比例"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__replenish_qty_required
@@ -1104,17 +1768,32 @@ msgid "Replenish Qty Required"
 msgstr "需补货数量"
 
 #. module: web_sale
+#: model:ir.model.fields,help:web_sale.field_web_sale_shipping_schedule__replenish_increase_ignore_rate
+msgid "Replenish will be ignored if qty_increase/qty_confirmed <= this rate"
+msgstr "新增数量/确认数量<=比例的补货需求 不会被执行"
+
+#. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__replenished_qty
 #, python-format
 msgid "Replenished Qty"
-msgstr "补货数量"
+msgstr "累计补货"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
-msgid "Reset"
-msgstr "重置"
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_form
+msgid "Reset Monthly Sale Qty"
+msgstr "重置月销量"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_lx_stock_picking__lx_picking_type__26
+msgid "Return In"
+msgstr "退货入库"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_lx_stock_picking__lx_picking_type__14
+msgid "Return Out"
+msgstr "退货出库"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__return_qty
@@ -1128,14 +1807,20 @@ msgid "Return Stock Move"
 msgstr "销售退货"
 
 #. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_order__is_return__1
+msgid "Returning"
+msgstr "退货中"
+
+#. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Safety"
 msgstr "安全库存"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__safety_available_days
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__safety_available_days
 msgid "Safety Available Days"
 msgstr "安全可售天数"
 
@@ -1146,7 +1831,7 @@ msgstr "安全库存"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Safety inventory according to available sale days setting."
 msgstr "根据设置可售天数计算出的安全库存。"
@@ -1158,24 +1843,22 @@ msgstr "安全库存已被手动更改"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Sale Forecast"
 msgstr "销售预测"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__sale_qty_str
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__sale_qty_str
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__sale_qty
 msgid "Sale Qty"
 msgstr "销售数量"
 
 #. module: web_sale
-#: model:ir.actions.act_window,name:web_sale.mrp_production_schedule_master_form_action
-#: model:ir.ui.menu,name:web_sale.menu_mrp_production_schedule_master
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_tree
-msgid "Sale Schedule"
-msgstr "销售计划"
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__sale_qty_compute_method
+msgid "Sale Qty Compute Method"
+msgstr "销售数量计算方式"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__sale_stock_move_id
@@ -1183,46 +1866,75 @@ msgid "Sale Stock Move"
 msgstr "销售出库"
 
 #. module: web_sale
-#. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
-#, python-format
-msgid "Sale forecast of each period."
-msgstr ""
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__sale_weight_factor
+msgid "Sale Weight Factor"
+msgstr "销售权重"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_form
+#: code:addons/web_sale/wizard/shipping_schedule_wizard.py:0
+#, python-format
+msgid "Sale data have been refresh"
+msgstr "销售数据已经刷新"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
+msgid "Sale forecast of each period."
+msgstr "每阶段销售预测。"
+
+#. module: web_sale
+#: model:ir.model.fields,help:web_sale.field_web_sale_shipping_schedule__sale_weight_factor
+msgid "Sale weight factor in group for allocating sale quantity."
+msgstr "在销售计划组中，每个产品根据销售权重分配销量。"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
 msgid "Sales Confirm"
 msgstr "运营确认"
 
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__mrp_production_schedule_master__state__sales_confirmed
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule__state__sales_confirmed
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
+#: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_schedule_group__state__sales_confirmed
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_search
 msgid "Sales Confirmed"
 msgstr "运营已确认"
 
 #. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_search
+msgid "Sales Person"
+msgstr "运营"
+
+#. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__salesperson_id
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__salesperson_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__salesperson_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__salesperson_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__salesperson_id
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
 #: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
 #, python-format
 msgid "Salesperson"
-msgstr "运营"
+msgstr "运营人员"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_search
+msgid "Schedule Enabled Shops"
+msgstr "允许计划管理的店铺"
+
+#. module: web_sale
+#: model:ir.ui.menu,name:web_sale.menu_schedule_management
+msgid "Schedule Management"
+msgstr "计划管理"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule__schedule_master_id
 msgid "Schedule Master"
 msgstr "计划主表"
-
-#. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
-msgid "Schedule Need to be confirmed"
-msgstr "计划需要被确认"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__schedule_week
@@ -1240,16 +1952,6 @@ msgid "Schedule the production of Product in a warehouse"
 msgstr "在此仓库中进行产品生产计划"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
-msgid "Schedules Confirmed by Logistics"
-msgstr "计划已被物流确认"
-
-#. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
-msgid "Schedules Confirmed by Salesperson"
-msgstr "计划已被运营确认"
-
-#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__scrap_qty
 msgid "Scrap Qty"
 msgstr "报废数量"
@@ -1260,12 +1962,13 @@ msgid "Search Marketplace"
 msgstr "查找平台"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
-msgid "Search Sale Schedule"
-msgstr "查找销售计划"
+#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_shipping_method
+msgid "Search Shipping Method"
+msgstr "查找运输方式"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_search model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search_for_schedule_group
 msgid "Search Shipping Schedule"
 msgstr "查找计划"
 
@@ -1300,6 +2003,17 @@ msgid "Secret Key"
 msgstr ""
 
 #. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.shipping_schedule_action_for_schedule_group
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_form
+msgid "Select Shipping Schedules"
+msgstr "选择发货计划"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__sellable_quantity
+msgid "Sellable Quantity"
+msgstr "可销售数量"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__seller_rank
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_asin__seller_rank
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__seller_rank
@@ -1319,9 +2033,61 @@ msgid "Seller SKUs"
 msgstr "MSKU"
 
 #. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_form
+msgid "Set Schedule Monthly Sale Qty"
+msgstr "更新销售计划的月销量"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_warehouse__share_type
+msgid "Share Type"
+msgstr "共享方式"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__afn_fulfillable_quantity_multi
 msgid "Shared Inventory for Multi Countries"
 msgstr "多国共享库存"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__shipment_date
+msgid "Shipment Date"
+msgstr "运输日期"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__shipment_date_local
+msgid "Shipment Date(Local)"
+msgstr "运输日期（本地）"
+
+#. module: web_sale
+#: code:addons/web_sale/models/shipping_schedule.py:0
+#, python-format
+msgid "Shipment in forecast %s: %s %s"
+msgstr "在预测 %s 期间内的到货: %s %s"
+
+#. module: web_sale
+#: code:addons/web_sale/models/shipping_schedule.py:0
+#, python-format
+msgid "Shipment not mapped to forecast: %s %s"
+msgstr "还没有分配到预测期间的到货：%s %s"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_move_search_for_forecast
+msgid "Shipments"
+msgstr "发货"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_move__fba_shipment_state__shipped
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__fba_shipment_state__shipped
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__lx_state__1
+#, python-format
+msgid "Shipped"
+msgstr "已发货"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__arriving_qty_shipped
+msgid "Shipped Arriving Qty"
+msgstr "已发货数量"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__qty_shipped
@@ -1329,19 +2095,34 @@ msgid "Shipped Qty"
 msgstr "已发货"
 
 #. module: web_sale
-#: model:ir.model.fields,field_description:web_sale.field_stock_picking__shipping_method
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
+msgid "Shipped quantities."
+msgstr "已发货数量。"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_stock_move__shipping_forecast_id
+msgid "Shipping Forecast Id"
+msgstr ""
+
+#. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.action_web_sale_shipping_method
+#: model:ir.model.fields,field_description:web_sale.field_stock_move__shipping_method
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__shipping_method model:ir.ui.menu,name:web_sale.menu_web_sale_shipping_method
+#: model_terms:ir.ui.view,arch_db:web_sale.view_web_sale_shipping_method_tree
 msgid "Shipping Method"
 msgstr "运输方式"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/js/client_action.js:0
-#: model:ir.actions.act_window,name:web_sale.shipping_schedule_action
-#: model:ir.actions.client,name:web_sale.action_shipping_schedule
+#: code:addons/web_sale/static/src/js/client_action.js:0 code:addons/web_sale/static/src/js/shipping_schedule_widget.js:0
+#: model:ir.actions.act_window,name:web_sale.shipping_schedule_action model:ir.actions.client,name:web_sale.action_shipping_schedule
 #: model:ir.model,name:web_sale.model_web_sale_shipping_schedule
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__shipping_schedule_id
-#: model:ir.ui.menu,name:web_sale.menu_shipping_schedule
-#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_tree
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__shipping_schedule_ids
+#: model:ir.ui.menu,name:web_sale.menu_shipping_schedule model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_tree
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_tree_for_schedule_group
 #, python-format
 msgid "Shipping Schedule"
 msgstr "发货计划"
@@ -1352,11 +2133,47 @@ msgid "Shipping Schedule Adv"
 msgstr "高级发货计划"
 
 #. module: web_sale
-#: model:ir.model,name:web_sale.model_web_sale_shop
+#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_shop
+msgid "Shipping Schedule Disabled"
+msgstr "禁止发货计划管理"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.search_web_sale_shop
+msgid "Shipping Schedule Enabled"
+msgstr "允许发货计划管理"
+
+#. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.shipping_schedule_group_action
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__shipping_schedule_group_id
+#: model:ir.ui.menu,name:web_sale.menu_shipping_schedule_group model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_form
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_tree
+msgid "Shipping Schedule Group"
+msgstr "发货计划组"
+
+#. module: web_sale
+#: code:addons/web_sale/wizard/shipping_schedule_wizard.py:0
+#, python-format
+msgid "Shipping Schedule have been created"
+msgstr "发货计划已创建"
+
+#. module: web_sale
+#: code:addons/web_sale/report/shipping_schedule_xlsx.py:0
+#, python-format
+msgid "Shipping Schedules"
+msgstr "发货计划"
+
+#. module: web_sale
+#: model:ir.actions.act_window,name:web_sale.eshow_shipping_action model:ir.ui.menu,name:web_sale.shippings
+msgid "Shippings"
+msgstr "发货单"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_web_sale_shop model:ir.model.fields,field_description:web_sale.field_web_sale_order__shop_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__shop_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_weekly_stat__shop_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__shop_id
-#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_group_search model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search
+#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search_for_schedule_group
 #: model_terms:ir.ui.view,arch_db:web_sale.shop_product_weekly_stat_search
 msgid "Shop"
 msgstr "店铺"
@@ -1367,8 +2184,7 @@ msgid "Shop Code"
 msgstr "店铺代码"
 
 #. module: web_sale
-#: model:ir.actions.act_window,name:web_sale.shop_inventory_action
-#: model:ir.ui.menu,name:web_sale.menu_shop_inventory
+#: model:ir.actions.act_window,name:web_sale.shop_inventory_action model:ir.ui.menu,name:web_sale.menu_shop_inventory
 msgid "Shop Inventory"
 msgstr "店铺库存"
 
@@ -1378,18 +2194,22 @@ msgid "Shop Merchant ID"
 msgstr "商家ID"
 
 #. module: web_sale
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__name
+#: code:addons/web_sale/report/shipping_schedule_xlsx.py:0 model:ir.model.fields,field_description:web_sale.field_web_sale_shop__name
+#, python-format
 msgid "Shop Name"
 msgstr "店铺名称"
 
 #. module: web_sale
-#: model:ir.actions.act_window,name:web_sale.action_shop_product_product_tree
-#: model:ir.actions.act_window,name:web_sale.shop_product_form_action
-#: model:ir.model,name:web_sale.model_web_sale_shop_product
+#: model:ir.actions.act_window,name:web_sale.action_shop_product_product_tree model:ir.actions.act_window,name:web_sale.shop_product_form_action
+#: model:ir.model,name:web_sale.model_web_sale_shop_product model:ir.model.fields,field_description:web_sale.field_stock_move__shop_product_id
+#: model:ir.model.fields,field_description:web_sale.field_stock_picking__shop_product_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__shop_product_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order_line__shop_product_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_forecast__shop_product_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__shop_product_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__shop_product_id
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__shop_product_id
-#: model:ir.ui.menu,name:web_sale.menu_shop_product
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__shop_product_id model:ir.ui.menu,name:web_sale.menu_shop_product
+#: model_terms:ir.ui.view,arch_db:web_sale.eshow_shipping_search_view
 msgid "Shop Product"
 msgstr "店铺产品"
 
@@ -1400,7 +2220,7 @@ msgstr "ASIN"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Shop Product Id:"
 msgstr "MSKU："
@@ -1427,8 +2247,7 @@ msgid "Shop Product Status"
 msgstr "店铺产品状态"
 
 #. module: web_sale
-#: model:ir.actions.act_window,name:web_sale.shop_product_weekly_stat_action
-#: model:ir.ui.menu,name:web_sale.menu_shop_product_weekly_stat
+#: model:ir.actions.act_window,name:web_sale.shop_product_weekly_stat_action model:ir.ui.menu,name:web_sale.menu_shop_product_weekly_stat
 msgid "Shop Product Weekly Stat"
 msgstr "店铺产品周报"
 
@@ -1438,9 +2257,7 @@ msgid "Shop Product Weekly Statics"
 msgstr "店铺产品周报"
 
 #. module: web_sale
-#: model:ir.model,name:web_sale.model_web_sale_warehouse
-#: model_terms:ir.actions.act_window,help:web_sale.action_web_sale_warehouse
-#: model_terms:ir.ui.view,arch_db:web_sale.shipping_schedule_search
+#: model:ir.model,name:web_sale.model_web_sale_warehouse model_terms:ir.actions.act_window,help:web_sale.action_web_sale_warehouse
 #: model_terms:ir.ui.view,arch_db:web_sale.shop_inventory_search
 msgid "Shop Warehouse"
 msgstr "店铺仓库"
@@ -1453,18 +2270,22 @@ msgstr "店铺周销售数据"
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__shopee
 msgid "Shopee"
-msgstr ""
+msgstr "Shopee"
 
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__shopify
 msgid "Shopify"
-msgstr ""
+msgstr "Shopify"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_warehouse__shop_ids
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_warehouse__shop_names
 msgid "Shops"
 msgstr "店铺"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_warehouse__shop_names
+msgid "Shops Supported"
+msgstr "支持的店铺"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__review_star
@@ -1472,7 +2293,7 @@ msgstr "店铺"
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__review_star
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_weekly_stat__review_star
 msgid "Stars"
-msgstr ""
+msgstr "Stars"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__start_date
@@ -1481,7 +2302,7 @@ msgstr "开始日期"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Starting"
 msgstr "开始"
@@ -1518,11 +2339,34 @@ msgstr "统计年"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__state
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__state
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__state
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__state
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__state
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__state
 msgid "Status"
 msgstr "状态"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_stock_move model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__stock_move_id
+msgid "Stock Move"
+msgstr "库存移动"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_move_search_for_forecast
+msgid "Stock Move Ids"
+msgstr ""
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.view_move_search_for_forecast
+msgid "Stock Moves"
+msgstr "库存移动"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__lx_stock_picking_id
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__stock_picking_id
+msgid "Stock Picking"
+msgstr "库存调拨"
 
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shop_product__shop_product_state__stop
@@ -1573,69 +2417,126 @@ msgid "Sub Category Rank 3"
 msgstr "小类排名3"
 
 #. module: web_sale
-#: model_terms:ir.ui.view,arch_db:web_sale.view_mrp_production_schedule_master_compute_wizard
-msgid "Synchronize Products for Sale/MPS Schedule."
-msgstr "同步店铺产品到销售计划表."
-
-#. module: web_sale
-#: model:ir.actions.act_window,name:web_sale.action_mrp_production_schedule_master_compute
-#: model:ir.ui.menu,name:web_sale.menu_mrp_production_schedule_master_compute
-msgid "Synchronize Products for Schedule"
-msgstr "同步店铺产品到销售计划表"
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__sync_time
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_picking__sync_time
+msgid "Sync Time"
+msgstr "同步时间"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "The forecasted quantity in stock at the beginning of the period."
-msgstr "每期预测期初库存。"
+msgstr "阶段的期初库存。"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "The forecasted quantity in stock at the end of the period."
-msgstr "每期预测结束库存。"
+msgstr "阶段的期末库存。"
+
+#. module: web_sale
+#: code:addons/web_sale/models/stock_picking.py:0
+#, python-format
+msgid "The inter-warehouse transfers have been generated"
+msgstr "仓库间调拨已生成"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid ""
-"The master schedule translates your sales and demand forecasts into a "
-"production and purchase planning for each component.\n"
-"                    It ensures everything gets scheduled on time, based on "
-"constraints such as: safety stock, production capacity, lead times.\n"
+"The master schedule translates your sales and demand forecasts into a production and purchase planning for each component.\n"
+"                    It ensures everything gets scheduled on time, based on constraints such as: safety stock, production capacity, lead times.\n"
 "                    It's the perfect tool to support your S&OP meetings."
 msgstr ""
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "The quantity which has already been transfer to PO or MO."
 msgstr "已转PO或MO的数量。"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "The quantity which need to be transfer to PO or MO."
 msgstr "需要转PO或MO的数量。"
 
 #. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__timezone
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__timezone
+msgid "Time Zone"
+msgstr "时区"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__lx_state__-1
+msgid "To Pick"
+msgstr "待配货"
+
+#. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__lx_state__0
+msgid "To Ship"
+msgstr "待发货"
+
+#. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__is_too_little_inventory
+#, python-format
+msgid "Too little inventory"
+msgstr "库存太少"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__is_too_much_inventory
+#, python-format
+msgid "Too much inventory"
+msgstr "库存太多"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__amount_total
+msgid "Total"
+msgstr "总计"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Total Actual Sale of last month"
-msgstr "上月实际总销量"
+msgstr "上月总销量"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
+msgid "Total Applied Qty"
+msgstr "总申请数量"
 
 #. module: web_sale
 #. openerp-web
 #: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
 #, python-format
-msgid "Total Applied Qty"
-msgstr "总申请数量"
+msgid "Total Arriving Qty Apply"
+msgstr "总到货（申请）"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#, python-format
+msgid "Total Arriving Qty Confirmed"
+msgstr "总到货（确认）"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#, python-format
+msgid "Total Arriving Qty Verify"
+msgstr "总到货（验证）"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__total_fulfillable_quantity
@@ -1644,10 +2545,10 @@ msgstr "总可售"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Total Confirmed Qty"
-msgstr ""
+msgstr "总确认数量"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__total_convention_rate
@@ -1657,31 +2558,31 @@ msgstr "总转化率"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Total Existing Arriving Qty"
-msgstr ""
+msgstr "总到货（在途）"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Total Forecast Sale of last month"
-msgstr ""
+msgstr "总上月预测销量"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Total Incoming Qty ( Current / New )"
-msgstr ""
+msgstr "总到货（当前/新增）"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Total Inventory ( Starting / Ending )"
-msgstr ""
+msgstr "总库存（期初/期末）"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__page_view_total
@@ -1691,23 +2592,28 @@ msgstr "总访问"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Total Replenished Qty"
-msgstr ""
+msgstr "总补货数量"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Total Sale Forecast"
-msgstr ""
+msgstr "总预计销量"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_monthly_stat__session_total
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_weekly_stat__session_total
 msgid "Total Sessions"
 msgstr "总会话"
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_order__tracking_number
+msgid "Tracking No."
+msgstr "跟踪号"
 
 #. module: web_sale
 #: model:ir.model.fields,help:web_sale.field_web_sale_shop_sale_data__order_date
@@ -1726,6 +2632,30 @@ msgid "Transfer Processing Qty"
 msgstr "调仓中"
 
 #. module: web_sale
+#: model_terms:ir.actions.act_window,help:web_sale.eshow_shipping_action
+msgid "Transfers allow you to move products from one location to another."
+msgstr ""
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
+#, python-format
+msgid "Unallocated Qty"
+msgstr "未分配数量"
+
+#. module: web_sale
+#. openerp-web
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#, python-format
+msgid "Unallocated Qty:"
+msgstr "未分配数量："
+
+#. module: web_sale
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_lx_stock_move__price_unit
+msgid "Unit Price"
+msgstr "单价"
+
+#. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__afn_unsellable_quantity
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__afn_unsellable_quantity
 msgid "Unsellable Qty"
@@ -1733,25 +2663,25 @@ msgstr "不可售"
 
 #. module: web_sale
 #. openerp-web
-#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0
+#: code:addons/web_sale/static/src/xml/qweb_templates.xml:0 code:addons/web_sale/static/src/xml/qweb_templates_bak.xml:0
 #, python-format
 msgid "Verified quantities by logistics."
-msgstr ""
+msgstr "物流验证的数量。"
 
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_method__billing_type__volume
 msgid "Volume"
-msgstr ""
+msgstr "体积"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__volume_calc_param
 msgid "Volume Calculating Params"
-msgstr ""
+msgstr "体积计算参数"
 
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_method__billing_type__volume_weight
 msgid "Volume Weight"
-msgstr ""
+msgstr "体积重"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__reserved_customerorders
@@ -1768,13 +2698,12 @@ msgstr "待调仓"
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__walmart
 msgid "Walmart"
-msgstr ""
+msgstr "Walmart"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_mrp_production_schedule_master__warehouse_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__warehouse_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_sale_data__warehouse_id
-#: model_terms:ir.ui.view,arch_db:web_sale.mrp_production_schedule_master_search
 msgid "Warehouse"
 msgstr "仓库"
 
@@ -1786,7 +2715,7 @@ msgstr "仓库名称"
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_marketplace__type__wayfair
 msgid "Wayfair"
-msgstr ""
+msgstr "Wayfair"
 
 #. module: web_sale
 #: code:addons/web_sale/models/shop_sale_data.py:0
@@ -1795,20 +2724,34 @@ msgid "Web Return: %s"
 msgstr ""
 
 #. module: web_sale
-#: model:ir.module.category,name:web_sale.module_category_web_sale
-#: model:ir.ui.menu,name:web_sale.parent_menu_web_sale
+#: model:ir.module.category,name:web_sale.module_category_web_sale model:ir.ui.menu,name:web_sale.parent_menu_web_sale
 msgid "Web Sale"
 msgstr "网上销售"
 
 #. module: web_sale
 #: model:ir.ui.menu,name:web_sale.menu_web_sale_management
 msgid "Web Sale Management"
-msgstr "网上销售管理"
+msgstr "销售管理"
 
 #. module: web_sale
 #: model:res.groups,name:web_sale.group_web_sale_manager
 msgid "Web Sale Manager"
 msgstr "网上销售管理员"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_web_sale_order
+msgid "Web Sale Order"
+msgstr "网上订单"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_web_sale_order_line
+msgid "Web Sale Order Line"
+msgstr "网上订单明细"
+
+#. module: web_sale
+#: model_terms:ir.ui.view,arch_db:web_sale.eshow_shipping_search_view
+msgid "Web Sale Shipping"
+msgstr "发货单"
 
 #. module: web_sale
 #: model:res.groups,name:web_sale.group_web_sale_user
@@ -1819,13 +2762,13 @@ msgstr "网上销售用户"
 #: code:addons/web_sale/models/shop_sale_data.py:0
 #, python-format
 msgid "Web Sale: %s"
-msgstr "网上销售: %s"
+msgstr "网上销售：%s"
 
 #. module: web_sale
 #: code:addons/web_sale/models/shop_sale_data.py:0
 #, python-format
 msgid "Web Scrap: %s"
-msgstr "报废: %s"
+msgstr "网上报废：%s"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_marketplace__endpoint
@@ -1833,16 +2776,15 @@ msgid "Web Service Endpoint"
 msgstr ""
 
 #. module: web_sale
-#: model:ir.actions.act_window,name:web_sale.action_web_sale_shop
+#: model:ir.actions.act_window,name:web_sale.action_web_sale_shop model:ir.model.fields,field_description:web_sale.field_res_partner__web_shop_id
+#: model:ir.model.fields,field_description:web_sale.field_res_users__web_shop_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__shop_id
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__shop_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product__shop_id
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_asin__shop_id
-#: model:ir.ui.menu,name:web_sale.menu_web_sale_shop
-#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search
-#: model_terms:ir.ui.view,arch_db:web_sale.view_web_sale_shop_tree
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_product_asin__shop_id model:ir.ui.menu,name:web_sale.menu_web_sale_shop
+#: model_terms:ir.ui.view,arch_db:web_sale.shop_product_search model_terms:ir.ui.view,arch_db:web_sale.view_web_sale_shop_tree
 msgid "Web Shop"
-msgstr "网店"
+msgstr "店铺"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__default_warehouse_id
@@ -1874,12 +2816,9 @@ msgstr "店铺产品周报"
 
 #. module: web_sale
 #: model:ir.actions.act_window,name:web_sale.action_web_sale_warehouse
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__shop_warehouse_id
-#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__shop_warehouse_name
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop__shop_warehouse_ids
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shop_inventory__shop_warehouse_id
-#: model:ir.ui.menu,name:web_sale.menu_web_sale_warehouse
-#: model_terms:ir.ui.view,arch_db:web_sale.view_web_sale_warehouse_tree
+#: model:ir.ui.menu,name:web_sale.menu_web_sale_warehouse model_terms:ir.ui.view,arch_db:web_sale.view_web_sale_warehouse_tree
 msgid "Web Shop Warehouse"
 msgstr "店铺仓库"
 
@@ -1891,16 +2830,35 @@ msgstr "同比销售"
 #. module: web_sale
 #: model:ir.model.fields.selection,name:web_sale.selection__web_sale_shipping_method__billing_type__weight
 msgid "Weight"
-msgstr ""
+msgstr "重量"
 
 #. module: web_sale
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_move__fba_shipment_state__working
+#: model:ir.model.fields.selection,name:web_sale.selection__stock_picking__fba_shipment_state__working
+msgid "Working"
+msgstr "发货准备中"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_report_web_sale_shipping_schedule_xlsx
+msgid "XLSX report for shipping schedule."
+msgstr "发货计划XLSX报表."
+
+#. module: web_sale
+#: code:addons/web_sale/report/shipping_schedule_xlsx.py:0
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule__schedule_year
+#: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_schedule_group__schedule_year
+#, python-format
 msgid "Year"
 msgstr "年"
 
 #. module: web_sale
 #: model:ir.model.fields,field_description:web_sale.field_web_sale_shipping_method__zip_code
 msgid "Zip Code"
+msgstr "邮编"
+
+#. module: web_sale
+#: model:ir.model,name:web_sale.model_web_sale_shipping_schedule_group
+msgid "web.sale.shipping.schedule.group"
 msgstr ""
 
 #. module: web_sale

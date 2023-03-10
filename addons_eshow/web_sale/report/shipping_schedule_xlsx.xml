@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_shipping_schedule_xlsx" model="ir.actions.report">
+        <field name="name">Export Shipping Schedule</field>
+        <field name="model">web.sale.shipping.schedule.group</field>
+        <field name="type">ir.actions.report</field>
+        <field name="binding_type">action</field>
+        <field name="binding_model_id" ref="web_sale.model_web_sale_shipping_schedule_group" />
+        <field name="print_report_name">'Shipping Schedule - %s-%s' % (object.schedule_year, object.schedule.month)</field>
+        <field name="report_name">web_sale.shipping_schedule_xlsx</field>
+        <field name="report_file">shipping_schedule</field>
+        <field name="report_type">xlsx</field>
+        <field name="attachment_use">False</field>
+    </record>
+</odoo>

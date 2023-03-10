@@ -64,7 +64,6 @@ class StockRule(models.Model):
         if group_id:
             domain += (("group_id", "=", group_id),)
 
-
         return domain
 
     def is_create_purchase_plan_allowed(self, procurement):

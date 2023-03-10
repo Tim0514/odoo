@@ -19,7 +19,7 @@
                     </group>
                     <group>
                         <group>
-                            <separator string="Import Operations:" />
+                            <separator string="Synchronize Basic Data" />
                             <newline />
                             <button
                                 name="action_import_web_shops"
@@ -27,6 +27,14 @@
                                 type="object"
                                 class="oe_highlight"
                                 confirm="This will import web shop data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_export_products"
+                                string="Export Products"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will export product data to Lingxing Server."
                             />
                             <newline />
                             <button
@@ -44,6 +52,17 @@
                                 class="oe_highlight"
                                 confirm="This will import shop product pair data from Lingxing Server."
                             />
+                        </group>
+                        <group>
+                            <separator string="Download Reports" />
+                            <newline />
+                            <button
+                                name="action_import_amazon_orders"
+                                string="Import Amazon Orders"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import amazon orders from Lingxing Server."
+                            />
                             <newline />
                             <button
                                 name="action_import_product_weekly_stat"
@@ -54,6 +73,114 @@
                             />
                             <newline />
                             <button
+                                name="action_import_shop_inventory"
+                                string="Import Shop Product Inventory"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import shop product inventory from Lingxing Server."
+                            />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <separator string="Synchronize Shipping Data"/>
+                            <newline />
+                            <button
+                                name="action_sync_draft_fba_shipments"
+                                string="Sync Draft Fba Shipments"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will synchronize fba draft shipments between Odoo / Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_shipped_fba_shipments"
+                                string="Import Shipped Fba Shipments"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import fba shipments data from Lingxing Server."
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button special="cancel" string="Cancel" class="oe_link" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_connector_lingxing_debug_wizard" model="ir.ui.view">
+        <field name="name">Lingxing Connector Debug Wizard</field>
+        <field name="model">connector.lingxing.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Lingxing Connector Actions">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="start_time" />
+                        </group>
+                        <group>
+                            <field name="end_time" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <separator string="Synchronize Shipping Data" />
+                            <newline />
+                            <button
+                                name="action_import_draft_fba_shipments"
+                                string="Import Draft Fba Shipments"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import fba shipments data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_shipped_fba_shipments"
+                                string="Import Shipped Fba Shipments"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import fba shipments data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_scraped_fba_shipments"
+                                string="Import Scraped Fba Shipments"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import fba shipments data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_export_lingxing_stock_picking_in"
+                                string="Export Lingxing Stock Picking In"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will export lingxing stock picking in data to Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_export_lingxing_stock_picking_out"
+                                string="Export Lingxing Stock Picking Out"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will export lingxing stock picking out data to Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_fba_shipment_detail"
+                                string="Import FBA Shipment Detail"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import FBA shipment detail from Lingxing Server."
+                            />
+                        </group>
+                        <group>
+                            <separator string="Testing Operations(DO NOT USE)" />
+                            <newline />
+                            <button
                                 name="action_import_product_monthly_stat"
                                 string="Import Product Monthly Statics"
                                 type="object"
@@ -62,30 +189,11 @@
                             />
                             <newline />
                             <button
-                                name="action_import_shop_inventory"
-                                string="Import Shop Product Inventory"
-                                type="object"
-                                class="oe_highlight"
-                                confirm="This will import shop product inventory from Lingxing Server."
-                            />
-                            <newline />
-                            <button
                                 name="action_import_shop_warehouse"
                                 string="Import Shop Warehouse"
                                 type="object"
                                 class="oe_highlight"
                                 confirm="This will import shop warehouse from Lingxing Server."
-                            />
-                        </group>
-                        <group>
-                            <separator string="Export Operations" />
-                            <newline />
-                            <button
-                                name="action_export_products"
-                                string="Export Products"
-                                type="object"
-                                class="oe_highlight"
-                                confirm="This will export product data to Lingxing Server."
                             />
                         </group>
                     </group>
@@ -113,6 +221,22 @@
         />-->
     </record>
 
+    <record
+        id="action_connector_lingxing_debug_wizard"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Lingxing Connector Actions (Debug)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">connector.lingxing.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_connector_lingxing_debug_wizard" />
+        <field name="target">new</field>
+        <!--<field
+            name="binding_model_id"
+            ref="purchase_plan.model_purchase_plan"
+        />-->
+    </record>
+
     <menuitem
         id="menu_lingxing_connector_wizard"
         name="Lingxing Connector Actions"
@@ -121,5 +245,33 @@
         groups="eshow_common_connector_lib.group_connector_user,eshow_common_connector_lib.group_connector_manager"
         action="action_connector_lingxing_wizard"
     />
+
+    <menuitem
+        id="menu_lingxing_connector_wizard_2"
+        name="Lingxing Connector Actions"
+        sequence="10"
+        parent="menu_lingxing_connector_2"
+        groups="eshow_common_connector_lib.group_connector_user,eshow_common_connector_lib.group_connector_manager"
+        action="action_connector_lingxing_wizard"
+    />
+
+    <menuitem
+        id="menu_lingxing_connector_debug_wizard"
+        name="Lingxing Connector Actions"
+        sequence="15"
+        parent="menu_lingxing_connector"
+        groups="eshow_common_connector_lib.group_connector_manager"
+        action="action_connector_lingxing_debug_wizard"
+    />
+
+    <menuitem
+        id="menu_lingxing_connector_debug_wizard_2"
+        name="Lingxing Connector Actions (Debug)"
+        sequence="15"
+        parent="menu_lingxing_connector_2"
+        groups="eshow_common_connector_lib.group_connector_manager"
+        action="action_connector_lingxing_debug_wizard"
+    />
+
 
 </odoo>

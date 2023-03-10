@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-06 06:15+0000\n"
-"PO-Revision-Date: 2022-12-06 14:36+0800\n"
+"POT-Creation-Date: 2023-03-10 16:47+0000\n"
+"PO-Revision-Date: 2023-03-11 00:56+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -28,6 +28,29 @@ msgid "Action Type"
 msgstr "操作类型"
 
 #. module: lingxing_connector
+#: code:addons/lingxing_connector/models/lingxing_connector.py:0
+#, python-format
+msgid "Action name is required to run the connector scheduler."
+msgstr ""
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/lingxing_connector.py:0
+#, python-format
+msgid "Action, %s, is not found to run the connector scheduler."
+msgstr "未找到需要同步的操作：%s。"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipment_detail.py:0
+#, python-format
+msgid ""
+"Can not find related stock move: \n"
+"Shipment Id: %s, MSKU: %s"
+msgstr ""
+"未找到相关的库存移动：\n"
+"发货单号：%s, MSKU: %s"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
 msgid "Cancel"
 msgstr "取消"
@@ -45,6 +68,18 @@ msgid "Created on"
 msgstr "创建于"
 
 #. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_amazon_orders.py:0
+#, python-format
+msgid "Currency, %s, is not found in database."
+msgstr "货币，%s，没有找到。"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_web_shops.py:0
+#, python-format
+msgid "Data updated."
+msgstr "数据已更新。"
+
+#. module: lingxing_connector
 #: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__action_description
 msgid "Description"
 msgstr "说明"
@@ -54,6 +89,39 @@ msgstr "说明"
 #: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard__display_name
 msgid "Display Name"
 msgstr "名称"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Download Reports"
+msgstr "下载报告"
+
+#. module: lingxing_connector
+#: model:ir.actions.server,name:lingxing_connector.ir_cron_import_amazon_orders_ir_actions_server
+#: model:ir.cron,cron_name:lingxing_connector.ir_cron_import_amazon_orders
+#: model:ir.cron,name:lingxing_connector.ir_cron_import_amazon_orders
+msgid "EShow Import Amazon Orders"
+msgstr "EShow导入亚马逊订单"
+
+#. module: lingxing_connector
+#: model:ir.actions.server,name:lingxing_connector.ir_cron_import_product_weekly_stat_ir_actions_server
+#: model:ir.cron,cron_name:lingxing_connector.ir_cron_import_product_weekly_stat
+#: model:ir.cron,name:lingxing_connector.ir_cron_import_product_weekly_stat
+msgid "EShow Import Product Weekly Statistics"
+msgstr "EShow 下载产品周报"
+
+#. module: lingxing_connector
+#: model:ir.actions.server,name:lingxing_connector.ir_cron_import_shop_inventory_ir_actions_server
+#: model:ir.cron,cron_name:lingxing_connector.ir_cron_import_shop_inventory
+#: model:ir.cron,name:lingxing_connector.ir_cron_import_shop_inventory
+msgid "EShow Import Shop Inventory"
+msgstr "EShow 下载店铺库存"
+
+#. module: lingxing_connector
+#: model:ir.actions.server,name:lingxing_connector.ir_cron_export_local_products_ir_actions_server
+#: model:ir.cron,cron_name:lingxing_connector.ir_cron_export_local_products
+#: model:ir.cron,name:lingxing_connector.ir_cron_export_local_products
+msgid "EShow Synchronise Products"
+msgstr "EShow 同步产品"
 
 #. module: lingxing_connector
 #: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__end_time
@@ -67,14 +135,29 @@ msgid "Export"
 msgstr "导出"
 
 #. module: lingxing_connector
-#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
-msgid "Export Operations"
-msgstr "导出操作"
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "Export Lingxing Stock Picking In"
+msgstr "上传领星采购入库单"
 
 #. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "Export Lingxing Stock Picking Out"
+msgstr "上传领星采购退货单"
+
+#. module: lingxing_connector
+#. openerp-web
+#: code:addons/lingxing_connector/static/src/xml/product.xml:0
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+#, python-format
 msgid "Export Products"
 msgstr "导出本地产品"
+
+#. module: lingxing_connector
+#. openerp-web
+#: code:addons/lingxing_connector/static/src/xml/product.xml:0
+#, python-format
+msgid "Export products to Lingxing server"
+msgstr "导出产品到领星服务器"
 
 #. module: lingxing_connector
 #: model:ir.model.fields.selection,name:lingxing_connector.selection__connector_lingxing__last_sync_result__fail
@@ -82,10 +165,18 @@ msgid "Fail"
 msgstr "失败"
 
 #. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipment_detail.py:0
+#, python-format
+msgid ""
+"Found too many related stock moves: \n"
+"Shipment Id: %s, MSKU: %s"
+msgstr "找到过多的库存移动：发货单号：%s, MSKU: %s"
+
+#. module: lingxing_connector
 #: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__id
 #: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing_wizard__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: lingxing_connector
 #: model:ir.model.fields.selection,name:lingxing_connector.selection__connector_lingxing__action_type__import
@@ -94,13 +185,44 @@ msgstr "导入"
 
 #. module: lingxing_connector
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
-msgid "Import Operations:"
-msgstr "导入操作:"
+msgid "Import Amazon Orders"
+msgstr "导入亚马逊订单"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "Import Draft Fba Shipments"
+msgstr "同步待发货状态的领星FBA发货单"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "Import FBA Shipment Detail"
+msgstr "导入FBA发货单详细信息"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "Import Product Monthly Statics"
+msgstr "导入产品月报"
 
 #. module: lingxing_connector
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
-msgid "Import Product Monthly Statics"
-msgstr "导入产品月统计数据"
+msgid "Import Product Weekly Statics"
+msgstr "导入产品周报"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "Import Scraped Fba Shipments"
+msgstr "导入作废的领星发货单"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Import Shipped Fba Shipments"
+msgstr "导入全部的发货单"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Import Shop Product Inventory"
+msgstr "导入店铺库存"
 
 #. module: lingxing_connector
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
@@ -113,9 +235,27 @@ msgid "Import Shop Products"
 msgstr "导入店铺产品"
 
 #. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "Import Shop Warehouse"
+msgstr "导入店铺仓库"
+
+#. module: lingxing_connector
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
 msgid "Import Shops"
 msgstr "导入店铺"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipments.py:0
+#, python-format
+msgid ""
+"LX Shipment state is done, but Odoo picking can not be completed because "
+"stock is not enough, please complete related MOs. \n"
+"Shipment SN: %s"
+msgstr ""
+"领星发货单已经完成发货操作，但是但是Odoo系统库存不足，导致对应的Odoo发货单"
+"无法完成。\n"
+"请尽快完成Odoo系统中相应的制造订单(MO)。\n"
+"相关发货单号：%s"
 
 #. module: lingxing_connector
 #: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing____last_update
@@ -175,21 +315,48 @@ msgstr "领星店铺名称"
 #. module: lingxing_connector
 #: model:ir.model,name:lingxing_connector.model_connector_lingxing
 #: model:ir.ui.menu,name:lingxing_connector.menu_lingxing_connector
+#: model:ir.ui.menu,name:lingxing_connector.menu_lingxing_connector_2
 msgid "Lingxing Connector"
 msgstr "领星连接器"
 
 #. module: lingxing_connector
 #: model:ir.actions.act_window,name:lingxing_connector.action_connector_lingxing_wizard
-#: model:ir.ui.menu,name:lingxing_connector.menu_lingxing_connector_wizard
 #: model:ir.model,name:lingxing_connector.model_connector_lingxing_wizard
+#: model:ir.ui.menu,name:lingxing_connector.menu_lingxing_connector_debug_wizard
+#: model:ir.ui.menu,name:lingxing_connector.menu_lingxing_connector_wizard
+#: model:ir.ui.menu,name:lingxing_connector.menu_lingxing_connector_wizard_2
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
 msgid "Lingxing Connector Actions"
-msgstr "领星连接器动作"
+msgstr "领星连接器操作"
+
+#. module: lingxing_connector
+#: model:ir.actions.act_window,name:lingxing_connector.action_connector_lingxing_debug_wizard
+#: model:ir.ui.menu,name:lingxing_connector.menu_lingxing_connector_debug_wizard_2
+msgid "Lingxing Connector Actions (Debug)"
+msgstr "领星连接器操作(调试用)"
+
+#. module: lingxing_connector
+#: model:ir.ui.menu,name:lingxing_connector.menu_connector_log_book_2
+msgid "Log Book"
+msgstr "日志"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/wizard/lingxing_connector_wizard.py:0
+#, python-format
+msgid "Log Books"
+msgstr "日志"
 
 #. module: lingxing_connector
 #: model:ir.model,name:lingxing_connector.model_web_sale_marketplace
 msgid "Marketplace"
 msgstr "电商平台"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_web_shops.py:0
+#, python-format
+msgid "Marketplace, %s, is not found in database."
+msgstr "未找到电商平台：%s."
 
 #. module: lingxing_connector
 #: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__max_concurrency
@@ -207,14 +374,64 @@ msgid "Name"
 msgstr "名称"
 
 #. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipments.py:0
+#, python-format
+msgid "Odoo picking, %s, has been canceled."
+msgstr "Odoo 发货单，%s，已经取消。"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipments.py:0
+#, python-format
+msgid "Odoo picking, %s, is completed."
+msgstr "Odoo 发货单，%s，已经完成。"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipments.py:0
+#, python-format
+msgid "Odoo picking, %s, is in draft state."
+msgstr "Odoo 发货单，%s，当前为草稿状态。"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_amazon_orders.py:0
+#, python-format
+msgid ""
+"Order line ignored, as product is not found in database.\n"
+"Shop: %s, Order No.: %s, Product: %s"
+msgstr ""
+"由于产品在数据库中不存在，订单行被忽略：店铺：%s，订单号：%s，产品：%s"
+
+#. module: lingxing_connector
+#: model:ir.model,name:lingxing_connector.model_product_product
+msgid "Product"
+msgstr "产品"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipments.py:0
+#, python-format
+msgid "Product, %s, in shop, %s, has not been paired."
+msgstr "店铺（%s）中的产品（%s）尚未配对。"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipments.py:0
+#, python-format
+msgid "Product, %s, in shop, %s, is not found or has been stopped selling."
+msgstr "店铺（%s）中的产品（%s）没有找到或者设置了停售状态。"
+
+#. module: lingxing_connector
 #: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__related_model_id
 msgid "Related Model"
 msgstr "相关模型"
 
 #. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_web_shops.py:0
+#, python-format
+msgid "Related partner created."
+msgstr "相关联系人已创建。"
+
+#. module: lingxing_connector
 #: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__route
 msgid "Route"
-msgstr ""
+msgstr "路径"
 
 #. module: lingxing_connector
 #: model:ir.model,name:lingxing_connector.model_web_sale_shop
@@ -225,6 +442,13 @@ msgstr "店铺"
 #: model:ir.model,name:lingxing_connector.model_web_sale_shop_product
 msgid "Shop Product"
 msgstr "店铺产品"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipment_detail.py:0
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipments.py:0
+#, python-format
+msgid "Some error occurred while processing shipment data: %s."
+msgstr "处理发货数据时出错：%s。"
 
 #. module: lingxing_connector
 #: model:ir.model.fields,field_description:lingxing_connector.field_connector_lingxing__start_time
@@ -238,6 +462,11 @@ msgid "Success"
 msgstr "成功"
 
 #. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Sync Draft Fba Shipments"
+msgstr "同步待发货状态的领星FBA发货单"
+
+#. module: lingxing_connector
 #. openerp-web
 #: code:addons/lingxing_connector/static/src/xml/web_shop.xml:0
 #, python-format
@@ -246,13 +475,78 @@ msgstr "同步店铺"
 
 #. module: lingxing_connector
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Synchronize Basic Data"
+msgstr "同步基础数据"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "Synchronize Shipping Data"
+msgstr "同步发货数据"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "Testing Operations(DO NOT USE)"
+msgstr "测试操作（请勿使用）"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_web_shops.py:0
+#, python-format
+msgid ""
+"The partner with same name has been linked to another shop, please check.\n"
+" Shop Name: %S"
+msgstr "同名联系人被关联到另外一个店铺，请检查。店铺名称：%s"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipments.py:0
+#, python-format
+msgid ""
+"There is no products in LX Shipment. \n"
+"Shipment SN: %s"
+msgstr ""
+"领星发货单中没有产品。\n"
+"单号：%s."
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "This will export lingxing stock picking in data to Lingxing Server."
+msgstr "将根据发货数量增加在领星系统中创建采购入库单。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "This will export lingxing stock picking out data to Lingxing Server."
+msgstr "将根据发货数量减少在领星系统中创建采购退货单。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
 msgid "This will export product data to Lingxing Server."
 msgstr "将导出本地产品信息到领星服务器。"
 
 #. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "This will import FBA shipment detail from Lingxing Server."
+msgstr "将从领星服务器导入FBA发货单明细。"
+
+#. module: lingxing_connector
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "This will import amazon orders from Lingxing Server."
+msgstr "将从领星服务器导入亚马逊订单。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "This will import fba shipments data from Lingxing Server."
+msgstr "将从领星系统导入FBA发货单。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
 msgid "This will import product monthly statics data from Lingxing Server."
-msgstr "将从领星服务器导入产品月统计数据。"
+msgstr "将从领星服务器导入产品月报。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "This will import product weekly statics data from Lingxing Server."
+msgstr "将从领星服务器导入产品周报。"
 
 #. module: lingxing_connector
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
@@ -261,10 +555,36 @@ msgstr "将从领星服务器导入店铺产品。"
 
 #. module: lingxing_connector
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid "This will import shop product inventory from Lingxing Server."
+msgstr "将从领星服务器导入店铺库存。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
 msgid "This will import shop product pair data from Lingxing Server."
 msgstr "将从领星服务器导入店铺产品配对情况。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_debug_wizard
+msgid "This will import shop warehouse from Lingxing Server."
+msgstr "将从领星服务器导入店铺仓库信息。"
 
 #. module: lingxing_connector
 #: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
 msgid "This will import web shop data from Lingxing Server."
 msgstr "将从领星服务器导入店铺数据。"
+
+#. module: lingxing_connector
+#: model_terms:ir.ui.view,arch_db:lingxing_connector.view_connector_lingxing_wizard
+msgid ""
+"This will synchronize fba draft shipments between Odoo / Lingxing Server."
+msgstr "将同步领星和Odoo系统的FBA发货数据，并根据发货数据为领星创建入库单。"
+
+#. module: lingxing_connector
+#: code:addons/lingxing_connector/models/action_handler/import_fba_shipments.py:0
+#, python-format
+msgid ""
+"Will not import shipments in state [to_packing,to_shipping,cancel] without "
+"word, 'ready', in remark. SN: %s"
+msgstr ""
+"不导入状态为待配货、待发货、作废，备注中没有“准备配货”的发货单。发货单号："
+"%s"

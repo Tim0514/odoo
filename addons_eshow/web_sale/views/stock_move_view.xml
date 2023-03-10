@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2021-2023 Tim Wang
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="view_move_search_for_forecast" model="ir.ui.view">
+        <field name="name">stock.move.search.for.forecast</field>
+        <field name="model">stock.move</field>
+        <field eval="210" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Stock Moves">
+                <field name="id" filter_domain="[('id', 'in', self)]" string="Stock Move Ids"/>
+                <filter string="Shipments" name="shipments"
+                        domain="[('picking_id.move_document_type', '=', 'sale_out'),('state', 'not in', ['cancel', 'draft'])]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_move_tree_for_forecast" model="ir.ui.view">
+        <field name="name">stock.move.tree.for.forecast</field>
+        <field name="model">stock.move</field>
+        <field eval="210" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Moves" multi_edit="true" editable="top"
+                create="false" edit="true" delete="false" import="false" export_xlsx="false">
+                <header>
+                </header>
+                <field name="picking_id" width="150px" optional="show" attrs="{'readonly': True}"/>
+                <field name="product_id" optional="show" attrs="{'readonly': True}"/>
+                <field name="shop_product_id" optional="hide" attrs="{'readonly': True}"/>
+                <field name="seller_sku" optional="show"/>
+                <field name="shipping_forecast_id" optional="show" context="{'shop_product_id': shop_product_id}"/>
+                <field name="shipping_method" optional="show"/>
+                <field name="date" widget="date" optional="show" attrs="{'readonly': True}"/>
+                <field name="estimate_arriving_date" widget="date" optional="show" attrs="{'readonly': True}"/>
+                <field name="fba_shipment_id" optional="show"/>
+                <field name="product_uom_qty" optional="show" attrs="{'readonly': True}"/>
+                <field name="partner_id" optional="hide"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="state" widget='badge' decoration-success="state == 'done'"
+                       decoration-info="state not in ('done', 'cancel')" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

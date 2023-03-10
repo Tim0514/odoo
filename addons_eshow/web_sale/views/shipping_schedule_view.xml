@@ -17,6 +17,7 @@
                 editable="bottom"
                 default_order="shop_id, seller_sku"
             >
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="hide"/>
                 <field name="shop_id" optional="show"/>
                 <field name="shop_product_id" optional="hide"/>
                 <field name="seller_sku" optional="show"/>
@@ -26,7 +27,8 @@
                 <field name="schedule_month" optional="show"/>
                 <field name="sale_qty_7" sum="1" optional="show"/>
                 <field name="sale_qty_14" sum="1" optional="show"/>
-                <field name="sale_qty_28" sum="1" optional="show"/>
+                <field name="sale_qty_30" sum="1" optional="show"/>
+                <field name="sale_qty_30_y_1" sum="1" optional="show"/>
                 <field name="qty_available" sum="1" optional="show"/>
                 <field name="qty_shipped" sum="1" optional="show"/>
                 <field name="estimate_monthly_sale_qty_1" sum="1" optional="show"/>
@@ -69,14 +71,14 @@
         <field name="res_model">web.sale.shipping.schedule</field>
         <field name="view_mode">tree</field>
         <field name="search_view_id" ref="shipping_schedule_search" />
-        <field name="domain">[('shop_product_id.is_paired','=',True), ('shop_product_id.state', 'in', ['new', 'normal'])]</field>
+        <field name="domain">[('shop_id.enable_shipping_schedule', '=', True), ('shop_product_id.is_paired','=',True), ('shop_product_id.state', 'in', ['new', 'normal'])]</field>
     </record>
 
     <record id="action_shipping_schedule" model="ir.actions.client">
         <field name="name">Shipping Schedule</field>
         <field name="res_model">web.sale.shipping.schedule</field>
         <field name="tag">shipping_schedule_client_action</field>
-        <field name="params" eval="{'domain': [('product_id','!=',None), ('shop_product_id.is_paired','=',True), ('shop_product_id.state', 'in', ['new', 'normal'])]}"/>
+        <field name="params" eval="{'domain': [('state', '!=', 'canceled'), ('shop_id.enable_shipping_schedule', '=', True), ('shop_product_id.is_paired','=',True), ('shop_product_id.state', 'in', ['new', 'normal'])]}"/>
     </record>
 
     <menuitem
@@ -84,7 +86,7 @@
         name="Shipping Schedule Adv"
         action="action_shipping_schedule"
         sequence="14"
-        parent="menu_web_sale_management"
+        parent="menu_schedule_management"
         groups="group_web_sale_user,group_web_sale_manager"
     />
 
@@ -93,7 +95,7 @@
         name="Shipping Schedule"
         action="shipping_schedule_action"
         sequence="15"
-        parent="menu_web_sale_management"
+        parent="menu_schedule_management"
         groups="group_web_sale_user,group_web_sale_manager"
     />
 
@@ -154,10 +156,8 @@
         <field name="view_id" ref="shipping_schedule_tree_for_schedule_group"/>
         <field name="search_view_id" ref="shipping_schedule_search_for_schedule_group"/>
         <field name="context">{'search_default_exclude_current_schedule_group': 0, 'shipping_schedule_group_id': active_id}</field>
-        <field name="domain">[('product_id','!=',None), ('shop_product_id.is_paired','=',True),
+        <field name="domain">[('shop_product_id.is_paired','=',True),
             ('shop_product_id.state', 'in', ['new', 'normal']), ('shipping_schedule_group_id', '!=', active_id)]</field>
-
-
         <field name="target">new</field>
         <field name="help" type="html">
           <p class="o_view_nocontent_smiling_face">

@@ -9,7 +9,13 @@ class ExportLocalProducts(ActionHandler):
     def __init__(self, connector, log_book, start_time=None, end_time=None, **kwargs):
         super(ExportLocalProducts, self).__init__(connector, log_book, start_time, end_time, **kwargs)
         self._lx_product_list_cache = False
-        self._request_page_limit = 1000
+
+        # 每次上传的记录数量
+        self._request_records_limit = 1000
+        self._request_offset = 0
+        # 请求参数数据的总数量，初始为负数
+        self._request_total = -1
+
 
     def _get_export_local_products(self):
 
@@ -33,7 +39,7 @@ class ExportLocalProducts(ActionHandler):
             return self._lx_product_list_cache
         else:
             # 否则，要取得下一页参数
-            self._request_offset += self._request_page_limit
+            self._request_offset += self._request_records_limit
 
         sql = "SELECT a.id FROM product_product AS a " \
               "JOIN product_template AS c ON a.product_tmpl_id = c.id AND c.sale_ok = TRUE " \
@@ -49,7 +55,7 @@ class ExportLocalProducts(ActionHandler):
         # if self._request_offset < cursor.rowcount:
             # cursor.scroll(self._request_offset, mode='absolute')
 
-        product_ids_temp = cursor.fetchmany(self._request_page_limit)
+        product_ids_temp = cursor.fetchmany(self._request_records_limit)
         for product in product_ids_temp:
             product_ids.append(product[0])
 
@@ -69,7 +75,7 @@ class ExportLocalProducts(ActionHandler):
                 "product_name": product.name,
                 "unit": product.uom_id.name,
                 "status": 1,
-                "cg_price": product.list_price,
+                "cg_price": product.standard_price,
                 "cg_product_length": round(product.length / 10, 2),
                 "cg_product_width": round(product.width / 10, 2),
                 "cg_product_height": round(product.height / 10, 2),

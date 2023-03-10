@@ -10,7 +10,11 @@ class ImportShopInventory(ActionHandler):
 
     def __init__(self, connector, log_book, start_time=None, end_time=None, **kwargs):
         super(ImportShopInventory, self).__init__(connector, log_book, start_time, end_time, **kwargs)
-        self._request_page_limit = 1000
+        self._request_records_limit = 1000
+        self._request_offset = 0
+        # 请求参数数据的总数量，默认为负数
+        self._request_total = -1
+
         self._shop_ids_cache = False
 
         self._inventory_date = datetime.datetime.now()
@@ -20,28 +24,11 @@ class ImportShopInventory(ActionHandler):
         self._shop_warehouse_cache = {}
         self._shop_inventory_cache = {}
 
-        self._reset_shop_inventory()
         self._init_cache()
-
-    def _reset_shop_inventory(self):
-        """
-        把库存数据中的旧数据is_latest_inventory全部设置为False。
-        :return:
-        """
-        shop_inventory_obj = self._connector.env["web.sale.shop.inventory"]
-        domain = [
-            ("company_id", "=", self._connector.env.company.id),
-            ("is_latest_inventory", "=", True),
-        ]
-        shop_inventory = shop_inventory_obj.search(domain)
-        shop_inventory.write(
-            {
-                "is_latest_inventory": False,
-            }
-        )
 
     def set_result(self, response_result):
         """
+        重载本方法
         Import Shop Inventory 中，
         数据的total信息在response_result.data["total"]中
 
@@ -67,7 +54,6 @@ class ImportShopInventory(ActionHandler):
         shop_inventory_obj = self._connector.env["web.sale.shop.inventory"]
 
         domain = [
-            ("company_id", "=", self._connector.env.company.id),
             ("enable_exchange_data", "=", True),
         ]
         shops = shop_obj.search(domain)
@@ -76,7 +62,7 @@ class ImportShopInventory(ActionHandler):
             self._shop_cache.setdefault(key, shop)
 
         domain = [
-            ("company_id", "=", self._connector.env.company.id),
+            ("shop_id", "in", shops.ids),
         ]
         shop_products = shop_product_obj.search(domain)
         for shop_product in shop_products:
@@ -87,14 +73,29 @@ class ImportShopInventory(ActionHandler):
                 self._connector._raise_connector_error(detail_error_message)
             self._shop_product_cache.setdefault(key, shop_product)
 
+        domain = [
+        ]
         shop_warehouse = shop_warehouse_obj.search(domain)
         for line in shop_warehouse:
             key = (line.name,)
             self._shop_warehouse_cache.setdefault(key, line)
 
+        # 把库存数据中的旧数据is_latest_inventory全部设置为False。
+        domain = [
+            ("shop_id", "in", shops.ids),
+            ("is_latest_inventory", "=", True),
+        ]
+        shop_inventory = shop_inventory_obj.search(domain)
+        shop_inventory.write(
+            {
+                "is_latest_inventory": False,
+            }
+        )
+
+        # 读取产品30天内的历史最低库存
         date_start = odoo.tools.date_utils.subtract(self._inventory_date, days=30)
         domain = [
-            ("company_id", "=", self._connector.env.company.id),
+            ("shop_id", "in", shops.ids),
             ("inventory_date", ">=", date_start),
         ]
         fields = ["shop_warehouse_id", "shop_product_id", "sellable_quantity:min"]
@@ -111,7 +112,7 @@ class ImportShopInventory(ActionHandler):
         :return:
         """
         web_shop_obj = self._connector.env["web.sale.shop"]
-        domain = [("company_id", "=", self._connector.env.company.id), ("enable_exchange_data", "=", True)]
+        domain = [("enable_exchange_data", "=", True)]
 
         if self._request_total < 0:
             # 如果是第一次调用本方法，则先查询参数总数量。
@@ -122,12 +123,12 @@ class ImportShopInventory(ActionHandler):
             return self._shop_ids_cache
         else:
             # 否则，要取得下一页参数
-            self._request_offset += self._request_page_limit
+            self._request_offset += self._request_records_limit
 
         web_shops = web_shop_obj.search(
             domain,
             offset=self._request_offset,
-            limit=self._request_page_limit,
+            limit=self._request_records_limit,
             order="lingxing_shop_id")
 
         if self._request_offset + len(web_shops) >= self._request_total:
@@ -150,7 +151,7 @@ class ImportShopInventory(ActionHandler):
         req_body = {
             "sid": web_shop_ids,
             "offset": self._result_offset,
-            "length": self._result_page_limit,
+            "length": self._result_records_limit,
         }
 
         return req_body
@@ -195,12 +196,11 @@ class ImportShopInventory(ActionHandler):
                         shop_warehouse.share_type = share_type
 
                     # 如果是多国店铺，则仓库的默认店铺，要设置到美国站，或者是德国站
-                    if shop_warehouse.share_type == "na" and not shop_warehouse.default_shop_id:
+                    if shop_warehouse.share_type == "na":
                         warehouse_name = result["wname"]
                         default_lingxing_shop_name = warehouse_name[:warehouse_name.rfind("北美仓")] + "-US"
                         shop_obj = self._connector.env["web.sale.shop"]
                         domain = [
-                            ("company_id", "=", self._connector.env.company.id),
                             ("lingxing_shop_name", "=", default_lingxing_shop_name),
                         ]
                         shops = shop_obj.search(domain)
@@ -218,12 +218,11 @@ class ImportShopInventory(ActionHandler):
                         if shop.id not in shop_warehouse.shop_ids.ids:
                             shop_warehouse.write({"shop_ids": [(4, shop.id)]})
 
-                    elif shop_warehouse.share_type == "eu" and not shop_warehouse.default_shop_id:
+                    elif shop_warehouse.share_type == "eu":
                         warehouse_name = result["wname"]
                         default_lingxing_shop_name = warehouse_name[:warehouse_name.rfind("欧洲仓")] + "-DE"
                         shop_obj = self._connector.env["web.sale.shop"]
                         domain = [
-                            ("company_id", "=", self._connector.env.company.id),
                             ("lingxing_shop_name", "=", default_lingxing_shop_name),
                         ]
                         shops = shop_obj.search(domain)
@@ -261,7 +260,6 @@ class ImportShopInventory(ActionHandler):
                         default_lingxing_shop_name = warehouse_name[:warehouse_name.rfind("北美仓")] + "-US"
                         shop_obj = self._connector.env["web.sale.shop"]
                         domain = [
-                            ("company_id", "=", self._connector.env.company.id),
                             ("lingxing_shop_name", "=", default_lingxing_shop_name),
                         ]
                         shops = shop_obj.search(domain)
@@ -272,7 +270,6 @@ class ImportShopInventory(ActionHandler):
                         default_lingxing_shop_name = warehouse_name[:warehouse_name.rfind("北美仓")] + "-DE"
                         shop_obj = self._connector.env["web.sale.shop"]
                         domain = [
-                            ("company_id", "=", self._connector.env.company.id),
                             ("lingxing_shop_name", "=", default_lingxing_shop_name),
                         ]
                         shops = shop_obj.search(domain)
@@ -280,7 +277,7 @@ class ImportShopInventory(ActionHandler):
                             shop = shops[0]
 
                     warehouse_vals = {
-                        "company_id": self._connector.env.company.id,
+                        "company_id": shop.company_id.id,
                         "name": result["wname"],
                         "share_type": share_type,
                         "shop_ids": [(4, shop.id)],
@@ -315,6 +312,7 @@ class ImportShopInventory(ActionHandler):
                                 detail_action_state = "warning"
                                 detail_error_message = "MSKU, %s is not found in procurement shop, %s, but found in shop, %s, please check." \
                                                        % (result["msku"], shop_warehouse.default_shop_id.name, shop.name)
+                                # self._connector._raise_connector_error(detail_error_message)
                             else:
                                 # 没有找到产品, 则记录错误
                                 detail_error_message = "MSKU, %s, in shop, %s, is not found, please download shop product data first." \
@@ -325,35 +323,6 @@ class ImportShopInventory(ActionHandler):
                             detail_error_message = "MSKU, %s, in shop, %s, is not found, please download shop product data first." \
                                                    % (result["msku"], shop.name)
                             self._connector._raise_connector_error(detail_error_message)
-
-                        # 由于存在下载的店铺库存中的产品，在下载的店铺产品数据中没有的情况，因此如果没有找到店铺产品，则新增一个。
-                        # domain = [
-                        #     ("company_id", "=", self._connector.env.company.id),
-                        #     ("lingxing_shop_id", "=", result["sid"]),
-                        # ]
-                        # shop = shop_obj.search(domain, limit=1)
-                        #
-                        # shop_product_vals = {
-                        #     "shop_id": shop.id,
-                        #     "seller_sku": result.get("msku"),
-                        #     # "product_asin": result.get("asin"),
-                        #     "product_fnsku": result.get("fnsku"),
-                        #     "shop_product_name": result.get("product_name"),
-                        #     "parent_asin": False,
-                        #     # "currency_id": shop.currency_id,
-                        #     "listing_update_time": False,
-                        #     "pair_update_time": False,
-                        #     "seller_rank": 0,
-                        #     "seller_rank_category": False,
-                        #     "review_num": 0,
-                        #     "state": "stop",
-                        #     "is_deleted": True,
-                        # }
-                        # shop_product = shop_product_obj.create(shop_product_vals)
-                        # key = (shop_product.lingxing_shop_id, shop_product.seller_sku, shop_product.product_fnsku)
-                        # self._shop_product_cache.setdefault(key, shop_product)
-                        # model_vals["shop_product_id"] = shop_product.id
-                        # detail_ext_message = "MSKU, %s, in shop, %s, is a parent sku." % (result["msku"], str(result["sid"]))
 
                 # 如果不是父产品，则需要保存库存数据
                 if not is_parent_product:
@@ -381,7 +350,7 @@ class ImportShopInventory(ActionHandler):
                                             + model_vals["reserved_fc_transfers"] \
                                             + model_vals["reserved_fc_processing"] \
                                             + model_vals["afn_inbound_receiving_quantity"]
-                    if not sellable_quantity_history or sellable_quantity_history <= 0 or sellable_quantity_new <= 0:
+                    if sellable_quantity_history is not None and (sellable_quantity_history <= 0 or sellable_quantity_new <= 0):
                         model_vals["is_out_of_stock_occurred"] = True
                     else:
                         model_vals["is_out_of_stock_occurred"] = False

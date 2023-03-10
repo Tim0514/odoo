@@ -99,46 +99,6 @@ class StockMove(models.Model):
             else:
                 move.procure_method = 'make_to_order'
 
-
-
-    """
-        timwang add at 2019/8/19
-        重载mrp/stock_move中方法，原方法中，如果是生产订单，就强制不允许设置picking
-        但是这样会造成生产领料和完工单，中可以合并的数据无法合并。
-        todo: 暂未使用
-    """
-    def _should_be_assigned_1(self):
-        self.ensure_one()
-        return bool(not self.picking_id and self.picking_type_id)
-
-    """
-        重载mrp/stock_move中的方法
-        考虑mrp合并领料单和完工入库单的需要，允许对应生产订单状态为confirmed，以及自身状态为waiting的move删除
-        todo: 暂未使用
-    """
-    def unlink_1(self):
-        # Avoid deleting move related to active MO
-        # timwang modified on 2021/8/19
-        for move in self:
-            if move.production_id and move.production_id.state not in ('draft', 'cancel', 'confirmed'):
-                raise UserError(_('Please cancel the Manufacture Order first.'))
-
-        # return super(StockMove, self).super(StockMove, self).unlink()
-
-        # timwang modified on 2021/9/24
-        # 对网络导入订单的入出库，允许删除
-        # for move in self:
-        #     if move.name.find("Web") != 0 and move.state not in ('draft', 'cancel', 'waiting'):
-        #         raise UserError(_('You can only delete draft moves.'))
-
-        if any(move.state not in ('draft', 'cancel', 'waiting') for move in self):
-            raise UserError(_('You can only delete draft moves.'))
-
-        # With the non plannified picking, draft moves could have some move lines.
-        self.with_context(prefetch_fields=False).mapped('move_line_ids').unlink()
-
-        return super(models.Model, self).unlink()
-
     def _do_unreverse_completely(self):
         """
         通过路线补货的stock_move, 如果设置为MTO或者是MTSO, 则procure_method有可能为make_to_order，并且会保存上游的入库单ID。

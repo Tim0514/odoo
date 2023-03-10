@@ -12,6 +12,10 @@ from . import res_config_settings
 from . import purchase
 from . import sale_order
 from . import account_move
+from . import res_company
+from . import stock_quant
+from . import stock_valuation_layer
+
 
 
 

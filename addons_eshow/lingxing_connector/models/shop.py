@@ -16,6 +16,7 @@ class Shop(models.Model):
 
     def _prepare_shop_value(self, lingxing_shop_id, lingxing_shop_name, marketplace_id, merchant_id):
         data = {
+            "company_id": self.env.company.id,
             "name": lingxing_shop_name,
             "lingxing_shop_id": lingxing_shop_id,
             "lingxing_shop_name": lingxing_shop_name,

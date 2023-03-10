@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="eshow_shipping_tree_view" model="ir.ui.view">
+        <field name="name">eshow.shipping.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="2000"/>
+        <field name="inherit_id" ref="stock.vpicktree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='location_dest_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="shipping_forecast_date" optional="show" options="{'showType': 'months'}"/>
+                <field name="shipping_method" optional="show"/>
+                <field name="estimate_arriving_date" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="eshow_shipping_form_view" model="ir.ui.view">
+        <field name="name">eshow.shipping.form</field>
+        <field name="model">stock.picking</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="2000"/>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/header/button[@name='button_scrap']" position="before">
+                <button name="do_replenish" class="btn-danger" type="object"
+                        string="Replenish"
+                        attrs="{'invisible': ['|', ('move_document_type', '!=', 'sale_out'), ('procurement_launched','=', True)]}"
+                        confirm="Function of replenish can only be used when the picking is not in picking schedule.\nAre you still sure you want to do replenish action?"
+                />
+            </xpath>
+            <xpath expr="//form/sheet//field[@name='partner_id']" position="after">
+                <field name="shipping_forecast_date" options="{'showType': 'months'}"/>
+                <field name="shipping_method"/>
+                <field name="estimate_arriving_date"/>
+                <field name="create_date" groups="base.group_no_one"/>
+                <field name="write_date" groups="base.group_no_one"/>
+                <field name="move_document_type" invisible="1"/>
+                <field name="procurement_launched" invisible="1"/>
+            </xpath>
+            <xpath expr="//form/sheet//field[@name='picking_type_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet//field[@name='location_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet//field[@name='location_dest_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//form/sheet/notebook/page[@name='operations']//field[@name='product_id']" position="after">
+                <field name="shop_product_id" attrs="{'readonly': True}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="eshow_shipping_search_view" model="ir.ui.view">
+        <field name="name">eshow.shipping.search</field>
+        <field name="model">stock.picking</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="2000"/>
+        <field name="inherit_id" ref="stock.view_picking_internal_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//search/field[@name='product_id']" position="before">
+                <field name="shop_product_id" string="Shop Product"/>
+            </xpath>
+            <xpath expr="//search/filter[@name='activities_exception']" position="after" >
+                <separator/>
+                <filter invisible="1" string="Web Sale Shipping" name="is_web_sale_shipping"
+                    domain="[('move_document_type', '=', 'sale_out'), ('partner_id.is_web_shop', '=', True), ]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="eshow_shipping_action" model="ir.actions.act_window">
+        <field name="name">Shippings</field>
+        <field name="res_model">stock.picking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form,kanban,calendar</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('eshow_shipping_tree_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('eshow_shipping_form_view')})]"/>
+        <field name="domain">[('move_document_type', '=', 'sale_out'), ('partner_id.is_web_shop', '=', True), ]</field>
+        <field name="context">{'contact_display': 'partner_address', 'search_default_draft': 1, 'search_default_waiting': 1, 'search_default_available': 1,}</field>
+        <field name="search_view_id" ref="eshow_shipping_search_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No transfer found.
+            </p><p>
+                Transfers allow you to move products from one location to another.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="shippings" name="Shippings" parent="menu_web_logistics_management"
+              sequence="10" action="eshow_shipping_action"
+              groups="group_web_sale_user,group_web_sale_manager"/>
+
+</odoo>
