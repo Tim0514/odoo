@@ -11,9 +11,9 @@ class LingxingConnectorWizard(models.TransientModel):
     _name = "connector.lingxing.wizard"
     _description = "Lingxing Connector Actions"
 
-    start_time = fields.Datetime("Start Time")
+    start_time = fields.Date("Start Date")
 
-    end_time = fields.Datetime("End Time")
+    end_time = fields.Date("End Date")
 
     def _get_action_log_book_view(self, log_books):
         if len(log_books) > 1:
@@ -37,8 +37,14 @@ class LingxingConnectorWizard(models.TransientModel):
                 "context": {},
             }
 
-    def action_import_web_shops(self):
-        connector = self.env["connector.lingxing"].search([("name", "=", "import_web_shops")])
+    def action_import_multiplatform_shops(self):
+        connector = self.env["connector.lingxing"].search([("name", "=", "import_multiplatform_shops")])
+        log_book = connector.do_sync_action(self.start_time, self.end_time)
+
+        return self._get_action_log_book_view(log_book)
+
+    def action_import_amazon_shops(self):
+        connector = self.env["connector.lingxing"].search([("name", "=", "import_amazon_shops")])
         log_book = connector.do_sync_action(self.start_time, self.end_time)
 
         return self._get_action_log_book_view(log_book)
@@ -49,14 +55,20 @@ class LingxingConnectorWizard(models.TransientModel):
 
         return self._get_action_log_book_view(log_book)
 
-    def action_import_shop_products(self):
-        connector = self.env["connector.lingxing"].search([("name", "=", "import_shop_products")])
+    def action_import_amazon_products(self):
+        connector = self.env["connector.lingxing"].search([("name", "=", "import_amazon_products")])
         log_book = connector.do_sync_action(self.start_time, self.end_time)
 
         return self._get_action_log_book_view(log_book)
 
-    def action_import_shop_product_pair_states(self):
-        connector = self.env["connector.lingxing"].search([("name", "=", "import_shop_product_pair_states")])
+    def action_import_amazon_product_pair_states(self):
+        connector = self.env["connector.lingxing"].search([("name", "=", "import_amazon_product_pair_states")])
+        log_book = connector.do_sync_action(self.start_time, self.end_time)
+
+        return self._get_action_log_book_view(log_book)
+
+    def action_import_multiplatform_products(self):
+        connector = self.env["connector.lingxing"].search([("name", "=", "import_multiplatform_products")])
         log_book = connector.do_sync_action(self.start_time, self.end_time)
 
         return self._get_action_log_book_view(log_book)
@@ -135,5 +147,10 @@ class LingxingConnectorWizard(models.TransientModel):
 
     def action_import_amazon_orders(self):
         connector = self.env["connector.lingxing"].search([("name", "=", "import_amazon_orders")])
+        log_book = connector.do_sync_action(self.start_time, self.end_time)
+        return self._get_action_log_book_view(log_book)
+
+    def action_import_multiplatform_orders(self):
+        connector = self.env["connector.lingxing"].search([("name", "=", "import_multiplatform_orders")])
         log_book = connector.do_sync_action(self.start_time, self.end_time)
         return self._get_action_log_book_view(log_book)

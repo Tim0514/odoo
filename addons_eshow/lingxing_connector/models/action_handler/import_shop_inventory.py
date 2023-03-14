@@ -3,7 +3,7 @@
 import datetime
 
 import odoo.tools.date_utils
-from .action_handler import ActionHandler, ActionHandlerTools
+from .action_handler import ActionHandler, AHTools
 
 
 class ImportShopInventory(ActionHandler):
@@ -55,6 +55,7 @@ class ImportShopInventory(ActionHandler):
 
         domain = [
             ("enable_exchange_data", "=", True),
+            ("marketplace_id.type", "=", "amazon"),
         ]
         shops = shop_obj.search(domain)
         for shop in shops:
@@ -112,7 +113,10 @@ class ImportShopInventory(ActionHandler):
         :return:
         """
         web_shop_obj = self._connector.env["web.sale.shop"]
-        domain = [("enable_exchange_data", "=", True)]
+        domain = [
+            ("enable_exchange_data", "=", True),
+            ("marketplace_id.type", "=", "amazon"),
+        ]
 
         if self._request_total < 0:
             # 如果是第一次调用本方法，则先查询参数总数量。
@@ -330,17 +334,17 @@ class ImportShopInventory(ActionHandler):
                     model_vals["shop_warehouse_id"] = shop_warehouse.id
                     model_vals["inventory_date"] = self._inventory_date
                     model_vals["is_latest_inventory"] = True
-                    model_vals["afn_fulfillable_quantity"] = ActionHandlerTools.cint(result["afn_fulfillable_quantity"])
-                    model_vals["reserved_fc_transfers"] = ActionHandlerTools.cint(result["reserved_fc_transfers"])
-                    model_vals["reserved_fc_processing"] = ActionHandlerTools.cint(result["reserved_fc_processing"])
-                    model_vals["reserved_customerorders"] = ActionHandlerTools.cint(result["reserved_customerorders"])
-                    model_vals["total_fulfillable_quantity"] = ActionHandlerTools.cint(result["total_fulfillable_quantity"])
-                    model_vals["afn_inbound_shipped_quantity"] = ActionHandlerTools.cint(result["afn_inbound_shipped_quantity"])
-                    model_vals["afn_unsellable_quantity"] = ActionHandlerTools.cint(result["afn_unsellable_quantity"])
-                    model_vals["afn_inbound_working_quantity"] = ActionHandlerTools.cint(result["afn_inbound_working_quantity"])
-                    model_vals["afn_inbound_receiving_quantity"] = ActionHandlerTools.cint(result["afn_inbound_receiving_quantity"])
-                    model_vals["afn_erp_real_shipped_quantity"] = ActionHandlerTools.cint(result["afn_erp_real_shipped_quantity"])
-                    model_vals["afn_researching_quantity"] = ActionHandlerTools.cint(result["afn_researching_quantity"])
+                    model_vals["afn_fulfillable_quantity"] = AHTools.cint(result["afn_fulfillable_quantity"])
+                    model_vals["reserved_fc_transfers"] = AHTools.cint(result["reserved_fc_transfers"])
+                    model_vals["reserved_fc_processing"] = AHTools.cint(result["reserved_fc_processing"])
+                    model_vals["reserved_customerorders"] = AHTools.cint(result["reserved_customerorders"])
+                    model_vals["total_fulfillable_quantity"] = AHTools.cint(result["total_fulfillable_quantity"])
+                    model_vals["afn_inbound_shipped_quantity"] = AHTools.cint(result["afn_inbound_shipped_quantity"])
+                    model_vals["afn_unsellable_quantity"] = AHTools.cint(result["afn_unsellable_quantity"])
+                    model_vals["afn_inbound_working_quantity"] = AHTools.cint(result["afn_inbound_working_quantity"])
+                    model_vals["afn_inbound_receiving_quantity"] = AHTools.cint(result["afn_inbound_receiving_quantity"])
+                    model_vals["afn_erp_real_shipped_quantity"] = AHTools.cint(result["afn_erp_real_shipped_quantity"])
+                    model_vals["afn_researching_quantity"] = AHTools.cint(result["afn_researching_quantity"])
                     model_vals["afn_fulfillable_quantity_multi"] = str(result["afn_fulfillable_quantity_multi"])
 
                     # 最近是否发生过缺货

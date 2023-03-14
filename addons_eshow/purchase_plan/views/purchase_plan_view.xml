@@ -15,6 +15,7 @@
                 decoration-danger="state in ('draft')"
                 decoration-warning="state in ('in_process')"
                 decoration-success="state in ('done')"
+                decoration-info="state in ('ignored')"
                 decoration-muted="state in ('cancelled')"
             >
                 <field name="id" invisible="1"/>
@@ -29,6 +30,7 @@
                 <field name="purchased_qty" attrs="{'readonly': True}"/>
                 <field name="product_uom_id" groups="uom.group_uom" attrs="{'readonly': True}"/>
                 <field name="origin" attrs="{'readonly': True}" optional="hide"/>
+                <field name="no_need_purchase" optional="show"/>
                 <field
                     name="state"
                     widget="badge"
@@ -36,6 +38,7 @@
                     decoration-warning="state in ('in_process')"
                     decoration-success="state in ('done')"
                     decoration-muted="state in ('cancelled')"
+                    decoration-info="state in ('ignored')"
                     optional="show"
                 />
                 <field
@@ -101,6 +104,12 @@
                     name="state_done"
                     string="State Done"
                     domain="[('state','=', 'done')]"
+                    help="RFQ/PO has been created"
+                />
+                <filter
+                    name="state_ignored"
+                    string="State Ignored"
+                    domain="[('state','=', 'ignored')]"
                     help="RFQ/PO has been created"
                 />
                 <filter

@@ -21,6 +21,7 @@
                 <field name="name" />
                 <field name="partner_id"  optional="show"/>
                 <field name="marketplace_id"  optional="show"/>
+                <field name="currency_id"  optional="show"/>
                 <field name="merchant_id" optional="hide"/>
                 <field name="auth_token" optional="hide"/>
                 <field name="access_key" optional="hide"/>

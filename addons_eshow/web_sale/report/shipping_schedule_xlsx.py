@@ -97,7 +97,7 @@ class ShippingScheduleXlsx(models.AbstractModel):
                     "format": FORMATS["format_theader_yellow_right"],
                 },
                 "lines": {
-                    "value": self._render("schedule['forecast_ids'][0]['arriving_qty_confirmed']"),
+                    "value": self._render("schedule['forecast_ids'][0]['arriving_qty_confirmed'] - schedule['forecast_ids'][0]['arriving_qty_shipped']"),
                     "format": FORMATS["format_tcell_amount_right"],
                 },
                 "width": 10,
@@ -108,7 +108,7 @@ class ShippingScheduleXlsx(models.AbstractModel):
                     "format": FORMATS["format_theader_yellow_right"],
                 },
                 "lines": {
-                    "value": self._render("schedule['forecast_ids'][1]['arriving_qty_confirmed']"),
+                    "value": self._render("schedule['forecast_ids'][1]['arriving_qty_confirmed'] - schedule['forecast_ids'][1]['arriving_qty_shipped']"),
                     "format": FORMATS["format_tcell_amount_right"],
                 },
                 "width": 10,
@@ -119,7 +119,7 @@ class ShippingScheduleXlsx(models.AbstractModel):
                     "format": FORMATS["format_theader_yellow_right"],
                 },
                 "lines": {
-                    "value": self._render("schedule['forecast_ids'][2]['arriving_qty_confirmed']"),
+                    "value": self._render("schedule['forecast_ids'][2]['arriving_qty_confirmed'] - schedule['forecast_ids'][2]['arriving_qty_shipped']"),
                     "format": FORMATS["format_tcell_amount_right"],
                 },
                 "width": 10,
@@ -130,7 +130,7 @@ class ShippingScheduleXlsx(models.AbstractModel):
                     "format": FORMATS["format_theader_yellow_right"],
                 },
                 "lines": {
-                    "value": self._render("schedule['forecast_ids'][3]['arriving_qty_confirmed']"),
+                    "value": self._render("schedule['forecast_ids'][3]['arriving_qty_confirmed'] - schedule['forecast_ids'][3]['arriving_qty_shipped']"),
                     "format": FORMATS["format_tcell_amount_right"],
                 },
                 "width": 10,

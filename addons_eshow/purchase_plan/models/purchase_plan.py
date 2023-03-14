@@ -11,6 +11,7 @@ _STATES = [
     ("in_process", "In Process"),
     ("done", "Done"),
     ("cancelled", "Cancelled"),
+    ("ignored", "Ignored")
 ]
 
 class PurchasePlan(models.Model):
@@ -203,6 +204,7 @@ class PurchasePlan(models.Model):
 
     propagate_cancel = fields.Boolean('Propagate cancellation', default=False)
 
+    no_need_purchase = fields.Boolean('No need to purchase', default=False)
 
     @api.model
     def _get_default_name(self):
@@ -294,7 +296,7 @@ class PurchasePlan(models.Model):
             self.product_uom_id = self.product_id.uom_id.id
             self.product_qty = 1
             # self.name = name
-
+    @api.depends("purchase_lines", "purchase_lines.state", "purchase_lines.product_uom_qty")
     def _compute_purchased_qty(self):
         for rec in self:
             rec.purchased_qty = 0.0
@@ -345,10 +347,12 @@ class PurchasePlan(models.Model):
                     temp_purchase_state = "cancel"
             rec.purchase_state = temp_purchase_state
 
-    @api.depends("product_qty", "purchase_state", "purchased_qty")
+    @api.depends("product_qty", "purchase_state", "purchased_qty", "no_need_purchase")
     def _compute_state(self):
         for rec in self:
-            if rec.product_qty <= rec.purchased_qty:
+            if rec.no_need_purchase:
+                rec.state = "ignored"
+            elif rec.product_qty <= rec.purchased_qty:
                 rec.state = "done"
             elif rec.purchased_qty == 0:
                 rec.state = "draft"

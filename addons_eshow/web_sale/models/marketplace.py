@@ -12,8 +12,10 @@ _MarketplaceType = [
     ('newegg', 'New Egg'),
     ('shopee', 'Shopee'),
     ('shopify', 'Shopify'),
+    ('tiktok', 'Tiktok'),
     ('walmart', 'Walmart'),
     ('wayfair', 'Wayfair'),
+    ('wish', 'Wish'),
     ('other', 'Other'),
 ]
 

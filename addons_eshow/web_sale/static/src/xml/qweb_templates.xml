@@ -360,10 +360,10 @@
             <t t-set="total_arriving_qty_confirmed[period_index]" t-value="0"/>
         </t>
         <t t-foreach="state" t-as="shippingSchedule">
+            <t t-set="total_sale_qty_30" t-value="total_sale_qty_30 + shippingSchedule.sale_qty_30"/>
+            <t t-set="total_sale_qty_30_y_1" t-value="total_sale_qty_30_y_1 + shippingSchedule.sale_qty_30_y_1"/>
+            <t t-set="total_advised_monthly_sale_qty" t-value="total_advised_monthly_sale_qty + shippingSchedule.advised_monthly_sale_qty"/>
             <t t-foreach="shippingSchedule.forecast_ids" t-as="forecast">
-                <t t-set="total_sale_qty_30" t-value="total_sale_qty_30 + shippingSchedule.sale_qty_30"/>
-                <t t-set="total_sale_qty_30_y_1" t-value="total_sale_qty_30_y_1 + shippingSchedule.sale_qty_30_y_1"/>
-                <t t-set="total_advised_monthly_sale_qty" t-value="total_advised_monthly_sale_qty + shippingSchedule.advised_monthly_sale_qty"/>
                 <t t-set="total_starting_inventory_qty[forecast_index]" t-value="total_starting_inventory_qty[forecast_index] + forecast.forecast_sale_qty"/>
                 <t t-set="total_ending_inventory_qty[forecast_index]" t-value="total_ending_inventory_qty[forecast_index] + forecast.ending_inventory_qty"/>
                 <t t-set="total_forecast_sale_qty[forecast_index]" t-value="total_forecast_sale_qty[forecast_index] + forecast.forecast_sale_qty"/>

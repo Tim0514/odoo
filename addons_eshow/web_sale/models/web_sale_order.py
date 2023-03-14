@@ -33,6 +33,7 @@ class WebSaleOrder(models.Model):
         string='Company', store=True, index=True)
 
     order_ref = fields.Char("Order Id", index=True, )
+    system_order_ref = fields.Char("System Order Id", index=True, )
     date_ordered = fields.Datetime("Order Date", index=True)
     date_ordered_local = fields.Char("Order Date(Local)", index=True)
     date_modified = fields.Datetime("Modify Date", index=True)
@@ -40,6 +41,7 @@ class WebSaleOrder(models.Model):
     currency_id = fields.Many2one("res.currency", string="Currency",)
     amount_total = fields.Monetary("Total",)
     amount_refund = fields.Char(string="Refund Amount", )
+    buyer_name = fields.Char(string="Buyer Name", )
     buyer_email = fields.Char(string="Buyer Email", )
     is_return = fields.Selection(_RETURN_STATES, string="Is Return", index=True)
     fulfillment_channel_type = fields.Char("Fulfillment Channel", index=True)
@@ -54,6 +56,14 @@ class WebSaleOrder(models.Model):
     postal_code = fields.Char(string="Postal Code", )
     phone = fields.Char(string="Phone", )
     posted_date = fields.Datetime("Payment Date",)
+    receiver_name = fields.Char(string="Receiver Name", )
+    receiver_country_code = fields.Char(string="Country Code", )
+    receiver_city = fields.Char(string="City", )
+    receiver_state_or_region = fields.Char(string="State Or Region", )
+    receiver_address_1 = fields.Char(string="Address", )
+    receiver_address_2 = fields.Char(string="Address 2", )
+    receiver_address_3 = fields.Char(string="Address 3", )
+
     order_lines = fields.One2many("web.sale.order.line", inverse_name="order_id")
 
 

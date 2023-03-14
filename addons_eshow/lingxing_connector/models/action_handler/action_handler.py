@@ -18,7 +18,7 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-class ActionHandlerTools(object):
+class AHTools(object):
 
     @staticmethod
     def cint(value):
@@ -46,7 +46,7 @@ class ActionHandlerTools(object):
         """
         if not src_datetime or src_datetime == "":
             return None
-        datetime_val = ActionHandlerTools.get_aware_datetime(src_datetime, src_timezone)
+        datetime_val = AHTools.get_aware_datetime(src_datetime, src_timezone)
         tz = timezone("UTC")
         datetime_val = datetime_val.astimezone(tz).replace(tzinfo=None)
         return datetime_val
@@ -71,10 +71,24 @@ class ActionHandlerTools(object):
         return datetime_val
 
     @staticmethod
+    def get_changed_vals(model_data, model_vals):
+        model_data.ensure_one()
+        new_model_vals = {}
+        for key in model_vals:
+            if model_data[key]:
+                field = model_data._fields.get(key)
+                if field.type == 'many2one' and model_data[key].id != model_vals[key]:
+                    new_model_vals.setdefault(key, model_vals[key])
+                elif field.type not in ('many2one', 'one2many', 'many2many') and model_data[key] != model_vals[key]:
+                    new_model_vals.setdefault(key, model_vals[key])
+
+        return new_model_vals
+
+    @staticmethod
     def get_local_datetime_str(src_datetime, src_timezone):
         if not src_datetime or src_datetime == "":
             return None
-        datetime_val = ActionHandlerTools.get_aware_datetime(src_datetime, src_timezone)
+        datetime_val = AHTools.get_aware_datetime(src_datetime, src_timezone)
         return datetime_val.isoformat()
 
 
@@ -149,7 +163,7 @@ class ActionHandler(object):
         return log_line_vals
 
     def get_success_ids(self):
-        return self._ids_created + self._ids_updated
+        return self._ids_created + self._ids_updated + self._ids_warning
 
     def get_success_count(self):
         return len(self._ids_created) + len(self._ids_updated) + len(self)
@@ -191,9 +205,17 @@ class ActionHandler(object):
             self._result_total = self._result_length
         else:
             # 如果返回的是ResponseResult, 此时是发送了single_request以后的返回值。
-            self._result_total = self._response_result.total
             if isinstance(self._response_result.data, list):
                 self._result_length = len(self._response_result.data)
+                self._result_total = self._response_result.total
+            elif "list" in self._response_result.data:
+                self._result_length = len(self._response_result.data["list"])
+                self._result_total = self._response_result.data["total"]
+                if isinstance(self._result_total, str):
+                    self._result_total = int(self._result_total)
+            else:
+                self._result_total = self._response_result.total
+                self._result_length = self._result_total
 
         if self._result_offset + self._result_length < self._result_total:
             self._has_more_result_data = True

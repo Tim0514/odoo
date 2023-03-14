@@ -22,11 +22,11 @@
                             <separator string="Synchronize Basic Data" />
                             <newline />
                             <button
-                                name="action_import_web_shops"
-                                string="Import Shops"
+                                name="action_import_amazon_shops"
+                                string="Import Amazon Shops"
                                 type="object"
                                 class="oe_highlight"
-                                confirm="This will import web shop data from Lingxing Server."
+                                confirm="This will import amazon shop data from Lingxing Server."
                             />
                             <newline />
                             <button
@@ -38,19 +38,35 @@
                             />
                             <newline />
                             <button
-                                name="action_import_shop_products"
-                                string="Import Shop Products"
+                                name="action_import_amazon_products"
+                                string="Import Amazon Products"
                                 type="object"
                                 class="oe_highlight"
-                                confirm="This will import shop product data from Lingxing Server."
+                                confirm="This will import amazon product data from Lingxing Server."
                             />
                             <newline />
                             <button
-                                name="action_import_shop_product_pair_states"
-                                string="Import Shop Product Pair States"
+                                name="action_import_amazon_product_pair_states"
+                                string="Import Amazon Product Pair States"
                                 type="object"
                                 class="oe_highlight"
-                                confirm="This will import shop product pair data from Lingxing Server."
+                                confirm="This will import amazon product pair data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_multiplatform_shops"
+                                string="Import Shops"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import web shop data from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_multiplatform_products"
+                                string="Import Multiplatform Products"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import multiplatform products from Lingxing Server."
                             />
                         </group>
                         <group>
@@ -62,6 +78,14 @@
                                 type="object"
                                 class="oe_highlight"
                                 confirm="This will import amazon orders from Lingxing Server."
+                            />
+                            <newline />
+                            <button
+                                name="action_import_multiplatform_orders"
+                                string="Import Multiplatform Orders"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="This will import multiplatform orders from Lingxing Server."
                             />
                             <newline />
                             <button

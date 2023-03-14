@@ -103,19 +103,17 @@ class ShopProductAsin(models.Model):
                       ]
         return self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
 
-    @api.model
-    def create_or_update(self, vals):
-        if "id" in vals:
-            shop_product_asin = self.browse(vals["id"])
-            shop_product_asin.write(vals)
-        elif "product_asin" in vals and "shop_id" in vals:
-            shop_product_asin = self.search([("shop_id", "=", vals["shop_id"]),
-                                             ("product_asin", "=", vals["product_asin"])], limit=1)
-            if shop_product_asin:
-                shop_product_asin.write(vals)
-            else:
-                shop_product_asin = self.create(vals)
-        else:
-            return False
-        return shop_product_asin
+    @staticmethod
+    def get_changed_vals(model_data, model_vals):
+        model_data.ensure_one()
+        new_model_vals = {}
+        for key in model_vals:
+            if model_data[key]:
+                field = model_data._fields.get(key)
+                if field.type == 'many2one' and model_data[key].id != model_vals[key]:
+                    new_model_vals.setdefault(key, model_vals[key])
+                elif field.type not in ('many2one', 'one2many', 'many2many') and model_data[key] != model_vals[key]:
+                    new_model_vals.setdefault(key, model_vals[key])
+
+        return new_model_vals
 

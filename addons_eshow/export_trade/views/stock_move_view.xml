@@ -40,7 +40,9 @@
         <field eval="200" name="priority"/>
         <field name="arch" type="xml">
             <tree string="Moves"
-                create="false" edit="false" delete="false" import="false" export_xlsx="false">
+                create="false" edit="false" delete="false" import="false" export_xlsx="false"
+                default_order="date desc"
+            >
                 <header>
                     <button name="do_import_stock_moves_to_declaration" type="object" string="Import Stock Moves"/>
                     <button name="do_recompute_undeclared_qty" type="object" string="Recompute Stock Moves" attrs="{'invisible': True, }"/>

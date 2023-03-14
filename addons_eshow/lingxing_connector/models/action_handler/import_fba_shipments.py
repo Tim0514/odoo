@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
 from dateutil.relativedelta import relativedelta
 
-from .action_handler import ActionHandler, ActionHandlerTools
+from .action_handler import ActionHandler, AHTools
 from datetime import datetime
 from dateutil.parser import parse
 from dateutil.relativedelta import *
@@ -51,6 +51,7 @@ class ImportFbaShipments(ActionHandler):
 
         domain = [
             ("enable_exchange_data", "=", True),
+            ("marketplace_id.type", "=", "amazon"),
         ]
         shops = shop_obj.search(domain)
         for shop in shops:
@@ -91,7 +92,9 @@ class ImportFbaShipments(ActionHandler):
         if not self._shop_ids_cache:
             web_shop_obj = self._connector.env["web.sale.shop"]
             domain = [
-                ("enable_exchange_data", "=", True)]
+                ("enable_exchange_data", "=", True),
+                ("marketplace_id.type", "=", "amazon"),
+            ]
             shop_list = web_shop_obj.search(domain, order="lingxing_shop_id")
             self._shop_ids_cache = shop_list.ids
 
@@ -416,7 +419,9 @@ class ImportFbaShipments(ActionHandler):
                 model_vals["scheduled_date"] = parse(result["shipment_time"])
 
         # 先保存stock_picking的基本数据
-        stock_picking.write(model_vals)
+        model_vals = AHTools.get_changed_vals(stock_picking, model_vals)
+        if len(model_vals) > 0:
+            stock_picking.write(model_vals)
 
         if stock_picking.state == "draft":
             # Odoo发货单只有是草稿状态，才可以更新数量信息。
@@ -431,7 +436,9 @@ class ImportFbaShipments(ActionHandler):
                     line_vals = {}
                     line_vals["product_uom_qty"] = line["num"]
                     line_vals["fba_shipment_id"] = line["shipment_id"]
-                    move_line.update(line_vals)
+                    line_vals = AHTools.get_changed_vals(move_line, line_vals)
+                    if len(line_vals) > 0:
+                        move_line.update(line_vals)
                 else:
                     line_vals = self._prepare_stock_move_vals(stock_picking, result, line, without_actual_move)
                     self._connector.env["stock.move"].create(line_vals)

@@ -17,7 +17,7 @@ class ShopProduct(models.Model):
     _name = "web.sale.shop.product"
     _description = "Shop Product"
     _order = "shop_name, product_default_code"
-    _rec_name = "product_name"
+    _rec_name = "seller_sku"
     _check_company_auto = True
 
     shop_id = fields.Many2one(
@@ -175,9 +175,10 @@ class ShopProduct(models.Model):
 
     def name_get(self):
         # Prefetch the fields used by the `name_get`, so `browse` doesn't fetch other fields
-        self.browse(self.ids).read(['shop_id', 'product_default_code', 'product_name'])
-        return [(shop_product.id, '%s: %s: %s' % (shop_product.shop_id.name, shop_product.product_default_code, shop_product.product_name))
+        self.browse(self.ids).read(['shop_id', 'shop_id'])
+        return [(shop_product.id, '%s: %s' % (shop_product.seller_sku, shop_product.shop_id.name))
                 for shop_product in self]
+
 
     '''
         如果条件为ilike, 则从店铺名称，产品名称，物料编码，店铺SKU中查找
@@ -200,18 +201,12 @@ class ShopProduct(models.Model):
                       ("parent_asin", "ilike", name),
                       ]
         else:
-            strlist = str.split(name, ": ")
+            strlist = str.split(name, ":")
             if len(strlist) == 3:
-                if not strlist[1].strip() == '':
-                    domain = [("shop_id.name", "=", strlist[0]),
-                              ("product_id.default_code", "=", strlist[1]),
-                              ]
-                elif not strlist[2].strip() == '':
-                    domain = [("shop_id.name", "=", strlist[0]),
-                              ("seller_sku", "=", strlist[2]),
-                              ]
-                else:
-                    return False
+                domain = [("shop_id.name", "=", strlist[0]),
+                          ("seller_sku", "=", strlist[2]),
+                          ("product_id.default_code", "=", strlist[1]),
+                          ]
             else:
                 return False
         return self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
@@ -229,28 +224,6 @@ class ShopProduct(models.Model):
             "review_num": shop_product_vals.get("review_num"),
         }
         return product_asin_vals
-
-    # @api.model_create_multi
-    # def create(self, vals_list):
-    #     product_asin_obj = self.env["web.sale.shop.product.asin"]
-    #     for vals in vals_list:
-    #         product_asin_vals = self._prepare_product_asin_vals(vals)
-    #         product_asin = product_asin_obj.create_or_update(product_asin_vals)
-    #         vals["product_asin_id"] = product_asin.id
-    #         vals.pop("product_asin")
-    #     templates = super(ShopProduct, self).create(vals_list)
-    #
-    #     return templates
-
-    # def write(self, vals):
-    #     # 更新
-    #     product_asin_obj = self.env["web.sale.shop.product.asin"]
-    #     product_asin_vals = self._prepare_product_asin_vals(vals)
-    #     product_asin = product_asin_obj.create_or_update(product_asin_vals)
-    #     vals["product_asin_id"] = product_asin.id
-    #     vals.pop("product_asin")
-    #     res = super(ShopProduct, self).write(vals)
-    #     return res
 
     def unlink(self):
         product_asin_id = self.product_asin_id

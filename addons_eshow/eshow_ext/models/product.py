@@ -115,7 +115,7 @@ class ProductProduct(models.Model):
                 else:
                     product.volume_weight_6000 = product.volume * pow(10, 6) / 6000
 
-    @api.depends('weight', 'volume_weight_5000', 'volume_weight_6000')
+    @api.depends('actual_weight', 'volume_weight_5000', 'volume_weight_6000')
     def _compute_weight(self):
         for product in self:
             if product.actual_weight >= product.volume_weight_6000:

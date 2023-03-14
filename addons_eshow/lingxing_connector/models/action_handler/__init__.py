@@ -9,6 +9,6 @@ from . import import_fba_shipments
 from . import export_lingxing_stock_picking_in
 from . import export_lingxing_stock_picking_out
 from . import import_fba_shipment_detail
-from . import import_amazon_orders
+from . import import_orders
 
 

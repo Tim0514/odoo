@@ -210,7 +210,7 @@ class LingxingConnector(models.Model):
             sleep(1)
             response = task1.result()
 
-            if response.code != 0:
+            if response.code not in [0, 1]:
                 self._raise_connector_error(
                     "Error occured when synchronizing with Lingxing Server.",
                     response_result=response,
@@ -569,7 +569,10 @@ class LingxingConnector(models.Model):
                 self._set_force_refresh_token(True)
 
             action_state = "fail"
-            error_message = str(error)
+            if error.response_result:
+                error_message = str(error.response_result)
+            else:
+                error_message = str(error)
             ext_message = str(req_body)
         except Exception as error:
             _logger.exception(error)

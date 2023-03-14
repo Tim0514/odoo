@@ -10,15 +10,25 @@
             <field name="max_concurrency">1</field>
 
         </record>
-        <record id="import_web_shops" model="connector.lingxing">
-            <field name="name">import_web_shops</field>
-            <field name="action_description">Import Web Shops</field>
+        <record id="import_multiplatform_shops" model="connector.lingxing">
+            <field name="name">import_multiplatform_shops</field>
+            <field name="action_description">Import Multiplatform Shops</field>
+            <field name="action_type">import</field>
+            <field name="route">/pb/mp/shop/getSellerList</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.shop')]"/>
+            <field name="action_handler_name">import_web_shops.ImportMultiplatformShops</field>
+        </record>
+        <record id="import_amazon_shops" model="connector.lingxing">
+            <field name="name">import_amazon_shops</field>
+            <field name="action_description">Import Amazon Shops</field>
             <field name="action_type">import</field>
             <field name="route">/erp/sc/data/seller/lists</field>
             <field name="method">GET</field>
             <field name="max_concurrency">1</field>
             <field name="related_model_id" search="[('model','=','web.sale.shop')]"/>
-            <field name="action_handler_name">import_web_shops.ImportWebShops</field>
+            <field name="action_handler_name">import_web_shops.ImportAmazonShops</field>
         </record>
         <record id="export_local_products" model="connector.lingxing">
             <field name="name">export_local_products</field>
@@ -30,25 +40,35 @@
             <field name="related_model_id" search="[('model','=','product.product')]"/>
             <field name="action_handler_name">export_local_products.ExportLocalProducts</field>
         </record>
-        <record id="import_shop_products" model="connector.lingxing">
-            <field name="name">import_shop_products</field>
-            <field name="action_description">Import Shop Products</field>
+        <record id="import_amazon_products" model="connector.lingxing">
+            <field name="name">import_amazon_products</field>
+            <field name="action_description">Import Amazon Products</field>
             <field name="action_type">import</field>
             <field name="route">/erp/sc/data/mws/listing</field>
             <field name="method">POST</field>
             <field name="max_concurrency">1</field>
             <field name="related_model_id" search="[('model','=','web.sale.shop.product')]"/>
-            <field name="action_handler_name">import_shop_products.ImportShopProducts</field>
+            <field name="action_handler_name">import_shop_products.ImportAmazonProducts</field>
         </record>
-        <record id="import_shop_product_pair_states" model="connector.lingxing">
-            <field name="name">import_shop_product_pair_states</field>
-            <field name="action_description">Import Shop Product Pair States</field>
+        <record id="import_amazon_product_pair_states" model="connector.lingxing">
+            <field name="name">import_amazon_product_pair_states</field>
+            <field name="action_description">Import Amazon Product Pair States</field>
             <field name="action_type">import</field>
             <field name="route">/erp/sc/data/mws/listing</field>
             <field name="method">POST</field>
             <field name="max_concurrency">1</field>
             <field name="related_model_id" search="[('model','=','web.sale.shop.product')]"/>
-            <field name="action_handler_name">import_shop_products.ImportShopProducts</field>
+            <field name="action_handler_name">import_shop_products.ImportAmazonProducts</field>
+        </record>
+        <record id="import_multiplatform_products" model="connector.lingxing">
+            <field name="name">import_multiplatform_products</field>
+            <field name="action_description">Import Multiplatform Products</field>
+            <field name="action_type">import</field>
+            <field name="route">/pb/mp/listing/getPairList</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.shop.product')]"/>
+            <field name="action_handler_name">import_shop_products.ImportMultiplatformProducts</field>
         </record>
         <record id="import_product_monthly_stat" model="connector.lingxing">
             <field name="name">import_product_monthly_stat</field>
@@ -138,7 +158,17 @@
             <field name="method">POST</field>
             <field name="max_concurrency">1</field>
             <field name="related_model_id" search="[('model','=','web.sale.order')]"/>
-            <field name="action_handler_name">import_amazon_orders.ImportAmazonOrders</field>
+            <field name="action_handler_name">import_orders.ImportAmazonOrders</field>
+        </record>
+        <record id="import_multiplatform_orders" model="connector.lingxing">
+            <field name="name">import_multiplatform_orders</field>
+            <field name="action_description">Import Multiplatform Orders</field>
+            <field name="action_type">import</field>
+            <field name="route">/pb/mp/order/v2/list</field>
+            <field name="method">POST</field>
+            <field name="max_concurrency">1</field>
+            <field name="related_model_id" search="[('model','=','web.sale.order')]"/>
+            <field name="action_handler_name">import_orders.ImportMultiplatformOrders</field>
         </record>
     </data>
 </odoo>

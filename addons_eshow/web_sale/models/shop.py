@@ -55,6 +55,24 @@ class Shop(models.Model):
 
     timezone = fields.Char(related="marketplace_id.timezone", string="Time Zone")
 
+    currency_id = fields.Many2one("res.currency", string="Currency", compute="_compute_currency_id", inverse="_set_currency_id")
+
+    @api.depends("marketplace_id", "marketplace_id.country_id")
+    def _compute_currency_id(self):
+        for record in self:
+            if not record.currency_id:
+                record.currency_id = record.marketplace_id.country_id.currency_id
+
+    def _set_currency_id(self):
+        pass
+
+    def get_currency_id(self):
+        self.ensure_one()
+        if self.currency_id:
+            return self.currency_id
+        else:
+            return self.marketplace_id.country_id.currency_id
+
     # @api.onchange("default_shipping_method_id")
     # def _onchange_default_shipping_method(self):
     #     for shop in self:
@@ -68,9 +86,9 @@ class Shop(models.Model):
 
     def _create_default_shipping_schedule_group_id(self):
         for shop in self:
-            if not shop.default_shipping_schedule_group_id:
+            if shop.company_id and shop.enable_shipping_schedule and not shop.default_shipping_schedule_group_id:
                 shipping_schedule_group_vals = {
-                    'name': shop.name,
+                    'name': "%s-默认组" %shop.name,
                     'company_id': shop.company_id.id,
                     'shop_id': shop.id,
                     'is_default_group': True,
@@ -79,22 +97,20 @@ class Shop(models.Model):
                 }
                 shipping_schedule_group = self.env['web.sale.shipping.schedule.group'].create(shipping_schedule_group_vals)
                 shop.default_shipping_schedule_group_id = shipping_schedule_group
-            else:
-                shop.default_shipping_schedule_group_id.is_default_group = True
-                shop.sale_qty_compute_method = "by_product"
 
     def create(self, vals_list):
         shop = super(Shop, self).create(vals_list)
         if shop.partner_id and shop.default_shipping_method_id:
             shop.partner_id.default_shipping_method_id = shop.default_shipping_method_id
         shop._create_default_shipping_schedule_group_id()
+        return shop
 
     def write(self, vals):
         super(Shop, self).write(vals)
         if "partner_id" in vals.keys() or "default_shipping_method_id" in vals.keys():
             if self.partner_id and self.default_shipping_method_id:
                 self.partner_id.default_shipping_method_id = self.default_shipping_method_id
-
+        self._create_default_shipping_schedule_group_id()
 
 
 

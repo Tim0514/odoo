@@ -8,6 +8,8 @@ from typing import Any, Optional
 class ResponseResult(BaseModel):
     code: Optional[int]                     # 响应码
     message: Optional[str]                  # 响应信息
+    msg: Optional[str]                      # 响应信息
+    trace_id: Optional[str]                 # trace_id
     data: Any                               # 接口响应数据
     error_details: Optional[Any] = None     # 异常信息
     request_id: Optional[str] = None        # 标记本次请求唯一ID

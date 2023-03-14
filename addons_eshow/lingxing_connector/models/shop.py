@@ -12,6 +12,7 @@ class Shop(models.Model):
     _inherit = "web.sale.shop"
 
     lingxing_shop_id = fields.Integer(string="Ling Xing Shop ID",)
+    lingxing_mp_shop_id = fields.Char(string="Ling Xing Multiplatform Shop ID",)
     lingxing_shop_name = fields.Char(string="Ling Xing Shop Name",)
 
     def _prepare_shop_value(self, lingxing_shop_id, lingxing_shop_name, marketplace_id, merchant_id):

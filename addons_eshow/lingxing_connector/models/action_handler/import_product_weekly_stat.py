@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
 from dateutil.relativedelta import relativedelta
 
-from .action_handler import ActionHandler, ActionHandlerTools
+from .action_handler import ActionHandler, AHTools
 from datetime import datetime
 from dateutil.parser import parse
 from dateutil.relativedelta import *
@@ -32,6 +32,7 @@ class ImportProductWeeklyStat(ActionHandler):
 
         domain = [
             ("enable_exchange_data", "=", True),
+            ("marketplace_id.type", "=", "amazon"),
         ]
         shops = shop_obj.search(domain)
         for shop in shops:
@@ -74,7 +75,9 @@ class ImportProductWeeklyStat(ActionHandler):
 
             web_shop_obj = self._connector.env["web.sale.shop"]
             domain = [
-                ("enable_exchange_data", "=", True)]
+                ("enable_exchange_data", "=", True),
+                ("marketplace_id.type", "=", "amazon"),
+            ]
 
             shop_list = web_shop_obj.search(domain, order="lingxing_shop_id")
 
@@ -172,30 +175,30 @@ class ImportProductWeeklyStat(ActionHandler):
 
                 model_vals["date_modified_gmt"] = parse(result["gmt_modified"])
 
-                model_vals["order_volume"] = ActionHandlerTools.cint(result["order_items"])
-                model_vals["product_volume"] = ActionHandlerTools.cint(result["volume"])
-                model_vals["amount_total"] = ActionHandlerTools.cfloat(result["amount"])
-                model_vals["session_browser"] = ActionHandlerTools.cint(result["sessionsBrowser"])
-                model_vals["session_mobile"] = ActionHandlerTools.cint(result["sessionsMobile"])
-                model_vals["session_total"] = ActionHandlerTools.cint(result["sessionsTotal"])
-                model_vals["page_view_browser"] = ActionHandlerTools.cint(result["PVBrowser"])
-                model_vals["page_view_mobile"] = ActionHandlerTools.cint(result["PVMobile"])
-                model_vals["page_view_total"] = ActionHandlerTools.cint(result["PVTotal"])
-                model_vals["ads_clicks"] = ActionHandlerTools.cint(result["clicks"])
-                model_vals["ads_impressions"] = ActionHandlerTools.cint(result["impressions"])
-                model_vals["ads_total_spend"] = ActionHandlerTools.cfloat(result["total_spend"])
-                model_vals["ads_click_rate"] = ActionHandlerTools.cfloat(result["ctr"])
-                model_vals["ads_avg_cpc"] = ActionHandlerTools.cfloat(result["avg_cpc"])
-                model_vals["ads_order_volume"] = ActionHandlerTools.cint(result["order_quantity"])
-                model_vals["ads_order_rate"] = ActionHandlerTools.cfloat(result["adv_rate"])
-                model_vals["ads_amount_total"] = ActionHandlerTools.cfloat(result["sales_amount"])
-                model_vals["ads_cvr"] = ActionHandlerTools.cfloat(result["ad_cvr"])
-                model_vals["acos"] = ActionHandlerTools.cfloat(result["acos"])
-                model_vals["acoas"] = ActionHandlerTools.cfloat(result["acoas"])
-                model_vals["asoas"] = ActionHandlerTools.cfloat(result["asoas"])
-                model_vals["ads_convention_rate"] = ActionHandlerTools.cfloat(result["conversion_rate"])
-                model_vals["total_convention_rate"] = ActionHandlerTools.cfloat(result["total_spend_rate"])
-                model_vals["seller_rank"] = ActionHandlerTools.cint(result["rank"])
+                model_vals["order_volume"] = AHTools.cint(result["order_items"])
+                model_vals["product_volume"] = AHTools.cint(result["volume"])
+                model_vals["amount_total"] = AHTools.cfloat(result["amount"])
+                model_vals["session_browser"] = AHTools.cint(result["sessionsBrowser"])
+                model_vals["session_mobile"] = AHTools.cint(result["sessionsMobile"])
+                model_vals["session_total"] = AHTools.cint(result["sessionsTotal"])
+                model_vals["page_view_browser"] = AHTools.cint(result["PVBrowser"])
+                model_vals["page_view_mobile"] = AHTools.cint(result["PVMobile"])
+                model_vals["page_view_total"] = AHTools.cint(result["PVTotal"])
+                model_vals["ads_clicks"] = AHTools.cint(result["clicks"])
+                model_vals["ads_impressions"] = AHTools.cint(result["impressions"])
+                model_vals["ads_total_spend"] = AHTools.cfloat(result["total_spend"])
+                model_vals["ads_click_rate"] = AHTools.cfloat(result["ctr"])
+                model_vals["ads_avg_cpc"] = AHTools.cfloat(result["avg_cpc"])
+                model_vals["ads_order_volume"] = AHTools.cint(result["order_quantity"])
+                model_vals["ads_order_rate"] = AHTools.cfloat(result["adv_rate"])
+                model_vals["ads_amount_total"] = AHTools.cfloat(result["sales_amount"])
+                model_vals["ads_cvr"] = AHTools.cfloat(result["ad_cvr"])
+                model_vals["acos"] = AHTools.cfloat(result["acos"])
+                model_vals["acoas"] = AHTools.cfloat(result["acoas"])
+                model_vals["asoas"] = AHTools.cfloat(result["asoas"])
+                model_vals["ads_convention_rate"] = AHTools.cfloat(result["conversion_rate"])
+                model_vals["total_convention_rate"] = AHTools.cfloat(result["total_spend_rate"])
+                model_vals["seller_rank"] = AHTools.cint(result["rank"])
 
                 for i in range(0, min(3, len(result["smallRankList"]))):
                     sub_seller_rank = result["smallRankList"][i]
@@ -209,8 +212,8 @@ class ImportProductWeeklyStat(ActionHandler):
                         model_vals["seller_rank_sub3"] = sub_seller_rank["rankValue"]
                         model_vals["seller_rank_sub3_name"] = sub_seller_rank["smallRankName"]
 
-                model_vals["review_num"] = ActionHandlerTools.cint(result["reviews"])
-                model_vals["review_star"] = ActionHandlerTools.cfloat(result["avg_star"])
+                model_vals["review_num"] = AHTools.cint(result["reviews"])
+                model_vals["review_star"] = AHTools.cfloat(result["avg_star"])
                 model_vals["remark"] = str(result["remark"])
 
                 key = (model_vals["shop_id"], model_vals["product_asin"], model_vals["stat_year"], model_vals["stat_week"],)

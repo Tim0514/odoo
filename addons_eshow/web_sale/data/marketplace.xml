@@ -253,7 +253,7 @@
             <field name="type">walmart</field>
             <field name="code"></field>
             <field name="endpoint"></field>
-            <field name="timezone">US/Pacific</field>
+            <field name="timezone">UTC</field>
             <field name="description"/>
         </record>
         <record id="walmart_ca" model="web.sale.marketplace">
@@ -262,7 +262,7 @@
             <field name="type">walmart</field>
             <field name="code"></field>
             <field name="endpoint"></field>
-            <field name="timezone">US/Pacific</field>
+            <field name="timezone">UTC</field>
             <field name="description"/>
         </record>
         <record id="shopee_my" model="web.sale.marketplace">
@@ -353,6 +353,33 @@
             <field name="code"></field>
             <field name="endpoint"></field>
             <field name="timezone">US/Pacific</field>
+            <field name="description"/>
+        </record>
+        <record id="wish" model="web.sale.marketplace">
+            <field name="name">Wish</field>
+            <field name="country_id" search="[('code','=','US')]"/>
+            <field name="type">wish</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="timezone">US/Pacific</field>
+            <field name="description"/>
+        </record>
+        <record id="lazada_my" model="web.sale.marketplace">
+            <field name="name">Lazada-马来西亚</field>
+            <field name="country_id" search="[('code','=','MY')]"/>
+            <field name="type">other</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="timezone">Asia/Kuala_Lumpur</field>
+            <field name="description"/>
+        </record>
+        <record id="tiktok" model="web.sale.marketplace">
+            <field name="name">Tiktok</field>
+            <field name="country_id" search="[('code','=','UK')]"/>
+            <field name="type">other</field>
+            <field name="code"></field>
+            <field name="endpoint"></field>
+            <field name="timezone">UTC</field>
             <field name="description"/>
         </record>
         <record id="other" model="web.sale.marketplace">

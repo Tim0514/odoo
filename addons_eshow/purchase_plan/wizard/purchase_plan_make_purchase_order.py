@@ -255,12 +255,21 @@ class PurchasePlanMakePurchaseOrder(models.TransientModel):
                         _("Group Ids are different between selected PO and purchase plans.")
                     )
 
+        has_ignored_plan = False
+
         for item in self.item_ids:
             purchase_plan = item.purchase_plan_id
             purchase_order_domain = self._get_order_search_domain(item, purchase_plan)
 
             if item.product_qty <= 0.0:
                 raise UserError(_("Enter a positive quantity."))
+
+            available_qty = item._get_available_qty()
+            if item.product_qty < available_qty:
+                # 已有订单已经可以满足需求，不需要再采购
+                item.purchase_plan_id.no_need_purchase = True
+                has_ignored_plan = True
+                continue
 
             if self.purchase_order_id:
                 # 如果选择了指定的采购订单合并
@@ -312,16 +321,52 @@ class PurchasePlanMakePurchaseOrder(models.TransientModel):
 
             res.append(order_to_use.id)
 
-        return {
-            "domain": [("id", "in", res)],
-            "name": _("RFQ"),
-            "view_mode": "tree,form",
-            "res_model": "purchase.order",
-            "view_id": False,
-            "context": False,
-            "type": "ir.actions.act_window",
-        }
-
+        if has_ignored_plan:
+            next_action = {
+                "domain": [("id", "in", res)],
+                "name": _("RFQ"),
+                "view_mode": "tree,form",
+                "res_model": "purchase.order",
+                "views": [(False, "list"), (False, "form")],
+                # "views": [(False, "tree"), (False, "form")],   # odoo 有个bug, 在 views中， 列表视图得用list, 不能用tree
+                "context": False,
+                "type": "ir.actions.act_window",
+                "target": "current",
+            }
+            notification = {
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'params': {
+                    'title': _('Warning'),
+                    'message': _('POs have been created, but some plans are ignored.'),
+                    'sticky': True,
+                    'type': 'warning',
+                    'next': next_action,
+                }
+            }
+        else:
+            next_action = {
+                "domain": [("id", "in", res)],
+                "name": _("RFQ"),
+                "view_mode": "tree,form",
+                "res_model": "purchase.order",
+                "views": [(False, "list"), (False, "form")],
+                # "views": [(False, "tree"), (False, "form")],   # odoo 有个bug, 在 views中， 列表视图得用list, 不能用tree
+                "context": False,
+                "type": "ir.actions.act_window",
+            }
+            notification = {
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'params': {
+                    'title': _('Success'),
+                    'message': _('POs have been created.'),
+                    'sticky': True,
+                    'type': 'success',
+                    'next': next_action,
+                }
+            }
+        return notification
 
 class PurchasePlanMakePurchaseOrderItem(models.TransientModel):
     _name = "purchase.plan.make.purchase.order.item"
@@ -380,6 +425,39 @@ class PurchasePlanMakePurchaseOrderItem(models.TransientModel):
     )
 
     propagate_cancel = fields.Boolean('Propagate cancellation', default=True)
+
+    def _get_available_qty(self):
+        """
+        获取需要采购的产品的可用数量之和(虚拟可用库存+尚未确认的采购订单数量+尚未转采购的采购计划数量）
+        :return: 虚拟可用库存+尚未确认的采购订单数量
+        """
+        self.ensure_one()
+        product_id = self.product_id
+        purchase_plan = self.purchase_plan_id
+        product_id = product_id.with_context(location=purchase_plan.picking_type_id.default_location_dest_id.id)
+        available_qty = product_id.virtual_available
+
+        # 读取还没有生成入库单的采购订单，用于统计可用数量
+        domain = [
+            ("company_id", "=", purchase_plan.company_id.id),
+            ("partner_id", "=", self.supplier_id.id),
+            ("product_id", "=", product_id.id),
+            ("state", "not in", ["purchase", "done", "cancel"]),
+        ]
+        po_line = self.env["purchase.order.line"].search(domain)
+        purchasing_qty = sum(po_line.mapped("product_uom_qty"))
+
+        # 读取还没有生成采购单的采购计划，用于统计可用数量
+        domain = [
+            ("company_id", "=", purchase_plan.company_id.id),
+            ("product_id", "=", product_id.id),
+            ("state", "not in", ["done", "ignored"]),
+        ]
+        po_line = self.env["purchase.plan"].search(domain)
+        to_purchase_qty = sum(po_line.mapped("product_qty")) - sum(po_line.mapped("purchased_qty"))
+
+        return available_qty + to_purchase_qty + purchasing_qty
+
 
 
     # @api.onchange("product_id")

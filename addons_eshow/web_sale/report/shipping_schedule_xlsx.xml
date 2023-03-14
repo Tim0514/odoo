@@ -6,7 +6,7 @@
         <field name="type">ir.actions.report</field>
         <field name="binding_type">action</field>
         <field name="binding_model_id" ref="web_sale.model_web_sale_shipping_schedule_group" />
-        <field name="print_report_name">'Shipping Schedule - %s-%s' % (object.schedule_year, object.schedule.month)</field>
+        <field name="print_report_name">'Shipping Schedule - %s-%s' % (object.schedule_year, object.schedule_month)</field>
         <field name="report_name">web_sale.shipping_schedule_xlsx</field>
         <field name="report_file">shipping_schedule</field>
         <field name="report_type">xlsx</field>
